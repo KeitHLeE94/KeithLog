@@ -12,14 +12,14 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "neon" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
 title                    : "KeithLog"
 title_separator          : "-"
 name                     : "Jaehyun Keith Lee"
-description              : "공부할내용들 올라갈 블로그"
+description              : "공부할내용들 올려놓을 블로그"
 url                      : "https://keithlee94.github.io"
 baseurl                  : "/KeithLog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -38,7 +38,7 @@ comments:
     num_posts            : # 5 (default)
     colorscheme          : # "light" (default), "dark"
   utterances:
-    theme                : # "github-light" (default), "github-dark"
+    theme                : "github-dark" # "github-light" (default), "github-dark"
 staticman:
   allowedFields          : # ['name', 'email', 'url', 'message']
   branch                 : # "master"
@@ -103,9 +103,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Jaehyun Keith Lee"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
+  bio              : "Supernormal, Quiet Weirdo"
   location         : "Somewhere"
   email            :
   links:
