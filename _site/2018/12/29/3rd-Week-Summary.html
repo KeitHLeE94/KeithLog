@@ -1,0 +1,161 @@
+<h1 id="markdown-문법-정리">Markdown 문법 정리</h1>
+<hr />
+
+<h1 id="1--제목-쓸때-사용">1. #: 제목 쓸때 사용.</h1>
+<h1 id="this-is-h1">This is h1</h1>
+<h2 id="this-is-h2">This is h2</h2>
+<h3 id="this-is-h3">This is h3</h3>
+<h4 id="this-is-h4">This is h4</h4>
+<h5 id="this-is-h5">This is h5</h5>
+<h6 id="this-is-h6">This is h6</h6>
+<hr />
+
+<h1 id="2--hr-줄바꿀때-쓴다">2. «!– –&gt;hr/&gt;: 줄바꿀때 쓴다.</h1>
+<h3 id="------------전부-줄바꿀때-쓰는-명령어"><!-- -->—, <strong><em>, * * *, **</em></strong>, - - -: 전부 줄바꿀때 쓰는 명령어.</h3>
+<hr />
+
+<h1 id="3--블럭인용문자">3. &gt;: 블럭인용문자.</h1>
+<blockquote>
+  <p>This is BlockQuote</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>이거슨 인용문자</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>이런식으로 nest 구조를 만드는것도 가능하고</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <h2 id="이런식으로-인용문-안에-다른-명령어나-코드도-넣을-수-있다">이런식으로 인용문 안에 다른 명령어나 코드도 넣을 수 있다.</h2>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <ul>
+          <li>List</li>
+        </ul>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;
+int main(){
+   cout &lt;&lt; "Hello, World!" &lt;&lt; '\n';
+   return 0;
+}
+</code></pre></div>        </div>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<hr />
+
+<h1 id="4--코드-입력-가능-입력-끝나면-다시-써서-닫으면-됨">4. ```: 코드 입력 가능. 입력 끝나면 다시 써서 닫으면 됨.</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;
+int main(){
+    cout &lt;&lt; "Hello, World!" &lt;&lt; '\n';
+    return 0;
+}
+</code></pre></div></div>
+<hr />
+
+<h1 id="5-숫자-리스트">5. 숫자 리스트</h1>
+<ol>
+  <li>첫번째</li>
+  <li>두번째</li>
+  <li>세번째</li>
+  <li>…</li>
+</ol>
+<hr />
+
+<h1 id="6-순서-없는-리스트">6. 순서 없는 리스트</h1>
+<ul>
+  <li>First
+    <ul>
+      <li>Second
+        <ul>
+          <li>Third
+            <ul>
+              <li>Fourth
+                <ul>
+                  <li>Fifth
+                    <ul>
+                      <li>Sixth
+                        <ul>
+                          <li>Seventh
+                            <ul>
+                              <li>…</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h1 id="7-링크">7. 링크</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Link: [Google][googlelink]
+[googlelink]https://google.com "Go google"
+
+이런식으로 링크걸면됨.
+</code></pre></div></div>
+<p>Link: <a href="https://google.com" title="Go google">Google</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://keithlee94.github.io/KeithLog/
+
+이런식으로 바로 거는방법도 있음.
+</code></pre></div></div>
+
+<p>https://keithlee94.github.io/KeithLog/</p>
+<hr />
+
+<h1 id="8-강조">8. 강조</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*하이라이트*, _하이라이트_: 이탤릭체
+**강조**, __강조__: 볼드체
+~~취소선~~: 단어에 취소선 생김
+</code></pre></div></div>
+<p><em>하이라이트</em></p>
+
+<p><em>중요해</em></p>
+
+<p><strong>강조</strong></p>
+
+<p><strong>강조</strong></p>
+
+<p><del>취소선</del></p>
+<hr />
+
+<h1 id="9-이미지-삽입">9. 이미지 삽입</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Alt text](/path/to/img.jpg) - url 넣어줘도 됨.
+사이즈 조절 기능은 없기 때문에 &lt;img width="" height=""&gt;&lt;/img&gt;를 이용한다.
+</code></pre></div></div>
