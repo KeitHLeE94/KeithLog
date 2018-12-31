@@ -1,13 +1,3 @@
----
-
-layout: post
-title: 2108번 - 통계학
-comments: true
-categories: [Algorithm]
-tags: [Algorithm]
-
----
-
 # 백준 2108번
 Link: [2108번: 통계학][BOJLink]
 
