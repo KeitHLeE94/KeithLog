@@ -1,0 +1,574 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Algorithm study - KeithLog</title>
+<meta name="description" content="백준 2108번Link: 1003번: 피보나치 함수">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KeithLog">
+<meta property="og:title" content="Algorithm study">
+<meta property="og:url" content="http://localhost:4000/KeithLog/algorithm/Algorithm-Study/">
+
+
+  <meta property="og:description" content="백준 2108번Link: 1003번: 피보나치 함수">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-01-01T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/KeithLog/algorithm/Algorithm-Study/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jaehyun Keith Lee",
+      "url": "http://localhost:4000/KeithLog",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/KeithLog/feed.xml" type="application/atom+xml" rel="alternate" title="KeithLog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/KeithLog/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/KeithLog/">KeithLog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/KeithLog/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/KeithLog/tags/" >tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/KeithLog/categories/" >Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Jaehyun Keith Lee</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Supernormal / Quiet Weirdo
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="wogus4187@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+          
+        
+          
+            <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:wogus4187@naver.com">
+            <meta itemprop="email" content="wogus4187@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Algorithm study">
+    <meta itemprop="description" content="백준 2108번Link: 1003번: 피보나치 함수">
+    <meta itemprop="datePublished" content="January 01, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Algorithm study
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="백준-2108번">백준 2108번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/1003">1003번: 피보나치 함수</a></p>
+
+<hr />
+
+<h1 id="문제-설명">문제 설명</h1>
+<p>피보나치 함수 실행시 0과 1이 몇번이나 출력되는지 구하는 문제.</p>
+
+<p>예전에 풀어본 적 있던 문제였는데 DP를 다시 공부하는 김에 새로 풀어보았다.</p>
+
+<p>다른점이 있다면 예전에는 답을 찾아보고 풀었던것 같은데 이번에는 내 힘만으로 풀었다는 점.</p>
+
+<p>DP를 사용해야 한다는 느낌은 왔는데 어떻게 DP 배열을 채울지가 관건이었다.</p>
+
+<p>시간제한이 0.25초였지만 입력의 크기가 최대 40까지인 것을 보고, 처음부터 DP 배열을 전부 채워놓고 입력에 따라 배열의 값만 리턴해줘도 되겠다는 생각이 들었다.</p>
+
+<p>이렇게 생각하고 풀어봤더니 금방 풀렸다.</p>
+
+<p>이번주는 DP를 집중적으로 풀어볼 예정.</p>
+<hr />
+
+<h1 id="내가-짠-코드">내가 짠 코드</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+// Created by Keith_Lee on 01/01/2019.
+//
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int T;
+int DP[41][2];
+
+void fibonacci(int n){
+    if(n == 0){
+        DP[n][0]++;
+    }
+    else if(n == 1){
+        DP[n][1]++;
+    }
+    else{
+        DP[n][0] = DP[n-1][0] + DP[n-2][0];
+        DP[n][1] = DP[n-1][1] + DP[n-2][1];
+    }
+}
+
+int main(){
+    for(int i=0; i&lt;41; i++){
+        fibonacci(i);
+    }
+
+    cin &gt;&gt; T;
+
+    int N;
+
+    for(int i=0; i&lt;T; i++){
+        cin &gt;&gt; N;
+        cout &lt;&lt; DP[N][0] &lt;&lt; ' ' &lt;&lt; DP[N][1] &lt;&lt; '\n';
+    }
+
+    return 0;
+}
+</code></pre></div></div>
+<hr />
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/KeithLog/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/KeithLog/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-01T00:00:00+09:00">January 01, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Algorithm+study%20http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Falgorithm%2FAlgorithm-Study%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Falgorithm%2FAlgorithm-Study%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Falgorithm%2FAlgorithm-Study%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Falgorithm%2FAlgorithm-Study%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/KeithLog/algorithm/Algorithm-Study/" class="pagination--pager" title="Algorithm study
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/KeithLog/algorithm/Algorithm-Study/" rel="permalink">Algorithm study
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2108번
+Link: 2108번: 통계학
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/KeithLog/ssafy/3rd-Week-Summary/" rel="permalink">3rd week summary
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Markdown 문법 정리
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/KeithLog/ssafy/2nd-Week-Summary/" rel="permalink">2nd week summary
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">2주차 정리
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/KeithLog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Jaehyun Keith Lee. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/KeithLog/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/KeithLog/assets/js/lunr/lunr.min.js"></script>
+<script src="/KeithLog/assets/js/lunr/lunr-store.js"></script>
+<script src="/KeithLog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>

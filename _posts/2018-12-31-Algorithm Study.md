@@ -1,3 +1,8 @@
+---
+categories: "Algorithm"
+tags: "Realization"
+author_profile: true
+---
 # 백준 2108번
 Link: [2108번: 통계학][BOJLink]
 

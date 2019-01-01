@@ -1,3 +1,8 @@
+---
+categories: "SSAFY"
+tags: "Basics"
+author_profile: true
+---
 # 2주차 정리
 
 * 라이브러리, 프레임워크 차이
