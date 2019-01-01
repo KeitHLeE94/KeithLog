@@ -1,0 +1,65 @@
+# 백준 2108번
+Link: [1003번: 피보나치 함수][BOJLink]
+
+[BOJLink]: https://www.acmicpc.net/problem/1003
+<hr/>
+
+# 문제 설명
+피보나치 함수 실행시 0과 1이 몇번이나 출력되는지 구하는 문제.
+
+예전에 풀어본 적 있던 문제였는데 DP를 다시 공부하는 김에 새로 풀어보았다.
+
+다른점이 있다면 예전에는 답을 찾아보고 풀었던것 같은데 이번에는 내 힘만으로 풀었다는 점.
+
+DP를 사용해야 한다는 느낌은 왔는데 어떻게 DP 배열을 채울지가 관건이었다.
+
+시간제한이 0.25초였지만 입력의 크기가 최대 40까지인 것을 보고, 처음부터 DP 배열을 전부 채워놓고 입력에 따라 배열의 값만 리턴해줘도 되겠다는 생각이 들었다.
+
+이렇게 생각하고 풀어봤더니 금방 풀렸다.
+
+이번주는 DP를 집중적으로 풀어볼 예정.
+<hr/>
+
+# 내가 짠 코드
+```
+//
+// Created by Keith_Lee on 01/01/2019.
+//
+#include <iostream>
+
+using namespace std;
+
+int T;
+int DP[41][2];
+
+void fibonacci(int n){
+    if(n == 0){
+        DP[n][0]++;
+    }
+    else if(n == 1){
+        DP[n][1]++;
+    }
+    else{
+        DP[n][0] = DP[n-1][0] + DP[n-2][0];
+        DP[n][1] = DP[n-1][1] + DP[n-2][1];
+    }
+}
+
+int main(){
+    for(int i=0; i<41; i++){
+        fibonacci(i);
+    }
+
+    cin >> T;
+
+    int N;
+
+    for(int i=0; i<T; i++){
+        cin >> N;
+        cout << DP[N][0] << ' ' << DP[N][1] << '\n';
+    }
+
+    return 0;
+}
+```
+<hr/>
