@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2nd week summary - KeithLog</title>
-<meta name="description" content="2주차 정리">
+<!-- begin _includes/seo.html --><title>2108 - KeithLog</title>
+<meta name="description" content="백준 2108번Link: 2108번: 통계학">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2nd week summary">
-<meta property="og:url" content="http://localhost:4000/KeithLog/ssafy/2nd-Week-Summary/">
+<meta property="og:title" content="2108">
+<meta property="og:url" content="http://localhost:4000/KeithLog/algorithm/2108/">
 
 
-  <meta property="og:description" content="2주차 정리">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2018-12-28T00:00:00+09:00">
+  <meta property="og:description" content="백준 2108번Link: 2108번: 통계학">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2018-12-31T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/KeithLog/ssafy/2nd-Week-Summary/">
+
+<link rel="canonical" href="http://localhost:4000/KeithLog/algorithm/2108/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2nd week summary">
-    <meta itemprop="description" content="2주차 정리">
-    <meta itemprop="datePublished" content="December 28, 2018">
+    <meta itemprop="headline" content="2108">
+    <meta itemprop="description" content="백준 2108번Link: 2108번: 통계학">
+    <meta itemprop="datePublished" content="December 31, 2018">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2nd week summary
+          <h1 id="page-title" class="page__title" itemprop="headline">2108
 </h1>
           
         </header>
@@ -286,134 +286,99 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="2주차-정리">2주차 정리</h1>
+        <h1 id="백준-2108번">백준 2108번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/2108">2108번: 통계학</a></p>
 
-<ul>
-  <li>라이브러리, 프레임워크 차이
-    <ul>
-      <li>라이브러리: 기능 하나에 대해서만 제공(제한적인 용도)</li>
-      <li>프레임워크: 틀이 잡혀져 있다.(다양한 용도, 범용적) =&gt; 커스터마이징이 어러움.</li>
-    </ul>
-  </li>
-</ul>
 <hr />
 
-<ul>
-  <li>AWS EC2
-    <ul>
-      <li>인스턴스 == 임대받은 컴퓨터 1대.</li>
-    </ul>
-  </li>
-</ul>
+<h1 id="문제-설명">문제 설명</h1>
+<p>문제에서 제시된 간단한 통계를 구하는 문제였다.</p>
+
+<p>평균, 최댓값, 범위까지는 쉽게쉽게 구했는데 최빈값을 어떻게 구할지에 대해서 많이 고민했던 문제.</p>
+
+<p>처음에는 8000개짜리 배열 만들고 숫자 넣을때마다 배열 값에다 1씩 더해서 빈도를 저장하려고 했는데 하다보니 아니다 싶어서 map을 사용했다.</p>
+
+<p>input으로 준 숫자가 map에 없으면 (input, 1)로 초기호하고 있으면 빈도에 해당하는 1을 하나씩 더해가는 방식으로 구현했다.</p>
+
+<p>최빈값을 찾기 위해 map을 한번 싹 돌았다.</p>
+
+<p>조건 중에 최빈값이 여러개면 두번째로 작은 값을 최빈값으로 하라는 조건이 있었는데, 이걸 구현하기 위해 map을 한번 더 돌았다. 이 부분에 대해서는 좀 더 세련된 방법으로 보완할 수 있을 것 같은데 일단은 시간제한도 넉넉해서 그냥 한바퀴 더 도는 방법으로 구현했다.</p>
 <hr />
 
-<ul>
-  <li>힙 영역
-    <ul>
-      <li>동적할당시 할당되는 메모리 영역.</li>
-      <li>자바, 파이썬은 Garbage collector가 있으므로 굳이 free 안해줘도 안쓰는 공간은 할당 해제됨.(But, file은 일일이 close해줘야함)</li>
-    </ul>
-  </li>
-</ul>
-<hr />
+<h1 id="내가-짠-코드">내가 짠 코드</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+// Created by Keith_Lee on 31/12/2018.
+//
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;math.h&gt;
+#include &lt;map&gt;
 
-<ul>
-  <li>파이썬 자료구조
-    <ul>
-      <li>tuple
-        <ul>
-          <li>가공된 데이터의 내용이 바뀌지 않도록 방어하기 위해 사용.</li>
-          <li>상수와 비슷한 역할을 한다.</li>
-        </ul>
-      </li>
-      <li>dic
-        <ul>
-          <li>내부적으로는 트리 형태를 띈다.</li>
-          <li>검색시간: O(1)이지만 실제로는 트리 형태를 띄므 로 O(1)에 가까운 O(logn)이다.</li>
-        </ul>
-      </li>
-      <li>map()
-        <ul>
-          <li>데이터 구조의 각 원소들에 동일한 함수를 적용하여 새로운 데이터를 만드는 파이썬의 기본 함수.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-<hr />
+using namespace std;
 
-<ul>
-  <li>JSON
-    <ul>
-      <li>JavaScript Object Notation.</li>
-      <li>서버와 통신하는 기본 데이터 양식으로 많이 사용된다.</li>
-      <li>JSONLint: JSON 형식에 맞는지 유효성을 검사해주는 사이트.</li>
-      <li>json.loads(): JSON을 읽어 dic으로 변환.</li>
-      <li>json.dumps(): dic을 읽어 JSON으로 변환.</li>
-    </ul>
-  </li>
-</ul>
-<hr />
+int N;
 
-<ul>
-  <li>API
-    <ul>
-      <li>여러 서비스들 간에 범용으로 쓰이는 인터페이스.</li>
-      <li>REST API: 웹서버를 이용하여 API 제공. JSON을 데이터 양식으로 활용한다.</li>
-    </ul>
-  </li>
-</ul>
-<hr />
+int halfProcess(double num){
+    double high = ceil(num);
+    double low = floor(num);
 
-<ul>
-  <li>DialogFlow: 사용자의 입력 의도를 파악하여 의도에 맞게 Flask를 동작시키는 역할.</li>
-</ul>
-<hr />
+    if(num &gt;= (high + low) / 2){
+        return int(high);
+    }
 
-<ul>
-  <li>Slack 챗봇 Flow
-    <ol>
-      <li>사용자가 문장 입력</li>
-      <li>Slack이 사용자가 입력한 문장 Flask에 전달</li>
-      <li>Flask가 DialogFlow로 전달받은 문장 전달</li>
-      <li>DialogFlow가 정의된 Intent들을 바탕으로 전달된 문장의 문맥 파악</li>
-      <li>DialogFlow의 분석 결과를 Flask로 전달</li>
-      <li>Flask에 정의된 함수 중 전달된 Intent에 맞는 함수 실행</li>
-      <li>Flask가 Slack으로 함수 실행으로 만들어진 response 전달</li>
-      <li>Slack에서 사용자로 response 전달</li>
-    </ol>
-  </li>
-</ul>
-<hr />
+    return int(low);
+}
 
-<ul>
-  <li>Git
-    <ul>
-      <li>Fetch: 저장된 것을 가져온다.</li>
-      <li>Branch: 가지치기.(Master = 최종 결과물, 배포판)</li>
-      <li>Merge: Branch 병합.</li>
-      <li>장점: 분산 작업 가능, 오프라인 개발 가능 - 중앙 서버에 접속하지 않고 각자의 환경에서 작업할 수 있으므로.</li>
-      <li>명령어
-        <ul>
-          <li>git log: git에 수행한 행동들을 보여준다.</li>
-          <li>git reset –hard “hash값”: “hash”값의 시점으로 git을 되돌린다.(이 시점 이후에 수행된 모든 commit은 다 취소됨)</li>
-          <li>git push -f: 강제로 push.</li>
-          <li>git commit –amend: commit 메시지 수정 가능.</li>
-        </ul>
-      </li>
-      <li>topic branch: 기능 추가, 버그 수정 등 단위작업을 위한 branch.</li>
-      <li>Merge 과정
-        <ol>
-          <li>다른 branch에서 commit</li>
-          <li>Master에서 git merge 실행</li>
-          <li>conflict 없으면 commit, conflict 있으면 어떤 부분을 반영할지 결정 후 commit</li>
-          <li>git에 push</li>
-        </ol>
-      </li>
-      <li>pull: fetch와 merge를 한번에 진행한다.</li>
-    </ul>
-  </li>
-</ul>
+int main(){
+    cin &gt;&gt; N;
+
+    vector&lt;int&gt; numbers;
+    int sum = 0;
+    map&lt;int, int&gt; frequencies;
+
+    int inputNum;
+
+    for(int i=0; i&lt;N; i++){
+        cin &gt;&gt; inputNum;
+        sum += inputNum;
+        numbers.push_back(inputNum);
+        if(frequencies.find(inputNum) == frequencies.end()){
+            frequencies.insert(make_pair(inputNum, 1));
+        }
+        else{
+            frequencies.find(inputNum)-&gt;second++;
+        }
+    }
+
+    int temp = 0;
+    int mostFrequent;
+    int changeCount = 0;
+    for(auto iter = frequencies.begin(); iter != frequencies.end(); iter++){
+        if(iter-&gt;second &gt; temp){
+            temp = iter-&gt;second;
+            mostFrequent = iter-&gt;first;
+            changeCount++;
+        }
+    }
+    for(auto iter = frequencies.begin(); iter != frequencies.end(); iter++){
+        if(iter-&gt;second == temp &amp;&amp; iter-&gt;first != mostFrequent){
+            mostFrequent = iter-&gt;first;
+            break;
+        }
+    }
+
+    sort(numbers.begin(), numbers.end());
+
+    int average = halfProcess(double(sum) / double(N));
+    int center = numbers[N/2];
+    int range = numbers[N-1] - numbers[0];
+
+    cout &lt;&lt; average &lt;&lt; '\n' &lt;&lt; center &lt;&lt; '\n' &lt;&lt; mostFrequent &lt;&lt; '\n' &lt;&lt; range &lt;&lt; '\n';
+
+    return 0;
+}
+</code></pre></div></div>
 <hr />
 
 
@@ -436,7 +401,7 @@
     
       
       
-      <a href="/KeithLog/tags/#basics" class="page__taxonomy-item" rel="tag">Basics</a>
+      <a href="/KeithLog/tags/#realization" class="page__taxonomy-item" rel="tag">Realization</a>
     
     </span>
   </p>
@@ -457,14 +422,14 @@
     
       
       
-      <a href="/KeithLog/categories/#ssafy" class="page__taxonomy-item" rel="tag">SSAFY</a>
+      <a href="/KeithLog/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
     
     </span>
   </p>
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-12-28T00:00:00+09:00">December 28, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-12-31T00:00:00+09:00">December 31, 2018</time></p>
         
       </footer>
 
@@ -473,23 +438,24 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2nd+week+summary%20http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Fssafy%2F2nd-Week-Summary%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=2108%20http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Falgorithm%2F2108%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Fssafy%2F2nd-Week-Summary%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Falgorithm%2F2108%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Fssafy%2F2nd-Week-Summary%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Falgorithm%2F2108%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Fssafy%2F2nd-Week-Summary%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FKeithLog%2Falgorithm%2F2108%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
-    
-    
       <a href="/KeithLog/ssafy/3rd-Week-Summary/" class="pagination--pager" title="3rd week summary
+">Previous</a>
+    
+    
+      <a href="/KeithLog/algorithm/1003/" class="pagination--pager" title="1003
 ">Next</a>
     
   </nav>
@@ -535,13 +501,13 @@ Link: 1003번: 피보나치 함수
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/KeithLog/algorithm/2108/" rel="permalink">2108
+        <a href="/KeithLog/ssafy/3rd-Week-Summary/" rel="permalink">3rd week summary
 </a>
       
     </h2>
     
-    <p class="archive__item-excerpt" itemprop="description">백준 2108번
-Link: 2108번: 통계학
+    <p class="archive__item-excerpt" itemprop="description">Markdown 문법 정리
+
 
 </p>
   </article>
@@ -556,13 +522,12 @@ Link: 2108번: 통계학
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/KeithLog/ssafy/3rd-Week-Summary/" rel="permalink">3rd week summary
+        <a href="/KeithLog/ssafy/2nd-Week-Summary/" rel="permalink">2nd week summary
 </a>
       
     </h2>
     
-    <p class="archive__item-excerpt" itemprop="description">Markdown 문법 정리
-
+    <p class="archive__item-excerpt" itemprop="description">2주차 정리
 
 </p>
   </article>
