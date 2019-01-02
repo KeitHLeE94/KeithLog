@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1003 - KeithLog</title>
-<meta name="description" content="백준 2108번Link: 1003번: 피보나치 함수">
+<!-- begin _includes/seo.html --><title>1149 - KeithLog</title>
+<meta name="description" content="백준 1149번Link: 1149번: RGB 거리">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="1003">
-<meta property="og:url" content="http://localhost:4000/algorithm/1003/">
+<meta property="og:title" content="1149">
+<meta property="og:url" content="http://localhost:4000/algorithm/1149/">
 
 
-  <meta property="og:description" content="백준 2108번Link: 1003번: 피보나치 함수">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-01T00:00:00+09:00">
+  <meta property="og:description" content="백준 1149번Link: 1149번: RGB 거리">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-01-02T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/algorithm/1003/">
+
+<link rel="canonical" href="http://localhost:4000/algorithm/1149/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="1003">
-    <meta itemprop="description" content="백준 2108번Link: 1003번: 피보나치 함수">
-    <meta itemprop="datePublished" content="January 01, 2019">
+    <meta itemprop="headline" content="1149">
+    <meta itemprop="description" content="백준 1149번Link: 1149번: RGB 거리">
+    <meta itemprop="datePublished" content="January 02, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">1003
+          <h1 id="page-title" class="page__title" itemprop="headline">1149
 </h1>
           
         </header>
@@ -286,70 +286,129 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-2108번">백준 2108번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/1003">1003번: 피보나치 함수</a></p>
+        <h1 id="백준-1149번">백준 1149번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/1149">1149번: RGB 거리</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>피보나치 함수 실행시 0과 1이 몇번이나 출력되는지 구하는 문제.</p>
+<p>마을의 집 갯수와 각 집을 빨강, 초록, 파랑으로 각각 칠하는데 드는 비용이 입력으로 주어졌을때 마을의 모든 집을 칠하는 최저 비용을 구하는 문제.</p>
 
-<p>예전에 풀어본 적 있던 문제였는데 DP를 다시 공부하는 김에 새로 풀어보았다.</p>
+<p>이웃하는 집들은 같은 색으로 칠할 수 없다는 조건도 붙었다.</p>
 
-<p>다른점이 있다면 예전에는 답을 찾아보고 풀었던것 같은데 이번에는 내 힘만으로 풀었다는 점.</p>
+<p>작년에 답보고 풀었던 기억이 나는 문제. 이번에는 꼭 내 힘으로 풀어내리라 결심하고 풀어보았다.</p>
 
-<p>DP를 사용해야 한다는 느낌은 왔는데 어떻게 DP 배열을 채울지가 관건이었다.</p>
+<p>우선 이웃하는 집들이 같은 색이 될수 없다는 조건을 단순화하여 앞집이랑만 다른 색이면 되지 않나? 라는 생각으로 풀었다.</p>
 
-<p>시간제한이 0.25초였지만 입력의 크기가 최대 40까지인 것을 보고, 처음부터 DP 배열을 전부 채워놓고 입력에 따라 배열의 값만 리턴해줘도 되겠다는 생각이 들었다.</p>
+<p>틀리고 한참 고민하고서야 왜 틀렸는지 알게 되었다. 반드시 최저값만으로 구성된 조합이 존재하지 않는 경우가 있다는 것.</p>
 
-<p>이렇게 생각하고 풀어봤더니 금방 풀렸다.</p>
+<p>거꾸로도 풀어보고 어떻게든 풀어보려 애써봤는데 결국 안풀려서 예전 답을 보고 풀었다…</p>
 
-<p>이번주는 DP를 집중적으로 풀어볼 예정.</p>
+<p>생각보다 매우 단순했는데, 처음 칠하는 비용을 0으로 초기화한 다음 모든 경우를 따져가며 답을 구하는 방식이었다.</p>
+
+<p>예를 들면 DP[i][0]은 DP[i-1][1]과 DP[i-1][2] 중 작은 값에다가 칠하는 비용인 price[i][0]을 더하는 식.</p>
+
+<p>즉 DP[i][0]은 i번째 집을 0번째 색으로 칠한다는 것을 의미한다. 당연히 앞집이랑은 색이 겹칠 일이 없다.</p>
+
+<p>온갖 방법 다 생각해보다 답을 봤는데 정말 간단하게 풀려서 허무했다;;;</p>
+
+<p>2시간정도 고민해봤지만 못풀겠어서 결국 포기했던 점이 아쉽지만, 이러저러한 방법을 최대한 시도해 본 점은 나름 만족스럽다.</p>
+
+<p>다음에 푸는 문제들은 이런 고민끝에 끝까지 풀어낼 수 있길!!</p>
 <hr />
 
-<h1 id="내가-짠-코드">내가 짠 코드</h1>
+<h1 id="내가-짰다가-틀린-코드">내가 짰다가 틀린 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 01/01/2019.
+// Created by Keith_Lee on 02/01/2019.
 //
+
 #include &lt;iostream&gt;
 
 using namespace std;
 
-int T;
-int DP[41][2];
-
-void fibonacci(int n){
-    if(n == 0){
-        DP[n][0]++;
-    }
-    else if(n == 1){
-        DP[n][1]++;
-    }
-    else{
-        DP[n][0] = DP[n-1][0] + DP[n-2][0];
-        DP[n][1] = DP[n-1][1] + DP[n-2][1];
-    }
-}
+int N;
 
 int main(){
-    for(int i=0; i&lt;41; i++){
-        fibonacci(i);
+    cin &gt;&gt; N;
+
+    int price[N][3];
+    int DP[N][2];
+
+    for(int i=0; i&lt;N; i++){
+        cin &gt;&gt; price[i][0] &gt;&gt; price[i][1] &gt;&gt; price[i][2];
     }
 
-    cin &gt;&gt; T;
+    for(int i=0; i&lt;N; i++){
+        int min = 1001;
 
-    int N;
-
-    for(int i=0; i&lt;T; i++){
-        cin &gt;&gt; N;
-        cout &lt;&lt; DP[N][0] &lt;&lt; ' ' &lt;&lt; DP[N][1] &lt;&lt; '\n';
+        if(i == 0){
+            for(int j=0; j&lt;3; j++){
+                if(min &gt; price[0][j]){
+                    min = price[0][j];
+                    DP[0][0] = min;
+                    DP[0][1] = j;
+                }
+            }
+        }
+        else{
+            for(int j=0; j&lt;3; j++){
+                if(j != DP[i-1][1]){
+                    if(min + price[i][j] &gt; DP[i-1][0] + price[i][j]){
+                        min = price[i][j];
+                        DP[i][0] = min + DP[i-1][0];
+                        DP[i][1] = j;
+                    }
+                }
+            }
+        }
     }
+
+    cout &lt;&lt; DP[N-1][0] &lt;&lt; '\n';
 
     return 0;
 }
 </code></pre></div></div>
 <hr />
 
+<h1 id="정답-코드">정답 코드</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+// Created by Keith_Lee on 02/01/2019.
+//
+
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int N;
+
+int min(int a, int b){
+    return (a &gt; b) ? b : a;
+}
+
+int main(){
+    cin &gt;&gt; N;
+
+    int price[N+1][3];
+    int DP[N+1][3];
+
+    for(int i=1; i&lt;=N; i++){
+        cin &gt;&gt; price[i][0] &gt;&gt; price[i][1] &gt;&gt; price[i][2];
+    }
+
+    price[0][0] = price[0][1] = price[0][2] = 0;
+    DP[0][0] = DP[0][1] = DP[0][2] = 0;
+
+    for(int i=1; i&lt;N+1; i++){
+        DP[i][0] = min(DP[i-1][1], DP[i-1][2]) + price[i][0];
+        DP[i][1] = min(DP[i-1][0], DP[i-1][2]) + price[i][1];
+        DP[i][2] = min(DP[i-1][0], DP[i-1][1]) + price[i][2];
+    }
+
+    cout &lt;&lt; min(min(DP[N][0], DP[N][1]), DP[N][2]) &lt;&lt; '\n';
+
+    return 0;
+}
+</code></pre></div></div>
 
         
       </section>
@@ -398,7 +457,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-01T00:00:00+09:00">January 01, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-02T00:00:00+09:00">January 02, 2019</time></p>
         
       </footer>
 
@@ -407,25 +466,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=1003%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F1003%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=1149%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F1149%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F1003%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F1149%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F1003%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F1149%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F1003%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F1149%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/2108/" class="pagination--pager" title="2108
+      <a href="/algorithm/1003/" class="pagination--pager" title="1003
 ">Previous</a>
     
     
-      <a href="/algorithm/1149/" class="pagination--pager" title="1149
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -449,13 +507,13 @@ int main(){
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/1149/" rel="permalink">1149
+        <a href="/algorithm/1003/" rel="permalink">1003
 </a>
       
     </h2>
     
-    <p class="archive__item-excerpt" itemprop="description">백준 1149번
-Link: 1149번: RGB 거리
+    <p class="archive__item-excerpt" itemprop="description">백준 2108번
+Link: 1003번: 피보나치 함수
 
 </p>
   </article>
