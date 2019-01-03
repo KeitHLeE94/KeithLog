@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-01-03T00:15:40+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">1149</title><link href="keithlee94.github.io/algorithm/1149/" rel="alternate" type="text/html" title="1149" /><published>2019-01-02T00:00:00+09:00</published><updated>2019-01-02T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1149</id><content type="html" xml:base="keithlee94.github.io/algorithm/1149/">&lt;h1 id=&quot;백준-1149번&quot;&gt;백준 1149번&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-03T21:42:57+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">1932</title><link href="http://localhost:4000/algorithm/1932/" rel="alternate" type="text/html" title="1932" /><published>2019-01-03T00:00:00+09:00</published><updated>2019-01-03T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/1932</id><content type="html" xml:base="http://localhost:4000/algorithm/1932/">&lt;h1 id=&quot;백준-1149번&quot;&gt;백준 1149번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1932&quot;&gt;1932번: 정수 삼각형&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;어제 풀었던 RGB거리와 비슷한 유형의 DP 문제.&lt;/p&gt;
+
+&lt;p&gt;다른점이 있다면 제한조건인데, 3가지 경우를 고려했어야 했던 RGB 거리와 달리 삼각형을 이루는 정수들의 왼쪽 대각선, 오른쪽 대각선의 2가지 경우로만 이동 가능하므로 오히려 조건은 완화되었다.&lt;/p&gt;
+
+&lt;p&gt;딱 문제 보고나서 ‘어 이거 어제 풀었던거랑 비슷한데’ 라는 생각으로 시작했다.&lt;/p&gt;
+
+&lt;p&gt;결론부터 말하면 못풀어서 답보고 이해했는데, 접근방법이 아예 잘못되었다.&lt;/p&gt;
+
+&lt;p&gt;조건에서 주어졌듯이 2개의 이전 결과값을 비교하고 현재 삼각형 위치의 숫자를 더하면 되는거였는데, 일단 이 조건을 무시하고 최대값만 다 찾았다가 1차로 망했다.&lt;/p&gt;
+
+&lt;p&gt;잘못생각했다는걸 알아차리고 다른 방법을 생각해봤는데, 이것도 틀렸다.&lt;/p&gt;
+
+&lt;p&gt;뭔지 대충 설명하자면 최대값을 가질때의 배열 인덱스를 따로 받아두고 이 인덱스를 기준으로 다음 최대값을 찾는 방식.&lt;/p&gt;
+
+&lt;p&gt;DP에 대해 완벽히 이해하고 있는건 아닌것 같다.&lt;/p&gt;
+
+&lt;p&gt;예전 계산 결과 가져다 쓰는 문제구나 하는 느낌은 오는데, 예전 계산 결과를 어떤식으로 저장할 것이며 어떻게 가져다 쓸것인지에 대해 생각해내는 부분이 부족한 것 같다.&lt;/p&gt;
+
+&lt;p&gt;문제 보고도 뭔소린가 싶었던 옛날에 비해서는 많이 나아진 편이지만 아직도 갈길이 멀다…&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 03/01/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;cstring&amp;gt;
+
+using namespace std;
+
+int n;
+int maximum = 0;
+
+int max(int a, int b){
+    return (a &amp;gt; b) ? a : b;
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; n;
+
+    int DP[n+1][n+1];
+    int tree[n+1][n+1];
+
+    bzero(DP, sizeof(DP));
+    bzero(tree, sizeof(tree));
+
+    int inputNum;
+
+    for(int i=1; i&amp;lt;=n; i++){
+        for(int j=1; j&amp;lt;=i; j++){
+            cin &amp;gt;&amp;gt; inputNum;
+            tree[i][j] = inputNum;
+        }
+    }
+
+    for(int i=1; i&amp;lt;=n; i++){
+        for(int j=1; j&amp;lt;=i; j++){
+            DP[i][j] = max(DP[i-1][j-1], DP[i-1][j]) + tree[i][j];
+
+            if(maximum &amp;lt; DP[i][j]){
+                maximum = DP[i][j];
+            }
+        }
+    }
+
+    cout &amp;lt;&amp;lt; maximum &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1149번 Link: 1932번: 정수 삼각형</summary></entry><entry><title type="html">1149</title><link href="http://localhost:4000/algorithm/1149/" rel="alternate" type="text/html" title="1149" /><published>2019-01-02T00:00:00+09:00</published><updated>2019-01-02T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/1149</id><content type="html" xml:base="http://localhost:4000/algorithm/1149/">&lt;h1 id=&quot;백준-1149번&quot;&gt;백준 1149번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1149&quot;&gt;1149번: RGB 거리&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -121,7 +198,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1149번 Link: 1149번: RGB 거리</summary></entry><entry><title type="html">1003</title><link href="keithlee94.github.io/algorithm/1003/" rel="alternate" type="text/html" title="1003" /><published>2019-01-01T00:00:00+09:00</published><updated>2019-01-01T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1003</id><content type="html" xml:base="keithlee94.github.io/algorithm/1003/">&lt;h1 id=&quot;백준-2108번&quot;&gt;백준 2108번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1149번 Link: 1149번: RGB 거리</summary></entry><entry><title type="html">1003</title><link href="http://localhost:4000/algorithm/1003/" rel="alternate" type="text/html" title="1003" /><published>2019-01-01T00:00:00+09:00</published><updated>2019-01-01T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/1003</id><content type="html" xml:base="http://localhost:4000/algorithm/1003/">&lt;h1 id=&quot;백준-2108번&quot;&gt;백준 2108번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1003&quot;&gt;1003번: 피보나치 함수&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -183,7 +260,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 2108번 Link: 1003번: 피보나치 함수</summary></entry><entry><title type="html">2108</title><link href="keithlee94.github.io/algorithm/2108/" rel="alternate" type="text/html" title="2108" /><published>2018-12-31T00:00:00+09:00</published><updated>2018-12-31T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2108</id><content type="html" xml:base="keithlee94.github.io/algorithm/2108/">&lt;h1 id=&quot;백준-2108번&quot;&gt;백준 2108번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 2108번 Link: 1003번: 피보나치 함수</summary></entry><entry><title type="html">2108</title><link href="http://localhost:4000/algorithm/2108/" rel="alternate" type="text/html" title="2108" /><published>2018-12-31T00:00:00+09:00</published><updated>2018-12-31T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2108</id><content type="html" xml:base="http://localhost:4000/algorithm/2108/">&lt;h1 id=&quot;백준-2108번&quot;&gt;백준 2108번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2108&quot;&gt;2108번: 통계학&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -276,7 +353,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Realization" /><summary type="html">백준 2108번 Link: 2108번: 통계학</summary></entry><entry><title type="html">3rd week summary</title><link href="keithlee94.github.io/ssafy/3rd-Week-Summary/" rel="alternate" type="text/html" title="3rd week summary" /><published>2018-12-29T00:00:00+09:00</published><updated>2018-12-29T00:00:00+09:00</updated><id>keithlee94.github.io/ssafy/3rd%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/ssafy/3rd-Week-Summary/">&lt;h1 id=&quot;markdown-문법-정리&quot;&gt;Markdown 문법 정리&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Realization" /><summary type="html">백준 2108번 Link: 2108번: 통계학</summary></entry><entry><title type="html">3rd week summary</title><link href="http://localhost:4000/ssafy/3rd-Week-Summary/" rel="alternate" type="text/html" title="3rd week summary" /><published>2018-12-29T00:00:00+09:00</published><updated>2018-12-29T00:00:00+09:00</updated><id>http://localhost:4000/ssafy/3rd%20Week%20Summary</id><content type="html" xml:base="http://localhost:4000/ssafy/3rd-Week-Summary/">&lt;h1 id=&quot;markdown-문법-정리&quot;&gt;Markdown 문법 정리&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;1--제목-쓸때-사용&quot;&gt;1. #: 제목 쓸때 사용.&lt;/h1&gt;
@@ -436,7 +513,7 @@ int main(){
 &lt;h1 id=&quot;9-이미지-삽입&quot;&gt;9. 이미지 삽입&lt;/h1&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![Alt text](/path/to/img.jpg) - url 넣어줘도 됨.
 사이즈 조절 기능은 없기 때문에 &amp;lt;img width=&quot;&quot; height=&quot;&quot;&amp;gt;&amp;lt;/img&amp;gt;를 이용한다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Markdown" /><summary type="html">Markdown 문법 정리</summary></entry><entry><title type="html">2nd week summary</title><link href="keithlee94.github.io/ssafy/2nd-Week-Summary/" rel="alternate" type="text/html" title="2nd week summary" /><published>2018-12-28T00:00:00+09:00</published><updated>2018-12-28T00:00:00+09:00</updated><id>keithlee94.github.io/ssafy/2nd%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/ssafy/2nd-Week-Summary/">&lt;h1 id=&quot;2주차-정리&quot;&gt;2주차 정리&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Markdown" /><summary type="html">Markdown 문법 정리</summary></entry><entry><title type="html">2nd week summary</title><link href="http://localhost:4000/ssafy/2nd-Week-Summary/" rel="alternate" type="text/html" title="2nd week summary" /><published>2018-12-28T00:00:00+09:00</published><updated>2018-12-28T00:00:00+09:00</updated><id>http://localhost:4000/ssafy/2nd%20Week%20Summary</id><content type="html" xml:base="http://localhost:4000/ssafy/2nd-Week-Summary/">&lt;h1 id=&quot;2주차-정리&quot;&gt;2주차 정리&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;라이브러리, 프레임워크 차이
