@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2nd week summary - KeithLog</title>
-<meta name="description" content="2주차 정리">
+<!-- begin _includes/seo.html --><title>3rd week summary - KeithLog</title>
+<meta name="description" content="Markdown 문법 정리">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2nd week summary">
-<meta property="og:url" content="keithlee94.github.io/ssafy/2nd-Week-Summary/">
+<meta property="og:title" content="3rd week summary">
+<meta property="og:url" content="http://localhost:4000/cse/3rd-Week-Summary/">
 
 
-  <meta property="og:description" content="2주차 정리">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2018-12-28T00:00:00+09:00">
+  <meta property="og:description" content="Markdown 문법 정리">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2018-12-29T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/ssafy/2nd-Week-Summary/">
+
+<link rel="canonical" href="http://localhost:4000/cse/3rd-Week-Summary/">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Jaehyun Keith Lee",
-      "url": "keithlee94.github.io",
+      "url": "http://localhost:4000",
       "sameAs": null
     }
   </script>
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2nd week summary">
-    <meta itemprop="description" content="2주차 정리">
-    <meta itemprop="datePublished" content="December 28, 2018">
+    <meta itemprop="headline" content="3rd week summary">
+    <meta itemprop="description" content="Markdown 문법 정리">
+    <meta itemprop="datePublished" content="December 29, 2018">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2nd week summary
+          <h1 id="page-title" class="page__title" itemprop="headline">3rd week summary
 </h1>
           
         </header>
@@ -286,136 +286,167 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="2주차-정리">2주차 정리</h1>
-
-<ul>
-  <li>라이브러리, 프레임워크 차이
-    <ul>
-      <li>라이브러리: 기능 하나에 대해서만 제공(제한적인 용도)</li>
-      <li>프레임워크: 틀이 잡혀져 있다.(다양한 용도, 범용적) =&gt; 커스터마이징이 어러움.</li>
-    </ul>
-  </li>
-</ul>
+        <h1 id="markdown-문법-정리">Markdown 문법 정리</h1>
 <hr />
 
-<ul>
-  <li>AWS EC2
-    <ul>
-      <li>인스턴스 == 임대받은 컴퓨터 1대.</li>
-    </ul>
-  </li>
-</ul>
+<h1 id="1--제목-쓸때-사용">1. #: 제목 쓸때 사용.</h1>
+<h1 id="this-is-h1">This is h1</h1>
+<h2 id="this-is-h2">This is h2</h2>
+<h3 id="this-is-h3">This is h3</h3>
+<h4 id="this-is-h4">This is h4</h4>
+<h5 id="this-is-h5">This is h5</h5>
+<h6 id="this-is-h6">This is h6</h6>
 <hr />
 
-<ul>
-  <li>힙 영역
-    <ul>
-      <li>동적할당시 할당되는 메모리 영역.</li>
-      <li>자바, 파이썬은 Garbage collector가 있으므로 굳이 free 안해줘도 안쓰는 공간은 할당 해제됨.(But, file은 일일이 close해줘야함)</li>
-    </ul>
-  </li>
-</ul>
+<h1 id="2--hr-줄바꿀때-쓴다">2. «!– –&gt;hr/&gt;: 줄바꿀때 쓴다.</h1>
+<h3 id="------------전부-줄바꿀때-쓰는-명령어"><!-- -->—, <strong><em>, * * *, **</em></strong>, - - -: 전부 줄바꿀때 쓰는 명령어.</h3>
 <hr />
 
-<ul>
-  <li>파이썬 자료구조
-    <ul>
-      <li>tuple
+<h1 id="3--블럭인용문자">3. &gt;: 블럭인용문자.</h1>
+<blockquote>
+  <p>This is BlockQuote</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>이거슨 인용문자</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>이런식으로 nest 구조를 만드는것도 가능하고</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <h2 id="이런식으로-인용문-안에-다른-명령어나-코드도-넣을-수-있다">이런식으로 인용문 안에 다른 명령어나 코드도 넣을 수 있다.</h2>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
         <ul>
-          <li>가공된 데이터의 내용이 바뀌지 않도록 방어하기 위해 사용.</li>
-          <li>상수와 비슷한 역할을 한다.</li>
+          <li>List</li>
+        </ul>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;
+int main(){
+   cout &lt;&lt; "Hello, World!" &lt;&lt; '\n';
+   return 0;
+}
+</code></pre></div>        </div>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<hr />
+
+<h1 id="4--코드-입력-가능-입력-끝나면-다시-써서-닫으면-됨">4. ```: 코드 입력 가능. 입력 끝나면 다시 써서 닫으면 됨.</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;
+int main(){
+    cout &lt;&lt; "Hello, World!" &lt;&lt; '\n';
+    return 0;
+}
+</code></pre></div></div>
+<hr />
+
+<h1 id="5-숫자-리스트">5. 숫자 리스트</h1>
+<ol>
+  <li>첫번째</li>
+  <li>두번째</li>
+  <li>세번째</li>
+  <li>…</li>
+</ol>
+<hr />
+
+<h1 id="6-순서-없는-리스트">6. 순서 없는 리스트</h1>
+<ul>
+  <li>First
+    <ul>
+      <li>Second
+        <ul>
+          <li>Third
+            <ul>
+              <li>Fourth
+                <ul>
+                  <li>Fifth
+                    <ul>
+                      <li>Sixth
+                        <ul>
+                          <li>Seventh
+                            <ul>
+                              <li>…</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ul>
       </li>
-      <li>dic
-        <ul>
-          <li>내부적으로는 트리 형태를 띈다.</li>
-          <li>검색시간: O(1)이지만 실제로는 트리 형태를 띄므 로 O(1)에 가까운 O(logn)이다.</li>
-        </ul>
-      </li>
-      <li>map()
-        <ul>
-          <li>데이터 구조의 각 원소들에 동일한 함수를 적용하여 새로운 데이터를 만드는 파이썬의 기본 함수.</li>
-        </ul>
-      </li>
     </ul>
   </li>
 </ul>
 <hr />
 
-<ul>
-  <li>JSON
-    <ul>
-      <li>JavaScript Object Notation.</li>
-      <li>서버와 통신하는 기본 데이터 양식으로 많이 사용된다.</li>
-      <li>JSONLint: JSON 형식에 맞는지 유효성을 검사해주는 사이트.</li>
-      <li>json.loads(): JSON을 읽어 dic으로 변환.</li>
-      <li>json.dumps(): dic을 읽어 JSON으로 변환.</li>
-    </ul>
-  </li>
-</ul>
+<h1 id="7-링크">7. 링크</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Link: [Google][googlelink]
+[googlelink]https://google.com "Go google"
+
+이런식으로 링크걸면됨.
+</code></pre></div></div>
+<p>Link: <a href="https://google.com" title="Go google">Google</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://keithlee94.github.io/KeithLog/
+
+이런식으로 바로 거는방법도 있음.
+</code></pre></div></div>
+
+<p>https://keithlee94.github.io/KeithLog/</p>
 <hr />
 
-<ul>
-  <li>API
-    <ul>
-      <li>여러 서비스들 간에 범용으로 쓰이는 인터페이스.</li>
-      <li>REST API: 웹서버를 이용하여 API 제공. JSON을 데이터 양식으로 활용한다.</li>
-    </ul>
-  </li>
-</ul>
+<h1 id="8-강조">8. 강조</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*하이라이트*, _하이라이트_: 이탤릭체
+**강조**, __강조__: 볼드체
+~~취소선~~: 단어에 취소선 생김
+</code></pre></div></div>
+<p><em>하이라이트</em></p>
+
+<p><em>중요해</em></p>
+
+<p><strong>강조</strong></p>
+
+<p><strong>강조</strong></p>
+
+<p><del>취소선</del></p>
 <hr />
 
-<ul>
-  <li>DialogFlow: 사용자의 입력 의도를 파악하여 의도에 맞게 Flask를 동작시키는 역할.</li>
-</ul>
-<hr />
-
-<ul>
-  <li>Slack 챗봇 Flow
-    <ol>
-      <li>사용자가 문장 입력</li>
-      <li>Slack이 사용자가 입력한 문장 Flask에 전달</li>
-      <li>Flask가 DialogFlow로 전달받은 문장 전달</li>
-      <li>DialogFlow가 정의된 Intent들을 바탕으로 전달된 문장의 문맥 파악</li>
-      <li>DialogFlow의 분석 결과를 Flask로 전달</li>
-      <li>Flask에 정의된 함수 중 전달된 Intent에 맞는 함수 실행</li>
-      <li>Flask가 Slack으로 함수 실행으로 만들어진 response 전달</li>
-      <li>Slack에서 사용자로 response 전달</li>
-    </ol>
-  </li>
-</ul>
-<hr />
-
-<ul>
-  <li>Git
-    <ul>
-      <li>Fetch: 저장된 것을 가져온다.</li>
-      <li>Branch: 가지치기.(Master = 최종 결과물, 배포판)</li>
-      <li>Merge: Branch 병합.</li>
-      <li>장점: 분산 작업 가능, 오프라인 개발 가능 - 중앙 서버에 접속하지 않고 각자의 환경에서 작업할 수 있으므로.</li>
-      <li>명령어
-        <ul>
-          <li>git log: git에 수행한 행동들을 보여준다.</li>
-          <li>git reset –hard “hash값”: “hash”값의 시점으로 git을 되돌린다.(이 시점 이후에 수행된 모든 commit은 다 취소됨)</li>
-          <li>git push -f: 강제로 push.</li>
-          <li>git commit –amend: commit 메시지 수정 가능.</li>
-        </ul>
-      </li>
-      <li>topic branch: 기능 추가, 버그 수정 등 단위작업을 위한 branch.</li>
-      <li>Merge 과정
-        <ol>
-          <li>다른 branch에서 commit</li>
-          <li>Master에서 git merge 실행</li>
-          <li>conflict 없으면 commit, conflict 있으면 어떤 부분을 반영할지 결정 후 commit</li>
-          <li>git에 push</li>
-        </ol>
-      </li>
-      <li>pull: fetch와 merge를 한번에 진행한다.</li>
-    </ul>
-  </li>
-</ul>
-<hr />
-
+<h1 id="9-이미지-삽입">9. 이미지 삽입</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Alt text](/path/to/img.jpg) - url 넣어줘도 됨.
+사이즈 조절 기능은 없기 때문에 &lt;img width="" height=""&gt;&lt;/img&gt;를 이용한다.
+</code></pre></div></div>
 
         
       </section>
@@ -436,7 +467,7 @@
     
       
       
-      <a href="/tags/#basics" class="page__taxonomy-item" rel="tag">Basics</a>
+      <a href="/tags/#markdown" class="page__taxonomy-item" rel="tag">Markdown</a>
     
     </span>
   </p>
@@ -457,14 +488,14 @@
     
       
       
-      <a href="/categories/#ssafy" class="page__taxonomy-item" rel="tag">SSAFY</a>
+      <a href="/categories/#cse" class="page__taxonomy-item" rel="tag">CSE</a>
     
     </span>
   </p>
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-12-28T00:00:00+09:00">December 28, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-12-29T00:00:00+09:00">December 29, 2018</time></p>
         
       </footer>
 
@@ -473,23 +504,24 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2nd+week+summary%20keithlee94.github.io%2Fssafy%2F2nd-Week-Summary%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=3rd+week+summary%20http%3A%2F%2Flocalhost%3A4000%2Fcse%2F3rd-Week-Summary%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Fssafy%2F2nd-Week-Summary%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcse%2F3rd-Week-Summary%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Fssafy%2F2nd-Week-Summary%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fcse%2F3rd-Week-Summary%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Fssafy%2F2nd-Week-Summary%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcse%2F3rd-Week-Summary%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
+      <a href="/cse/2nd-Week-Summary/" class="pagination--pager" title="2nd week summary
+">Previous</a>
     
     
-      <a href="/ssafy/3rd-Week-Summary/" class="pagination--pager" title="3rd week summary
+      <a href="/algorithm/2108/" class="pagination--pager" title="2108
 ">Next</a>
     
   </nav>
@@ -514,7 +546,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/ssafy/4th-Week-Summary/" rel="permalink">4th week summary
+        <a href="/java/4th-Week-Summary/" rel="permalink">4th week summary
 </a>
       
     </h2>

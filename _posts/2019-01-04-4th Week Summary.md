@@ -1,5 +1,5 @@
 ---
-categories: "SSAFY"
+categories: "Java"
 tags: "Java"
 author_profile: true
 ---

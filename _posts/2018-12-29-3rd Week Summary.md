@@ -1,5 +1,5 @@
 ---
-categories: "SSAFY"
+categories: "CSE"
 tags: "Markdown"
 author_profile: true
 ---

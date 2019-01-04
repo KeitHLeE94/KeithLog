@@ -1,6 +1,6 @@
 ---
-categories: "SSAFY"
-tags: "Basics"
+categories: "CSE"
+tags: "Basic"
 author_profile: true
 ---
 # 2주차 정리
