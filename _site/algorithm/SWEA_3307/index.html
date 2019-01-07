@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2579 - KeithLog</title>
-<meta name="description" content="백준 2579번Link: 2579번: 계단 오르기">
+<!-- begin _includes/seo.html --><title>Swea_3307 - KeithLog</title>
+<meta name="description" content="SWEA 3307번Link: 3307번: 최장 증가 부분 수열">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2579">
-<meta property="og:url" content="keithlee94.github.io/algorithm/2579/">
+<meta property="og:title" content="Swea_3307">
+<meta property="og:url" content="keithlee94.github.io/algorithm/SWEA_3307/">
 
 
-  <meta property="og:description" content="백준 2579번Link: 2579번: 계단 오르기">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-04T00:00:00+09:00">
+  <meta property="og:description" content="SWEA 3307번Link: 3307번: 최장 증가 부분 수열">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-01-07T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/2579/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/SWEA_3307/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2579">
-    <meta itemprop="description" content="백준 2579번Link: 2579번: 계단 오르기">
-    <meta itemprop="datePublished" content="January 04, 2019">
+    <meta itemprop="headline" content="Swea_3307">
+    <meta itemprop="description" content="SWEA 3307번Link: 3307번: 최장 증가 부분 수열">
+    <meta itemprop="datePublished" content="January 07, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2579
+          <h1 id="page-title" class="page__title" itemprop="headline">Swea_3307
 </h1>
           
         </header>
@@ -286,81 +286,90 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-2579번">백준 2579번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/2579">2579번: 계단 오르기</a></p>
+        <h1 id="swea-3307번">SWEA 3307번</h1>
+<p>Link: <a href="https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;contestProbId=AWBOKg-a6l0DFAWr&amp;probBoxId=AWgebGzqXfIDFAW0+&amp;type=PROBLEM&amp;problemBoxTitle=Club+Problem+box+01&amp;problemBoxCnt=++3+">3307번: 최장 증가 부분 수열</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>오늘도 DP문제다.</p>
+<p>완전탐색 문제인줄 알고 앞에서 썼던 DFS 써서 풀었다가 시간초과났던 문제.</p>
 
-<p>그리고 오늘도 내힘으로 푸는데 실패.</p>
+<p>조합을 하는건 맞는데, DP로 풀었어야 풀리는 문제였다.</p>
 
-<p>앞선 두문제와 비슷하면서도 달랐는데, 이번 문제를 풀수 있느냐 없느냐는 문제를 보고 조건을 이해하여 점화식을 세울 수 있는지였다.</p>
+<p>최근에 DP 공부를 하고있었는데도 DP로 풀어야겠다는 생각은 여전히 들지 않았다.</p>
 
-<p>물론 나는 점화식 못세워서 예전 코드 보고, 검색해서 그제서야 이해해서 풀었다.</p>
+<p>어찌어찌 테스트케이스는 맞출수 있도록 구현했는데, 제출해보니 한개도 못맞히더라.</p>
 
-<p>점화식 세우는 방법은 우선 DP배열의 3번째까지 채우는 방법과 동일했다.</p>
+<p>시험장가서 테스트케이스 맞히고도 탈락하는 경우가 왕왕 있다던데, 이런 경우인가 싶었다.</p>
 
-<p>그전에 이 문제에서 DP 배열의 의미를 이해할 필요가 있었다.</p>
+<p>덤으로 이딴 실력으로 시험장에 가지 않았다는 점이 천만다행.</p>
 
-<p>DP[N]이란 N번째 계단을 밟았음을 의미한다.</p>
+<p>풀이에 대해 설명하자면, 우선 입력받은 숫자들 중 수열의 시작점을 for문을 통해 정한다.</p>
 
-<p>이렇게 이해하고 시작해보면 DP[1]은 첫번째 계단을 밟은것이므로 score[1]이 된다.</p>
+<p>그 다음, 남은 숫자들을 택해서 증가수열을 만들고 그 증가수열의 길이를 갱신하며 최대값을 구하는 문제다.</p>
 
-<p>DP[2]는 첫번째 계단, 두번째 계단을 둘 다 밟았을때와 두번째 계단만 밟았을때의 점수를 비교하여 큰 값이 곧 DP[2]의 값이 된다.</p>
+<p>이를 위한 조건으로 2가지를 넣었다.</p>
 
-<p>DP[3]은 조건에 의해 세 계단을 연속으로 밟을 수 없고, 한번에 최대 2개의 계단만 오를 수 있으므로 첫번째 계단과 세번째 계단을 밟았을 때, 두번째 계단과 세번째 계단을 밟았을때의 점수를 비교하여 큰 값이 DP[3]이 된다.</p>
+<p>첫째는 다음 숫자가 반드시 수열의 시작점보다 큰 숫자일 것.</p>
 
-<p>DP[4]를 생각해보자. DP[4]는 첫번째 계단, 세번째 계단, 네번째 계단의 점수를 더한 값과 첫번째 계단, 두번째 계단, 네번째 계단의 점수를 더한 값을 비교하여 더 큰 값이 DP[4]이다.</p>
+<p>두번째는 증가수열의 길이가 증가하는 방향일 것.</p>
 
-<p>이는 곧 DP[1] + score[3] + score[4], DP[2] + score[4]를 비교하는 것과 같다.</p>
+<p>이 두가지를 만족하지 못하면 증가수열에 숫자를 포함하지 않고, 다음 숫자들을 계속 살펴보는 식이다.</p>
 
-<p>이를 토대로 점화식을 세워 보면, DP[N] = max(DP[N-3] + score[N-1] + score[N], DP[N-2] + score[N])이라는 점화식을 얻을 수 있다.</p>
+<p>이 문제도 답보고 겨우 풀었는데, DP 문제에 대한 감을 살짝 잡은 것 같다.(아직 확실하진 않음)</p>
 
-<p>이 점화식대로 풀면 풀리는 문제다.</p>
+<p>이런 최대값 찾는 DP문제의 경우 조건에 맞아 DP 배열의 값을 갱신한 후, 최대값을 갱신하는 작업을 반복하는 방식인 것 같다.</p>
 
-<p>항상 느끼는건데 점화식 세우는게 정말 너무 어렵다. 규칙은 나름대로 찾은것 같지만 뭔가 나사 하나씩은 꼭 빠져있다는 생각이 든다.</p>
+<p>너무 당연한 말을 한것 같지만, 이런 감 찾는데 정말 오래걸렸다.</p>
 
-<p>푸는방법 까먹을때쯤 한번 더 풀어봐야 할 문제인것 같다.</p>
+<p><strong>아무튼</strong></p>
+
+<h1 id="될때까지-하자">될때까지 하자.</h1>
+
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 04/01/2019.
+// Created by Keith_Lee on 08/01/2019.
 //
 
 #include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;string.h&gt;
 
 using namespace std;
 
-int N;
-
-int max(int a, int b){
-    return (a &gt; b) ? a : b;
-}
+int T;
 
 int main(){
-    cin &gt;&gt; N;
+    cin &gt;&gt; T;
 
-    int DP[N+1];
-    int score[N+1];
+    for(int test=1; test&lt;=T; test++){
+        int maximum = 0;
+        int N;
 
-    for(int i=1; i&lt;=N; i++){
-        cin &gt;&gt; score[i];
+        cin &gt;&gt; N;
+
+        int numbers[N];
+        int DP[N];
+
+        for(int i=0; i&lt;N; i++){
+            cin &gt;&gt; numbers[i];
+        }
+
+        bzero(DP, sizeof(DP));
+
+        for(int i=0; i&lt;N; i++){
+            for(int j=i+1; j&lt;N; j++){
+                if(numbers[j] &lt; numbers[i]) continue;
+                if(DP[j] &gt;= DP[i] + 1) continue;
+                DP[j] = DP[i] + 1; // 증가수열이면서 수열 count가 증가한다면 1 더해줌.
+                maximum = max(maximum, DP[j]); // 최대값 갱신.
+            }
+        }
+
+        cout &lt;&lt; '#' &lt;&lt; test &lt;&lt; ' ' &lt;&lt; maximum+1 &lt;&lt; '\n';
     }
-
-    DP[1] = score[1];
-    DP[2] = max(score[1] + score[2], score[2]);
-    DP[3] = max(score[1] + score[3], score[2] + score[3]);
-
-    for(int i=4; i&lt;=N; i++){
-        DP[i] = max(DP[i-2] + score[i], DP[i-3] + score[i] + score[i-1]);
-    }
-
-    cout &lt;&lt; DP[N] &lt;&lt; '\n';
-
-    return 0;
 }
 </code></pre></div></div>
 <hr />
@@ -413,7 +422,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-04T00:00:00+09:00">January 04, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-07T00:00:00+09:00">January 07, 2019</time></p>
         
       </footer>
 
@@ -422,24 +431,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2579%20keithlee94.github.io%2Falgorithm%2F2579%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Swea_3307%20keithlee94.github.io%2Falgorithm%2FSWEA_3307%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2579%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2FSWEA_3307%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2579%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2FSWEA_3307%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2579%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2FSWEA_3307%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/1932/" class="pagination--pager" title="1932
+      <a href="/algorithm/SWEA_1289/" class="pagination--pager" title="Swea_1289
 ">Previous</a>
     
     
-      <a href="/java/4th-Week-Summary/" class="pagination--pager" title="4th week summary
+      <a href="/algorithm/SWEA_5215/" class="pagination--pager" title="Swea_5215
 ">Next</a>
     
   </nav>
@@ -485,27 +494,6 @@ Link: 5215번: 햄버거 다이어트
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/SWEA_3307/" rel="permalink">Swea_3307
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">SWEA 3307번
-Link: 3307번: 최장 증가 부분 수열
-
-</p>
-  </article>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
         <a href="/algorithm/SWEA_1289/" rel="permalink">Swea_1289
 </a>
       
@@ -534,6 +522,27 @@ Link: 1289번: 원재의 메모리 복구하기
     
     <p class="archive__item-excerpt" itemprop="description">백준 1463번
 Link: 1463번: 1로 만들기
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/java/4th-Week-Summary/" rel="permalink">4th week summary
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Java 스터디 내용 정리
+
 
 </p>
   </article>

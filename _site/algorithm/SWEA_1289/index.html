@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2579 - KeithLog</title>
-<meta name="description" content="백준 2579번Link: 2579번: 계단 오르기">
+<!-- begin _includes/seo.html --><title>Swea_1289 - KeithLog</title>
+<meta name="description" content="SWEA 1289번Link: 1289번: 원재의 메모리 복구하기">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2579">
-<meta property="og:url" content="keithlee94.github.io/algorithm/2579/">
+<meta property="og:title" content="Swea_1289">
+<meta property="og:url" content="keithlee94.github.io/algorithm/SWEA_1289/">
 
 
-  <meta property="og:description" content="백준 2579번Link: 2579번: 계단 오르기">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-04T00:00:00+09:00">
+  <meta property="og:description" content="SWEA 1289번Link: 1289번: 원재의 메모리 복구하기">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-01-07T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/2579/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/SWEA_1289/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2579">
-    <meta itemprop="description" content="백준 2579번Link: 2579번: 계단 오르기">
-    <meta itemprop="datePublished" content="January 04, 2019">
+    <meta itemprop="headline" content="Swea_1289">
+    <meta itemprop="description" content="SWEA 1289번Link: 1289번: 원재의 메모리 복구하기">
+    <meta itemprop="datePublished" content="January 07, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2579
+          <h1 id="page-title" class="page__title" itemprop="headline">Swea_1289
 </h1>
           
         </header>
@@ -286,79 +286,63 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-2579번">백준 2579번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/2579">2579번: 계단 오르기</a></p>
+        <h1 id="swea-1289번">SWEA 1289번</h1>
+<p>Link: <a href="https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;contestProbId=AV19AcoKI9sCFAZN&amp;probBoxId=AWgebGzqXfIDFAW0+&amp;type=PROBLEM&amp;problemBoxTitle=Club+Problem+box+01&amp;problemBoxCnt=++3+">1289번: 원재의 메모리 복구하기</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>오늘도 DP문제다.</p>
+<p>무난하게 풀었던 구현 문제.</p>
 
-<p>그리고 오늘도 내힘으로 푸는데 실패.</p>
+<p>string 처리에서 살짝 헤맨것 말고는 무난하게 풀었다.</p>
 
-<p>앞선 두문제와 비슷하면서도 달랐는데, 이번 문제를 풀수 있느냐 없느냐는 문제를 보고 조건을 이해하여 점화식을 세울 수 있는지였다.</p>
-
-<p>물론 나는 점화식 못세워서 예전 코드 보고, 검색해서 그제서야 이해해서 풀었다.</p>
-
-<p>점화식 세우는 방법은 우선 DP배열의 3번째까지 채우는 방법과 동일했다.</p>
-
-<p>그전에 이 문제에서 DP 배열의 의미를 이해할 필요가 있었다.</p>
-
-<p>DP[N]이란 N번째 계단을 밟았음을 의미한다.</p>
-
-<p>이렇게 이해하고 시작해보면 DP[1]은 첫번째 계단을 밟은것이므로 score[1]이 된다.</p>
-
-<p>DP[2]는 첫번째 계단, 두번째 계단을 둘 다 밟았을때와 두번째 계단만 밟았을때의 점수를 비교하여 큰 값이 곧 DP[2]의 값이 된다.</p>
-
-<p>DP[3]은 조건에 의해 세 계단을 연속으로 밟을 수 없고, 한번에 최대 2개의 계단만 오를 수 있으므로 첫번째 계단과 세번째 계단을 밟았을 때, 두번째 계단과 세번째 계단을 밟았을때의 점수를 비교하여 큰 값이 DP[3]이 된다.</p>
-
-<p>DP[4]를 생각해보자. DP[4]는 첫번째 계단, 세번째 계단, 네번째 계단의 점수를 더한 값과 첫번째 계단, 두번째 계단, 네번째 계단의 점수를 더한 값을 비교하여 더 큰 값이 DP[4]이다.</p>
-
-<p>이는 곧 DP[1] + score[3] + score[4], DP[2] + score[4]를 비교하는 것과 같다.</p>
-
-<p>이를 토대로 점화식을 세워 보면, DP[N] = max(DP[N-3] + score[N-1] + score[N], DP[N-2] + score[N])이라는 점화식을 얻을 수 있다.</p>
-
-<p>이 점화식대로 풀면 풀리는 문제다.</p>
-
-<p>항상 느끼는건데 점화식 세우는게 정말 너무 어렵다. 규칙은 나름대로 찾은것 같지만 뭔가 나사 하나씩은 꼭 빠져있다는 생각이 든다.</p>
-
-<p>푸는방법 까먹을때쯤 한번 더 풀어봐야 할 문제인것 같다.</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 04/01/2019.
+// Created by Keith_Lee on 07/01/2019.
 //
 
 #include &lt;iostream&gt;
+#include &lt;string.h&gt;
 
 using namespace std;
 
-int N;
-
-int max(int a, int b){
-    return (a &gt; b) ? a : b;
-}
+int T;
 
 int main(){
-    cin &gt;&gt; N;
+    cin &gt;&gt; T;
 
-    int DP[N+1];
-    int score[N+1];
+    string input = "";
 
-    for(int i=1; i&lt;=N; i++){
-        cin &gt;&gt; score[i];
+    for(int test=1; test&lt;=T; test++){
+        int count = 0;
+        string modified = "";
+
+        cin &gt;&gt; input;
+
+        for(int i=0; i&lt;input.length(); i++){
+            modified.push_back('0');
+        }
+
+        for(int i=0; i&lt;input.length(); i++){
+            if(modified[i] != input[i]){
+                if(input[i] == '0'){
+                    for(int j=i; j&lt;modified.length(); j++){
+                        modified[j] = '0';
+                    }
+                }
+                else if(input[i] == '1'){
+                    for(int j=i; j&lt;modified.length(); j++){
+                        modified[j] = '1';
+                    }
+                }
+                count++;
+            }
+        }
+
+        cout &lt;&lt; '#' &lt;&lt; test &lt;&lt; ' ' &lt;&lt; count &lt;&lt; '\n';
     }
-
-    DP[1] = score[1];
-    DP[2] = max(score[1] + score[2], score[2]);
-    DP[3] = max(score[1] + score[3], score[2] + score[3]);
-
-    for(int i=4; i&lt;=N; i++){
-        DP[i] = max(DP[i-2] + score[i], DP[i-3] + score[i] + score[i-1]);
-    }
-
-    cout &lt;&lt; DP[N] &lt;&lt; '\n';
 
     return 0;
 }
@@ -385,7 +369,7 @@ int main(){
     
       
       
-      <a href="/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
+      <a href="/tags/#realization" class="page__taxonomy-item" rel="tag">Realization</a>
     
     </span>
   </p>
@@ -413,7 +397,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-04T00:00:00+09:00">January 04, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-07T00:00:00+09:00">January 07, 2019</time></p>
         
       </footer>
 
@@ -422,24 +406,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2579%20keithlee94.github.io%2Falgorithm%2F2579%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Swea_1289%20keithlee94.github.io%2Falgorithm%2FSWEA_1289%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2579%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2FSWEA_1289%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2579%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2FSWEA_1289%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2579%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2FSWEA_1289%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/1932/" class="pagination--pager" title="1932
+      <a href="/algorithm/1463/" class="pagination--pager" title="1463
 ">Previous</a>
     
     
-      <a href="/java/4th-Week-Summary/" class="pagination--pager" title="4th week summary
+      <a href="/algorithm/SWEA_3307/" class="pagination--pager" title="Swea_3307
 ">Next</a>
     
   </nav>
@@ -506,13 +490,13 @@ Link: 3307번: 최장 증가 부분 수열
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/SWEA_1289/" rel="permalink">Swea_1289
+        <a href="/algorithm/1463/" rel="permalink">1463
 </a>
       
     </h2>
     
-    <p class="archive__item-excerpt" itemprop="description">SWEA 1289번
-Link: 1289번: 원재의 메모리 복구하기
+    <p class="archive__item-excerpt" itemprop="description">백준 1463번
+Link: 1463번: 1로 만들기
 
 </p>
   </article>
@@ -527,13 +511,13 @@ Link: 1289번: 원재의 메모리 복구하기
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/1463/" rel="permalink">1463
+        <a href="/java/4th-Week-Summary/" rel="permalink">4th week summary
 </a>
       
     </h2>
     
-    <p class="archive__item-excerpt" itemprop="description">백준 1463번
-Link: 1463번: 1로 만들기
+    <p class="archive__item-excerpt" itemprop="description">Java 스터디 내용 정리
+
 
 </p>
   </article>
