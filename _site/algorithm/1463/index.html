@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1932 - KeithLog</title>
-<meta name="description" content="백준 1932번Link: 1932번: 정수 삼각형">
+<!-- begin _includes/seo.html --><title>1463 - KeithLog</title>
+<meta name="description" content="백준 1463번Link: 1463번: 1로 만들기">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="1932">
-<meta property="og:url" content="keithlee94.github.io/algorithm/1932/">
+<meta property="og:title" content="1463">
+<meta property="og:url" content="keithlee94.github.io/algorithm/1463/">
 
 
-  <meta property="og:description" content="백준 1932번Link: 1932번: 정수 삼각형">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-03T00:00:00+09:00">
+  <meta property="og:description" content="백준 1463번Link: 1463번: 1로 만들기">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-01-07T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/1932/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/1463/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="1932">
-    <meta itemprop="description" content="백준 1932번Link: 1932번: 정수 삼각형">
-    <meta itemprop="datePublished" content="January 03, 2019">
+    <meta itemprop="headline" content="1463">
+    <meta itemprop="description" content="백준 1463번Link: 1463번: 1로 만들기">
+    <meta itemprop="datePublished" content="January 07, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">1932
+          <h1 id="page-title" class="page__title" itemprop="headline">1463
 </h1>
           
         </header>
@@ -286,79 +286,74 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-1932번">백준 1932번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/1932">1932번: 정수 삼각형</a></p>
+        <h1 id="백준-1463번">백준 1463번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/1463">1463번: 1로 만들기</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>어제 풀었던 RGB거리와 비슷한 유형의 DP 문제.</p>
+<p>오늘도 내힘으로 푸는데 실패.</p>
 
-<p>다른점이 있다면 제한조건인데, 3가지 경우를 고려했어야 했던 RGB 거리와 달리 삼각형을 이루는 정수들의 왼쪽 대각선, 오른쪽 대각선의 2가지 경우로만 이동 가능하므로 오히려 조건은 완화되었다.</p>
+<p>이 문제도 직전에 풀었던 계단문제처럼 점화식이 가장 중요했다.</p>
 
-<p>딱 문제 보고나서 ‘어 이거 어제 풀었던거랑 비슷한데’ 라는 생각으로 시작했다.</p>
+<p>주어진 조건을 곧이곧대로 썼다가 답없는 상황이 나왔다.</p>
 
-<p>결론부터 말하면 못풀어서 답보고 이해했는데, 접근방법이 아예 잘못되었다.</p>
+<p>가장 먼저 입력된 수를 3으로 나눠떨어지는지 검사하고 나눠떨어지면 3으로 나누는 것을 첫번째 조건으로 넣었고</p>
 
-<p>조건에서 주어졌듯이 2개의 이전 결과값을 비교하고 현재 삼각형 위치의 숫자를 더하면 되는거였는데, 일단 이 조건을 무시하고 최대값만 다 찾았다가 1차로 망했다.</p>
+<p>3으로 나눠떨어지지 않으면 2로 나눠떨어지는지 검사하고 나눠떨어지면 2로 나누는 것을 두번째 조건으로 넣었다.</p>
 
-<p>잘못생각했다는걸 알아차리고 다른 방법을 생각해봤는데, 이것도 틀렸다.</p>
+<p>이 두가지를 만족하지 않을때 1을 빼는 것으로 3가지 조건을 넣었다.</p>
 
-<p>뭔지 대충 설명하자면 최대값을 가질때의 배열 인덱스를 따로 받아두고 이 인덱스를 기준으로 다음 최대값을 찾는 방식.</p>
+<p>도무지 어떻게 더 나갈지 모르겠어서 예전 답을 다시 찾아봤다.</p>
 
-<p>DP에 대해 완벽히 이해하고 있는건 아닌것 같다.</p>
+<p>예전 답도 구글링해서 답 찾아보고 풀었는데, 1년동안 실력이 전혀 안늘어난 느낌이다.</p>
 
-<p>예전 계산 결과 가져다 쓰는 문제구나 하는 느낌은 오는데, 예전 계산 결과를 어떤식으로 저장할 것이며 어떻게 가져다 쓸것인지에 대해 생각해내는 부분이 부족한 것 같다.</p>
+<p>정답은 우선 1을 뺀 다음, 3으로 나눠떨어지면 3으로 나눴을때와 1을 뺐을때의 DP를 비교하는 것이었다.</p>
 
-<p>문제 보고도 뭔소린가 싶었던 옛날에 비해서는 많이 나아진 편이지만 아직도 갈길이 멀다…</p>
+<p>3으로 나눠떨어지지 않을 경우, 2로 나눠떨어지면 2로 나눴을때와 1을 뺐을때의 DP를 비교한다.</p>
+
+<p>나머지 경우는 당연히 1을 뺀 값이 DP에 들어간다.</p>
+
+<p>오늘로 DP에서 5문제를 풀고있는데, 문제마다 매번 다른 개념인것 같은 느낌이다.</p>
+
+<p>DP 문제 전반에 걸칠 수 있는 개념이 안잡힌 느낌. 첫술에 배부를수는 당연히 없지만 이대로 갔을때 실력이 늘긴 할지, DP에 대한 접근 방법을 제대로 파악할 수 있긴 할지 매우 걱정된다.</p>
+
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 03/01/2019.
+// Created by Keith_Lee on 07/01/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;cstring&gt;
+#include &lt;string.h&gt;
 
 using namespace std;
 
-int n;
-int maximum = 0;
-
-int max(int a, int b){
-    return (a &gt; b) ? a : b;
+int min(int a, int b){
+    return a &gt; b ? b : a;
 }
 
 int main(){
-    cin &gt;&gt; n;
+    int N;
+    int DP[1000000];
 
-    int DP[n+1][n+1];
-    int tree[n+1][n+1];
+    cin &gt;&gt; N;
 
     bzero(DP, sizeof(DP));
-    bzero(tree, sizeof(tree));
 
-    int inputNum;
+    for(int i=2; i&lt;=N; i++){
+        DP[i] = DP[i-1] + 1; // 기본적으로 1 빼준다.
 
-    for(int i=1; i&lt;=n; i++){
-        for(int j=1; j&lt;=i; j++){
-            cin &gt;&gt; inputNum;
-            tree[i][j] = inputNum;
+        if(i % 2 == 0){
+            DP[i] = min(DP[i], DP[i/2] + 1); // 2로 나눠떨어지면 2로 나눴을때와 1뺐을때를 비교한다.
+        }
+        if(i % 3 == 0){
+            DP[i] = min(DP[i], DP[i/3] + 1); // 3으로 나눠떨어지면 3으로 나눴을때와 1뺐을때를 비교한다.
         }
     }
 
-    for(int i=1; i&lt;=n; i++){
-        for(int j=1; j&lt;=i; j++){
-            DP[i][j] = max(DP[i-1][j-1], DP[i-1][j]) + tree[i][j];
-
-            if(maximum &lt; DP[i][j]){
-                maximum = DP[i][j];
-            }
-        }
-    }
-
-    cout &lt;&lt; maximum &lt;&lt; '\n';
+    cout &lt;&lt; DP[N] &lt;&lt; '\n';
 
     return 0;
 }
@@ -413,7 +408,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-03T00:00:00+09:00">January 03, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-07T00:00:00+09:00">January 07, 2019</time></p>
         
       </footer>
 
@@ -422,25 +417,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=1932%20keithlee94.github.io%2Falgorithm%2F1932%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=1463%20keithlee94.github.io%2Falgorithm%2F1463%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1932%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1463%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1932%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1463%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1932%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1463%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/1149/" class="pagination--pager" title="1149
+      <a href="/java/4th-Week-Summary/" class="pagination--pager" title="4th week summary
 ">Previous</a>
     
     
-      <a href="/algorithm/2579/" class="pagination--pager" title="2579
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -454,27 +448,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/1463/" rel="permalink">1463
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 1463번
-Link: 1463번: 1로 만들기
-
-</p>
-  </article>
-</div>
         
           
 
@@ -513,6 +486,27 @@ Link: 1463번: 1로 만들기
     
     <p class="archive__item-excerpt" itemprop="description">백준 2579번
 Link: 2579번: 계단 오르기
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/1932/" rel="permalink">1932
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 1932번
+Link: 1932번: 정수 삼각형
 
 </p>
   </article>
