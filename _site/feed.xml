@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-01-08T00:36:47+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">Swea_3307</title><link href="keithlee94.github.io/algorithm/SWEA_3307/" rel="alternate" type="text/html" title="Swea_3307" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_3307</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_3307/">&lt;h1 id=&quot;swea-3307번&quot;&gt;SWEA 3307번&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-01-10T00:00:10+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">Swea_3307</title><link href="keithlee94.github.io/algorithm/SWEA_3307/" rel="alternate" type="text/html" title="Swea_3307" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_3307</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_3307/">&lt;h1 id=&quot;swea-3307번&quot;&gt;SWEA 3307번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AWBOKg-a6l0DFAWr&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;3307번: 최장 증가 부분 수열&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -217,7 +217,81 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1463번 Link: 1463번: 1로 만들기</summary></entry><entry><title type="html">Swea_5215</title><link href="keithlee94.github.io/algorithm/SWEA_5215/" rel="alternate" type="text/html" title="Swea_5215" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_5215</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_5215/">&lt;h1 id=&quot;swea-5215번&quot;&gt;SWEA 5215번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1463번 Link: 1463번: 1로 만들기</summary></entry><entry><title type="html">10844</title><link href="keithlee94.github.io/algorithm/10844/" rel="alternate" type="text/html" title="10844" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/10844</id><content type="html" xml:base="keithlee94.github.io/algorithm/10844/">&lt;h1 id=&quot;백준-10844번&quot;&gt;백준 10844번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;10844번: 쉬운 계단 수&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;어제는 피곤함에 빈둥거리다 아무것도 못올렸다.&lt;/p&gt;
+
+&lt;p&gt;이 문제는 어제부터 고민하다 방법을 찾았고, 그 방법을 어떻게 구현할지 많은 시행착오를 거친 끝에 결국 풀었다.&lt;/p&gt;
+
+&lt;p&gt;사실 맨 마지막에 내 생각이 확실한데 답이 자꾸 틀려서 다른사람 답을 찾아보긴 했지만, 그 답이 내가 생각한 그대로여서 여태껏 답 찾아본 문제들중 가장 치열하게 고민한 문제인 것 같다는 생각을 했다.&lt;/p&gt;
+
+&lt;p&gt;그만큼 이번에는 답찾아서 풀었음에도 쪽팔리다는 생각이 들지 않았고.&lt;/p&gt;
+
+&lt;p&gt;각설하고, 푸는 방법에 대해 설명해보자면 이 문제에서 각 자릿수가 몇자리수이냐는 아무 상관이 없다.&lt;/p&gt;
+
+&lt;p&gt;가장 중요한 것은 1의자리 숫자가 무엇인지.&lt;/p&gt;
+
+&lt;p&gt;N이 1일때, 2일때, 3일때의 경우들을 직접 구해보니 1의자리 숫자에 따라 다음 수가 영향을 받는다는 것을 알 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;자꾸 보다보니 N일때의 답 = (N-1일때의 답 * 2) - (N-1일때의 계단수 중 첫자리 숫자가 1인 것의 갯수) 라는 규칙을 찾은것같은데, 맞는지는 모르겠다.&lt;/p&gt;
+
+&lt;p&gt;어떻게 구현할지 한참 고민하다 저 규칙대로 풀어보기 위해 우선 큐에 넣고 갱신해가면서 모든 경우를 다 돌려봤다.&lt;/p&gt;
+
+&lt;p&gt;한 5분은 지나야 전체 답을 구할 수 있더라.&lt;/p&gt;
+
+&lt;p&gt;이런 과정을 거치면서 이 문제를 어떻게하면 이전 N에서 얻은 답을 사용할수 있을지에 대해 중점적으로 고민해보았고, 결국 1의자리 숫자만이 영향을 미친다는 점을 찾기에 이르렀다.&lt;/p&gt;
+
+&lt;p&gt;이 문제를 풀며 가장 고무적이었다고 생각했던 부분은 DP의 특성을 어떻게든 적용하기 위해 노력했다는 점.&lt;/p&gt;
+
+&lt;p&gt;앞에서 구한 답을 어떻게 써먹을수 있는지 그 어느때보다 치열하게 고민한 것 같다.&lt;/p&gt;
+
+&lt;p&gt;이 문제를 풀어낸 것이 앞으로 DP문제를 푸는데 있어 전환점이 되길!!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 08/01/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;strings.h&amp;gt;
+
+using namespace std;
+
+int main(){
+    int N;
+
+    cin &amp;gt;&amp;gt; N;
+
+    unsigned long long DP[101][11];
+    bzero(DP, sizeof(DP));
+
+    for(int i=1; i&amp;lt;10; i++){
+        DP[1][i] = 1;
+    }
+
+    for(int i=2; i&amp;lt;=N; i++) {
+        DP[i][0] = DP[i-1][1];
+        for(int j=1; j&amp;lt;10; j++){
+            DP[i][j] = (DP[i-1][j-1] + DP[i-1][j+1]) % 1000000000;
+        }
+    }
+
+    unsigned long long sum = 0;
+    for(int i=0; i&amp;lt;10; i++){
+        sum += DP[N][i];
+    }
+    cout &amp;lt;&amp;lt; (sum % 1000000000) &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 10844번 Link: 10844번: 쉬운 계단 수</summary></entry><entry><title type="html">Swea_5215</title><link href="keithlee94.github.io/algorithm/SWEA_5215/" rel="alternate" type="text/html" title="Swea_5215" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_5215</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_5215/">&lt;h1 id=&quot;swea-5215번&quot;&gt;SWEA 5215번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AWT-lPB6dHUDFAVT&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;5215번: 햄버거 다이어트&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -838,97 +912,4 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1003번 Link: 1003번: 피보나치 함수</summary></entry><entry><title type="html">2108</title><link href="keithlee94.github.io/algorithm/2108/" rel="alternate" type="text/html" title="2108" /><published>2018-12-31T00:00:00+09:00</published><updated>2018-12-31T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2108</id><content type="html" xml:base="keithlee94.github.io/algorithm/2108/">&lt;h1 id=&quot;백준-2108번&quot;&gt;백준 2108번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2108&quot;&gt;2108번: 통계학&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;문제에서 제시된 간단한 통계를 구하는 문제였다.&lt;/p&gt;
-
-&lt;p&gt;평균, 최댓값, 범위까지는 쉽게쉽게 구했는데 최빈값을 어떻게 구할지에 대해서 많이 고민했던 문제.&lt;/p&gt;
-
-&lt;p&gt;처음에는 8000개짜리 배열 만들고 숫자 넣을때마다 배열 값에다 1씩 더해서 빈도를 저장하려고 했는데 하다보니 아니다 싶어서 map을 사용했다.&lt;/p&gt;
-
-&lt;p&gt;input으로 준 숫자가 map에 없으면 (input, 1)로 초기호하고 있으면 빈도에 해당하는 1을 하나씩 더해가는 방식으로 구현했다.&lt;/p&gt;
-
-&lt;p&gt;최빈값을 찾기 위해 map을 한번 싹 돌았다.&lt;/p&gt;
-
-&lt;p&gt;조건 중에 최빈값이 여러개면 두번째로 작은 값을 최빈값으로 하라는 조건이 있었는데, 이걸 구현하기 위해 map을 한번 더 돌았다. 이 부분에 대해서는 좀 더 세련된 방법으로 보완할 수 있을 것 같은데 일단은 시간제한도 넉넉해서 그냥 한바퀴 더 도는 방법으로 구현했다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;내가-짠-코드&quot;&gt;내가 짠 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 31/12/2018.
-//
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;vector&amp;gt;
-#include &amp;lt;algorithm&amp;gt;
-#include &amp;lt;math.h&amp;gt;
-#include &amp;lt;map&amp;gt;
-
-using namespace std;
-
-int N;
-
-int halfProcess(double num){
-    double high = ceil(num);
-    double low = floor(num);
-
-    if(num &amp;gt;= (high + low) / 2){
-        return int(high);
-    }
-
-    return int(low);
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; N;
-
-    vector&amp;lt;int&amp;gt; numbers;
-    int sum = 0;
-    map&amp;lt;int, int&amp;gt; frequencies;
-
-    int inputNum;
-
-    for(int i=0; i&amp;lt;N; i++){
-        cin &amp;gt;&amp;gt; inputNum;
-        sum += inputNum;
-        numbers.push_back(inputNum);
-        if(frequencies.find(inputNum) == frequencies.end()){
-            frequencies.insert(make_pair(inputNum, 1));
-        }
-        else{
-            frequencies.find(inputNum)-&amp;gt;second++;
-        }
-    }
-
-    int temp = 0;
-    int mostFrequent;
-    int changeCount = 0;
-    for(auto iter = frequencies.begin(); iter != frequencies.end(); iter++){
-        if(iter-&amp;gt;second &amp;gt; temp){
-            temp = iter-&amp;gt;second;
-            mostFrequent = iter-&amp;gt;first;
-            changeCount++;
-        }
-    }
-    for(auto iter = frequencies.begin(); iter != frequencies.end(); iter++){
-        if(iter-&amp;gt;second == temp &amp;amp;&amp;amp; iter-&amp;gt;first != mostFrequent){
-            mostFrequent = iter-&amp;gt;first;
-            break;
-        }
-    }
-
-    sort(numbers.begin(), numbers.end());
-
-    int average = halfProcess(double(sum) / double(N));
-    int center = numbers[N/2];
-    int range = numbers[N-1] - numbers[0];
-
-    cout &amp;lt;&amp;lt; average &amp;lt;&amp;lt; '\n' &amp;lt;&amp;lt; center &amp;lt;&amp;lt; '\n' &amp;lt;&amp;lt; mostFrequent &amp;lt;&amp;lt; '\n' &amp;lt;&amp;lt; range &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Realization" /><summary type="html">백준 2108번 Link: 2108번: 통계학</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1003번 Link: 1003번: 피보나치 함수</summary></entry></feed>

@@ -9,16 +9,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Posts by Year - KeithLog</title>
-<meta name="description" content="SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그">
+<!-- begin _includes/seo.html --><title>10844 - KeithLog</title>
+<meta name="description" content="백준 10844번Link: 10844번: 쉬운 계단 수">
 
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="Posts by Year">
-<meta property="og:url" content="keithlee94.github.io/year-archive/">
+<meta property="og:title" content="10844">
+<meta property="og:url" content="keithlee94.github.io/algorithm/10844/">
+
+
+  <meta property="og:description" content="백준 10844번Link: 10844번: 쉬운 계단 수">
 
 
 
@@ -26,6 +29,7 @@
 
 
 
+  <meta property="article:published_time" content="2019-01-07T00:00:00+09:00">
 
 
 
@@ -36,7 +40,7 @@
   
 
 
-<link rel="canonical" href="keithlee94.github.io/year-archive/">
+<link rel="canonical" href="keithlee94.github.io/algorithm/10844/">
 
 
 
@@ -100,7 +104,7 @@
 
   </head>
 
-  <body class="layout--archive">
+  <body class="layout--single">
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -265,19 +269,194 @@
   </div>
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title">Posts by Year</h1>
-    
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="10844">
+    <meta itemprop="description" content="백준 10844번Link: 10844번: 쉬운 계단 수">
+    <meta itemprop="datePublished" content="January 07, 2019">
     
 
-  <h2 id="2019" class="archive__subtitle">2019</h2>
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">10844
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="백준-10844번">백준 10844번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/10844">10844번: 쉬운 계단 수</a></p>
+
+<hr />
+
+<h1 id="문제-설명">문제 설명</h1>
+<p>어제는 피곤함에 빈둥거리다 아무것도 못올렸다.</p>
+
+<p>이 문제는 어제부터 고민하다 방법을 찾았고, 그 방법을 어떻게 구현할지 많은 시행착오를 거친 끝에 결국 풀었다.</p>
+
+<p>사실 맨 마지막에 내 생각이 확실한데 답이 자꾸 틀려서 다른사람 답을 찾아보긴 했지만, 그 답이 내가 생각한 그대로여서 여태껏 답 찾아본 문제들중 가장 치열하게 고민한 문제인 것 같다는 생각을 했다.</p>
+
+<p>그만큼 이번에는 답찾아서 풀었음에도 쪽팔리다는 생각이 들지 않았고.</p>
+
+<p>각설하고, 푸는 방법에 대해 설명해보자면 이 문제에서 각 자릿수가 몇자리수이냐는 아무 상관이 없다.</p>
+
+<p>가장 중요한 것은 1의자리 숫자가 무엇인지.</p>
+
+<p>N이 1일때, 2일때, 3일때의 경우들을 직접 구해보니 1의자리 숫자에 따라 다음 수가 영향을 받는다는 것을 알 수 있었다.</p>
+
+<p>자꾸 보다보니 N일때의 답 = (N-1일때의 답 * 2) - (N-1일때의 계단수 중 첫자리 숫자가 1인 것의 갯수) 라는 규칙을 찾은것같은데, 맞는지는 모르겠다.</p>
+
+<p>어떻게 구현할지 한참 고민하다 저 규칙대로 풀어보기 위해 우선 큐에 넣고 갱신해가면서 모든 경우를 다 돌려봤다.</p>
+
+<p>한 5분은 지나야 전체 답을 구할 수 있더라.</p>
+
+<p>이런 과정을 거치면서 이 문제를 어떻게하면 이전 N에서 얻은 답을 사용할수 있을지에 대해 중점적으로 고민해보았고, 결국 1의자리 숫자만이 영향을 미친다는 점을 찾기에 이르렀다.</p>
+
+<p>이 문제를 풀며 가장 고무적이었다고 생각했던 부분은 DP의 특성을 어떻게든 적용하기 위해 노력했다는 점.</p>
+
+<p>앞에서 구한 답을 어떻게 써먹을수 있는지 그 어느때보다 치열하게 고민한 것 같다.</p>
+
+<p>이 문제를 풀어낸 것이 앞으로 DP문제를 푸는데 있어 전환점이 되길!!</p>
+
+<hr />
+
+<h1 id="정답-코드">정답 코드</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+// Created by Keith_Lee on 08/01/2019.
+//
+
+#include &lt;iostream&gt;
+#include &lt;strings.h&gt;
+
+using namespace std;
+
+int main(){
+    int N;
+
+    cin &gt;&gt; N;
+
+    unsigned long long DP[101][11];
+    bzero(DP, sizeof(DP));
+
+    for(int i=1; i&lt;10; i++){
+        DP[1][i] = 1;
+    }
+
+    for(int i=2; i&lt;=N; i++) {
+        DP[i][0] = DP[i-1][1];
+        for(int j=1; j&lt;10; j++){
+            DP[i][j] = (DP[i-1][j-1] + DP[i-1][j+1]) % 1000000000;
+        }
+    }
+
+    unsigned long long sum = 0;
+    for(int i=0; i&lt;10; i++){
+        sum += DP[N][i];
+    }
+    cout &lt;&lt; (sum % 1000000000) &lt;&lt; '\n';
+
+    return 0;
+}
+</code></pre></div></div>
+<hr />
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
   
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
     
+      
+      
+      <a href="/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
+    
+    </span>
+  </p>
 
 
 
-<div class="list__item">
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-07T00:00:00+09:00">January 07, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=10844%20keithlee94.github.io%2Falgorithm%2F10844%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F10844%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F10844%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F10844%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/java/4th-Week-Summary/" class="pagination--pager" title="4th week summary
+">Previous</a>
+    
+    
+      <a href="/algorithm/1463/" class="pagination--pager" title="1463
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
@@ -293,12 +472,12 @@ Link: 5215번: 햄버거 다이어트
 </p>
   </article>
 </div>
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
@@ -314,12 +493,12 @@ Link: 3307번: 최장 증가 부분 수열
 </p>
   </article>
 </div>
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
@@ -335,12 +514,12 @@ Link: 1289번: 원재의 메모리 복구하기
 </p>
   </article>
 </div>
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
@@ -356,200 +535,11 @@ Link: 1463번: 1로 만들기
 </p>
   </article>
 </div>
+        
+      </div>
+    </div>
   
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/10844/" rel="permalink">10844
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 10844번
-Link: 10844번: 쉬운 계단 수
-
-</p>
-  </article>
-</div>
   
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/java/4th-Week-Summary/" rel="permalink">4th week summary
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">Java 스터디 내용 정리
-
-
-</p>
-  </article>
-</div>
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/2579/" rel="permalink">2579
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 2579번
-Link: 2579번: 계단 오르기
-
-</p>
-  </article>
-</div>
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/1932/" rel="permalink">1932
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 1932번
-Link: 1932번: 정수 삼각형
-
-</p>
-  </article>
-</div>
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/1149/" rel="permalink">1149
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 1149번
-Link: 1149번: RGB 거리
-
-</p>
-  </article>
-</div>
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/1003/" rel="permalink">1003
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 1003번
-Link: 1003번: 피보나치 함수
-
-</p>
-  </article>
-</div>
-  
-
-  <h2 id="2018" class="archive__subtitle">2018</h2>
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/2108/" rel="permalink">2108
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 2108번
-Link: 2108번: 통계학
-
-</p>
-  </article>
-</div>
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/cse/3rd-Week-Summary/" rel="permalink">3rd week summary
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">Markdown 문법 정리
-
-
-</p>
-  </article>
-</div>
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/cse/2nd-Week-Summary/" rel="permalink">2nd week summary
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">2주차 정리
-
-</p>
-  </article>
-</div>
-  
-
-  </div>
 </div>
     </div>
 
