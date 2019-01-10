@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2108 - KeithLog</title>
-<meta name="description" content="백준 2108번Link: 2108번: 통계학">
+<!-- begin _includes/seo.html --><title>2293 - KeithLog</title>
+<meta name="description" content="백준 2293번Link: 2293번: 동전 1">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2108">
-<meta property="og:url" content="keithlee94.github.io/algorithm/2108/">
+<meta property="og:title" content="2293">
+<meta property="og:url" content="keithlee94.github.io/algorithm/2293/">
 
 
-  <meta property="og:description" content="백준 2108번Link: 2108번: 통계학">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2018-12-31T00:00:00+09:00">
+  <meta property="og:description" content="백준 2293번Link: 2293번: 동전 1">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-01-10T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/2108/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/2293/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2108">
-    <meta itemprop="description" content="백준 2108번Link: 2108번: 통계학">
-    <meta itemprop="datePublished" content="December 31, 2018">
+    <meta itemprop="headline" content="2293">
+    <meta itemprop="description" content="백준 2293번Link: 2293번: 동전 1">
+    <meta itemprop="datePublished" content="January 10, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2108
+          <h1 id="page-title" class="page__title" itemprop="headline">2293
 </h1>
           
         </header>
@@ -286,95 +286,169 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-2108번">백준 2108번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/2108">2108번: 통계학</a></p>
+        <h1 id="백준-2293번">백준 2293번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/2293">2293번: 동전 1</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>문제에서 제시된 간단한 통계를 구하는 문제였다.</p>
+<p>이 문제도 어떻게든 DP로 풀어보려 온갖 방법으로 생각해봤다.</p>
 
-<p>평균, 최댓값, 범위까지는 쉽게쉽게 구했는데 최빈값을 어떻게 구할지에 대해서 많이 고민했던 문제.</p>
+<p>우선 각 동전들에 대해 최대로 쓸 수 있는 갯수를 구한 다음 하나씩 빼가면서 조합을 구하려고 생각해봤다.</p>
 
-<p>처음에는 8000개짜리 배열 만들고 숫자 넣을때마다 배열 값에다 1씩 더해서 빈도를 저장하려고 했는데 하다보니 아니다 싶어서 map을 사용했다.</p>
+<p>그런데 동전이 몇종류나 있을지도 모르고 시간도 그만큼 오래걸릴것 같아 이 생각은 접었다.</p>
 
-<p>input으로 준 숫자가 map에 없으면 (input, 1)로 초기호하고 있으면 빈도에 해당하는 1을 하나씩 더해가는 방식으로 구현했다.</p>
+<p>암만 고민해봐도 이 방법 말고는 떠오르는 방법이 없어 결국 답을 찾아봤다.</p>
 
-<p>최빈값을 찾기 위해 map을 한번 싹 돌았다.</p>
+<p>답 찾아보니 점화식을 세울줄 알아야 풀 수 있는 문제더라.</p>
 
-<p>조건 중에 최빈값이 여러개면 두번째로 작은 값을 최빈값으로 하라는 조건이 있었는데, 이걸 구현하기 위해 map을 한번 더 돌았다. 이 부분에 대해서는 좀 더 세련된 방법으로 보완할 수 있을 것 같은데 일단은 시간제한도 넉넉해서 그냥 한바퀴 더 도는 방법으로 구현했다.</p>
+<p>심지어 그 점화식을 어떻게 세우는지에 대해서도 설명이 자세하게 나와있는게 잘 없어서 한참 뒤지면서 여러개 찾아보다가 겨우 이해했다.</p>
+
+<p>어떤 블로그에서 표를 그려가면서 풀면 금방 이해하고 점화식을 세울 수 있을거라 했는데, 점화식에 대해 이해하고 나니 왜 그렇게 말했는지 알 것 같다.</p>
+
+<p>점화식을 구하는 과정이다.</p>
+<ol>
+  <li>1원만 쓸 때 각 금액에 대해 나올 수 있는 경우의 수
+    <blockquote>
+      <table>
+        <tbody>
+          <tr>
+            <td>1원</td>
+            <td>2원</td>
+            <td>3원</td>
+            <td>4원</td>
+            <td>5원</td>
+            <td>6원</td>
+            <td>7원</td>
+            <td>8원</td>
+            <td>9원</td>
+            <td>10원</td>
+          </tr>
+        </tbody>
+      </table>
+    </blockquote>
+  </li>
+</ol>
+
+<blockquote>
+  <p>{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}</p>
+</blockquote>
+
+<ol>
+  <li>2원도 쓸 때 각 금액에 대해 나올 수 있는 경우의 수
+    <blockquote>
+      <table>
+        <tbody>
+          <tr>
+            <td>1원</td>
+            <td>2원</td>
+            <td>3원</td>
+            <td>4원</td>
+            <td>5원</td>
+            <td>6원</td>
+            <td>7원</td>
+            <td>8원</td>
+            <td>9원</td>
+            <td>10원</td>
+          </tr>
+        </tbody>
+      </table>
+    </blockquote>
+  </li>
+</ol>
+
+<blockquote>
+  <p>{1, 2, 2, 3, 3, 4, 4, 5, 5, 6}</p>
+</blockquote>
+
+<h3 id="규칙">규칙</h3>
+<p><strong>2원 경우의수 = 1원, 2원을 쓸때 0원 경우의수 + 1원만 쓸때 2원에 대한 경우의 수</strong></p>
+
+<p><strong>3원 경우의수 = 1원, 2원을 쓸때 1원 경우의수 + 1원만 쓸때 3원에 대한 경우의 수</strong></p>
+
+<p><strong>4원 경우의수 = 1원, 2원을 쓸때 2원 경우의수 + 1원만 쓸때 4원에 대한 경우의 수</strong></p>
+
+<p>…</p>
+
+<p><strong>1원, 2원을 쓸때 K원을 만드는 경우의 수: DP[K] += DP[K - 2]</strong></p>
+
+<ol>
+  <li>5원도 쓸 때 각 금액에 대해 나올 수 있는 경우의 수
+    <blockquote>
+      <table>
+        <tbody>
+          <tr>
+            <td>1원</td>
+            <td>2원</td>
+            <td>3원</td>
+            <td>4원</td>
+            <td>5원</td>
+            <td>6원</td>
+            <td>7원</td>
+            <td>8원</td>
+            <td>9원</td>
+            <td>10원</td>
+          </tr>
+        </tbody>
+      </table>
+    </blockquote>
+  </li>
+</ol>
+
+<blockquote>
+  <p>{1, 2, 2, 3, 4, 5, 6, 7, 8, 10}</p>
+</blockquote>
+
+<h3 id="규칙-1">규칙</h3>
+<p><strong>6원 경우의수 = 1원, 2원, 5원을 쓸때 6원 경우의수 + 1원, 2원을 쓸때 6원에 대한 경우의 수</strong></p>
+
+<p><strong>7원 경우의수 = 1원, 2원, 5원을 쓸때 7원 경우의수 + 1원, 2원을 쓸때 7원에 대한 경우의 수</strong></p>
+
+<p>…</p>
+
+<p><strong>1원, 2원, 5원을 쓸때 K원을 만드는 경우의 수: DP[K] += DP[K - 5]</strong></p>
+
+<h1 id="최종-점화식-x원을-추가했을때-k원을-만드는-경우의-수-dpk--dpk---x">최종 점화식: x원을 추가했을때 K원을 만드는 경우의 수: DP[K] += DP[K - x]</h1>
+
+<p>이대로 코드로 옮기면 풀린다.</p>
+
+<p>작은문제로 쪼개고 그 결과를 저장하며 DP문제를 해결하는 유형에 대해서는 어떻게든 방법을 생각해낼 수 있을것 같은데, 점화식 짜서 풀어야되는 문제는 정말 답이 없는것 같다.</p>
 <hr />
 
-<h1 id="내가-짠-코드">내가 짠 코드</h1>
+<h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 31/12/2018.
+// Created by Keith_Lee on 10/01/2019.
 //
+
 #include &lt;iostream&gt;
-#include &lt;vector&gt;
 #include &lt;algorithm&gt;
-#include &lt;math.h&gt;
-#include &lt;map&gt;
+#include &lt;vector&gt;
 
 using namespace std;
 
-int N;
-
-int halfProcess(double num){
-    double high = ceil(num);
-    double low = floor(num);
-
-    if(num &gt;= (high + low) / 2){
-        return int(high);
-    }
-
-    return int(low);
-}
+int N, K;
 
 int main(){
-    cin &gt;&gt; N;
+    cin &gt;&gt; N &gt;&gt; K;
 
-    vector&lt;int&gt; numbers;
-    int sum = 0;
-    map&lt;int, int&gt; frequencies;
+    int DP[10001] = {0, };
+    int coins[101];
 
-    int inputNum;
+    for(int i=1; i&lt;=N; i++){
+        cin &gt;&gt; coins[i];
+    }
 
-    for(int i=0; i&lt;N; i++){
-        cin &gt;&gt; inputNum;
-        sum += inputNum;
-        numbers.push_back(inputNum);
-        if(frequencies.find(inputNum) == frequencies.end()){
-            frequencies.insert(make_pair(inputNum, 1));
-        }
-        else{
-            frequencies.find(inputNum)-&gt;second++;
+    DP[0] = 1;
+
+    for(int i=1; i&lt;=N; i++){
+        for(int j=1; j&lt;=K; j++){
+            if(j &gt;= coins[i]){
+                DP[j] += DP[j - coins[i]];
+            }
         }
     }
 
-    int temp = 0;
-    int mostFrequent;
-    int changeCount = 0;
-    for(auto iter = frequencies.begin(); iter != frequencies.end(); iter++){
-        if(iter-&gt;second &gt; temp){
-            temp = iter-&gt;second;
-            mostFrequent = iter-&gt;first;
-            changeCount++;
-        }
-    }
-    for(auto iter = frequencies.begin(); iter != frequencies.end(); iter++){
-        if(iter-&gt;second == temp &amp;&amp; iter-&gt;first != mostFrequent){
-            mostFrequent = iter-&gt;first;
-            break;
-        }
-    }
-
-    sort(numbers.begin(), numbers.end());
-
-    int average = halfProcess(double(sum) / double(N));
-    int center = numbers[N/2];
-    int range = numbers[N-1] - numbers[0];
-
-    cout &lt;&lt; average &lt;&lt; '\n' &lt;&lt; center &lt;&lt; '\n' &lt;&lt; mostFrequent &lt;&lt; '\n' &lt;&lt; range &lt;&lt; '\n';
+    cout &lt;&lt; DP[K] &lt;&lt; '\n';
 
     return 0;
 }
@@ -401,7 +475,7 @@ int main(){
     
       
       
-      <a href="/tags/#realization" class="page__taxonomy-item" rel="tag">Realization</a>
+      <a href="/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
     
     </span>
   </p>
@@ -429,7 +503,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-12-31T00:00:00+09:00">December 31, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-10T00:00:00+09:00">January 10, 2019</time></p>
         
       </footer>
 
@@ -438,25 +512,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2108%20keithlee94.github.io%2Falgorithm%2F2108%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=2293%20keithlee94.github.io%2Falgorithm%2F2293%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2108%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2293%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2108%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2293%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2108%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2293%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/cse/3rd-Week-Summary/" class="pagination--pager" title="3rd week summary
+      <a href="/algorithm/10844/" class="pagination--pager" title="10844
 ">Previous</a>
     
     
-      <a href="/algorithm/1003/" class="pagination--pager" title="1003
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -470,27 +543,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/2293/" rel="permalink">2293
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 2293번
-Link: 2293번: 동전 1
-
-</p>
-  </article>
-</div>
         
           
 
@@ -550,6 +602,27 @@ Link: 5215번: 햄버거 다이어트
     
     <p class="archive__item-excerpt" itemprop="description">SWEA 3307번
 Link: 3307번: 최장 증가 부분 수열
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/SWEA_1289/" rel="permalink">Swea_1289
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">SWEA 1289번
+Link: 1289번: 원재의 메모리 복구하기
 
 </p>
   </article>
