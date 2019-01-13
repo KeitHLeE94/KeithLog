@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1463 - KeithLog</title>
-<meta name="description" content="백준 1463번Link: 1463번: 1로 만들기">
+<!-- begin _includes/seo.html --><title>2156 - KeithLog</title>
+<meta name="description" content="백준 2156번Link: 2156번: 포도주 시식">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="1463">
-<meta property="og:url" content="keithlee94.github.io/algorithm/1463/">
+<meta property="og:title" content="2156">
+<meta property="og:url" content="keithlee94.github.io/algorithm/2156/">
 
 
-  <meta property="og:description" content="백준 1463번Link: 1463번: 1로 만들기">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-07T00:00:00+09:00">
+  <meta property="og:description" content="백준 2156번Link: 2156번: 포도주 시식">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-01-11T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/1463/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/2156/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="1463">
-    <meta itemprop="description" content="백준 1463번Link: 1463번: 1로 만들기">
-    <meta itemprop="datePublished" content="January 07, 2019">
+    <meta itemprop="headline" content="2156">
+    <meta itemprop="description" content="백준 2156번Link: 2156번: 포도주 시식">
+    <meta itemprop="datePublished" content="January 11, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">1463
+          <h1 id="page-title" class="page__title" itemprop="headline">2156
 </h1>
           
         </header>
@@ -286,71 +286,76 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-1463번">백준 1463번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/1463">1463번: 1로 만들기</a></p>
+        <h1 id="백준-2156번">백준 2156번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/2156">2156번: 포도주 시식</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>오늘도 내힘으로 푸는데 실패.</p>
+<p>문제를 보자마자 예전에 풀었던 계단 오르기와 비슷한 문제라는 생각이 들었다.</p>
 
-<p>이 문제도 직전에 풀었던 계단문제처럼 점화식이 가장 중요했다.</p>
+<p>Link: <a href="https://keithlee94.github.io/KeithLog/algorithm/2579/">2579번: 계단 오르기</a></p>
 
-<p>주어진 조건을 곧이곧대로 썼다가 답없는 상황이 나왔다.</p>
+<p>차이점이 있다면 계단 오르기의 경우 마지막 계단을 반드시 밟아야 했지만, 이 문제는 3잔을 연속으로 마실 수 없다는 제약을 제외하면 어떠한 제약사항이 없다는 점이다.</p>
 
-<p>가장 먼저 입력된 수를 3으로 나눠떨어지는지 검사하고 나눠떨어지면 3으로 나누는 것을 첫번째 조건으로 넣었고</p>
+<p>점화식으로 풀어야 한다는 점은 동일하다.</p>
 
-<p>3으로 나눠떨어지지 않으면 2로 나눠떨어지는지 검사하고 나눠떨어지면 2로 나누는 것을 두번째 조건으로 넣었다.</p>
+<p>예전에 계단 오르기를 풀때 점화식 세우는 과정을 제대로 이해하지 못한 것 같다.</p>
 
-<p>이 두가지를 만족하지 않을때 1을 빼는 것으로 3가지 조건을 넣었다.</p>
+<p>이번 문제에서도 점화식 세우는데 많은 어려움을 겪었고, 결국 에전에 풀었던 계단 오르기 문제를 다시 보면서 점화식을 어떻게 세워야 하는지 생각했다.</p>
 
-<p>도무지 어떻게 더 나갈지 모르겠어서 예전 답을 다시 찾아봤다.</p>
+<p>또, 마지막 계단을 반드시 밟아야 한다는 제약사항을 빼고 구현하는 방법에 대해서도 많이 고민했던것 같다.</p>
 
-<p>예전 답도 구글링해서 답 찾아보고 풀었는데, 1년동안 실력이 전혀 안늘어난 느낌이다.</p>
+<p>결론적으로는 답을 찾아서 풀었다.</p>
 
-<p>정답은 우선 1을 뺀 다음, 3으로 나눠떨어지면 3으로 나눴을때와 1을 뺐을때의 DP를 비교하는 것이었다.</p>
-
-<p>3으로 나눠떨어지지 않을 경우, 2로 나눠떨어지면 2로 나눴을때와 1을 뺐을때의 DP를 비교한다.</p>
-
-<p>나머지 경우는 당연히 1을 뺀 값이 DP에 들어간다.</p>
-
-<p>오늘로 DP에서 5문제를 풀고있는데, 문제마다 매번 다른 개념인것 같은 느낌이다.</p>
-
-<p>DP 문제 전반에 걸칠 수 있는 개념이 안잡힌 느낌. 첫술에 배부를수는 당연히 없지만 이대로 갔을때 실력이 늘긴 할지, DP에 대한 접근 방법을 제대로 파악할 수 있긴 할지 매우 걱정된다.</p>
-
+<p>점화식 세우는 연습은 얼마나 해야 점화식을 세울 줄 알게 되려나??</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 07/01/2019.
+// Created by Keith_Lee on 11/01/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;string.h&gt;
+#include &lt;vector&gt;
 
 using namespace std;
 
-int min(int a, int b){
-    return a &gt; b ? b : a;
+int N;
+
+int maximum(vector&lt;int&gt; numbers){
+    int result = 0;
+
+    for(int i=0; i&lt;numbers.size(); i++){
+        if(numbers[i] &gt; result){
+            result = numbers[i];
+        }
+    }
+
+    numbers.clear();
+    return result;
 }
 
 int main(){
-    int N;
-    int DP[1000000];
-
     cin &gt;&gt; N;
 
-    bzero(DP, sizeof(DP));
+    int DP[10001];
+    int score[10001];
 
-    for(int i=2; i&lt;=N; i++){
-        DP[i] = DP[i-1] + 1; // 기본적으로 1 빼준다.
+    for(int i=1; i&lt;=N; i++){
+        cin &gt;&gt; score[i];
+    }
 
-        if(i % 2 == 0){
-            DP[i] = min(DP[i], DP[i/2] + 1); // 2로 나눠떨어지면 2로 나눴을때와 1뺐을때를 비교한다.
-        }
-        if(i % 3 == 0){
-            DP[i] = min(DP[i], DP[i/3] + 1); // 3으로 나눠떨어지면 3으로 나눴을때와 1뺐을때를 비교한다.
-        }
+    vector&lt;int&gt; to_compare;
+
+    DP[1] = score[1];
+    DP[2] = max(score[1] + score[2], score[2]);
+
+    for(int i=3; i&lt;=N; i++){
+        to_compare.push_back(DP[i-1]);
+        to_compare.push_back(DP[i-2] + score[i]);
+        to_compare.push_back(DP[i-3] + score[i] + score[i-1]);
+        DP[i] = maximum(to_compare);
     }
 
     cout &lt;&lt; DP[N] &lt;&lt; '\n';
@@ -408,7 +413,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-07T00:00:00+09:00">January 07, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-11T00:00:00+09:00">January 11, 2019</time></p>
         
       </footer>
 
@@ -417,24 +422,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=1463%20keithlee94.github.io%2Falgorithm%2F1463%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=2156%20keithlee94.github.io%2Falgorithm%2F2156%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1463%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2156%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1463%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2156%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1463%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2156%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/java/4th-Week-Summary/" class="pagination--pager" title="4th week summary
+      <a href="/algorithm/2293/" class="pagination--pager" title="2293
 ">Previous</a>
     
     
-      <a href="/algorithm/SWEA_1289/" class="pagination--pager" title="Swea_1289
+      <a href="/java/5th-Week-Summary/" class="pagination--pager" title="5th week summary
 ">Next</a>
     
   </nav>
@@ -480,27 +485,6 @@ int main(){
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/2156/" rel="permalink">2156
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 2156번
-Link: 2156번: 포도주 시식
-
-</p>
-  </article>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
         <a href="/algorithm/2293/" rel="permalink">2293
 </a>
       
@@ -529,6 +513,27 @@ Link: 2293번: 동전 1
     
     <p class="archive__item-excerpt" itemprop="description">백준 10844번
 Link: 10844번: 쉬운 계단 수
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/SWEA_5215/" rel="permalink">Swea_5215
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">SWEA 5215번
+Link: 5215번: 햄버거 다이어트
 
 </p>
   </article>
