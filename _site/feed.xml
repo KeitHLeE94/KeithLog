@@ -1,81 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-01-13T16:28:06+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">2156</title><link href="keithlee94.github.io/algorithm/2156/" rel="alternate" type="text/html" title="2156" /><published>2019-01-11T00:00:00+09:00</published><updated>2019-01-11T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2156</id><content type="html" xml:base="keithlee94.github.io/algorithm/2156/">&lt;h1 id=&quot;백준-2156번&quot;&gt;백준 2156번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2156&quot;&gt;2156번: 포도주 시식&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-01-14T21:38:47+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">1520</title><link href="keithlee94.github.io/algorithm/1520/" rel="alternate" type="text/html" title="1520" /><published>2019-01-14T00:00:00+09:00</published><updated>2019-01-14T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1520</id><content type="html" xml:base="keithlee94.github.io/algorithm/1520/">&lt;h1 id=&quot;백준-1520번&quot;&gt;백준 1520번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1520&quot;&gt;1520번: 내리막 길&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;문제를 보자마자 예전에 풀었던 계단 오르기와 비슷한 문제라는 생각이 들었다.&lt;/p&gt;
+&lt;p&gt;평범한 길찾는문제일줄 알고 우선 BFS부터 냅다 써서 풀었다.&lt;/p&gt;
 
-&lt;p&gt;Link: &lt;a href=&quot;https://keithlee94.github.io/KeithLog/algorithm/2579/&quot;&gt;2579번: 계단 오르기&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;분명 틀린 답은 아니다. 그런데 문제의 의도는 BFS 대신 DFS를 사용하여 메모리를 절약하고, DFS에 DP를 적용하여 시간을 절약하는 것이 의도였다.&lt;/p&gt;
 
-&lt;p&gt;차이점이 있다면 계단 오르기의 경우 마지막 계단을 반드시 밟아야 했지만, 이 문제는 3잔을 연속으로 마실 수 없다는 제약을 제외하면 어떠한 제약사항이 없다는 점이다.&lt;/p&gt;
+&lt;p&gt;DFS에 DP를 접목시키는 문제는 처음 보는것 같다.&lt;/p&gt;
 
-&lt;p&gt;점화식으로 풀어야 한다는 점은 동일하다.&lt;/p&gt;
+&lt;p&gt;그 느린 DFS를 이렇게 보완할수도 있구나 하는 생각이 들었다.&lt;/p&gt;
 
-&lt;p&gt;예전에 계단 오르기를 풀때 점화식 세우는 과정을 제대로 이해하지 못한 것 같다.&lt;/p&gt;
+&lt;p&gt;이 문제를 풀면서 BFS와 DFS의 차이를 제대로 체감할 수 있었던 것 같다.&lt;/p&gt;
 
-&lt;p&gt;이번 문제에서도 점화식 세우는데 많은 어려움을 겪었고, 결국 에전에 풀었던 계단 오르기 문제를 다시 보면서 점화식을 어떻게 세워야 하는지 생각했다.&lt;/p&gt;
+&lt;p&gt;BFS는 시간 내에 해를 찾을 수 있지만, 큐를 사용하는 만큼 더 많은 메모리 공간을 사용한다는 점이 특징.&lt;/p&gt;
 
-&lt;p&gt;또, 마지막 계단을 반드시 밟아야 한다는 제약사항을 빼고 구현하는 방법에 대해서도 많이 고민했던것 같다.&lt;/p&gt;
+&lt;p&gt;DFS는 메모리 공간은 절약할 수 있지만, 깊이가 깊어질수록 매우 많은 시간을 요구한다는 점이 특징이다.&lt;/p&gt;
 
-&lt;p&gt;결론적으로는 답을 찾아서 풀었다.&lt;/p&gt;
+&lt;p&gt;이러한 DFS의 깊이에 따른 문제를 보완하는 방법으로 DP를 사용하는 문제였다.&lt;/p&gt;
 
-&lt;p&gt;점화식 세우는 연습은 얼마나 해야 점화식을 세울 줄 알게 되려나??&lt;/p&gt;
+&lt;p&gt;둘을 어떻게 접목시킬지 방법이 안떠올라서 결국 답을 찾아보고서야 이해할 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;우선 DP 배열을 전부 -1로 초기화하고 시작한다.&lt;/p&gt;
+
+&lt;p&gt;그 다음, DFS를 목적지부터 (0, 0)까지 가도록 거꾸로 실행한다.&lt;/p&gt;
+
+&lt;p&gt;DFS에 들어가면 우선 DP 배열부터 살펴보게 되는데, DP[startX][startY]가 -1이 아니라는 것은 이미 저장된 값이 있으며, 이는 이미 탐색해서 구한 값이 있음을 의미하므로 그대로 리턴한다.&lt;/p&gt;
+
+&lt;p&gt;만약 startX나 startY가 범위를 벗어나면 0을 리턴하고, (0, 0)에 도착하게 되면 1을 리턴한다.&lt;/p&gt;
+
+&lt;p&gt;이 3가지 조건문에 걸리지 않았다는 것은 아직 탐색하지 않은 곳임을 의미하므로 탐색을 진행한다.&lt;/p&gt;
+
+&lt;p&gt;가장 먼저 DP[startX][startY]를 0으로 설정한다.&lt;/p&gt;
+
+&lt;p&gt;그 다음은 통상 아는 DFS를 진행하는데, 내려가는 방향으로만 갈 수 있고 우리는 DFS를 거꾸로 진행하고 있으므로 map[nextX][nextY]가 map[startX][startY]보다 클 경우에만 DFS를 진행한다.&lt;/p&gt;
+
+&lt;p&gt;조금 다른점이 있다면 통상 아는 DFS였다면 DFS(nextX, nextY)만 부르고 끝났겠지만, 이 문제는 DP를 접목시켜야 하므로 DP[startX][startY]의 값에 DFS(nextX, nextY)를 더한 값을 설정한다.&lt;/p&gt;
+
+&lt;p&gt;이때 연쇄적으로 재귀함수를 돌다 더 갈수 없으면 DP[startX][startY]를 리턴하고, 리턴되는 값을 계속 더해주는 것이다.&lt;/p&gt;
+
+&lt;p&gt;같은 방법으로 4방향 모두 탐색하며 DFS를 완성한다.&lt;/p&gt;
+
+&lt;p&gt;풀이방법을 외워둬야 할 것 같은 문제다.&lt;/p&gt;
+
+&lt;p&gt;BFS와 DFS의 차이점, DFS와 DP의 연계를 모두 배울 수 있는 문제였다. 까먹을때쯤 꼭 다시풀어볼 문제.&lt;/p&gt;
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;h1 id=&quot;bfs로-풀다-틀린-코드&quot;&gt;BFS로 풀다 틀린 코드&lt;/h1&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 11/01/2019.
+// Created by Keith_Lee on 13/01/2019.
 //
 
 #include &amp;lt;iostream&amp;gt;
-#include &amp;lt;vector&amp;gt;
+#include &amp;lt;queue&amp;gt;
 
 using namespace std;
 
-int N;
+int N, M;
 
-int maximum(vector&amp;lt;int&amp;gt; numbers){
+int dx[4] = {0, 0, 1, -1};
+int dy[4] = {1, -1, 0, 0};
+
+int map[501][501];
+
+int BFS(int startX, int startY){
     int result = 0;
+    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
 
-    for(int i=0; i&amp;lt;numbers.size(); i++){
-        if(numbers[i] &amp;gt; result){
-            result = numbers[i];
+    Queue.push(make_pair(startX, startY));
+
+//    vector&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; visits;
+
+    while(!Queue.empty()){
+        int currentX = Queue.front().first;
+        int currentY = Queue.front().second;
+        Queue.pop();
+
+//        visits.push_back(make_pair(currentX, currentY));
+
+        if(currentX == N &amp;amp;&amp;amp; currentY == M){
+//            for(int i=0; i&amp;lt;visits.size(); i++){
+//                cout &amp;lt;&amp;lt; map[visits[i].first][visits[i].second] &amp;lt;&amp;lt; ' ';
+//            }
+//            cout &amp;lt;&amp;lt; '\n';
+//            visits.clear();
+            result++;
+        }
+
+        for(int i=0; i&amp;lt;4; i++){
+            int nextX = currentX + dx[i];
+            int nextY = currentY + dy[i];
+
+            if(nextX &amp;gt; 0 &amp;amp;&amp;amp; nextX &amp;lt;= N &amp;amp;&amp;amp; nextY &amp;gt; 0 &amp;amp;&amp;amp; nextY &amp;lt;= N){
+                if(map[currentX][currentY] &amp;gt; map[nextX][nextY]){
+                    Queue.push(make_pair(nextX, nextY));
+                }
+            }
         }
     }
 
-    numbers.clear();
     return result;
 }
 
 int main(){
-    cin &amp;gt;&amp;gt; N;
+    cin &amp;gt;&amp;gt; M &amp;gt;&amp;gt; N;
 
-    int DP[10001];
-    int score[10001];
-
-    for(int i=1; i&amp;lt;=N; i++){
-        cin &amp;gt;&amp;gt; score[i];
+    for(int i=1; i&amp;lt;=M; i++) {
+        for (int j = 1; j &amp;lt;= N; j++) {
+            cin &amp;gt;&amp;gt; map[i][j];
+        }
     }
 
-    vector&amp;lt;int&amp;gt; to_compare;
-
-    DP[1] = score[1];
-    DP[2] = max(score[1] + score[2], score[2]);
-
-    for(int i=3; i&amp;lt;=N; i++){
-        to_compare.push_back(DP[i-1]);
-        to_compare.push_back(DP[i-2] + score[i]);
-        to_compare.push_back(DP[i-3] + score[i] + score[i-1]);
-        DP[i] = maximum(to_compare);
-    }
-
-    cout &amp;lt;&amp;lt; DP[N] &amp;lt;&amp;lt; '\n';
+    cout &amp;lt;&amp;lt; BFS(1, 1) &amp;lt;&amp;lt; '\n';
 
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 2156번 Link: 2156번: 포도주 시식</summary></entry><entry><title type="html">5th week summary</title><link href="keithlee94.github.io/java/5th-Week-Summary/" rel="alternate" type="text/html" title="5th week summary" /><published>2019-01-11T00:00:00+09:00</published><updated>2019-01-11T00:00:00+09:00</updated><id>keithlee94.github.io/java/5th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/5th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 13/01/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;memory.h&amp;gt;
+
+using namespace std;
+
+int N, M;
+
+int map[501][501];
+int DP[501][501];
+
+int dx[4] = {0, 0, 1, -1};
+int dy[4] = {1, -1, 0, 0};
+
+int DFS(int startX, int startY){
+    if(DP[startX][startY] != -1){
+        return DP[startX][startY];
+    }
+    if(startX &amp;lt; 0 || startX &amp;gt;= N || startY &amp;lt; 0 || startY &amp;gt;= M){
+        return 0;
+    }
+    if(startX == 0 &amp;amp;&amp;amp; startY == 0){
+        return 1;
+    }
+
+    DP[startX][startY] = 0;
+
+    for(int i=0; i&amp;lt;4; i++){
+        int nextX = startX + dx[i];
+        int nextY = startY + dy[i];
+
+        if(map[nextX][nextY] &amp;gt; map[startX][startY]){
+            DP[startX][startY] += DFS(nextX, nextY);
+        }
+    }
+
+    return DP[startX][startY];
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
+
+    for(int i=0; i&amp;lt;N; i++){
+        for(int j=0; j&amp;lt;M; j++){
+            cin &amp;gt;&amp;gt; map[i][j];
+        }
+    }
+    memset(DP, -1, sizeof(DP));
+
+    cout &amp;lt;&amp;lt; DFS(N-1, M-1) &amp;lt;&amp;lt; '\n';
+
+    for(int i=0; i&amp;lt;N; i++){
+        for(int j=0; j&amp;lt;M; j++){
+            cout &amp;lt;&amp;lt; DP[i][j] &amp;lt;&amp;lt; ' ';
+        }
+        cout &amp;lt;&amp;lt; '\n';
+    }
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><category term="DFS" /><category term="BFS" /><summary type="html">백준 1520번 Link: 1520번: 내리막 길</summary></entry><entry><title type="html">5th week summary</title><link href="keithlee94.github.io/java/5th-Week-Summary/" rel="alternate" type="text/html" title="5th week summary" /><published>2019-01-11T00:00:00+09:00</published><updated>2019-01-11T00:00:00+09:00</updated><id>keithlee94.github.io/java/5th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/5th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;알고리즘-설계-기법&quot;&gt;알고리즘 설계 기법&lt;/h1&gt;
@@ -481,7 +590,84 @@ public class Child extends Parent{
     }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry><entry><title type="html">2293</title><link href="keithlee94.github.io/algorithm/2293/" rel="alternate" type="text/html" title="2293" /><published>2019-01-10T00:00:00+09:00</published><updated>2019-01-10T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2293</id><content type="html" xml:base="keithlee94.github.io/algorithm/2293/">&lt;h1 id=&quot;백준-2293번&quot;&gt;백준 2293번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry><entry><title type="html">2156</title><link href="keithlee94.github.io/algorithm/2156/" rel="alternate" type="text/html" title="2156" /><published>2019-01-11T00:00:00+09:00</published><updated>2019-01-11T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2156</id><content type="html" xml:base="keithlee94.github.io/algorithm/2156/">&lt;h1 id=&quot;백준-2156번&quot;&gt;백준 2156번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2156&quot;&gt;2156번: 포도주 시식&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;문제를 보자마자 예전에 풀었던 계단 오르기와 비슷한 문제라는 생각이 들었다.&lt;/p&gt;
+
+&lt;p&gt;Link: &lt;a href=&quot;https://keithlee94.github.io/KeithLog/algorithm/2579/&quot;&gt;2579번: 계단 오르기&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;차이점이 있다면 계단 오르기의 경우 마지막 계단을 반드시 밟아야 했지만, 이 문제는 3잔을 연속으로 마실 수 없다는 제약을 제외하면 어떠한 제약사항이 없다는 점이다.&lt;/p&gt;
+
+&lt;p&gt;점화식으로 풀어야 한다는 점은 동일하다.&lt;/p&gt;
+
+&lt;p&gt;예전에 계단 오르기를 풀때 점화식 세우는 과정을 제대로 이해하지 못한 것 같다.&lt;/p&gt;
+
+&lt;p&gt;이번 문제에서도 점화식 세우는데 많은 어려움을 겪었고, 결국 에전에 풀었던 계단 오르기 문제를 다시 보면서 점화식을 어떻게 세워야 하는지 생각했다.&lt;/p&gt;
+
+&lt;p&gt;또, 마지막 계단을 반드시 밟아야 한다는 제약사항을 빼고 구현하는 방법에 대해서도 많이 고민했던것 같다.&lt;/p&gt;
+
+&lt;p&gt;결론적으로는 답을 찾아서 풀었다.&lt;/p&gt;
+
+&lt;p&gt;점화식 세우는 연습은 얼마나 해야 점화식을 세울 줄 알게 되려나??&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 11/01/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int N;
+
+int maximum(vector&amp;lt;int&amp;gt; numbers){
+    int result = 0;
+
+    for(int i=0; i&amp;lt;numbers.size(); i++){
+        if(numbers[i] &amp;gt; result){
+            result = numbers[i];
+        }
+    }
+
+    numbers.clear();
+    return result;
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N;
+
+    int DP[10001];
+    int score[10001];
+
+    for(int i=1; i&amp;lt;=N; i++){
+        cin &amp;gt;&amp;gt; score[i];
+    }
+
+    vector&amp;lt;int&amp;gt; to_compare;
+
+    DP[1] = score[1];
+    DP[2] = max(score[1] + score[2], score[2]);
+
+    for(int i=3; i&amp;lt;=N; i++){
+        to_compare.push_back(DP[i-1]);
+        to_compare.push_back(DP[i-2] + score[i]);
+        to_compare.push_back(DP[i-3] + score[i] + score[i-1]);
+        DP[i] = maximum(to_compare);
+    }
+
+    cout &amp;lt;&amp;lt; DP[N] &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 2156번 Link: 2156번: 포도주 시식</summary></entry><entry><title type="html">2293</title><link href="keithlee94.github.io/algorithm/2293/" rel="alternate" type="text/html" title="2293" /><published>2019-01-10T00:00:00+09:00</published><updated>2019-01-10T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2293</id><content type="html" xml:base="keithlee94.github.io/algorithm/2293/">&lt;h1 id=&quot;백준-2293번&quot;&gt;백준 2293번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2293&quot;&gt;2293번: 동전 1&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -722,33 +908,15 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 10844번 Link: 10844번: 쉬운 계단 수</summary></entry><entry><title type="html">Swea_5215</title><link href="keithlee94.github.io/algorithm/SWEA_5215/" rel="alternate" type="text/html" title="Swea_5215" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_5215</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_5215/">&lt;h1 id=&quot;swea-5215번&quot;&gt;SWEA 5215번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AWT-lPB6dHUDFAVT&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;5215번: 햄버거 다이어트&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 10844번 Link: 10844번: 쉬운 계단 수</summary></entry><entry><title type="html">Swea_1289</title><link href="keithlee94.github.io/algorithm/SWEA_1289/" rel="alternate" type="text/html" title="Swea_1289" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_1289</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_1289/">&lt;h1 id=&quot;swea-1289번&quot;&gt;SWEA 1289번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AV19AcoKI9sCFAZN&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;1289번: 원재의 메모리 복구하기&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;완전탐색으로 최적의 조합을 구하는 문제.&lt;/p&gt;
+&lt;p&gt;무난하게 풀었던 구현 문제.&lt;/p&gt;
 
-&lt;p&gt;문제 보자마자 ‘이건 DFS쓰면 풀리겠구나’ 하는 생각은 들었다.&lt;/p&gt;
-
-&lt;p&gt;이렇게 생각하고 풀었는데, DFS 구현에서 정말 많이 헤맸다.&lt;/p&gt;
-
-&lt;p&gt;DFS랑 BFS는 그래도 구현방법을 다 외우고 있었다고 생각했었는데 벌써 다 까먹은 모양이다.&lt;/p&gt;
-
-&lt;p&gt;예전에 코딩테스트 볼때도 확실하게 몰랐던거니 당연할수도.&lt;/p&gt;
-
-&lt;p&gt;어떻게든 고쳐서 해보다 안되서 답 찾아서 풀었다.&lt;/p&gt;
-
-&lt;p&gt;핵심은 DFS를 쓰긴 하는데 각각의 재료를 포함했을때와 포함하지 않았을때를 반드시 같이 돌려야 한다는것.&lt;/p&gt;
-
-&lt;p&gt;제약조건에 따라 포함하거나 포함안하거나 따지면서 DFS 두번 돌리면 바로 풀린다.&lt;/p&gt;
-
-&lt;p&gt;아직도 정말 갈길이 멀다고 생각했다.&lt;/p&gt;
-
-&lt;p&gt;DFS, BFS는 자신있다고 생각했는데… 심지어 DFS로 풀어야된다는걸 알면서도 틀려서 더 자괴감 오진다.&lt;/p&gt;
-
-&lt;h1 id=&quot;될때까지-하자&quot;&gt;될때까지 하자.&lt;/h1&gt;
+&lt;p&gt;string 처리에서 살짝 헤맨것 말고는 무난하게 풀었다.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -758,53 +926,50 @@ int main(){
 //
 
 #include &amp;lt;iostream&amp;gt;
-#include &amp;lt;vector&amp;gt;
+#include &amp;lt;string.h&amp;gt;
 
 using namespace std;
 
 int T;
-int N, L;
-int maximum = 0;
-
-vector&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; base;
-
-void DFS(int start, int calory, int score){
-    if(start == N){
-        maximum = maximum &amp;gt; score ? maximum : score;
-        return;
-    }
-    if(calory + base[start].second &amp;lt;= L){
-        DFS(start+1, calory+base[start].second, score+base[start].first); // start번째 재료 추가
-    }
-    DFS(start+1, calory, score); // start번째 재료 거름
-}
 
 int main(){
     cin &amp;gt;&amp;gt; T;
 
+    string input = &quot;&quot;;
+
     for(int test=1; test&amp;lt;=T; test++){
-        cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; L;
+        int count = 0;
+        string modified = &quot;&quot;;
 
-        for(int i=0; i&amp;lt;N; i++){
-            int calory;
-            int score;
+        cin &amp;gt;&amp;gt; input;
 
-            cin &amp;gt;&amp;gt; score &amp;gt;&amp;gt; calory;
-
-            base.push_back(make_pair(score, calory));
+        for(int i=0; i&amp;lt;input.length(); i++){
+            modified.push_back('0');
         }
 
-        DFS(0, 0, 0);
-
-        cout &amp;lt;&amp;lt; '#' &amp;lt;&amp;lt; test &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; maximum &amp;lt;&amp;lt; '\n';
-        while(!base.empty()){
-            base.pop_back();
+        for(int i=0; i&amp;lt;input.length(); i++){
+            if(modified[i] != input[i]){
+                if(input[i] == '0'){
+                    for(int j=i; j&amp;lt;modified.length(); j++){
+                        modified[j] = '0';
+                    }
+                }
+                else if(input[i] == '1'){
+                    for(int j=i; j&amp;lt;modified.length(); j++){
+                        modified[j] = '1';
+                    }
+                }
+                count++;
+            }
         }
-        maximum = 0;
+
+        cout &amp;lt;&amp;lt; '#' &amp;lt;&amp;lt; test &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; count &amp;lt;&amp;lt; '\n';
     }
+
+    return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><summary type="html">SWEA 5215번 Link: 5215번: 햄버거 다이어트</summary></entry><entry><title type="html">Swea_3307</title><link href="keithlee94.github.io/algorithm/SWEA_3307/" rel="alternate" type="text/html" title="Swea_3307" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_3307</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_3307/">&lt;h1 id=&quot;swea-3307번&quot;&gt;SWEA 3307번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Realization" /><summary type="html">SWEA 1289번 Link: 1289번: 원재의 메모리 복구하기</summary></entry><entry><title type="html">Swea_3307</title><link href="keithlee94.github.io/algorithm/SWEA_3307/" rel="alternate" type="text/html" title="Swea_3307" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_3307</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_3307/">&lt;h1 id=&quot;swea-3307번&quot;&gt;SWEA 3307번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AWBOKg-a6l0DFAWr&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;3307번: 최장 증가 부분 수열&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -890,15 +1055,33 @@ int main(){
     }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">SWEA 3307번 Link: 3307번: 최장 증가 부분 수열</summary></entry><entry><title type="html">Swea_1289</title><link href="keithlee94.github.io/algorithm/SWEA_1289/" rel="alternate" type="text/html" title="Swea_1289" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_1289</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_1289/">&lt;h1 id=&quot;swea-1289번&quot;&gt;SWEA 1289번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AV19AcoKI9sCFAZN&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;1289번: 원재의 메모리 복구하기&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">SWEA 3307번 Link: 3307번: 최장 증가 부분 수열</summary></entry><entry><title type="html">Swea_5215</title><link href="keithlee94.github.io/algorithm/SWEA_5215/" rel="alternate" type="text/html" title="Swea_5215" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_5215</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_5215/">&lt;h1 id=&quot;swea-5215번&quot;&gt;SWEA 5215번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AWT-lPB6dHUDFAVT&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;5215번: 햄버거 다이어트&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;무난하게 풀었던 구현 문제.&lt;/p&gt;
+&lt;p&gt;완전탐색으로 최적의 조합을 구하는 문제.&lt;/p&gt;
 
-&lt;p&gt;string 처리에서 살짝 헤맨것 말고는 무난하게 풀었다.&lt;/p&gt;
+&lt;p&gt;문제 보자마자 ‘이건 DFS쓰면 풀리겠구나’ 하는 생각은 들었다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 생각하고 풀었는데, DFS 구현에서 정말 많이 헤맸다.&lt;/p&gt;
+
+&lt;p&gt;DFS랑 BFS는 그래도 구현방법을 다 외우고 있었다고 생각했었는데 벌써 다 까먹은 모양이다.&lt;/p&gt;
+
+&lt;p&gt;예전에 코딩테스트 볼때도 확실하게 몰랐던거니 당연할수도.&lt;/p&gt;
+
+&lt;p&gt;어떻게든 고쳐서 해보다 안되서 답 찾아서 풀었다.&lt;/p&gt;
+
+&lt;p&gt;핵심은 DFS를 쓰긴 하는데 각각의 재료를 포함했을때와 포함하지 않았을때를 반드시 같이 돌려야 한다는것.&lt;/p&gt;
+
+&lt;p&gt;제약조건에 따라 포함하거나 포함안하거나 따지면서 DFS 두번 돌리면 바로 풀린다.&lt;/p&gt;
+
+&lt;p&gt;아직도 정말 갈길이 멀다고 생각했다.&lt;/p&gt;
+
+&lt;p&gt;DFS, BFS는 자신있다고 생각했는데… 심지어 DFS로 풀어야된다는걸 알면서도 틀려서 더 자괴감 오진다.&lt;/p&gt;
+
+&lt;h1 id=&quot;될때까지-하자&quot;&gt;될때까지 하자.&lt;/h1&gt;
 
 &lt;hr /&gt;
 
@@ -908,50 +1091,53 @@ int main(){
 //
 
 #include &amp;lt;iostream&amp;gt;
-#include &amp;lt;string.h&amp;gt;
+#include &amp;lt;vector&amp;gt;
 
 using namespace std;
 
 int T;
+int N, L;
+int maximum = 0;
+
+vector&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; base;
+
+void DFS(int start, int calory, int score){
+    if(start == N){
+        maximum = maximum &amp;gt; score ? maximum : score;
+        return;
+    }
+    if(calory + base[start].second &amp;lt;= L){
+        DFS(start+1, calory+base[start].second, score+base[start].first); // start번째 재료 추가
+    }
+    DFS(start+1, calory, score); // start번째 재료 거름
+}
 
 int main(){
     cin &amp;gt;&amp;gt; T;
 
-    string input = &quot;&quot;;
-
     for(int test=1; test&amp;lt;=T; test++){
-        int count = 0;
-        string modified = &quot;&quot;;
+        cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; L;
 
-        cin &amp;gt;&amp;gt; input;
+        for(int i=0; i&amp;lt;N; i++){
+            int calory;
+            int score;
 
-        for(int i=0; i&amp;lt;input.length(); i++){
-            modified.push_back('0');
+            cin &amp;gt;&amp;gt; score &amp;gt;&amp;gt; calory;
+
+            base.push_back(make_pair(score, calory));
         }
 
-        for(int i=0; i&amp;lt;input.length(); i++){
-            if(modified[i] != input[i]){
-                if(input[i] == '0'){
-                    for(int j=i; j&amp;lt;modified.length(); j++){
-                        modified[j] = '0';
-                    }
-                }
-                else if(input[i] == '1'){
-                    for(int j=i; j&amp;lt;modified.length(); j++){
-                        modified[j] = '1';
-                    }
-                }
-                count++;
-            }
-        }
+        DFS(0, 0, 0);
 
-        cout &amp;lt;&amp;lt; '#' &amp;lt;&amp;lt; test &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; count &amp;lt;&amp;lt; '\n';
+        cout &amp;lt;&amp;lt; '#' &amp;lt;&amp;lt; test &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; maximum &amp;lt;&amp;lt; '\n';
+        while(!base.empty()){
+            base.pop_back();
+        }
+        maximum = 0;
     }
-
-    return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Realization" /><summary type="html">SWEA 1289번 Link: 1289번: 원재의 메모리 복구하기</summary></entry><entry><title type="html">1463</title><link href="keithlee94.github.io/algorithm/1463/" rel="alternate" type="text/html" title="1463" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1463</id><content type="html" xml:base="keithlee94.github.io/algorithm/1463/">&lt;h1 id=&quot;백준-1463번&quot;&gt;백준 1463번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><summary type="html">SWEA 5215번 Link: 5215번: 햄버거 다이어트</summary></entry><entry><title type="html">1463</title><link href="keithlee94.github.io/algorithm/1463/" rel="alternate" type="text/html" title="1463" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1463</id><content type="html" xml:base="keithlee94.github.io/algorithm/1463/">&lt;h1 id=&quot;백준-1463번&quot;&gt;백준 1463번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1463&quot;&gt;1463번: 1로 만들기&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1023,84 +1209,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1463번 Link: 1463번: 1로 만들기</summary></entry><entry><title type="html">2579</title><link href="keithlee94.github.io/algorithm/2579/" rel="alternate" type="text/html" title="2579" /><published>2019-01-04T00:00:00+09:00</published><updated>2019-01-04T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2579</id><content type="html" xml:base="keithlee94.github.io/algorithm/2579/">&lt;h1 id=&quot;백준-2579번&quot;&gt;백준 2579번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2579&quot;&gt;2579번: 계단 오르기&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;오늘도 DP문제다.&lt;/p&gt;
-
-&lt;p&gt;그리고 오늘도 내힘으로 푸는데 실패.&lt;/p&gt;
-
-&lt;p&gt;앞선 두문제와 비슷하면서도 달랐는데, 이번 문제를 풀수 있느냐 없느냐는 문제를 보고 조건을 이해하여 점화식을 세울 수 있는지였다.&lt;/p&gt;
-
-&lt;p&gt;물론 나는 점화식 못세워서 예전 코드 보고, 검색해서 그제서야 이해해서 풀었다.&lt;/p&gt;
-
-&lt;p&gt;점화식 세우는 방법은 우선 DP배열의 3번째까지 채우는 방법과 동일했다.&lt;/p&gt;
-
-&lt;p&gt;그전에 이 문제에서 DP 배열의 의미를 이해할 필요가 있었다.&lt;/p&gt;
-
-&lt;p&gt;DP[N]이란 N번째 계단을 밟았음을 의미한다.&lt;/p&gt;
-
-&lt;p&gt;이렇게 이해하고 시작해보면 DP[1]은 첫번째 계단을 밟은것이므로 score[1]이 된다.&lt;/p&gt;
-
-&lt;p&gt;DP[2]는 첫번째 계단, 두번째 계단을 둘 다 밟았을때와 두번째 계단만 밟았을때의 점수를 비교하여 큰 값이 곧 DP[2]의 값이 된다.&lt;/p&gt;
-
-&lt;p&gt;DP[3]은 조건에 의해 세 계단을 연속으로 밟을 수 없고, 한번에 최대 2개의 계단만 오를 수 있으므로 첫번째 계단과 세번째 계단을 밟았을 때, 두번째 계단과 세번째 계단을 밟았을때의 점수를 비교하여 큰 값이 DP[3]이 된다.&lt;/p&gt;
-
-&lt;p&gt;DP[4]를 생각해보자. DP[4]는 첫번째 계단, 세번째 계단, 네번째 계단의 점수를 더한 값과 첫번째 계단, 두번째 계단, 네번째 계단의 점수를 더한 값을 비교하여 더 큰 값이 DP[4]이다.&lt;/p&gt;
-
-&lt;p&gt;이는 곧 DP[1] + score[3] + score[4], DP[2] + score[4]를 비교하는 것과 같다.&lt;/p&gt;
-
-&lt;p&gt;이를 토대로 점화식을 세워 보면, DP[N] = max(DP[N-3] + score[N-1] + score[N], DP[N-2] + score[N])이라는 점화식을 얻을 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이 점화식대로 풀면 풀리는 문제다.&lt;/p&gt;
-
-&lt;p&gt;항상 느끼는건데 점화식 세우는게 정말 너무 어렵다. 규칙은 나름대로 찾은것 같지만 뭔가 나사 하나씩은 꼭 빠져있다는 생각이 든다.&lt;/p&gt;
-
-&lt;p&gt;푸는방법 까먹을때쯤 한번 더 풀어봐야 할 문제인것 같다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 04/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-
-using namespace std;
-
-int N;
-
-int max(int a, int b){
-    return (a &amp;gt; b) ? a : b;
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; N;
-
-    int DP[N+1];
-    int score[N+1];
-
-    for(int i=1; i&amp;lt;=N; i++){
-        cin &amp;gt;&amp;gt; score[i];
-    }
-
-    DP[1] = score[1];
-    DP[2] = max(score[1] + score[2], score[2]);
-    DP[3] = max(score[1] + score[3], score[2] + score[3]);
-
-    for(int i=4; i&amp;lt;=N; i++){
-        DP[i] = max(DP[i-2] + score[i], DP[i-3] + score[i] + score[i-1]);
-    }
-
-    cout &amp;lt;&amp;lt; DP[N] &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 2579번 Link: 2579번: 계단 오르기</summary></entry><entry><title type="html">4th week summary</title><link href="keithlee94.github.io/java/4th-Week-Summary/" rel="alternate" type="text/html" title="4th week summary" /><published>2019-01-04T00:00:00+09:00</published><updated>2019-01-04T00:00:00+09:00</updated><id>keithlee94.github.io/java/4th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/4th-Week-Summary/">&lt;h1 id=&quot;java-스터디-내용-정리&quot;&gt;Java 스터디 내용 정리&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1463번 Link: 1463번: 1로 만들기</summary></entry><entry><title type="html">4th week summary</title><link href="keithlee94.github.io/java/4th-Week-Summary/" rel="alternate" type="text/html" title="4th week summary" /><published>2019-01-04T00:00:00+09:00</published><updated>2019-01-04T00:00:00+09:00</updated><id>keithlee94.github.io/java/4th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/4th-Week-Summary/">&lt;h1 id=&quot;java-스터디-내용-정리&quot;&gt;Java 스터디 내용 정리&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;project-package-분리-이유&quot;&gt;Project, Package 분리 이유&lt;/h1&gt;
