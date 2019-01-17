@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2293 - KeithLog</title>
-<meta name="description" content="백준 2293번Link: 2293번: 동전 1">
+<!-- begin _includes/seo.html --><title>16234 - KeithLog</title>
+<meta name="description" content="백준 16234번Link: 16234번: 인구 이동">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2293">
-<meta property="og:url" content="keithlee94.github.io/algorithm/2293/">
+<meta property="og:title" content="16234">
+<meta property="og:url" content="keithlee94.github.io/algorithm/16234/">
 
 
-  <meta property="og:description" content="백준 2293번Link: 2293번: 동전 1">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-10T00:00:00+09:00">
+  <meta property="og:description" content="백준 16234번Link: 16234번: 인구 이동">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-01-17T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/2293/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/16234/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2293">
-    <meta itemprop="description" content="백준 2293번Link: 2293번: 동전 1">
-    <meta itemprop="datePublished" content="January 10, 2019">
+    <meta itemprop="headline" content="16234">
+    <meta itemprop="description" content="백준 16234번Link: 16234번: 인구 이동">
+    <meta itemprop="datePublished" content="January 17, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2293
+          <h1 id="page-title" class="page__title" itemprop="headline">16234
 </h1>
           
         </header>
@@ -286,169 +286,186 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-2293번">백준 2293번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/2293">2293번: 동전 1</a></p>
+        <h1 id="백준-16234번">백준 16234번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/16234">16234번: 인구 이동</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>이 문제도 어떻게든 DP로 풀어보려 온갖 방법으로 생각해봤다.</p>
+<p>작년 하반기 삼성 SW 역량테스트 문제다.</p>
 
-<p>우선 각 동전들에 대해 최대로 쓸 수 있는 갯수를 구한 다음 하나씩 빼가면서 조합을 구하려고 생각해봤다.</p>
+<p>시험장에서 문제 보고 뭔가싶어서 바로 넘기고 다른문제 올인하다 결국 둘다 못풀어서 광탈했던 악몽이 다시 떠오른다.</p>
 
-<p>그런데 동전이 몇종류나 있을지도 모르고 시간도 그만큼 오래걸릴것 같아 이 생각은 접었다.</p>
+<p>아무 문제나 붙잡고 풀다가 다 안풀려서 어차피 한번은 풀어야될 문제라 결국 붙잡고 풀었다.</p>
 
-<p>암만 고민해봐도 이 방법 말고는 떠오르는 방법이 없어 결국 답을 찾아봤다.</p>
+<p>예전부터 지인들이 니가 문제보고 쫄아서그렇지 별거 아닌문제다 라는 말을 했었는데 막상 풀어보니 틀린말은 아닌거같다.</p>
 
-<p>답 찾아보니 점화식을 세울줄 알아야 풀 수 있는 문제더라.</p>
+<p>하지만 내가 저날 시험장에서 이문제를 제대로 읽고 이해했다고 해도 시간안에 푸는건 무리였을것 같다.</p>
 
-<p>심지어 그 점화식을 어떻게 세우는지에 대해서도 설명이 자세하게 나와있는게 잘 없어서 한참 뒤지면서 여러개 찾아보다가 겨우 이해했다.</p>
+<p>BFS를 여러번 해야되는 문제다.</p>
 
-<p>어떤 블로그에서 표를 그려가면서 풀면 금방 이해하고 점화식을 세울 수 있을거라 했는데, 점화식에 대해 이해하고 나니 왜 그렇게 말했는지 알 것 같다.</p>
+<p>map에서 수정할 부분이 어디인지 찾아내는 부분에서 BFS를 해야 하고, 수정할 부분을 찾은 다음 map을 수정하기 위한 BFS를 해야하는 문제.</p>
 
-<p>점화식을 구하는 과정이다.</p>
-<ol>
-  <li>1원만 쓸 때 각 금액에 대해 나올 수 있는 경우의 수
-    <blockquote>
-      <table>
-        <tbody>
-          <tr>
-            <td>1원</td>
-            <td>2원</td>
-            <td>3원</td>
-            <td>4원</td>
-            <td>5원</td>
-            <td>6원</td>
-            <td>7원</td>
-            <td>8원</td>
-            <td>9원</td>
-            <td>10원</td>
-          </tr>
-        </tbody>
-      </table>
-    </blockquote>
-  </li>
-</ol>
+<p>거기다 이 과정을 더이상 수정할 부분이 없을때까지 반복해야 한다.</p>
 
-<blockquote>
-  <p>{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}</p>
-</blockquote>
+<p>BFS문제라는 느낌은 확실히 들었다.</p>
 
-<ol>
-  <li>2원도 쓸 때 각 금액에 대해 나올 수 있는 경우의 수
-    <blockquote>
-      <table>
-        <tbody>
-          <tr>
-            <td>1원</td>
-            <td>2원</td>
-            <td>3원</td>
-            <td>4원</td>
-            <td>5원</td>
-            <td>6원</td>
-            <td>7원</td>
-            <td>8원</td>
-            <td>9원</td>
-            <td>10원</td>
-          </tr>
-        </tbody>
-      </table>
-    </blockquote>
-  </li>
-</ol>
+<p>처음에 문제 접했을땐 map에서 수정할 부분을 찾는 과정에 대해 BFS를 써야겠다는 생각이 안들었다.</p>
 
-<blockquote>
-  <p>{1, 2, 2, 3, 3, 4, 4, 5, 5, 6}</p>
-</blockquote>
+<p>그래서 3중 for문을 사용해서 수정할 부분을 찾아 마킹했다.</p>
 
-<h3 id="규칙">규칙</h3>
-<p><strong>2원 경우의수 = 1원, 2원을 쓸때 0원 경우의수 + 1원만 쓸때 2원에 대한 경우의 수</strong></p>
+<p>그 이후 map을 수정하는 부분에 대해서는 BFS로 구현하여 풀어보았다.</p>
 
-<p><strong>3원 경우의수 = 1원, 2원을 쓸때 1원 경우의수 + 1원만 쓸때 3원에 대한 경우의 수</strong></p>
+<p>풀어본 다음 테스트케이스들을 넣어보니, 단순히 3중 for문으로는 풀수 없는 문제라는 것을 깨달았다.</p>
 
-<p><strong>4원 경우의수 = 1원, 2원을 쓸때 2원 경우의수 + 1원만 쓸때 4원에 대한 경우의 수</strong></p>
+<p>마지막까지 가장 애먹였던 부분이 이부분인데, map에서 수정할 부분을 단순히 1로 마킹할 경우 영역간 경계가 있으나 이 경계를 무시하고 BFS를 진행하는 문제가 생긴다.</p>
 
-<p>…</p>
+<p>BFS로 바꿔서 해보고도 마지막에 이부분을 놓쳐 한번 더 삽질하다 결국 풀었다.</p>
 
-<p><strong>1원, 2원을 쓸때 K원을 만드는 경우의 수: DP[K] += DP[K - 2]</strong></p>
+<p>막상 풀고나니 별거 아닌건 맞는데, 시험장의 압박감과 이 시험볼 당시 알고리즘 공부도 어설프게 하고 간 나는 절대 못풀었을 것 같다는 생각이 들었다.</p>
 
-<ol>
-  <li>5원도 쓸 때 각 금액에 대해 나올 수 있는 경우의 수
-    <blockquote>
-      <table>
-        <tbody>
-          <tr>
-            <td>1원</td>
-            <td>2원</td>
-            <td>3원</td>
-            <td>4원</td>
-            <td>5원</td>
-            <td>6원</td>
-            <td>7원</td>
-            <td>8원</td>
-            <td>9원</td>
-            <td>10원</td>
-          </tr>
-        </tbody>
-      </table>
-    </blockquote>
-  </li>
-</ol>
+<p>얻어가는 점은 몇번씩 실패하고도 남의 도움 안받고 내 힘만으로 풀어냈다는 점, BFS문제를 혼자 힘만으로 제대로 풀어냈다는 점이다.</p>
 
-<blockquote>
-  <p>{1, 2, 2, 3, 4, 5, 6, 7, 8, 10}</p>
-</blockquote>
+<p>이런 점을 밑거름삼아 앞으로 있을 역량테스트에서도 포기하지 않고 끝까지 풀어내는 것이 목표이다.</p>
 
-<h3 id="규칙-1">규칙</h3>
-<p><strong>6원 경우의수 = 1원, 2원, 5원을 쓸때 6원 경우의수 + 1원, 2원을 쓸때 6원에 대한 경우의 수</strong></p>
-
-<p><strong>7원 경우의수 = 1원, 2원, 5원을 쓸때 7원 경우의수 + 1원, 2원을 쓸때 7원에 대한 경우의 수</strong></p>
-
-<p>…</p>
-
-<p><strong>1원, 2원, 5원을 쓸때 K원을 만드는 경우의 수: DP[K] += DP[K - 5]</strong></p>
-
-<h1 id="최종-점화식-x원을-추가했을때-k원을-만드는-경우의-수-dpk--dpk---x">최종 점화식: x원을 추가했을때 K원을 만드는 경우의 수: DP[K] += DP[K - x]</h1>
-
-<p>이대로 코드로 옮기면 풀린다.</p>
-
-<p>작은문제로 쪼개고 그 결과를 저장하며 DP문제를 해결하는 유형에 대해서는 어떻게든 방법을 생각해낼 수 있을것 같은데, 점화식 짜서 풀어야되는 문제는 정말 답이 없는것 같다.</p>
+<p><strong><em>다시는 악몽 안꾸련다. 앞으로도 화이팅!!!</em></strong></p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 10/01/2019.
+// Created by Keith_Lee on 15/01/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;algorithm&gt;
+#include &lt;memory.h&gt;
+#include &lt;queue&gt;
 #include &lt;vector&gt;
 
 using namespace std;
 
-int N, K;
+int N, L, R;
+int dx[] = {0, 0, 1, -1};
+int dy[] = {1, -1, 0, 0};
 
-int main(){
-    cin &gt;&gt; N &gt;&gt; K;
+int map[50][50] = {0, };
+int toChange[50][50] = {0, };
+int visit[50][50] = {0, };
 
-    int DP[10001] = {0, };
-    int coins[101];
+vector&lt;pair&lt;int, int&gt;&gt; changes(){
+    vector&lt;pair&lt;int, int&gt;&gt; result;
 
-    for(int i=1; i&lt;=N; i++){
-        cin &gt;&gt; coins[i];
-    }
-
-    DP[0] = 1;
-
-    for(int i=1; i&lt;=N; i++){
-        for(int j=1; j&lt;=K; j++){
-            if(j &gt;= coins[i]){
-                DP[j] += DP[j - coins[i]];
+    for(int i=0; i&lt;N; i++){
+        for(int j=0; j&lt;N; j++){
+            if(toChange[i][j] != 0){
+                result.push_back(make_pair(i, j));
             }
         }
     }
 
-    cout &lt;&lt; DP[K] &lt;&lt; '\n';
+    return result;
+}
+
+void toChange_init(){
+    int areaCount = 1;
+
+    for(int i=0; i&lt;N; i++){
+        for(int j=0; j&lt;N; j++){
+            queue&lt;pair&lt;int, int&gt;&gt; Queue;
+            Queue.push(make_pair(i, j));
+
+            while(!Queue.empty()){
+                int currentX = Queue.front().first;
+                int currentY = Queue.front().second;
+                Queue.pop();
+
+                for(int k=0; k&lt;4; k++){
+                    int nextX = currentX + dx[k];
+                    int nextY = currentY + dy[k];
+
+                    if(nextX &gt;= 0 &amp;&amp; nextX &lt; N &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
+                        int gap = abs(map[currentX][currentY] - map[nextX][nextY]);
+                        if(gap &gt;= L &amp;&amp; gap &lt;= R &amp;&amp; toChange[nextX][nextY] == 0){
+                            toChange[nextX][nextY] = areaCount;
+                            Queue.push(make_pair(nextX, nextY));
+                        }
+                    }
+                }
+            }
+
+            areaCount++;
+        }
+    }
+}
+
+void BFS(int currentX, int currentY){
+    vector&lt;pair&lt;int, int&gt;&gt; visited;
+
+    queue&lt;pair&lt;int, int&gt;&gt; Queue;
+    Queue.push(make_pair(currentX, currentY));
+
+    int changeCount = 0;
+    int changeSum = 0;
+    visit[currentX][currentY] = 1;
+
+    while(!Queue.empty()){
+        int startX = Queue.front().first;
+        int startY = Queue.front().second;
+        Queue.pop();
+
+        changeCount++;
+        changeSum += map[startX][startY];
+        visited.push_back(make_pair(startX, startY));
+
+        for(int i=0; i&lt;4; i++){
+            int nextX = startX + dx[i];
+            int nextY = startY + dy[i];
+
+            if(nextX &gt;= 0 &amp;&amp; nextX &lt; N &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
+                if(visit[nextX][nextY] == 0 &amp;&amp; toChange[nextX][nextY] == toChange[startX][startY]){
+                    Queue.push(make_pair(nextX, nextY));
+                    visit[nextX][nextY] = 1;
+                }
+            }
+        }
+    }
+
+    for(int i=0; i&lt;visited.size(); i++){
+        map[visited[i].first][visited[i].second] = changeSum / changeCount;
+    }
+}
+
+int main(){
+    cin &gt;&gt; N &gt;&gt; L &gt;&gt; R;
+
+    for(int i=0; i&lt;N; i++){
+        for(int j=0; j&lt;N; j++){
+            cin &gt;&gt; map[i][j];
+        }
+    }
+
+    int count = 0;
+
+    while(true) {
+        memset(toChange, 0, sizeof(toChange));
+        memset(visit, 0, sizeof(visit));
+
+        toChange_init();
+
+        vector&lt;pair&lt;int, int&gt;&gt; ones = changes();
+        if (ones.size() == 0) {
+            break;
+        }
+
+        for (int i = 0; i &lt; ones.size(); i++) {
+            if (visit[ones[i].first][ones[i].second] == 0) {
+                BFS(ones[i].first, ones[i].second);
+            }
+        }
+
+        count++;
+    }
+
+    cout &lt;&lt; count &lt;&lt; '\n';
 
     return 0;
 }
@@ -475,7 +492,11 @@ int main(){
     
       
       
-      <a href="/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
+      <a href="/tags/#bfs" class="page__taxonomy-item" rel="tag">BFS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#dfs" class="page__taxonomy-item" rel="tag">DFS</a>
     
     </span>
   </p>
@@ -503,7 +524,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-10T00:00:00+09:00">January 10, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-17T00:00:00+09:00">January 17, 2019</time></p>
         
       </footer>
 
@@ -512,25 +533,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2293%20keithlee94.github.io%2Falgorithm%2F2293%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=16234%20keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2293%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2293%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2293%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/10844/" class="pagination--pager" title="10844
+      <a href="/algorithm/1520/" class="pagination--pager" title="1520
 ">Previous</a>
     
     
-      <a href="/algorithm/2156/" class="pagination--pager" title="2156
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -544,27 +564,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/16234/" rel="permalink">16234
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 16234번
-Link: 16234번: 인구 이동
-
-</p>
-  </article>
-</div>
         
           
 
@@ -624,6 +623,27 @@ Link: 1520번: 내리막 길
     
     <p class="archive__item-excerpt" itemprop="description">백준 2156번
 Link: 2156번: 포도주 시식
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2293/" rel="permalink">2293
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2293번
+Link: 2293번: 동전 1
 
 </p>
   </article>
