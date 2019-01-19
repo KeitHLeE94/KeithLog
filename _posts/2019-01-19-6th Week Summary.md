@@ -99,6 +99,7 @@ author_profile: true
     - class앞에 붙으면: 상속 불가. 그 클래스 안의 모든 method, field는 내용을 변경할 수 없다.
     - method앞에 붙으면: 오버라이딩 불가, 오버로딩은 가능.
     - field앞에 붙으면: 값 수정 불가.(변수가 상수로 변한다.)
+
 ## 2. static
     - member변수, member메소드, block에 붙일 수 있다.
     - static이 붙은 모든 것들은 main 메소드 실행 전에 Class Area에 한개씩만 생성된다.
@@ -115,6 +116,7 @@ author_profile: true
     - static 메소드 내에서는 this, super 키워드를 사용할 수 없다.
         - 이유: this, super 키워드는 객체가 있을때만 사용 가능하다.
         - static 메소드는 객체가 생성되기 전에 실행되므로 this, super 키워드를 사용할 수 없다.
+
 ## 3. abstract
     - abstract: 추상적인, 구체적이지 않은, 완성되지 않은.
     - abstract 클래스: 클래스 내에 abstract 메소드가 존재한다.
@@ -139,11 +141,10 @@ author_profile: true
 - 다중 상속 지원: implements 키워드를 통해 여러 클래스를 상속 가능하다.
 - extends와 달리 implements 클래스1, 클래스2, ... 형태로 사용 가능.
 - 예:
-```
-class ICircle extends Boat implements IShape, Seoul
-
-// iCircle의 타입이 될 수 있는 것: Boat, IShape, Seol.
-```
+    ```
+    class ICircle extends Boat implements IShape, Seoul
+    => iCircle의 타입이 될 수 있는 것: Boat, IShape, Seoul.
+    ```
 - 의존성 감소: 고치는 부분을 줄일 수 있다 - 유지보수를 편하게 해준다.
 - interface와 interface 간에도 상속관계 성립 가능.
 - interface 예시
@@ -188,11 +189,14 @@ class ICircle extends Boat implements IShape, Seoul
         - 아무 인자 없이 생성시 10칸짜리 Vector가 생성되고, 용량이 부족하면 기존의 크기를 2배로 늘린 후 재배치.
         - Vector.capacity(): Vector 전체의 크기 리턴.
         - Vector.size(): Vector 내 component 갯수 리턴.
+
 ## 2. Set: 집합과 같은 개념.
     - HashSet
+
 ## 3. Map: (Key, Value) 쌍으로 데이터 저장, Key값 중복 불가.
     - HashMap
     - HashTable
+
 - Iterator: 순서 없는 자료구조를 탐색하기 위해 사용함.
 <hr/>
 
@@ -207,27 +211,27 @@ class ICircle extends Boat implements IShape, Seoul
     - 객체 생성시 타입 확정.
     - 결론: compile time에서는 타입이 결정되지 않은 상태, runtime에서 타입이 결정.
 - 예시
-```
-public class MyClass<X>{
-    private X data;
+    ```
+    public class MyClass<X>{
+        private X data;
 
-    public X getData(){
-        return data;
+        public X getData(){
+            return data;
+        }
+
+        public void setData(X data){
+            this.data = data;
+        }
+
+        public static void main(String[] args){
+            MyClass<String> m1 = new MyClass<>();
+            MyClass<Integer> m2 = new MyClass<>();
+            MyClass<Circle> m3 = new MyClass<>();
+        }
     }
 
-    public void setData(X data){
-        this.data = data;
-    }
-
-    public static void main(String[] args){
-        MyClass<String> m1 = new MyClass<>();
-        MyClass<Integer> m2 = new MyClass<>();
-        MyClass<Circle> m3 = new MyClass<>();
-    }
-}
-
-=> m1, m2, m3의 타입은 모두 MyClass로 같다.
-```
+    => m1, m2, m3의 타입은 모두 MyClass로 같다.
+    ```
 <hr/>
 
 # Singleton Pattern
@@ -242,52 +246,52 @@ public class MyClass<X>{
     - 생성자는 Default 생성자만 두는 경우가 대부분이다.
     - 생성자, 생성 메소드 오버로딩하지 않음.
 - 예시
-```
-public class Speaker{
-    private static Speaker speaker;
-    private int volume;
+    ```
+    public class Speaker{
+        private static Speaker speaker;
+        private int volume;
 
-    private Speaker(){
-        volume = 5;
-    }
-
-    public static Speaker getInstance(){
-        if(speaker == null){
-            speaker = new Speaker();
+        private Speaker(){
+            volume = 5;
         }
 
-        return speaker;
+        public static Speaker getInstance(){
+            if(speaker == null){
+                speaker = new Speaker();
+            }
+
+            return speaker;
+        }
+
+        public int getVolume(){
+            return volume;
+        }
+
+        public void setVolume(int volume){
+            this.volume = volume;
+        }
     }
 
-    public int getVolume(){
-        return volume;
+    public class SingletonTest{
+
+        public static void main(String[] args){
+            Speaker s1 = Speaker.getInstance();
+            Speaker s2 = Speaker.getInstance();
+            Speaker s3 = Speaker.getInstance();
+
+            System.out.println(s1 == s2);
+            System.out.prinltn(s2 == s3);
+
+            s1.setVolume(10);
+            System.out.println(s1.getVolume());
+            System.out.println(s2.getVolume());
+            System.out.println(s3.getVolume());
+        }
     }
 
-    public void setVolume(int volume){
-        this.volume = volume;
-    }
-}
-
-public class SingletonTest{
-
-    public static void main(String[] args){
-        Speaker s1 = Speaker.getInstance();
-        Speaker s2 = Speaker.getInstance();
-        Speaker s3 = Speaker.getInstance();
-
-        System.out.println(s1 == s2);
-        System.out.prinltn(s2 == s3);
-
-        s1.setVolume(10);
-        System.out.println(s1.getVolume());
-        System.out.println(s2.getVolume());
-        System.out.println(s3.getVolume());
-    }
-}
-
-실행 결과: s1, s2, s3의 주소값은 전부 같다.
-=> 전부 똑같은 하나의 객체만을 가리키고 있으므로, 한 객체에서 volume을 변경하면 모든 객체의 volume이 똑같이 바뀐다.
-```
+    실행 결과: s1, s2, s3의 주소값은 전부 같다.
+    => 전부 똑같은 하나의 객체만을 가리키고 있으므로, 한 객체에서 volume을 변경하면 모든 객체의 volume이 똑같이 바뀐다.
+    ```
 <hr/>
 
 # Comparable, Comparator

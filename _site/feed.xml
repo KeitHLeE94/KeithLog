@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-01-19T17:58:55+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">6th week summary</title><link href="keithlee94.github.io/java/6th-Week-Summary/" rel="alternate" type="text/html" title="6th week summary" /><published>2019-01-19T00:00:00+09:00</published><updated>2019-01-19T00:00:00+09:00</updated><id>keithlee94.github.io/java/6th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/6th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-19T18:04:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">6th week summary</title><link href="http://localhost:4000/java/6th-Week-Summary/" rel="alternate" type="text/html" title="6th week summary" /><published>2019-01-19T00:00:00+09:00</published><updated>2019-01-19T00:00:00+09:00</updated><id>http://localhost:4000/java/6th%20Week%20Summary</id><content type="html" xml:base="http://localhost:4000/java/6th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;자료구조&quot;&gt;자료구조&lt;/h1&gt;
@@ -136,8 +136,11 @@
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- class, method, variable에 붙일 수 있다.
 - class앞에 붙으면: 상속 불가. 그 클래스 안의 모든 method, field는 내용을 변경할 수 없다.
 - method앞에 붙으면: 오버라이딩 불가, 오버로딩은 가능.
-- field앞에 붙으면: 값 수정 불가.(변수가 상수로 변한다.) ## 2. static
-- member변수, member메소드, block에 붙일 수 있다.
+- field앞에 붙으면: 값 수정 불가.(변수가 상수로 변한다.)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;2-static&quot;&gt;2. static&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- member변수, member메소드, block에 붙일 수 있다.
 - static이 붙은 모든 것들은 main 메소드 실행 전에 Class Area에 한개씩만 생성된다.
     - 실행 전에 만들어진다.
     - 컴파일이 완료된 시점에 생성되므로 따로 객체를 만들 필요가 없다.
@@ -151,8 +154,11 @@
     - static block간 우선순위는 코드 내 순서와 같다.
 - static 메소드 내에서는 this, super 키워드를 사용할 수 없다.
     - 이유: this, super 키워드는 객체가 있을때만 사용 가능하다.
-    - static 메소드는 객체가 생성되기 전에 실행되므로 this, super 키워드를 사용할 수 없다. ## 3. abstract
-- abstract: 추상적인, 구체적이지 않은, 완성되지 않은.
+    - static 메소드는 객체가 생성되기 전에 실행되므로 this, super 키워드를 사용할 수 없다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;3-abstract&quot;&gt;3. abstract&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- abstract: 추상적인, 구체적이지 않은, 완성되지 않은.
 - abstract 클래스: 클래스 내에 abstract 메소드가 존재한다.
 - abstract 메소드: 바디가 없는 미완성 메소드. abstract 클래스 내에만 정의 가능.(C의 prototype과 같다.)
 - concrete 메소드: 바디가 있는 완성된 메소드. abstract 클래스 내에도 정의 가능.
@@ -177,154 +183,208 @@
   &lt;li&gt;다중 상속 지원: implements 키워드를 통해 여러 클래스를 상속 가능하다.&lt;/li&gt;
   &lt;li&gt;extends와 달리 implements 클래스1, 클래스2, … 형태로 사용 가능.&lt;/li&gt;
   &lt;li&gt;예:
-```
-class ICircle extends Boat implements IShape, Seoul&lt;/li&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  class ICircle extends Boat implements IShape, Seoul
+  =&amp;gt; iCircle의 타입이 될 수 있는 것: Boat, IShape, Seoul.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;의존성 감소: 고치는 부분을 줄일 수 있다 - 유지보수를 편하게 해준다.&lt;/li&gt;
+  &lt;li&gt;interface와 interface 간에도 상속관계 성립 가능.&lt;/li&gt;
+  &lt;li&gt;interface 예시
+&lt;img src=&quot;https://user-images.githubusercontent.com/23356503/51424291-ffe79e00-1c0e-11e9-9061-3b57a81ae7ef.png&quot; alt=&quot;interface example&quot; /&gt;
+  위 그림처럼 관계를 만든 다음
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  void pay(Thing x){
+      ...
+  }
+  메소드를
+  void pay(Valuable x){
+      ...
+  }
+  으로 변경한다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;instanceof&quot;&gt;instanceof&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;상속관계가 없을 경우 사용 불가능한 연산자.&lt;/li&gt;
+  &lt;li&gt;작은 타입 -&amp;gt; 큰 타입 순서로 사용해야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;has-a-관계&quot;&gt;has-a 관계&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;서로 의존성을 갖게 되는 관계(Coupling) - 지양해야 함.&lt;/li&gt;
+  &lt;li&gt;한 클래스가 다른 클래스를 인자로 가지고 있는 관계.&lt;/li&gt;
+  &lt;li&gt;수정사항 발생시 두개의 클래스를 전부 수정해야 한다.&lt;/li&gt;
+  &lt;li&gt;보완: interface를 사용하여 타입의 자유도를 높여 의존성을 낮출 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;collections&quot;&gt;Collections&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;여러개의 데이터를 저장.&lt;/li&gt;
+  &lt;li&gt;저장 방식에 따라 List, Set, Map으로 나뉜다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;// iCircle의 타입이 될 수 있는 것: Boat, IShape, Seol.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 의존성 감소: 고치는 부분을 줄일 수 있다 - 유지보수를 편하게 해준다.
-- interface와 interface 간에도 상속관계 성립 가능.
-- interface 예시
-![interface example](https://user-images.githubusercontent.com/23356503/51424291-ffe79e00-1c0e-11e9-9061-3b57a81ae7ef.png)
-    위 그림처럼 관계를 만든 다음
-    ```
-    void pay(Thing x){
-        ...
-    }
-    메소드를
-    void pay(Valuable x){
-        ...
-    }
-    으로 변경한다.
-    ```
-&amp;lt;hr/&amp;gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;center&gt;구분&lt;/center&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;center&gt;List&lt;/center&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;center&gt;Set&lt;/center&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;center&gt;Map&lt;/center&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;중복&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;허용&lt;/center&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;허용 X&lt;/center&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;허용 X&lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;순서&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;있음&lt;/center&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;없음&lt;/center&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;없음&lt;/center&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-# instanceof
-- 상속관계가 없을 경우 사용 불가능한 연산자.
-- 작은 타입 -&amp;gt; 큰 타입 순서로 사용해야 한다.
-&amp;lt;hr/&amp;gt;
-
-# has-a 관계
-- 서로 의존성을 갖게 되는 관계(Coupling) - 지양해야 함.
-- 한 클래스가 다른 클래스를 인자로 가지고 있는 관계.
-- 수정사항 발생시 두개의 클래스를 전부 수정해야 한다.
-- 보완: interface를 사용하여 타입의 자유도를 높여 의존성을 낮출 수 있다.
-&amp;lt;hr/&amp;gt;
-
-# Collections
-- 여러개의 데이터를 저장.
-- 저장 방식에 따라 List, Set, Map으로 나뉜다.
-
-|  &amp;lt;center&amp;gt;구분&amp;lt;/center&amp;gt; |  &amp;lt;center&amp;gt;List&amp;lt;/center&amp;gt; |  &amp;lt;center&amp;gt;Set&amp;lt;/center&amp;gt; |  &amp;lt;center&amp;gt;Map&amp;lt;/center&amp;gt; |
-|:--------:|:--------:|:--------:|:--------:|
-|**중복** | &amp;lt;center&amp;gt;허용&amp;lt;/center&amp;gt; | &amp;lt;center&amp;gt;허용 X&amp;lt;/center&amp;gt; | &amp;lt;center&amp;gt;허용 X&amp;lt;/center&amp;gt; |
-|**순서** | &amp;lt;center&amp;gt;있음&amp;lt;/center&amp;gt; | &amp;lt;center&amp;gt;없음&amp;lt;/center&amp;gt; | &amp;lt;center&amp;gt;없음&amp;lt;/center&amp;gt; |
-
-## 1. List: 기존 배열과 유사.
-    - ArrayList
-    - Vector
-        - 아무 인자 없이 생성시 10칸짜리 Vector가 생성되고, 용량이 부족하면 기존의 크기를 2배로 늘린 후 재배치.
-        - Vector.capacity(): Vector 전체의 크기 리턴.
-        - Vector.size(): Vector 내 component 갯수 리턴.
-## 2. Set: 집합과 같은 개념.
-    - HashSet
-## 3. Map: (Key, Value) 쌍으로 데이터 저장, Key값 중복 불가.
-    - HashMap
-    - HashTable
-- Iterator: 순서 없는 자료구조를 탐색하기 위해 사용함.
-&amp;lt;hr/&amp;gt;
-
-# Generic Programming
-- HashMap&amp;lt;K, V&amp;gt; 와 같이 &amp;lt;...&amp;gt;의 형태를 이룬다.
-- &amp;lt;&amp;gt; 안에는 객체만 올 수 있다: 기본형을 사용하고싶을 경우 wrapper class로 바꿔 넣어야 한다.
-    - 예: int형 ArrayList - ArrayList&amp;lt;Integer&amp;gt;
-- Generic을 사용할 경우 클래스 변동사항이 있으면 적용되는 시점이 미뤄진다: 객체 생성시 유연성이 생긴다.
-    - 통상 클래스들은 한번 컴파일하면 다시 컴파일하지 않는 이상 변경사항이 반영되지 않는다.
-- 클래스는 완성되었으나 타입이 정해지지 않은 형태이다.
-    - 설계 단계에서는 타입 미정.
-    - 객체 생성시 타입 확정.
-    - 결론: compile time에서는 타입이 결정되지 않은 상태, runtime에서 타입이 결정.
-- 예시
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;public class MyClass&lt;X&gt;{
-    private X data;&lt;/X&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public X getData(){
-    return data;
-}
-
-public void setData(X data){
-    this.data = data;
-}
-
-public static void main(String[] args){
-    MyClass&amp;lt;String&amp;gt; m1 = new MyClass&amp;lt;&amp;gt;();
-    MyClass&amp;lt;Integer&amp;gt; m2 = new MyClass&amp;lt;&amp;gt;();
-    MyClass&amp;lt;Circle&amp;gt; m3 = new MyClass&amp;lt;&amp;gt;();
-} }
+&lt;h2 id=&quot;1-list-기존-배열과-유사&quot;&gt;1. List: 기존 배열과 유사.&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- ArrayList
+- Vector
+    - 아무 인자 없이 생성시 10칸짜리 Vector가 생성되고, 용량이 부족하면 기존의 크기를 2배로 늘린 후 재배치.
+    - Vector.capacity(): Vector 전체의 크기 리턴.
+    - Vector.size(): Vector 내 component 갯수 리턴.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;=&amp;gt; m1, m2, m3의 타입은 모두 MyClass로 같다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;hr/&amp;gt;
-
-# Singleton Pattern
-- 디자인 패턴: 설계 패턴. 클래스를 설계하는 패턴을 의미.
-- 어플리케이션 전체에서 객체를 한개만 생성하여 사용하는 패턴: 하나의 객체를 전체가 공유한다.
-- 클래스명에 static이 붙는다: 오직 하나의 객체만 생성한다.
-- 조건
-    1. field: private static이며 클래스 자신의 타입으로 선언되어야 한다.
-    2. 생성자: private으로 설정.
-    3. 객체를 생성하여 리턴하는 static 메소드가 반드시 있어야 한다.(통상 getInstance()라는 메소드 정의)
-- 외부에서 객체 생성에 영향을 주지 않도록 한다
-    - 생성자는 Default 생성자만 두는 경우가 대부분이다.
-    - 생성자, 생성 메소드 오버로딩하지 않음.
-- 예시
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;public class Speaker{
-    private static Speaker speaker;
-    private int volume;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private Speaker(){
-    volume = 5;
-}
-
-public static Speaker getInstance(){
-    if(speaker == null){
-        speaker = new Speaker();
-    }
-
-    return speaker;
-}
-
-public int getVolume(){
-    return volume;
-}
-
-public void setVolume(int volume){
-    this.volume = volume;
-} }
+&lt;h2 id=&quot;2-set-집합과-같은-개념&quot;&gt;2. Set: 집합과 같은 개념.&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- HashSet
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;public class SingletonTest{&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static void main(String[] args){
-    Speaker s1 = Speaker.getInstance();
-    Speaker s2 = Speaker.getInstance();
-    Speaker s3 = Speaker.getInstance();
-
-    System.out.println(s1 == s2);
-    System.out.prinltn(s2 == s3);
-
-    s1.setVolume(10);
-    System.out.println(s1.getVolume());
-    System.out.println(s2.getVolume());
-    System.out.println(s3.getVolume());
-} }
+&lt;h2 id=&quot;3-map-key-value-쌍으로-데이터-저장-key값-중복-불가&quot;&gt;3. Map: (Key, Value) 쌍으로 데이터 저장, Key값 중복 불가.&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- HashMap
+- HashTable
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;실행 결과: s1, s2, s3의 주소값은 전부 같다.
-=&amp;gt; 전부 똑같은 하나의 객체만을 가리키고 있으므로, 한 객체에서 volume을 변경하면 모든 객체의 volume이 똑같이 바뀐다.
-```&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Iterator: 순서 없는 자료구조를 탐색하기 위해 사용함.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;generic-programming&quot;&gt;Generic Programming&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;HashMap&amp;lt;K, V&amp;gt; 와 같이 &amp;lt;…&amp;gt;의 형태를 이룬다.&lt;/li&gt;
+  &lt;li&gt;&amp;lt;&amp;gt; 안에는 객체만 올 수 있다: 기본형을 사용하고싶을 경우 wrapper class로 바꿔 넣어야 한다.
+    &lt;ul&gt;
+      &lt;li&gt;예: int형 ArrayList - ArrayList&lt;Integer&gt;&lt;/Integer&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Generic을 사용할 경우 클래스 변동사항이 있으면 적용되는 시점이 미뤄진다: 객체 생성시 유연성이 생긴다.
+    &lt;ul&gt;
+      &lt;li&gt;통상 클래스들은 한번 컴파일하면 다시 컴파일하지 않는 이상 변경사항이 반영되지 않는다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;클래스는 완성되었으나 타입이 정해지지 않은 형태이다.
+    &lt;ul&gt;
+      &lt;li&gt;설계 단계에서는 타입 미정.&lt;/li&gt;
+      &lt;li&gt;객체 생성시 타입 확정.&lt;/li&gt;
+      &lt;li&gt;결론: compile time에서는 타입이 결정되지 않은 상태, runtime에서 타입이 결정.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;예시
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  public class MyClass&amp;lt;X&amp;gt;{
+      private X data;
+
+      public X getData(){
+          return data;
+      }
+
+      public void setData(X data){
+          this.data = data;
+      }
+
+      public static void main(String[] args){
+          MyClass&amp;lt;String&amp;gt; m1 = new MyClass&amp;lt;&amp;gt;();
+          MyClass&amp;lt;Integer&amp;gt; m2 = new MyClass&amp;lt;&amp;gt;();
+          MyClass&amp;lt;Circle&amp;gt; m3 = new MyClass&amp;lt;&amp;gt;();
+      }
+  }
+
+  =&amp;gt; m1, m2, m3의 타입은 모두 MyClass로 같다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;singleton-pattern&quot;&gt;Singleton Pattern&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;디자인 패턴: 설계 패턴. 클래스를 설계하는 패턴을 의미.&lt;/li&gt;
+  &lt;li&gt;어플리케이션 전체에서 객체를 한개만 생성하여 사용하는 패턴: 하나의 객체를 전체가 공유한다.&lt;/li&gt;
+  &lt;li&gt;클래스명에 static이 붙는다: 오직 하나의 객체만 생성한다.&lt;/li&gt;
+  &lt;li&gt;조건
+    &lt;ol&gt;
+      &lt;li&gt;field: private static이며 클래스 자신의 타입으로 선언되어야 한다.&lt;/li&gt;
+      &lt;li&gt;생성자: private으로 설정.&lt;/li&gt;
+      &lt;li&gt;객체를 생성하여 리턴하는 static 메소드가 반드시 있어야 한다.(통상 getInstance()라는 메소드 정의)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;외부에서 객체 생성에 영향을 주지 않도록 한다
+    &lt;ul&gt;
+      &lt;li&gt;생성자는 Default 생성자만 두는 경우가 대부분이다.&lt;/li&gt;
+      &lt;li&gt;생성자, 생성 메소드 오버로딩하지 않음.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;예시
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  public class Speaker{
+      private static Speaker speaker;
+      private int volume;
+
+      private Speaker(){
+          volume = 5;
+      }
+
+      public static Speaker getInstance(){
+          if(speaker == null){
+              speaker = new Speaker();
+          }
+
+          return speaker;
+      }
+
+      public int getVolume(){
+          return volume;
+      }
+
+      public void setVolume(int volume){
+          this.volume = volume;
+      }
+  }
+
+  public class SingletonTest{
+
+      public static void main(String[] args){
+          Speaker s1 = Speaker.getInstance();
+          Speaker s2 = Speaker.getInstance();
+          Speaker s3 = Speaker.getInstance();
+
+          System.out.println(s1 == s2);
+          System.out.prinltn(s2 == s3);
+
+          s1.setVolume(10);
+          System.out.println(s1.getVolume());
+          System.out.println(s2.getVolume());
+          System.out.println(s3.getVolume());
+      }
+  }
+
+  실행 결과: s1, s2, s3의 주소값은 전부 같다.
+  =&amp;gt; 전부 똑같은 하나의 객체만을 가리키고 있으므로, 한 객체에서 volume을 변경하면 모든 객체의 volume이 똑같이 바뀐다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;comparable-comparator&quot;&gt;Comparable, Comparator&lt;/h1&gt;
@@ -357,7 +417,7 @@ public void setVolume(int volume){
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry><entry><title type="html">16234</title><link href="keithlee94.github.io/algorithm/16234/" rel="alternate" type="text/html" title="16234" /><published>2019-01-17T00:00:00+09:00</published><updated>2019-01-17T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/16234</id><content type="html" xml:base="keithlee94.github.io/algorithm/16234/">&lt;h1 id=&quot;백준-16234번&quot;&gt;백준 16234번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry><entry><title type="html">16234</title><link href="http://localhost:4000/algorithm/16234/" rel="alternate" type="text/html" title="16234" /><published>2019-01-17T00:00:00+09:00</published><updated>2019-01-17T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/16234</id><content type="html" xml:base="http://localhost:4000/algorithm/16234/">&lt;h1 id=&quot;백준-16234번&quot;&gt;백준 16234번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/16234&quot;&gt;16234번: 인구 이동&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -541,7 +601,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><category term="BFS" /><summary type="html">백준 16234번 Link: 16234번: 인구 이동</summary></entry><entry><title type="html">1520</title><link href="keithlee94.github.io/algorithm/1520/" rel="alternate" type="text/html" title="1520" /><published>2019-01-14T00:00:00+09:00</published><updated>2019-01-14T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1520</id><content type="html" xml:base="keithlee94.github.io/algorithm/1520/">&lt;h1 id=&quot;백준-1520번&quot;&gt;백준 1520번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><category term="BFS" /><summary type="html">백준 16234번 Link: 16234번: 인구 이동</summary></entry><entry><title type="html">1520</title><link href="http://localhost:4000/algorithm/1520/" rel="alternate" type="text/html" title="1520" /><published>2019-01-14T00:00:00+09:00</published><updated>2019-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/1520</id><content type="html" xml:base="http://localhost:4000/algorithm/1520/">&lt;h1 id=&quot;백준-1520번&quot;&gt;백준 1520번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1520&quot;&gt;1520번: 내리막 길&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -727,7 +787,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><category term="DFS" /><category term="BFS" /><summary type="html">백준 1520번 Link: 1520번: 내리막 길</summary></entry><entry><title type="html">5th week summary</title><link href="keithlee94.github.io/java/5th-Week-Summary/" rel="alternate" type="text/html" title="5th week summary" /><published>2019-01-11T00:00:00+09:00</published><updated>2019-01-11T00:00:00+09:00</updated><id>keithlee94.github.io/java/5th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/5th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><category term="DFS" /><category term="BFS" /><summary type="html">백준 1520번 Link: 1520번: 내리막 길</summary></entry><entry><title type="html">5th week summary</title><link href="http://localhost:4000/java/5th-Week-Summary/" rel="alternate" type="text/html" title="5th week summary" /><published>2019-01-11T00:00:00+09:00</published><updated>2019-01-11T00:00:00+09:00</updated><id>http://localhost:4000/java/5th%20Week%20Summary</id><content type="html" xml:base="http://localhost:4000/java/5th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;알고리즘-설계-기법&quot;&gt;알고리즘 설계 기법&lt;/h1&gt;
@@ -1133,7 +1193,7 @@ public class Child extends Parent{
     }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry><entry><title type="html">2156</title><link href="keithlee94.github.io/algorithm/2156/" rel="alternate" type="text/html" title="2156" /><published>2019-01-11T00:00:00+09:00</published><updated>2019-01-11T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2156</id><content type="html" xml:base="keithlee94.github.io/algorithm/2156/">&lt;h1 id=&quot;백준-2156번&quot;&gt;백준 2156번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry><entry><title type="html">2156</title><link href="http://localhost:4000/algorithm/2156/" rel="alternate" type="text/html" title="2156" /><published>2019-01-11T00:00:00+09:00</published><updated>2019-01-11T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2156</id><content type="html" xml:base="http://localhost:4000/algorithm/2156/">&lt;h1 id=&quot;백준-2156번&quot;&gt;백준 2156번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2156&quot;&gt;2156번: 포도주 시식&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1210,7 +1270,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 2156번 Link: 2156번: 포도주 시식</summary></entry><entry><title type="html">2293</title><link href="keithlee94.github.io/algorithm/2293/" rel="alternate" type="text/html" title="2293" /><published>2019-01-10T00:00:00+09:00</published><updated>2019-01-10T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2293</id><content type="html" xml:base="keithlee94.github.io/algorithm/2293/">&lt;h1 id=&quot;백준-2293번&quot;&gt;백준 2293번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 2156번 Link: 2156번: 포도주 시식</summary></entry><entry><title type="html">2293</title><link href="http://localhost:4000/algorithm/2293/" rel="alternate" type="text/html" title="2293" /><published>2019-01-10T00:00:00+09:00</published><updated>2019-01-10T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2293</id><content type="html" xml:base="http://localhost:4000/algorithm/2293/">&lt;h1 id=&quot;백준-2293번&quot;&gt;백준 2293번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2293&quot;&gt;2293번: 동전 1&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1377,7 +1437,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 2293번 Link: 2293번: 동전 1</summary></entry><entry><title type="html">10844</title><link href="keithlee94.github.io/algorithm/10844/" rel="alternate" type="text/html" title="10844" /><published>2019-01-09T00:00:00+09:00</published><updated>2019-01-09T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/10844</id><content type="html" xml:base="keithlee94.github.io/algorithm/10844/">&lt;h1 id=&quot;백준-10844번&quot;&gt;백준 10844번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 2293번 Link: 2293번: 동전 1</summary></entry><entry><title type="html">10844</title><link href="http://localhost:4000/algorithm/10844/" rel="alternate" type="text/html" title="10844" /><published>2019-01-09T00:00:00+09:00</published><updated>2019-01-09T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/10844</id><content type="html" xml:base="http://localhost:4000/algorithm/10844/">&lt;h1 id=&quot;백준-10844번&quot;&gt;백준 10844번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;10844번: 쉬운 계단 수&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1451,7 +1511,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 10844번 Link: 10844번: 쉬운 계단 수</summary></entry><entry><title type="html">1463</title><link href="keithlee94.github.io/algorithm/1463/" rel="alternate" type="text/html" title="1463" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1463</id><content type="html" xml:base="keithlee94.github.io/algorithm/1463/">&lt;h1 id=&quot;백준-1463번&quot;&gt;백준 1463번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 10844번 Link: 10844번: 쉬운 계단 수</summary></entry><entry><title type="html">1463</title><link href="http://localhost:4000/algorithm/1463/" rel="alternate" type="text/html" title="1463" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/1463</id><content type="html" xml:base="http://localhost:4000/algorithm/1463/">&lt;h1 id=&quot;백준-1463번&quot;&gt;백준 1463번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1463&quot;&gt;1463번: 1로 만들기&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1523,7 +1583,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1463번 Link: 1463번: 1로 만들기</summary></entry><entry><title type="html">Swea_3307</title><link href="keithlee94.github.io/algorithm/SWEA_3307/" rel="alternate" type="text/html" title="Swea_3307" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_3307</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_3307/">&lt;h1 id=&quot;swea-3307번&quot;&gt;SWEA 3307번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1463번 Link: 1463번: 1로 만들기</summary></entry><entry><title type="html">Swea_3307</title><link href="http://localhost:4000/algorithm/SWEA_3307/" rel="alternate" type="text/html" title="Swea_3307" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/SWEA_3307</id><content type="html" xml:base="http://localhost:4000/algorithm/SWEA_3307/">&lt;h1 id=&quot;swea-3307번&quot;&gt;SWEA 3307번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AWBOKg-a6l0DFAWr&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;3307번: 최장 증가 부분 수열&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1609,7 +1669,7 @@ int main(){
     }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">SWEA 3307번 Link: 3307번: 최장 증가 부분 수열</summary></entry><entry><title type="html">Swea_5215</title><link href="keithlee94.github.io/algorithm/SWEA_5215/" rel="alternate" type="text/html" title="Swea_5215" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/SWEA_5215</id><content type="html" xml:base="keithlee94.github.io/algorithm/SWEA_5215/">&lt;h1 id=&quot;swea-5215번&quot;&gt;SWEA 5215번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">SWEA 3307번 Link: 3307번: 최장 증가 부분 수열</summary></entry><entry><title type="html">Swea_5215</title><link href="http://localhost:4000/algorithm/SWEA_5215/" rel="alternate" type="text/html" title="Swea_5215" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/SWEA_5215</id><content type="html" xml:base="http://localhost:4000/algorithm/SWEA_5215/">&lt;h1 id=&quot;swea-5215번&quot;&gt;SWEA 5215번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AWT-lPB6dHUDFAVT&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;5215번: 햄버거 다이어트&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
