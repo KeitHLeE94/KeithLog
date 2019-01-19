@@ -1,0 +1,893 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>6th week summary - KeithLog</title>
+<meta name="description" content="알고리즘 스터디 내용 정리">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KeithLog">
+<meta property="og:title" content="6th week summary">
+<meta property="og:url" content="keithlee94.github.io/java/6th-Week-Summary/">
+
+
+  <meta property="og:description" content="알고리즘 스터디 내용 정리">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-01-19T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="keithlee94.github.io/java/6th-Week-Summary/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jaehyun Keith Lee",
+      "url": "keithlee94.github.io",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="KeithLog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">KeithLog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Jaehyun Keith Lee</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Supernormal / Quiet Weirdo
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="wogus4187@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+          
+        
+          
+            <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:wogus4187@naver.com">
+            <meta itemprop="email" content="wogus4187@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="6th week summary">
+    <meta itemprop="description" content="알고리즘 스터디 내용 정리">
+    <meta itemprop="datePublished" content="January 19, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">6th week summary
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="알고리즘-스터디-내용-정리">알고리즘 스터디 내용 정리</h1>
+<hr />
+
+<h1 id="자료구조">자료구조</h1>
+<ul>
+  <li>선형
+    <ul>
+      <li>이전, 이후 데이터가 1:1 관계이다.</li>
+      <li>특정 데이터의 다음에 올 데이터가 무엇인지 확실히 알 수 있다.(예: 배열, 연결리스트)</li>
+    </ul>
+  </li>
+  <li>비선형
+    <ul>
+      <li>이전, 이후 데이터가 1:다 or 다:다 관계이다.</li>
+      <li>특정 데이터의 다음에 올 데이터가 무엇인지 확실하게 알 수 없다.</li>
+      <li>전체를 빠짐없이 순회하며 한번씩만 방문하는 것이 관건(예: 그래프)
+        <ul>
+          <li>그래프
+            <ul>
+              <li>트리: 사이클이 없어야 한다.</li>
+              <li>트리를 제외한 나머지: 사이클이 있을 수 있다.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h1 id="검색">검색</h1>
+<ul>
+  <li>순차 검색
+    <ul>
+      <li>O(n) -&gt; Best: O(1), Worst: O(n), Average: O(n/2) = O(n)</li>
+      <li>정렬 여부와 상관없이 사용 가능.</li>
+    </ul>
+  </li>
+  <li>이진 검색
+    <ul>
+      <li>O(log n)</li>
+      <li>Divide &amp; Conquer</li>
+      <li>자료가 정렬된 상태에서만 사용 가능.</li>
+      <li>데이터 양이 많을수록 유리함.</li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h1 id="정렬되지-않은-데이터-검색">정렬되지 않은 데이터 검색</h1>
+<ul>
+  <li>이진 검색
+    <ol>
+      <li>정렬</li>
+      <li>이진검색
+        <ul>
+          <li>O(n^2) + O(log n) = O(n^2) 소요.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>순차검색: O(n)</li>
+  <li>결론: 정렬 알고리즘에서 이미 순차검색보다 성능이 떨어지므로 정렬되지 않은 데이터에 대해서는 순차검색을 사용하는 것이 유리하다.</li>
+</ul>
+<hr />
+
+<h1 id="java-메모리-영역">Java 메모리 영역</h1>
+<ul>
+  <li>Call Stack: 자동으로 초기화되지 않음.</li>
+  <li>Heap: 자동으로 초기화됨.</li>
+  <li>Method Area: 자동으로 초기화됨.</li>
+  <li>Constant Pool: Method Area에 포함됨. 상수를 재활용하기 위해 존재함.(여러개의 상수가 있어도 해싱하여 저장되므로 검색시간이 느려지는 일이 없다.)</li>
+</ul>
+<hr />
+
+<h1 id="string-선언별-차이점">String 선언별 차이점</h1>
+<ul>
+  <li>String str1 = “abc”; =&gt; Constant Pool에 생성된다.</li>
+  <li>String str2 = new String(“abc”); =&gt; Heap에 생성된다.</li>
+  <li>String str3 = “abc”; =&gt; str1과 같은 주소가 할당된다.</li>
+  <li>str1, str3처럼 기본형으로 만들 경우 Constant Pool에 저장되고, 둘의 값이 같을 경우 같은 주소가 할당된다.</li>
+</ul>
+<hr />
+
+<h1 id="stringtokenizer">StringTokenizer</h1>
+<ul>
+  <li>문자열을 쪼갤때 사용한다.</li>
+  <li>정규식을 인자로 허용하지 않으므로 String.split()보다 속도가 빠르다.</li>
+</ul>
+<hr />
+
+<h1 id="stringbuilder-stringbuffer">StringBuilder, StringBuffer</h1>
+<ul>
+  <li>문자열 저장시 사용.</li>
+</ul>
+<hr />
+
+<h1 id="objectequals">Object.equals()</h1>
+<ul>
+  <li>어떤 자식 클래스에서 사용할지 모르므로 == 연산자로 구현되어 있다.</li>
+  <li>내용 비교하려면: 자식 클래스에서 오버라이딩하여 사용해야 함.</li>
+</ul>
+<hr />
+
+<h1 id="dp와-divide--conquer">DP와 Divide &amp; Conquer</h1>
+<ul>
+  <li>Divide &amp; Conquer: 작은 문제를 해결하여 큰 문제를 해결하는 기법.</li>
+  <li>DP: Divide &amp; Conquer + Memoization. 작은 문제를 해결하고 이를 따로 저장해둠으로써 똑같은 작은 문제를 다시 풀게 되어 발생하는 시간 낭비를 줄일 수 있다.</li>
+</ul>
+<hr />
+
+<h1 id="java-스터디-내용-정리">Java 스터디 내용 정리</h1>
+<hr />
+
+<h1 id="자주-오버라이딩하는-함수들">자주 오버라이딩하는 함수들</h1>
+<h2 id="1-tostring">1. toString()</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 오버라이딩 했을 경우: System.out.println(객체); 실행시 객체의 클래스에서 재정의된 toString()이 실행됨.
+- 오버라이딩 안했을 경우: System.out.println(객체); 실행시 주소값만 출력된다 - Object 클래스의 toString()은 객체의 주소값만 돌려주므로.
+- 출력함수의 인자로 객체를 넣을 시 자동으로 toString()이 호출된다. ## 2. hashCode()
+- 같은 객체인지 확인할 때 사용. ## 3. equals()
+- 두 객체의 내용물이 같은지 확인할 때 사용.
+- Object.equals(): 단순 객체 주소 비교.
+- String.equals(): Object.equals()를 오버라이딩하여 문자 하나씩 비교하여 일치하는지 확인.
+</code></pre></div></div>
+<hr />
+
+<h1 id="string-객체의-특징">String 객체의 특징</h1>
+<ul>
+  <li>String 클래스의 메소드들은 원본 데이터를 바꾸지 않는다.</li>
+  <li>String은 final 상수이므로 내용을 바꿀때마다 새로운 데이터가 heap에 쌓인다.</li>
+</ul>
+<hr />
+
+<h1 id="사용-제한자">사용 제한자</h1>
+<h2 id="1-final">1. final</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- class, method, variable에 붙일 수 있다.
+- class앞에 붙으면: 상속 불가. 그 클래스 안의 모든 method, field는 내용을 변경할 수 없다.
+- method앞에 붙으면: 오버라이딩 불가, 오버로딩은 가능.
+- field앞에 붙으면: 값 수정 불가.(변수가 상수로 변한다.) ## 2. static
+- member변수, member메소드, block에 붙일 수 있다.
+- static이 붙은 모든 것들은 main 메소드 실행 전에 Class Area에 한개씩만 생성된다.
+    - 실행 전에 만들어진다.
+    - 컴파일이 완료된 시점에 생성되므로 따로 객체를 만들 필요가 없다.
+- static이 없는 모든 것들은 main 메소드 실행 후 Heap에 생성된다.
+    - 실행 후에 만들어진다.
+- static variable = class variable
+- non-static variable = instance variable
+- 다른 클래스에서도 사용 가능: class이름.변수이름 or class이름.메소드이름 으로 사용 가능.
+- static block: main 메소드보다 우선순위가 높다.
+    - main 메소드보다 먼저 실행된다.
+    - static block간 우선순위는 코드 내 순서와 같다.
+- static 메소드 내에서는 this, super 키워드를 사용할 수 없다.
+    - 이유: this, super 키워드는 객체가 있을때만 사용 가능하다.
+    - static 메소드는 객체가 생성되기 전에 실행되므로 this, super 키워드를 사용할 수 없다. ## 3. abstract
+- abstract: 추상적인, 구체적이지 않은, 완성되지 않은.
+- abstract 클래스: 클래스 내에 abstract 메소드가 존재한다.
+- abstract 메소드: 바디가 없는 미완성 메소드. abstract 클래스 내에만 정의 가능.(C의 prototype과 같다.)
+- concrete 메소드: 바디가 있는 완성된 메소드. abstract 클래스 내에도 정의 가능.
+- abstract 메소드가 있으면 객체 생성 불가능.
+    - 미완성 메소드가 있다 = 미완성 클래스이다.
+    - 자식 클래스에서 상속받아 완성시켜야 객체 생성이 가능하다.(자식 클래스가 오버라이딩해야 한다.)
+- 장점: 상속관계로 묶여있으므로 여러 종류의 객체들을 부모 타입으로 묶어 하나의 자료구조에 넣고 handling할 수 있다.
+- 용도
+    - 타입을 물려주는 용도로 빈 껍데기만 미리 만들어놓는다.
+    - 객체 생성을 막는 용도로도 사용 가능하다.
+</code></pre></div></div>
+<hr />
+
+<h1 id="interface">interface</h1>
+<ul>
+  <li>추상 클래스와 유사하다.</li>
+  <li>시작 키워드가 class가 아닌 interface이다.(용도는 추상 클래스와 같이 타입을 물려주는 용도이다.)</li>
+  <li>상수와 추상 메소드들로만 구성되어 있다: concrete 메소드를 포함할 수 없다.</li>
+  <li>내부 메소드에 별도로 abstact를 붙일 필요가 없다: interface 자체가 미완성이므로 포함하는 모든 메소드들에 자동으로 public abstract 키워드가 붙는다.</li>
+  <li>내부 field에는 자동으로 static final 키워드가 붙는다: 값을 변경할 수 없다.</li>
+  <li>자식 클래스에서 상속시 extends가 아닌 implements 키워드를 사용해야 한다.</li>
+  <li>다중 상속 지원: implements 키워드를 통해 여러 클래스를 상속 가능하다.</li>
+  <li>extends와 달리 implements 클래스1, 클래스2, … 형태로 사용 가능.</li>
+  <li>예:
+```
+class ICircle extends Boat implements IShape, Seoul</li>
+</ul>
+
+<p>// iCircle의 타입이 될 수 있는 것: Boat, IShape, Seol.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 의존성 감소: 고치는 부분을 줄일 수 있다 - 유지보수를 편하게 해준다.
+- interface와 interface 간에도 상속관계 성립 가능.
+- interface 예시
+![interface example](https://user-images.githubusercontent.com/23356503/51424291-ffe79e00-1c0e-11e9-9061-3b57a81ae7ef.png)
+    위 그림처럼 관계를 만든 다음
+    ```
+    void pay(Thing x){
+        ...
+    }
+    메소드를
+    void pay(Valuable x){
+        ...
+    }
+    으로 변경한다.
+    ```
+&lt;hr/&gt;
+
+# instanceof
+- 상속관계가 없을 경우 사용 불가능한 연산자.
+- 작은 타입 -&gt; 큰 타입 순서로 사용해야 한다.
+&lt;hr/&gt;
+
+# has-a 관계
+- 서로 의존성을 갖게 되는 관계(Coupling) - 지양해야 함.
+- 한 클래스가 다른 클래스를 인자로 가지고 있는 관계.
+- 수정사항 발생시 두개의 클래스를 전부 수정해야 한다.
+- 보완: interface를 사용하여 타입의 자유도를 높여 의존성을 낮출 수 있다.
+&lt;hr/&gt;
+
+# Collections
+- 여러개의 데이터를 저장.
+- 저장 방식에 따라 List, Set, Map으로 나뉜다.
+
+|  &lt;center&gt;구분&lt;/center&gt; |  &lt;center&gt;List&lt;/center&gt; |  &lt;center&gt;Set&lt;/center&gt; |  &lt;center&gt;Map&lt;/center&gt; |
+|:--------:|:--------:|:--------:|:--------:|
+|**중복** | &lt;center&gt;허용&lt;/center&gt; | &lt;center&gt;허용 X&lt;/center&gt; | &lt;center&gt;허용 X&lt;/center&gt; |
+|**순서** | &lt;center&gt;있음&lt;/center&gt; | &lt;center&gt;없음&lt;/center&gt; | &lt;center&gt;없음&lt;/center&gt; |
+
+## 1. List: 기존 배열과 유사.
+    - ArrayList
+    - Vector
+        - 아무 인자 없이 생성시 10칸짜리 Vector가 생성되고, 용량이 부족하면 기존의 크기를 2배로 늘린 후 재배치.
+        - Vector.capacity(): Vector 전체의 크기 리턴.
+        - Vector.size(): Vector 내 component 갯수 리턴.
+## 2. Set: 집합과 같은 개념.
+    - HashSet
+## 3. Map: (Key, Value) 쌍으로 데이터 저장, Key값 중복 불가.
+    - HashMap
+    - HashTable
+- Iterator: 순서 없는 자료구조를 탐색하기 위해 사용함.
+&lt;hr/&gt;
+
+# Generic Programming
+- HashMap&lt;K, V&gt; 와 같이 &lt;...&gt;의 형태를 이룬다.
+- &lt;&gt; 안에는 객체만 올 수 있다: 기본형을 사용하고싶을 경우 wrapper class로 바꿔 넣어야 한다.
+    - 예: int형 ArrayList - ArrayList&lt;Integer&gt;
+- Generic을 사용할 경우 클래스 변동사항이 있으면 적용되는 시점이 미뤄진다: 객체 생성시 유연성이 생긴다.
+    - 통상 클래스들은 한번 컴파일하면 다시 컴파일하지 않는 이상 변경사항이 반영되지 않는다.
+- 클래스는 완성되었으나 타입이 정해지지 않은 형태이다.
+    - 설계 단계에서는 타입 미정.
+    - 객체 생성시 타입 확정.
+    - 결론: compile time에서는 타입이 결정되지 않은 상태, runtime에서 타입이 결정.
+- 예시
+</code></pre></div></div>
+<p>public class MyClass<X>{
+    private X data;</X></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public X getData(){
+    return data;
+}
+
+public void setData(X data){
+    this.data = data;
+}
+
+public static void main(String[] args){
+    MyClass&lt;String&gt; m1 = new MyClass&lt;&gt;();
+    MyClass&lt;Integer&gt; m2 = new MyClass&lt;&gt;();
+    MyClass&lt;Circle&gt; m3 = new MyClass&lt;&gt;();
+} }
+</code></pre></div></div>
+
+<p>=&gt; m1, m2, m3의 타입은 모두 MyClass로 같다.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;hr/&gt;
+
+# Singleton Pattern
+- 디자인 패턴: 설계 패턴. 클래스를 설계하는 패턴을 의미.
+- 어플리케이션 전체에서 객체를 한개만 생성하여 사용하는 패턴: 하나의 객체를 전체가 공유한다.
+- 클래스명에 static이 붙는다: 오직 하나의 객체만 생성한다.
+- 조건
+    1. field: private static이며 클래스 자신의 타입으로 선언되어야 한다.
+    2. 생성자: private으로 설정.
+    3. 객체를 생성하여 리턴하는 static 메소드가 반드시 있어야 한다.(통상 getInstance()라는 메소드 정의)
+- 외부에서 객체 생성에 영향을 주지 않도록 한다
+    - 생성자는 Default 생성자만 두는 경우가 대부분이다.
+    - 생성자, 생성 메소드 오버로딩하지 않음.
+- 예시
+</code></pre></div></div>
+<p>public class Speaker{
+    private static Speaker speaker;
+    private int volume;</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private Speaker(){
+    volume = 5;
+}
+
+public static Speaker getInstance(){
+    if(speaker == null){
+        speaker = new Speaker();
+    }
+
+    return speaker;
+}
+
+public int getVolume(){
+    return volume;
+}
+
+public void setVolume(int volume){
+    this.volume = volume;
+} }
+</code></pre></div></div>
+
+<p>public class SingletonTest{</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static void main(String[] args){
+    Speaker s1 = Speaker.getInstance();
+    Speaker s2 = Speaker.getInstance();
+    Speaker s3 = Speaker.getInstance();
+
+    System.out.println(s1 == s2);
+    System.out.prinltn(s2 == s3);
+
+    s1.setVolume(10);
+    System.out.println(s1.getVolume());
+    System.out.println(s2.getVolume());
+    System.out.println(s3.getVolume());
+} }
+</code></pre></div></div>
+
+<p>실행 결과: s1, s2, s3의 주소값은 전부 같다.
+=&gt; 전부 똑같은 하나의 객체만을 가리키고 있으므로, 한 객체에서 volume을 변경하면 모든 객체의 volume이 똑같이 바뀐다.
+```</p>
+<hr />
+
+<h1 id="comparable-comparator">Comparable, Comparator</h1>
+<ul>
+  <li>객체의 정렬과 관련한 인터페이스.</li>
+  <li>Comparable: 클래스 내부에 객체의 정렬 기준을 만들어놓고자 할때 사용하는 인터페이스.(반드시 한개만 존재한다.)</li>
+  <li>Comparator: 클래스 외부에 특정 객체의 정렬 기준을 명시하는 인터페이스.(클래스 내부의 Comparable 이외의 정렬 기준이 필요할 경우 별도의 클래스를 만들어 정의한다. - 정렬 기준은 한 메소드 내에 한개만 정의 가능.)</li>
+  <li>sort()로 정렬 가능한 객체: Comparator나 Comparable 인터페이스를 implements 하고 있어야 한다.</li>
+</ul>
+<hr />
+
+<h1 id="class-종류">Class 종류</h1>
+<ul>
+  <li>VO
+    <ul>
+      <li>Value Object</li>
+      <li>값을 저장할 수 있는 객체.</li>
+    </ul>
+  </li>
+  <li>DAO
+    <ul>
+      <li>Data Access Object</li>
+      <li>이미 만들어진 VO를 프로세싱하는 목적.</li>
+      <li>CRUD: Create, Read, Update, Delete 기능 수행.</li>
+    </ul>
+  </li>
+  <li>CO
+    <ul>
+      <li>Client Object</li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#java" class="page__taxonomy-item" rel="tag">Java</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#java" class="page__taxonomy-item" rel="tag">Java</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-19T00:00:00+09:00">January 19, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=6th+week+summary%20keithlee94.github.io%2Fjava%2F6th-Week-Summary%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Fjava%2F6th-Week-Summary%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Fjava%2F6th-Week-Summary%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Fjava%2F6th-Week-Summary%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/16234/" class="pagination--pager" title="16234
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/16234/" rel="permalink">16234
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 16234번
+Link: 16234번: 인구 이동
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/1520/" rel="permalink">1520
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 1520번
+Link: 1520번: 내리막 길
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/java/5th-Week-Summary/" rel="permalink">5th week summary
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">알고리즘 스터디 내용 정리
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2156/" rel="permalink">2156
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2156번
+Link: 2156번: 포도주 시식
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Jaehyun Keith Lee. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>
