@@ -1,4 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-19T18:04:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">6th week summary</title><link href="http://localhost:4000/java/6th-Week-Summary/" rel="alternate" type="text/html" title="6th week summary" /><published>2019-01-19T00:00:00+09:00</published><updated>2019-01-19T00:00:00+09:00</updated><id>http://localhost:4000/java/6th%20Week%20Summary</id><content type="html" xml:base="http://localhost:4000/java/6th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-21T22:48:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">11724</title><link href="http://localhost:4000/algorithm/11724/" rel="alternate" type="text/html" title="11724" /><published>2019-01-21T00:00:00+09:00</published><updated>2019-01-21T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/11724</id><content type="html" xml:base="http://localhost:4000/algorithm/11724/">&lt;h1 id=&quot;백준-11724번&quot;&gt;백준 11724번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/11724&quot;&gt;11724번: 연결 요소의 개수&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;기초적인 DFS, BFS 문제다.&lt;/p&gt;
+
+&lt;p&gt;2차원 배열에 연경 요소들을 1로 표시하고, BFS나 DFS를 사용하여 탐색하면서 연결된 요소의 갯수를 구하는 문제.&lt;/p&gt;
+
+&lt;p&gt;한가지 간과하기 쉬운 사실은, 이 그래프는 방향이 없는 그래프이기 때문에 연결시 쌍방향을 전부 1로 설정해줘야 한다는 점.&lt;/p&gt;
+
+&lt;p&gt;처음에는 배열 인덱스때문에 두어번 틀렸다가 맞게 풀었더니 시간초과가 났다.&lt;/p&gt;
+
+&lt;p&gt;BFS를 사용하여 시간 내에 풀기 위해서는 큐에서 정점을 뺄 때가 아닌 큐에 넣는 시점에 visit을 표시해야 한다는 것을 알게 되었다.&lt;/p&gt;
+
+&lt;p&gt;오늘은 BFS, DFS 감찾는다고 생각하고 앞으로 집중적으로 어려운 문제도 풀어볼 예정이다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 21/01/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;queue&amp;gt;
+
+using namespace std;
+
+int N, M;
+int map[1001][1001] = {0, };
+bool visit[1001] = {false, };
+
+int result = 0;
+
+void BFS(int start){
+    queue&amp;lt;int&amp;gt; Queue;
+    Queue.push(start);
+
+    while(!Queue.empty()){
+        int next = Queue.front();
+        Queue.pop();
+
+        for(int i=1; i&amp;lt;=N; i++){
+            if(!visit[i] &amp;amp;&amp;amp; map[next][i] == 1){
+                visit[i] = true;
+                Queue.push(i);
+            }
+        }
+    }
+
+    result++;
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
+
+    for(int i=0; i&amp;lt;M; i++){
+        int start, end;
+        cin &amp;gt;&amp;gt; start &amp;gt;&amp;gt; end;
+        map[start][end] = 1;
+        map[end][start] = 1;
+    }
+
+    for(int i=1; i&amp;lt;=N; i++){
+        if(!visit[i]){
+            visit[i] = true;
+            BFS(i);
+        }
+    }
+
+    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><category term="BFS" /><summary type="html">백준 11724번 Link: 11724번: 연결 요소의 개수</summary></entry><entry><title type="html">6th week summary</title><link href="http://localhost:4000/java/6th-Week-Summary/" rel="alternate" type="text/html" title="6th week summary" /><published>2019-01-19T00:00:00+09:00</published><updated>2019-01-19T00:00:00+09:00</updated><id>http://localhost:4000/java/6th%20Week%20Summary</id><content type="html" xml:base="http://localhost:4000/java/6th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;자료구조&quot;&gt;자료구조&lt;/h1&gt;
@@ -116,9 +192,15 @@
 &lt;h2 id=&quot;1-tostring&quot;&gt;1. toString()&lt;/h2&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 오버라이딩 했을 경우: System.out.println(객체); 실행시 객체의 클래스에서 재정의된 toString()이 실행됨.
 - 오버라이딩 안했을 경우: System.out.println(객체); 실행시 주소값만 출력된다 - Object 클래스의 toString()은 객체의 주소값만 돌려주므로.
-- 출력함수의 인자로 객체를 넣을 시 자동으로 toString()이 호출된다. ## 2. hashCode()
-- 같은 객체인지 확인할 때 사용. ## 3. equals()
-- 두 객체의 내용물이 같은지 확인할 때 사용.
+- 출력함수의 인자로 객체를 넣을 시 자동으로 toString()이 호출된다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;2-hashcode&quot;&gt;2. hashCode()&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 같은 객체인지 확인할 때 사용.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;3-equals&quot;&gt;3. equals()&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 두 객체의 내용물이 같은지 확인할 때 사용.
 - Object.equals(): 단순 객체 주소 비교.
 - String.equals(): Object.equals()를 오버라이딩하여 문자 하나씩 비교하여 일치하는지 확인.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -868,17 +950,17 @@ int main(){
   &lt;li&gt;BufferedReader: 시간이 적게 걸리나 문자열로만 리턴 가능.
     &lt;ul&gt;
       &lt;li&gt;사용 예시
-  ```
-  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
   String s = br.readLine(); // 문자열로만 리턴. 사용자가 입력한 한 줄을 문자열로 통째로 받아옴.
-  s = “20”;&lt;/li&gt;
+  s = &quot;20&quot;;
+
+  int num = Integer.parseInt(s); // 숫자로 변경됨.
+
+  s = &quot;1 2 3 4 5&quot;;
+  String[] arr = s.split(&quot; &quot;); // s를 공백단위로 쪼갠다 =&amp;gt; arr: 5개의 문자열이 들어간다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
-
-    &lt;p&gt;int num = Integer.parseInt(s); // 숫자로 변경됨.&lt;/p&gt;
-
-    &lt;p&gt;s = “1 2 3 4 5”;
-  String[] arr = s.split(“ “); // s를 공백단위로 쪼갠다 =&amp;gt; arr: 5개의 문자열이 들어간다.
-  ```&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
@@ -1669,86 +1751,4 @@ int main(){
     }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">SWEA 3307번 Link: 3307번: 최장 증가 부분 수열</summary></entry><entry><title type="html">Swea_5215</title><link href="http://localhost:4000/algorithm/SWEA_5215/" rel="alternate" type="text/html" title="Swea_5215" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/SWEA_5215</id><content type="html" xml:base="http://localhost:4000/algorithm/SWEA_5215/">&lt;h1 id=&quot;swea-5215번&quot;&gt;SWEA 5215번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;amp;contestProbId=AWT-lPB6dHUDFAVT&amp;amp;probBoxId=AWgebGzqXfIDFAW0+&amp;amp;type=PROBLEM&amp;amp;problemBoxTitle=Club+Problem+box+01&amp;amp;problemBoxCnt=++3+&quot;&gt;5215번: 햄버거 다이어트&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;완전탐색으로 최적의 조합을 구하는 문제.&lt;/p&gt;
-
-&lt;p&gt;문제 보자마자 ‘이건 DFS쓰면 풀리겠구나’ 하는 생각은 들었다.&lt;/p&gt;
-
-&lt;p&gt;이렇게 생각하고 풀었는데, DFS 구현에서 정말 많이 헤맸다.&lt;/p&gt;
-
-&lt;p&gt;DFS랑 BFS는 그래도 구현방법을 다 외우고 있었다고 생각했었는데 벌써 다 까먹은 모양이다.&lt;/p&gt;
-
-&lt;p&gt;예전에 코딩테스트 볼때도 확실하게 몰랐던거니 당연할수도.&lt;/p&gt;
-
-&lt;p&gt;어떻게든 고쳐서 해보다 안되서 답 찾아서 풀었다.&lt;/p&gt;
-
-&lt;p&gt;핵심은 DFS를 쓰긴 하는데 각각의 재료를 포함했을때와 포함하지 않았을때를 반드시 같이 돌려야 한다는것.&lt;/p&gt;
-
-&lt;p&gt;제약조건에 따라 포함하거나 포함안하거나 따지면서 DFS 두번 돌리면 바로 풀린다.&lt;/p&gt;
-
-&lt;p&gt;아직도 정말 갈길이 멀다고 생각했다.&lt;/p&gt;
-
-&lt;p&gt;DFS, BFS는 자신있다고 생각했는데… 심지어 DFS로 풀어야된다는걸 알면서도 틀려서 더 자괴감 오진다.&lt;/p&gt;
-
-&lt;h1 id=&quot;될때까지-하자&quot;&gt;될때까지 하자.&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 07/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;vector&amp;gt;
-
-using namespace std;
-
-int T;
-int N, L;
-int maximum = 0;
-
-vector&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; base;
-
-void DFS(int start, int calory, int score){
-    if(start == N){
-        maximum = maximum &amp;gt; score ? maximum : score;
-        return;
-    }
-    if(calory + base[start].second &amp;lt;= L){
-        DFS(start+1, calory+base[start].second, score+base[start].first); // start번째 재료 추가
-    }
-    DFS(start+1, calory, score); // start번째 재료 거름
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; T;
-
-    for(int test=1; test&amp;lt;=T; test++){
-        cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; L;
-
-        for(int i=0; i&amp;lt;N; i++){
-            int calory;
-            int score;
-
-            cin &amp;gt;&amp;gt; score &amp;gt;&amp;gt; calory;
-
-            base.push_back(make_pair(score, calory));
-        }
-
-        DFS(0, 0, 0);
-
-        cout &amp;lt;&amp;lt; '#' &amp;lt;&amp;lt; test &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; maximum &amp;lt;&amp;lt; '\n';
-        while(!base.empty()){
-            base.pop_back();
-        }
-        maximum = 0;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><summary type="html">SWEA 5215번 Link: 5215번: 햄버거 다이어트</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">SWEA 3307번 Link: 3307번: 최장 증가 부분 수열</summary></entry></feed>

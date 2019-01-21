@@ -367,17 +367,17 @@
   <li>BufferedReader: 시간이 적게 걸리나 문자열로만 리턴 가능.
     <ul>
       <li>사용 예시
-  ```
-  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
   String s = br.readLine(); // 문자열로만 리턴. 사용자가 입력한 한 줄을 문자열로 통째로 받아옴.
-  s = “20”;</li>
+  s = "20";
+
+  int num = Integer.parseInt(s); // 숫자로 변경됨.
+
+  s = "1 2 3 4 5";
+  String[] arr = s.split(" "); // s를 공백단위로 쪼갠다 =&gt; arr: 5개의 문자열이 들어간다.
+</code></pre></div>        </div>
+      </li>
     </ul>
-
-    <p>int num = Integer.parseInt(s); // 숫자로 변경됨.</p>
-
-    <p>s = “1 2 3 4 5”;
-  String[] arr = s.split(“ “); // s를 공백단위로 쪼갠다 =&gt; arr: 5개의 문자열이 들어간다.
-  ```</p>
   </li>
 </ul>
 <hr />
@@ -793,6 +793,27 @@ public class Child extends Parent{
     
     <h2 class="archive__item-title" itemprop="headline">
       
+        <a href="/algorithm/11724/" rel="permalink">11724
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 11724번
+Link: 11724번: 연결 요소의 개수
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
         <a href="/java/6th-Week-Summary/" rel="permalink">6th week summary
 </a>
       
@@ -842,27 +863,6 @@ Link: 16234번: 인구 이동
     
     <p class="archive__item-excerpt" itemprop="description">백준 1520번
 Link: 1520번: 내리막 길
-
-</p>
-  </article>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/2156/" rel="permalink">2156
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 2156번
-Link: 2156번: 포도주 시식
 
 </p>
   </article>

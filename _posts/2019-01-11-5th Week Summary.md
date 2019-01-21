@@ -56,16 +56,16 @@ author_profile: true
 - Scanner: 편하지만 시간이 많이 걸린다.
 - BufferedReader: 시간이 적게 걸리나 문자열로만 리턴 가능.
     - 사용 예시
-    ```
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    String s = br.readLine(); // 문자열로만 리턴. 사용자가 입력한 한 줄을 문자열로 통째로 받아옴.
-    s = "20";
+        ```
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String s = br.readLine(); // 문자열로만 리턴. 사용자가 입력한 한 줄을 문자열로 통째로 받아옴.
+        s = "20";
 
-    int num = Integer.parseInt(s); // 숫자로 변경됨.
+        int num = Integer.parseInt(s); // 숫자로 변경됨.
 
-    s = "1 2 3 4 5";
-    String[] arr = s.split(" "); // s를 공백단위로 쪼갠다 => arr: 5개의 문자열이 들어간다.
-    ```
+        s = "1 2 3 4 5";
+        String[] arr = s.split(" "); // s를 공백단위로 쪼갠다 => arr: 5개의 문자열이 들어간다.
+        ```
 <hr/>
 
 # 출력 방식 비교

@@ -80,8 +80,10 @@ author_profile: true
     - 오버라이딩 했을 경우: System.out.println(객체); 실행시 객체의 클래스에서 재정의된 toString()이 실행됨.
     - 오버라이딩 안했을 경우: System.out.println(객체); 실행시 주소값만 출력된다 - Object 클래스의 toString()은 객체의 주소값만 돌려주므로.
     - 출력함수의 인자로 객체를 넣을 시 자동으로 toString()이 호출된다.
+
 ## 2. hashCode()
     - 같은 객체인지 확인할 때 사용.
+    
 ## 3. equals()
     - 두 객체의 내용물이 같은지 확인할 때 사용.
     - Object.equals(): 단순 객체 주소 비교.
