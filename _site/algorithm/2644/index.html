@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2583 - KeithLog</title>
-<meta name="description" content="백준 2583번Link: 2583번: 영역 구하기">
+<!-- begin _includes/seo.html --><title>2644 - KeithLog</title>
+<meta name="description" content="백준 2644번Link: 2644번: 촌수계산">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2583">
-<meta property="og:url" content="keithlee94.github.io/algorithm/2583/">
+<meta property="og:title" content="2644">
+<meta property="og:url" content="keithlee94.github.io/algorithm/2644/">
 
 
-  <meta property="og:description" content="백준 2583번Link: 2583번: 영역 구하기">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-22T00:00:00+09:00">
+  <meta property="og:description" content="백준 2644번Link: 2644번: 촌수계산">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-01-28T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/2583/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/2644/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2583">
-    <meta itemprop="description" content="백준 2583번Link: 2583번: 영역 구하기">
-    <meta itemprop="datePublished" content="January 22, 2019">
+    <meta itemprop="headline" content="2644">
+    <meta itemprop="description" content="백준 2644번Link: 2644번: 촌수계산">
+    <meta itemprop="datePublished" content="January 28, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2583
+          <h1 id="page-title" class="page__title" itemprop="headline">2644
 </h1>
           
         </header>
@@ -286,106 +286,109 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-2583번">백준 2583번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/2583">2583번: 영역 구하기</a></p>
+        <h1 id="백준-2644번">백준 2644번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/2644">2644번: 촌수계산</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>기초적인 BFS 문제다.</p>
+<p>역시나 BFS문제.</p>
 
-<p>2차원 배열에 모눈종이를 표시하고, 표시되지 않은 부분들에 대해 BFS를 진행하며 각 영역의 크기와 총 영역 갯수를 구하는 문제.</p>
+<p>저번에 풀었던 토마토 문제처럼, 이 문제도 트리 내에서 출발지와 목적지를 설정하여 목적지까지 도달하는데 거치는 트리 레벨을 세면 되는 문제였다.</p>
 
-<p>문제 보기에 좌표가 조금 다르게 표현되어 있어 이를 2차원 배열로 옮기는 과정에서 생각을 좀 했었다.</p>
+<p>주의해야할 점은 방향이 없는 그래프 문제였다는 점.</p>
 
-<p>좌표만 잘 옮기면 무난히 풀 수 있는 문제.</p>
+<p>이외에는 다소 평이했던 문제였다…</p>
+
+<p>라고 하기에는 막판에 뻘짓을 좀 했다.</p>
+
+<p>도달할 수 없는 경우 -1로 처리하는 부분에서 살짝 헤맸던 것 빼고는 할만한 문제였다.</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 22/01/2019.
+// Created by Keith_Lee on 28/01/2019.
 //
 
 #include &lt;iostream&gt;
 #include &lt;queue&gt;
 #include &lt;vector&gt;
-#include &lt;string.h&gt;
-#include &lt;algorithm&gt;
 
 using namespace std;
 
-int M, N, K;
-int result = 0;
+int map[101][101] = {0, };
+bool visit[101][101] = {false, };
 
-int map[100][100];
-bool visit[100][100];
+int n;
 
-int dx[4] = {0, 0, 1, -1};
-int dy[4] = {1, -1, 0, 0};
+int BFS(int start, int end){
+    int result = 0;
 
-vector&lt;int&gt; areas;
-
-void BFS(int startX, int startY){
-    queue&lt;pair&lt;int, int&gt;&gt; Queue;
-    Queue.push(make_pair(startX, startY));
-
-    int area = 1;
+    queue&lt;int&gt; Queue;
+    Queue.push(start);
 
     while(!Queue.empty()){
-        int currentX = Queue.front().first;
-        int currentY = Queue.front().second;
-        Queue.pop();
+        vector&lt;int&gt; available;
 
-        for(int i=0; i&lt;4; i++){
-            int nextX = currentX + dx[i];
-            int nextY = currentY + dy[i];
+        while(!Queue.empty()) {
+            available.push_back(Queue.front());
+            Queue.pop();
+        }
 
-            if(nextX &gt;= 0 &amp;&amp; nextX &lt; M &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
-                if(!visit[nextX][nextY] &amp;&amp; map[nextX][nextY] == 0){
-                    visit[nextX][nextY] = true;
-                    Queue.push(make_pair(nextX, nextY));
-                    area++;
+        for(int i=0; i&lt;available.size(); i++) {
+            int current = available[i];
+
+            for (int j = 1; j &lt;= n; j++) {
+                if (map[current][j] == 1 &amp;&amp; !visit[current][j]) {
+                    visit[current][j] = true;
+                    visit[j][current] = true;
+                    Queue.push(j);
                 }
             }
         }
-    }
 
-    result++;
-    areas.push_back(area);
+        result++;
+
+        for(int i=1; i&lt;=n; i++){
+            if(visit[end][i] &amp;&amp; visit[i][end]){
+                return result;
+            }
+        }
+
+    }
 }
 
 int main(){
-    cin &gt;&gt; M &gt;&gt; N &gt;&gt; K;
+    cin &gt;&gt; n;
 
-    bzero(map, sizeof(map));
+    int start, end;
+    cin &gt;&gt; start &gt;&gt; end;
 
-    for(int i=0; i&lt;K; i++){
-        int startX, startY, endX, endY;
+    int m;
+    cin &gt;&gt; m;
 
-        cin &gt;&gt; startX &gt;&gt; startY &gt;&gt; endX &gt;&gt; endY;
+    for(int i=0; i&lt;m; i++){
+        int x, y;
+        cin &gt;&gt; x &gt;&gt; y;
 
-        for(int j=startY; j&lt;endY; j++){
-            for(int k=startX; k&lt;endX; k++){
-                map[j][k] = 1;
-            }
+        map[x][y] = 1;
+        map[y][x] = 1;
+    }
+
+    int result = BFS(start, end);
+
+    bool find = false;
+    for(int i=1; i&lt;=n; i++){
+        if(visit[end][i] &amp;&amp; visit[i][end]){
+            find = true;
         }
     }
 
-    for(int i=0; i&lt;M; i++){
-        for(int j=0; j&lt;N; j++){
-            if(!visit[i][j] &amp;&amp; map[i][j] == 0){
-                visit[i][j] = true;
-                BFS(i, j);
-            }
-        }
+    if(!find){
+        result = -1;
     }
 
-    sort(areas.begin(), areas.end());
     cout &lt;&lt; result &lt;&lt; '\n';
-    for(int i=0; i&lt;areas.size(); i++){
-        cout &lt;&lt; areas[i] &lt;&lt; ' ';
-    }
-    cout &lt;&lt; '\n';
 
     return 0;
 }
@@ -440,7 +443,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-22T00:00:00+09:00">January 22, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-28T00:00:00+09:00">January 28, 2019</time></p>
         
       </footer>
 
@@ -449,24 +452,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2583%20keithlee94.github.io%2Falgorithm%2F2583%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=2644%20keithlee94.github.io%2Falgorithm%2F2644%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2583%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2644%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2583%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2644%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2583%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2644%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/11724/" class="pagination--pager" title="11724
+      <a href="/algorithm/10026/" class="pagination--pager" title="10026
 ">Previous</a>
     
     
-      <a href="/algorithm/7562/" class="pagination--pager" title="7562
+      <a href="/java/7th-Week-Summary/" class="pagination--pager" title="7th week summary
 ">Next</a>
     
   </nav>
@@ -512,27 +515,6 @@ int main(){
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/2644/" rel="permalink">2644
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 2644번
-Link: 2644번: 촌수계산
-
-</p>
-  </article>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
         <a href="/algorithm/10026/" rel="permalink">10026
 </a>
       
@@ -561,6 +543,27 @@ Link: 10026번: 적록색약
     
     <p class="archive__item-excerpt" itemprop="description">백준 7569번
 Link: 7569번: 토마토
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/7562/" rel="permalink">7562
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 7562번
+Link: 7562번: 나이트의 이동
 
 </p>
   </article>
