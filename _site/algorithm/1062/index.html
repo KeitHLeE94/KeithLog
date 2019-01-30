@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>16234 - KeithLog</title>
-<meta name="description" content="백준 16234번Link: 16234번: 인구 이동">
+<!-- begin _includes/seo.html --><title>1062 - KeithLog</title>
+<meta name="description" content="백준 1062번Link: 1062번: 가르침">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="16234">
-<meta property="og:url" content="keithlee94.github.io/algorithm/16234/">
+<meta property="og:title" content="1062">
+<meta property="og:url" content="keithlee94.github.io/algorithm/1062/">
 
 
-  <meta property="og:description" content="백준 16234번Link: 16234번: 인구 이동">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-17T00:00:00+09:00">
+  <meta property="og:description" content="백준 1062번Link: 1062번: 가르침">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-01-30T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/16234/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/1062/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="16234">
-    <meta itemprop="description" content="백준 16234번Link: 16234번: 인구 이동">
-    <meta itemprop="datePublished" content="January 17, 2019">
+    <meta itemprop="headline" content="1062">
+    <meta itemprop="description" content="백준 1062번Link: 1062번: 가르침">
+    <meta itemprop="datePublished" content="January 30, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">16234
+          <h1 id="page-title" class="page__title" itemprop="headline">1062
 </h1>
           
         </header>
@@ -286,186 +286,230 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-16234번">백준 16234번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/16234">16234번: 인구 이동</a></p>
+        <h1 id="백준-1062번">백준 1062번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/1062">1062번: 가르침</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>작년 하반기 삼성 SW 역량테스트 문제다.</p>
+<p>29일부터 풀기 시작해서 30일에서 31일 넘어가는 새벽에야 겨우 해결했던 문제.</p>
 
-<p>시험장에서 문제 보고 뭔가싶어서 바로 넘기고 다른문제 올인하다 결국 둘다 못풀어서 광탈했던 악몽이 다시 떠오른다.</p>
+<p>내 답이 맞는것 같아 계속 고민하다 결국 답을 보고 해결했다.</p>
 
-<p>아무 문제나 붙잡고 풀다가 다 안풀려서 어차피 한번은 풀어야될 문제라 결국 붙잡고 풀었다.</p>
+<p>답을 찾아보고서야 예전에 DFS를 통해 조합을 구하는 방법을 써서 문제를 풀때 어떤식으로 코드를 짰는지 떠오르더라.</p>
 
-<p>예전부터 지인들이 니가 문제보고 쫄아서그렇지 별거 아닌문제다 라는 말을 했었는데 막상 풀어보니 틀린말은 아닌거같다.</p>
+<p>정신승리를 좀 하자면, 시간초과가 났긴 했지만 어쨌든 답을 구할 수 있는 방법들을 최대한 생각해보고 여러 방법들을 비교해봤다는 점.</p>
 
-<p>하지만 내가 저날 시험장에서 이문제를 제대로 읽고 이해했다고 해도 시간안에 푸는건 무리였을것 같다.</p>
+<p>이러는 과정에서 시간초과를 수십번 본 것 같은데, 어떤 부분에서 시간초과가 일어나는지는 짚어냈다.</p>
 
-<p>BFS를 여러번 해야되는 문제다.</p>
+<p>문제는 그 부분을 고치니 답이 틀렸다는 것.</p>
 
-<p>map에서 수정할 부분이 어디인지 찾아내는 부분에서 BFS를 해야 하고, 수정할 부분을 찾은 다음 map을 수정하기 위한 BFS를 해야하는 문제.</p>
+<p>이렇게 여러번 고민해봐도 도저히 안풀려서 답을 찾아보게 되었다.</p>
 
-<p>거기다 이 과정을 더이상 수정할 부분이 없을때까지 반복해야 한다.</p>
+<p>답을 보고 나니 뭔가 매우 허무한 느낌이 들었다. 그동안 뭘 짜고 있었나 싶기도 하고.</p>
 
-<p>BFS문제라는 느낌은 확실히 들었다.</p>
+<p>답을 찾아내기 위해 삽질했던 시간들이 있었기 때문에 정답을 보고서도 이 부분은 나도 구현했는데 왜 틀렸을까 하는 생각이 들게 하였고 이 부분은 이래서 이렇게 짰구나 하는 생각도 들 수 있었던것 같다.</p>
 
-<p>처음에 문제 접했을땐 map에서 수정할 부분을 찾는 과정에 대해 BFS를 써야겠다는 생각이 안들었다.</p>
+<p>요며칠 단순한 BFS문제를 풀면서 이런식으로 DFS를 통해 조합을 구하고 백트래킹해야 풀리는 문제 푸는 연습을 해야겠다고 생각했는데, 이 문제가 전형적인 그런 문제였다.</p>
 
-<p>그래서 3중 for문을 사용해서 수정할 부분을 찾아 마킹했다.</p>
-
-<p>그 이후 map을 수정하는 부분에 대해서는 BFS로 구현하여 풀어보았다.</p>
-
-<p>풀어본 다음 테스트케이스들을 넣어보니, 단순히 3중 for문으로는 풀수 없는 문제라는 것을 깨달았다.</p>
-
-<p>마지막까지 가장 애먹였던 부분이 이부분인데, map에서 수정할 부분을 단순히 1로 마킹할 경우 영역간 경계가 있으나 이 경계를 무시하고 BFS를 진행하는 문제가 생긴다.</p>
-
-<p>BFS로 바꿔서 해보고도 마지막에 이부분을 놓쳐 한번 더 삽질하다 결국 풀었다.</p>
-
-<p>막상 풀고나니 별거 아닌건 맞는데, 시험장의 압박감과 이 시험볼 당시 알고리즘 공부도 어설프게 하고 간 나는 절대 못풀었을 것 같다는 생각이 들었다.</p>
-
-<p>얻어가는 점은 몇번씩 실패하고도 남의 도움 안받고 내 힘만으로 풀어냈다는 점, BFS문제를 혼자 힘만으로 제대로 풀어냈다는 점이다.</p>
-
-<p>이런 점을 밑거름삼아 앞으로 있을 역량테스트에서도 포기하지 않고 끝까지 풀어내는 것이 목표이다.</p>
-
-<p><strong><em>다시는 악몽 안꾸련다. 앞으로도 화이팅!!!</em></strong></p>
+<p>시간 지나고 푸는 방법 까먹을때쯤 한번 더 풀어봐야겠다.</p>
 <hr />
 
-<h1 id="정답-코드">정답 코드</h1>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 15/01/2019.
-//
-
-#include &lt;iostream&gt;
-#include &lt;memory.h&gt;
-#include &lt;queue&gt;
+<h1 id="삽질했던-코드">삽질했던 코드</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;
 #include &lt;vector&gt;
 
 using namespace std;
 
-int N, L, R;
-int dx[] = {0, 0, 1, -1};
-int dy[] = {1, -1, 0, 0};
+int result = 0;
+int N, K;
+int candidates[26] = {0, };
+int words[50][26] = {0, };
 
-int map[50][50] = {0, };
-int toChange[50][50] = {0, };
-int visit[50][50] = {0, };
-
-vector&lt;pair&lt;int, int&gt;&gt; changes(){
-    vector&lt;pair&lt;int, int&gt;&gt; result;
-
-    for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;N; j++){
-            if(toChange[i][j] != 0){
-                result.push_back(make_pair(i, j));
-            }
-        }
-    }
-
-    return result;
+int max(int a, int b){
+    return a &gt; b ? a : b;
 }
 
-void toChange_init(){
-    int areaCount = 1;
+void searchTeach(int count, int index, int toTeach[26], int limit){
+    int tempResult = 0;
 
-    for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;N; j++){
-            queue&lt;pair&lt;int, int&gt;&gt; Queue;
-            Queue.push(make_pair(i, j));
+    int temp[26];
+    for(int i=0; i&lt;26; i++){
+        temp[i] = toTeach[i];
+    }
 
-            while(!Queue.empty()){
-                int currentX = Queue.front().first;
-                int currentY = Queue.front().second;
-                Queue.pop();
+    if(candidates[index] == 1){
+        temp[index] = 1;
+    }
 
-                for(int k=0; k&lt;4; k++){
-                    int nextX = currentX + dx[k];
-                    int nextY = currentY + dy[k];
+    if(count == limit){
+        for(int i=0; i&lt;N; i++){
+            bool invalid = false;
 
-                    if(nextX &gt;= 0 &amp;&amp; nextX &lt; N &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
-                        int gap = abs(map[currentX][currentY] - map[nextX][nextY]);
-                        if(gap &gt;= L &amp;&amp; gap &lt;= R &amp;&amp; toChange[nextX][nextY] == 0){
-                            toChange[nextX][nextY] = areaCount;
-                            Queue.push(make_pair(nextX, nextY));
-                        }
-                    }
+            for(int j=0; j&lt;26; j++){
+                if(toTeach[j] - words[i][j] &lt; 0){
+                    invalid = true;
+                    break;
                 }
             }
 
-            areaCount++;
-        }
-    }
-}
-
-void BFS(int currentX, int currentY){
-    vector&lt;pair&lt;int, int&gt;&gt; visited;
-
-    queue&lt;pair&lt;int, int&gt;&gt; Queue;
-    Queue.push(make_pair(currentX, currentY));
-
-    int changeCount = 0;
-    int changeSum = 0;
-    visit[currentX][currentY] = 1;
-
-    while(!Queue.empty()){
-        int startX = Queue.front().first;
-        int startY = Queue.front().second;
-        Queue.pop();
-
-        changeCount++;
-        changeSum += map[startX][startY];
-        visited.push_back(make_pair(startX, startY));
-
-        for(int i=0; i&lt;4; i++){
-            int nextX = startX + dx[i];
-            int nextY = startY + dy[i];
-
-            if(nextX &gt;= 0 &amp;&amp; nextX &lt; N &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
-                if(visit[nextX][nextY] == 0 &amp;&amp; toChange[nextX][nextY] == toChange[startX][startY]){
-                    Queue.push(make_pair(nextX, nextY));
-                    visit[nextX][nextY] = 1;
-                }
+            if(!invalid){
+                tempResult++;
             }
         }
+
+        result = max(result, tempResult);
+        return;
     }
 
-    for(int i=0; i&lt;visited.size(); i++){
-        map[visited[i].first][visited[i].second] = changeSum / changeCount;
+    int next = 0;
+    for(int i=index+1; i&lt;26; i++){
+        if(candidates[i] == 1){
+            next = i;
+            break;
+        }
+    }
+
+    searchTeach(count+1, next, temp, limit);
+    searchTeach(count+1, next, toTeach, limit);
+}
+
+void toTeach(){
+    for(int i=0; i&lt;N; i++){
+        for(int j=0; j&lt;26; j++){
+            if(candidates[j] != 1){
+                candidates[j] = words[i][j];
+            }
+        }
     }
 }
 
 int main(){
-    cin &gt;&gt; N &gt;&gt; L &gt;&gt; R;
+    string word;
+
+    cin &gt;&gt; N &gt;&gt; K;
 
     for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;N; j++){
-            cin &gt;&gt; map[i][j];
+        cin &gt;&gt; word;
+
+        if(K &gt;= 5){
+            string temp = word.substr(4, word.length()-8);
+            for(int j=0; j&lt;temp.length(); j++){
+                int current = temp[j] - 'a';
+                if(current != 0 &amp;&amp; current != 2 &amp;&amp; current != 8 &amp;&amp; current != 13 &amp;&amp; current != 19){
+                    words[i][current] = 1;
+                }
+            }
         }
     }
 
-    int count = 0;
+    if(K &lt; 5){
+        result = 0;
+    }
+    else{
+        toTeach();
 
-    while(true) {
-        memset(toChange, 0, sizeof(toChange));
-        memset(visit, 0, sizeof(visit));
+        int input[26] = {0, };
 
-        toChange_init();
-
-        vector&lt;pair&lt;int, int&gt;&gt; ones = changes();
-        if (ones.size() == 0) {
-            break;
-        }
-
-        for (int i = 0; i &lt; ones.size(); i++) {
-            if (visit[ones[i].first][ones[i].second] == 0) {
-                BFS(ones[i].first, ones[i].second);
+        for(int i=0; i&lt;26; i++){
+            if(candidates[i] == 1){
+                searchTeach(0, i, input, K-5);
+                candidates[i]--;
             }
         }
 
-        count++;
+        if(K == 5){
+            searchTeach(0, 0, input, K-5);
+        }
     }
 
-    cout &lt;&lt; count &lt;&lt; '\n';
+    cout &lt;&lt; result &lt;&lt; '\n';
+
+    return 0;
+}
+</code></pre></div></div>
+<hr />
+
+<h1 id="정답-코드">정답 코드</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+// Created by Keith_Lee on 30/01/2019.
+//
+
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int result = 0;
+int N, K;
+
+string words[50];
+bool visit[26];
+
+int max(int a, int b){
+    return a &gt; b ? a : b;
+}
+
+void searchTeach(int index, int count){
+    if(count == K-5){
+        int tempResult = 0;
+
+        for(int i=0; i&lt;N; i++){
+            bool invalid = false;
+
+            for(int j=0; j&lt;words[i].length(); j++){
+                if(!visit[words[i][j] - 'a']){
+                    invalid = true;
+                    break;
+                }
+
+            }
+
+            if(!invalid){
+                tempResult++;
+            }
+        }
+
+        result = max(result, tempResult);
+        return;
+    }
+
+    for(int i=index; i&lt;26; i++){
+        if(!visit[i]){
+            visit[i] = true;
+            searchTeach(i, count+1);
+            visit[i] = false;
+        }
+    }
+
+}
+
+int main(){
+    cin &gt;&gt; N &gt;&gt; K;
+
+    for(int i=0; i&lt;N; i++){
+        cin &gt;&gt; words[i];
+
+        words[i] = words[i].substr(4, words[i].length()-8);
+    }
+
+    if(K &lt; 5){
+        result = 0;
+    }
+    else if(K == 26){
+        result = N;
+    }
+    else{
+        visit['a' - 'a'] = true;
+        visit['n' - 'a'] = true;
+        visit['t' - 'a'] = true;
+        visit['c' - 'a'] = true;
+        visit['i' - 'a'] = true;
+
+        searchTeach(0, 0);
+    }
+
+    cout &lt;&lt; result &lt;&lt; '\n';
 
     return 0;
 }
@@ -492,11 +536,11 @@ int main(){
     
       
       
-      <a href="/tags/#bfs" class="page__taxonomy-item" rel="tag">BFS</a><span class="sep">, </span>
+      <a href="/tags/#backtracking" class="page__taxonomy-item" rel="tag">Backtracking</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#dfs" class="page__taxonomy-item" rel="tag">DFS</a>
+      <a href="/tags/#brute-force" class="page__taxonomy-item" rel="tag">Brute Force</a>
     
     </span>
   </p>
@@ -524,7 +568,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-17T00:00:00+09:00">January 17, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-30T00:00:00+09:00">January 30, 2019</time></p>
         
       </footer>
 
@@ -533,25 +577,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=16234%20keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=1062%20keithlee94.github.io%2Falgorithm%2F1062%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1062%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1062%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1062%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/1520/" class="pagination--pager" title="1520
+      <a href="/java/7th-Week-Summary/" class="pagination--pager" title="7th week summary
 ">Previous</a>
     
     
-      <a href="/java/6th-Week-Summary/" class="pagination--pager" title="6th week summary
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -565,27 +608,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/1062/" rel="permalink">1062
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 1062번
-Link: 1062번: 가르침
-
-</p>
-  </article>
-</div>
         
           
 
@@ -645,6 +667,27 @@ Link: 2644번: 촌수계산
     
     <p class="archive__item-excerpt" itemprop="description">백준 10026번
 Link: 10026번: 적록색약
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/7569/" rel="permalink">7569
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 7569번
+Link: 7569번: 토마토
 
 </p>
   </article>

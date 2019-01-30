@@ -1,4 +1,485 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-01-28T19:08:25+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">7th week summary</title><link href="keithlee94.github.io/java/7th-Week-Summary/" rel="alternate" type="text/html" title="7th week summary" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>keithlee94.github.io/java/7th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/7th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-01-31T01:40:47+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">1062</title><link href="keithlee94.github.io/algorithm/1062/" rel="alternate" type="text/html" title="1062" /><published>2019-01-30T00:00:00+09:00</published><updated>2019-01-30T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1062</id><content type="html" xml:base="keithlee94.github.io/algorithm/1062/">&lt;h1 id=&quot;백준-1062번&quot;&gt;백준 1062번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1062&quot;&gt;1062번: 가르침&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;29일부터 풀기 시작해서 30일에서 31일 넘어가는 새벽에야 겨우 해결했던 문제.&lt;/p&gt;
+
+&lt;p&gt;내 답이 맞는것 같아 계속 고민하다 결국 답을 보고 해결했다.&lt;/p&gt;
+
+&lt;p&gt;답을 찾아보고서야 예전에 DFS를 통해 조합을 구하는 방법을 써서 문제를 풀때 어떤식으로 코드를 짰는지 떠오르더라.&lt;/p&gt;
+
+&lt;p&gt;정신승리를 좀 하자면, 시간초과가 났긴 했지만 어쨌든 답을 구할 수 있는 방법들을 최대한 생각해보고 여러 방법들을 비교해봤다는 점.&lt;/p&gt;
+
+&lt;p&gt;이러는 과정에서 시간초과를 수십번 본 것 같은데, 어떤 부분에서 시간초과가 일어나는지는 짚어냈다.&lt;/p&gt;
+
+&lt;p&gt;문제는 그 부분을 고치니 답이 틀렸다는 것.&lt;/p&gt;
+
+&lt;p&gt;이렇게 여러번 고민해봐도 도저히 안풀려서 답을 찾아보게 되었다.&lt;/p&gt;
+
+&lt;p&gt;답을 보고 나니 뭔가 매우 허무한 느낌이 들었다. 그동안 뭘 짜고 있었나 싶기도 하고.&lt;/p&gt;
+
+&lt;p&gt;답을 찾아내기 위해 삽질했던 시간들이 있었기 때문에 정답을 보고서도 이 부분은 나도 구현했는데 왜 틀렸을까 하는 생각이 들게 하였고 이 부분은 이래서 이렇게 짰구나 하는 생각도 들 수 있었던것 같다.&lt;/p&gt;
+
+&lt;p&gt;요며칠 단순한 BFS문제를 풀면서 이런식으로 DFS를 통해 조합을 구하고 백트래킹해야 풀리는 문제 푸는 연습을 해야겠다고 생각했는데, 이 문제가 전형적인 그런 문제였다.&lt;/p&gt;
+
+&lt;p&gt;시간 지나고 푸는 방법 까먹을때쯤 한번 더 풀어봐야겠다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;삽질했던-코드&quot;&gt;삽질했던 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int result = 0;
+int N, K;
+int candidates[26] = {0, };
+int words[50][26] = {0, };
+
+int max(int a, int b){
+    return a &amp;gt; b ? a : b;
+}
+
+void searchTeach(int count, int index, int toTeach[26], int limit){
+    int tempResult = 0;
+
+    int temp[26];
+    for(int i=0; i&amp;lt;26; i++){
+        temp[i] = toTeach[i];
+    }
+
+    if(candidates[index] == 1){
+        temp[index] = 1;
+    }
+
+    if(count == limit){
+        for(int i=0; i&amp;lt;N; i++){
+            bool invalid = false;
+
+            for(int j=0; j&amp;lt;26; j++){
+                if(toTeach[j] - words[i][j] &amp;lt; 0){
+                    invalid = true;
+                    break;
+                }
+            }
+
+            if(!invalid){
+                tempResult++;
+            }
+        }
+
+        result = max(result, tempResult);
+        return;
+    }
+
+    int next = 0;
+    for(int i=index+1; i&amp;lt;26; i++){
+        if(candidates[i] == 1){
+            next = i;
+            break;
+        }
+    }
+
+    searchTeach(count+1, next, temp, limit);
+    searchTeach(count+1, next, toTeach, limit);
+}
+
+void toTeach(){
+    for(int i=0; i&amp;lt;N; i++){
+        for(int j=0; j&amp;lt;26; j++){
+            if(candidates[j] != 1){
+                candidates[j] = words[i][j];
+            }
+        }
+    }
+}
+
+int main(){
+    string word;
+
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; K;
+
+    for(int i=0; i&amp;lt;N; i++){
+        cin &amp;gt;&amp;gt; word;
+
+        if(K &amp;gt;= 5){
+            string temp = word.substr(4, word.length()-8);
+            for(int j=0; j&amp;lt;temp.length(); j++){
+                int current = temp[j] - 'a';
+                if(current != 0 &amp;amp;&amp;amp; current != 2 &amp;amp;&amp;amp; current != 8 &amp;amp;&amp;amp; current != 13 &amp;amp;&amp;amp; current != 19){
+                    words[i][current] = 1;
+                }
+            }
+        }
+    }
+
+    if(K &amp;lt; 5){
+        result = 0;
+    }
+    else{
+        toTeach();
+
+        int input[26] = {0, };
+
+        for(int i=0; i&amp;lt;26; i++){
+            if(candidates[i] == 1){
+                searchTeach(0, i, input, K-5);
+                candidates[i]--;
+            }
+        }
+
+        if(K == 5){
+            searchTeach(0, 0, input, K-5);
+        }
+    }
+
+    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 30/01/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int result = 0;
+int N, K;
+
+string words[50];
+bool visit[26];
+
+int max(int a, int b){
+    return a &amp;gt; b ? a : b;
+}
+
+void searchTeach(int index, int count){
+    if(count == K-5){
+        int tempResult = 0;
+
+        for(int i=0; i&amp;lt;N; i++){
+            bool invalid = false;
+
+            for(int j=0; j&amp;lt;words[i].length(); j++){
+                if(!visit[words[i][j] - 'a']){
+                    invalid = true;
+                    break;
+                }
+
+            }
+
+            if(!invalid){
+                tempResult++;
+            }
+        }
+
+        result = max(result, tempResult);
+        return;
+    }
+
+    for(int i=index; i&amp;lt;26; i++){
+        if(!visit[i]){
+            visit[i] = true;
+            searchTeach(i, count+1);
+            visit[i] = false;
+        }
+    }
+
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; K;
+
+    for(int i=0; i&amp;lt;N; i++){
+        cin &amp;gt;&amp;gt; words[i];
+
+        words[i] = words[i].substr(4, words[i].length()-8);
+    }
+
+    if(K &amp;lt; 5){
+        result = 0;
+    }
+    else if(K == 26){
+        result = N;
+    }
+    else{
+        visit['a' - 'a'] = true;
+        visit['n' - 'a'] = true;
+        visit['t' - 'a'] = true;
+        visit['c' - 'a'] = true;
+        visit['i' - 'a'] = true;
+
+        searchTeach(0, 0);
+    }
+
+    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="Backtracking" /><summary type="html">백준 1062번 Link: 1062번: 가르침</summary></entry><entry><title type="html">2644</title><link href="keithlee94.github.io/algorithm/2644/" rel="alternate" type="text/html" title="2644" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2644</id><content type="html" xml:base="keithlee94.github.io/algorithm/2644/">&lt;h1 id=&quot;백준-2644번&quot;&gt;백준 2644번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2644&quot;&gt;2644번: 촌수계산&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;역시나 BFS문제.&lt;/p&gt;
+
+&lt;p&gt;저번에 풀었던 토마토 문제처럼, 이 문제도 트리 내에서 출발지와 목적지를 설정하여 목적지까지 도달하는데 거치는 트리 레벨을 세면 되는 문제였다.&lt;/p&gt;
+
+&lt;p&gt;주의해야할 점은 방향이 없는 그래프 문제였다는 점.&lt;/p&gt;
+
+&lt;p&gt;이외에는 다소 평이했던 문제였다…&lt;/p&gt;
+
+&lt;p&gt;라고 하기에는 막판에 뻘짓을 좀 했다.&lt;/p&gt;
+
+&lt;p&gt;도달할 수 없는 경우 -1로 처리하는 부분에서 살짝 헤맸던 것 빼고는 할만한 문제였다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 28/01/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;queue&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int map[101][101] = {0, };
+bool visit[101][101] = {false, };
+
+int n;
+
+int BFS(int start, int end){
+    int result = 0;
+
+    queue&amp;lt;int&amp;gt; Queue;
+    Queue.push(start);
+
+    while(!Queue.empty()){
+        vector&amp;lt;int&amp;gt; available;
+
+        while(!Queue.empty()) {
+            available.push_back(Queue.front());
+            Queue.pop();
+        }
+
+        for(int i=0; i&amp;lt;available.size(); i++) {
+            int current = available[i];
+
+            for (int j = 1; j &amp;lt;= n; j++) {
+                if (map[current][j] == 1 &amp;amp;&amp;amp; !visit[current][j]) {
+                    visit[current][j] = true;
+                    visit[j][current] = true;
+                    Queue.push(j);
+                }
+            }
+        }
+
+        result++;
+
+        for(int i=1; i&amp;lt;=n; i++){
+            if(visit[end][i] &amp;amp;&amp;amp; visit[i][end]){
+                return result;
+            }
+        }
+
+    }
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; n;
+
+    int start, end;
+    cin &amp;gt;&amp;gt; start &amp;gt;&amp;gt; end;
+
+    int m;
+    cin &amp;gt;&amp;gt; m;
+
+    for(int i=0; i&amp;lt;m; i++){
+        int x, y;
+        cin &amp;gt;&amp;gt; x &amp;gt;&amp;gt; y;
+
+        map[x][y] = 1;
+        map[y][x] = 1;
+    }
+
+    int result = BFS(start, end);
+
+    bool find = false;
+    for(int i=1; i&amp;lt;=n; i++){
+        if(visit[end][i] &amp;amp;&amp;amp; visit[i][end]){
+            find = true;
+        }
+    }
+
+    if(!find){
+        result = -1;
+    }
+
+    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2644번 Link: 2644번: 촌수계산</summary></entry><entry><title type="html">10026</title><link href="keithlee94.github.io/algorithm/10026/" rel="alternate" type="text/html" title="10026" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/10026</id><content type="html" xml:base="keithlee94.github.io/algorithm/10026/">&lt;h1 id=&quot;백준-10026번&quot;&gt;백준 10026번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/10026&quot;&gt;10026번: 적록색약&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;이번에도 BFS 문제.&lt;/p&gt;
+
+&lt;p&gt;각각의 색깔명에 대해 전체 map이 몇개의 영역으로 나눠지는지 구하는 문제였다.&lt;/p&gt;
+
+&lt;p&gt;한가지 특이했던 점은 적록색맹이라는 상황을 줌으로써 R값과 G값을 같은 값으로 보고 풀어야 하는 부분이 존재했다는 점.&lt;/p&gt;
+
+&lt;p&gt;적록색맹이 아닌 사람과 적록색맹인 사람의 경우를 따로 나눠 구해야 한다.&lt;/p&gt;
+
+&lt;p&gt;처음에는 map을 아예 새로 만들까 했었는데, 조건문에서 R과 G에 대한 조건을 or로 묶으니 굳이 안그래도 해결됐다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 28/01/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;queue&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+
+using namespace std;
+
+int N;
+char map[101][101];
+bool visit[101][101];
+
+int dx[4] = {0, 0, 1, -1};
+int dy[4] = {1, -1, 0, 0};
+
+int normalResult = 0;
+int redGreenResult = 0;
+
+void BFS_normal(int startX, int startY){
+    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
+
+    Queue.push(make_pair(startX, startY));
+    visit[startX][startY] = true;
+
+    while(!Queue.empty()){
+        int currentX = Queue.front().first;
+        int currentY = Queue.front().second;
+        Queue.pop();
+
+        for(int i=0; i&amp;lt;4; i++){
+            int nextX = currentX + dx[i];
+            int nextY = currentY + dy[i];
+
+            if(nextX &amp;gt;= 1 &amp;amp;&amp;amp; nextX &amp;lt;= N &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt;= N){
+                if(map[startX][startY] == 'R'){
+                    if(map[nextX][nextY] == 'R' &amp;amp;&amp;amp; !visit[nextX][nextY]){
+                        visit[nextX][nextY] = true;
+                        Queue.push(make_pair(nextX, nextY));
+                    }
+                }
+                else if(map[startX][startY] == 'G'){
+                    if(map[nextX][nextY] == 'G' &amp;amp;&amp;amp; !visit[nextX][nextY]){
+                        visit[nextX][nextY] = true;
+                        Queue.push(make_pair(nextX, nextY));
+                    }
+                }
+                else if(map[startX][startY] == 'B'){
+                    if(map[nextX][nextY] == 'B' &amp;amp;&amp;amp; !visit[nextX][nextY]){
+                        visit[nextX][nextY] = true;
+                        Queue.push(make_pair(nextX, nextY));
+                    }
+                }
+            }
+        }
+    }
+
+    normalResult++;
+}
+
+void BFS_redGreen(int startX, int startY){
+    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
+
+    Queue.push(make_pair(startX, startY));
+    visit[startX][startY] = true;
+
+    while(!Queue.empty()){
+        int currentX = Queue.front().first;
+        int currentY = Queue.front().second;
+        Queue.pop();
+
+        for(int i=0; i&amp;lt;4; i++){
+            int nextX = currentX + dx[i];
+            int nextY = currentY + dy[i];
+
+            if(nextX &amp;gt;= 1 &amp;amp;&amp;amp; nextX &amp;lt;= N &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt;= N){
+                if(map[startX][startY] == 'R' || map[startX][startY] == 'G'){
+                    if((map[nextX][nextY] == 'R' || map[nextX][nextY] == 'G') &amp;amp;&amp;amp; !visit[nextX][nextY]){
+                        visit[nextX][nextY] = true;
+                        Queue.push(make_pair(nextX, nextY));
+                    }
+                }
+                else if(map[startX][startY] == 'B'){
+                    if(map[nextX][nextY] == 'B' &amp;amp;&amp;amp; !visit[nextX][nextY]){
+                        visit[nextX][nextY] = true;
+                        Queue.push(make_pair(nextX, nextY));
+                    }
+                }
+            }
+        }
+    }
+
+    redGreenResult++;
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N;
+
+    for(int i=1; i&amp;lt;=N; i++){
+        for(int j=1; j&amp;lt;=N; j++){
+            cin &amp;gt;&amp;gt; map[i][j];
+        }
+    }
+
+    for(int i=1; i&amp;lt;=N; i++){
+        for(int j=1; j&amp;lt;=N; j++){
+            if(!visit[i][j]){
+                BFS_normal(i, j);
+            }
+        }
+    }
+
+    bzero(visit, sizeof(visit));
+
+    for(int i=1; i&amp;lt;=N; i++){
+        for(int j=1; j&amp;lt;=N; j++){
+            if(!visit[i][j]){
+                BFS_redGreen(i, j);
+            }
+        }
+    }
+
+    cout &amp;lt;&amp;lt; normalResult &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; redGreenResult &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 10026번 Link: 10026번: 적록색약</summary></entry><entry><title type="html">7th week summary</title><link href="keithlee94.github.io/java/7th-Week-Summary/" rel="alternate" type="text/html" title="7th week summary" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>keithlee94.github.io/java/7th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/7th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;백트래킹-bfs의-차이&quot;&gt;백트래킹, BFS의 차이&lt;/h1&gt;
@@ -349,260 +830,7 @@
   &lt;li&gt;스트림으로 메시지 전송&lt;/li&gt;
   &lt;li&gt;Socket 닫기(close() 호출)&lt;/li&gt;
   &lt;li&gt;스트림 닫기&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry><entry><title type="html">10026</title><link href="keithlee94.github.io/algorithm/10026/" rel="alternate" type="text/html" title="10026" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/10026</id><content type="html" xml:base="keithlee94.github.io/algorithm/10026/">&lt;h1 id=&quot;백준-10026번&quot;&gt;백준 10026번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/10026&quot;&gt;10026번: 적록색약&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;이번에도 BFS 문제.&lt;/p&gt;
-
-&lt;p&gt;각각의 색깔명에 대해 전체 map이 몇개의 영역으로 나눠지는지 구하는 문제였다.&lt;/p&gt;
-
-&lt;p&gt;한가지 특이했던 점은 적록색맹이라는 상황을 줌으로써 R값과 G값을 같은 값으로 보고 풀어야 하는 부분이 존재했다는 점.&lt;/p&gt;
-
-&lt;p&gt;적록색맹이 아닌 사람과 적록색맹인 사람의 경우를 따로 나눠 구해야 한다.&lt;/p&gt;
-
-&lt;p&gt;처음에는 map을 아예 새로 만들까 했었는데, 조건문에서 R과 G에 대한 조건을 or로 묶으니 굳이 안그래도 해결됐다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 28/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;queue&amp;gt;
-#include &amp;lt;string.h&amp;gt;
-
-using namespace std;
-
-int N;
-char map[101][101];
-bool visit[101][101];
-
-int dx[4] = {0, 0, 1, -1};
-int dy[4] = {1, -1, 0, 0};
-
-int normalResult = 0;
-int redGreenResult = 0;
-
-void BFS_normal(int startX, int startY){
-    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
-
-    Queue.push(make_pair(startX, startY));
-    visit[startX][startY] = true;
-
-    while(!Queue.empty()){
-        int currentX = Queue.front().first;
-        int currentY = Queue.front().second;
-        Queue.pop();
-
-        for(int i=0; i&amp;lt;4; i++){
-            int nextX = currentX + dx[i];
-            int nextY = currentY + dy[i];
-
-            if(nextX &amp;gt;= 1 &amp;amp;&amp;amp; nextX &amp;lt;= N &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt;= N){
-                if(map[startX][startY] == 'R'){
-                    if(map[nextX][nextY] == 'R' &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-                else if(map[startX][startY] == 'G'){
-                    if(map[nextX][nextY] == 'G' &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-                else if(map[startX][startY] == 'B'){
-                    if(map[nextX][nextY] == 'B' &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-            }
-        }
-    }
-
-    normalResult++;
-}
-
-void BFS_redGreen(int startX, int startY){
-    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
-
-    Queue.push(make_pair(startX, startY));
-    visit[startX][startY] = true;
-
-    while(!Queue.empty()){
-        int currentX = Queue.front().first;
-        int currentY = Queue.front().second;
-        Queue.pop();
-
-        for(int i=0; i&amp;lt;4; i++){
-            int nextX = currentX + dx[i];
-            int nextY = currentY + dy[i];
-
-            if(nextX &amp;gt;= 1 &amp;amp;&amp;amp; nextX &amp;lt;= N &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt;= N){
-                if(map[startX][startY] == 'R' || map[startX][startY] == 'G'){
-                    if((map[nextX][nextY] == 'R' || map[nextX][nextY] == 'G') &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-                else if(map[startX][startY] == 'B'){
-                    if(map[nextX][nextY] == 'B' &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-            }
-        }
-    }
-
-    redGreenResult++;
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; N;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            cin &amp;gt;&amp;gt; map[i][j];
-        }
-    }
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            if(!visit[i][j]){
-                BFS_normal(i, j);
-            }
-        }
-    }
-
-    bzero(visit, sizeof(visit));
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            if(!visit[i][j]){
-                BFS_redGreen(i, j);
-            }
-        }
-    }
-
-    cout &amp;lt;&amp;lt; normalResult &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; redGreenResult &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 10026번 Link: 10026번: 적록색약</summary></entry><entry><title type="html">2644</title><link href="keithlee94.github.io/algorithm/2644/" rel="alternate" type="text/html" title="2644" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2644</id><content type="html" xml:base="keithlee94.github.io/algorithm/2644/">&lt;h1 id=&quot;백준-2644번&quot;&gt;백준 2644번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2644&quot;&gt;2644번: 촌수계산&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;역시나 BFS문제.&lt;/p&gt;
-
-&lt;p&gt;저번에 풀었던 토마토 문제처럼, 이 문제도 트리 내에서 출발지와 목적지를 설정하여 목적지까지 도달하는데 거치는 트리 레벨을 세면 되는 문제였다.&lt;/p&gt;
-
-&lt;p&gt;주의해야할 점은 방향이 없는 그래프 문제였다는 점.&lt;/p&gt;
-
-&lt;p&gt;이외에는 다소 평이했던 문제였다…&lt;/p&gt;
-
-&lt;p&gt;라고 하기에는 막판에 뻘짓을 좀 했다.&lt;/p&gt;
-
-&lt;p&gt;도달할 수 없는 경우 -1로 처리하는 부분에서 살짝 헤맸던 것 빼고는 할만한 문제였다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 28/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;queue&amp;gt;
-#include &amp;lt;vector&amp;gt;
-
-using namespace std;
-
-int map[101][101] = {0, };
-bool visit[101][101] = {false, };
-
-int n;
-
-int BFS(int start, int end){
-    int result = 0;
-
-    queue&amp;lt;int&amp;gt; Queue;
-    Queue.push(start);
-
-    while(!Queue.empty()){
-        vector&amp;lt;int&amp;gt; available;
-
-        while(!Queue.empty()) {
-            available.push_back(Queue.front());
-            Queue.pop();
-        }
-
-        for(int i=0; i&amp;lt;available.size(); i++) {
-            int current = available[i];
-
-            for (int j = 1; j &amp;lt;= n; j++) {
-                if (map[current][j] == 1 &amp;amp;&amp;amp; !visit[current][j]) {
-                    visit[current][j] = true;
-                    visit[j][current] = true;
-                    Queue.push(j);
-                }
-            }
-        }
-
-        result++;
-
-        for(int i=1; i&amp;lt;=n; i++){
-            if(visit[end][i] &amp;amp;&amp;amp; visit[i][end]){
-                return result;
-            }
-        }
-
-    }
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; n;
-
-    int start, end;
-    cin &amp;gt;&amp;gt; start &amp;gt;&amp;gt; end;
-
-    int m;
-    cin &amp;gt;&amp;gt; m;
-
-    for(int i=0; i&amp;lt;m; i++){
-        int x, y;
-        cin &amp;gt;&amp;gt; x &amp;gt;&amp;gt; y;
-
-        map[x][y] = 1;
-        map[y][x] = 1;
-    }
-
-    int result = BFS(start, end);
-
-    bool find = false;
-    for(int i=1; i&amp;lt;=n; i++){
-        if(visit[end][i] &amp;amp;&amp;amp; visit[i][end]){
-            find = true;
-        }
-    }
-
-    if(!find){
-        result = -1;
-    }
-
-    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2644번 Link: 2644번: 촌수계산</summary></entry><entry><title type="html">7569</title><link href="keithlee94.github.io/algorithm/7569/" rel="alternate" type="text/html" title="7569" /><published>2019-01-24T00:00:00+09:00</published><updated>2019-01-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/7569</id><content type="html" xml:base="keithlee94.github.io/algorithm/7569/">&lt;h1 id=&quot;백준-7569번&quot;&gt;백준 7569번&lt;/h1&gt;
+&lt;/ol&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry><entry><title type="html">7569</title><link href="keithlee94.github.io/algorithm/7569/" rel="alternate" type="text/html" title="7569" /><published>2019-01-24T00:00:00+09:00</published><updated>2019-01-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/7569</id><content type="html" xml:base="keithlee94.github.io/algorithm/7569/">&lt;h1 id=&quot;백준-7569번&quot;&gt;백준 7569번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/7576&quot;&gt;7569번: 토마토&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1649,190 +1877,4 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><category term="BFS" /><summary type="html">백준 16234번 Link: 16234번: 인구 이동</summary></entry><entry><title type="html">1520</title><link href="keithlee94.github.io/algorithm/1520/" rel="alternate" type="text/html" title="1520" /><published>2019-01-14T00:00:00+09:00</published><updated>2019-01-14T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1520</id><content type="html" xml:base="keithlee94.github.io/algorithm/1520/">&lt;h1 id=&quot;백준-1520번&quot;&gt;백준 1520번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1520&quot;&gt;1520번: 내리막 길&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;평범한 길찾는문제일줄 알고 우선 BFS부터 냅다 써서 풀었다.&lt;/p&gt;
-
-&lt;p&gt;분명 틀린 답은 아니다. 그런데 문제의 의도는 BFS 대신 DFS를 사용하여 메모리를 절약하고, DFS에 DP를 적용하여 시간을 절약하는 것이 의도였다.&lt;/p&gt;
-
-&lt;p&gt;DFS에 DP를 접목시키는 문제는 처음 보는것 같다.&lt;/p&gt;
-
-&lt;p&gt;그 느린 DFS를 이렇게 보완할수도 있구나 하는 생각이 들었다.&lt;/p&gt;
-
-&lt;p&gt;이 문제를 풀면서 BFS와 DFS의 차이를 제대로 체감할 수 있었던 것 같다.&lt;/p&gt;
-
-&lt;p&gt;BFS는 시간 내에 해를 찾을 수 있지만, 큐를 사용하는 만큼 더 많은 메모리 공간을 사용한다는 점이 특징.&lt;/p&gt;
-
-&lt;p&gt;DFS는 메모리 공간은 절약할 수 있지만, 깊이가 깊어질수록 매우 많은 시간을 요구한다는 점이 특징이다.&lt;/p&gt;
-
-&lt;p&gt;이러한 DFS의 깊이에 따른 문제를 보완하는 방법으로 DP를 사용하는 문제였다.&lt;/p&gt;
-
-&lt;p&gt;둘을 어떻게 접목시킬지 방법이 안떠올라서 결국 답을 찾아보고서야 이해할 수 있었다.&lt;/p&gt;
-
-&lt;p&gt;우선 DP 배열을 전부 -1로 초기화하고 시작한다.&lt;/p&gt;
-
-&lt;p&gt;그 다음, DFS를 목적지부터 (0, 0)까지 가도록 거꾸로 실행한다.&lt;/p&gt;
-
-&lt;p&gt;DFS에 들어가면 우선 DP 배열부터 살펴보게 되는데, DP[startX][startY]가 -1이 아니라는 것은 이미 저장된 값이 있으며, 이는 이미 탐색해서 구한 값이 있음을 의미하므로 그대로 리턴한다.&lt;/p&gt;
-
-&lt;p&gt;만약 startX나 startY가 범위를 벗어나면 0을 리턴하고, (0, 0)에 도착하게 되면 1을 리턴한다.&lt;/p&gt;
-
-&lt;p&gt;이 3가지 조건문에 걸리지 않았다는 것은 아직 탐색하지 않은 곳임을 의미하므로 탐색을 진행한다.&lt;/p&gt;
-
-&lt;p&gt;가장 먼저 DP[startX][startY]를 0으로 설정한다.&lt;/p&gt;
-
-&lt;p&gt;그 다음은 통상 아는 DFS를 진행하는데, 내려가는 방향으로만 갈 수 있고 우리는 DFS를 거꾸로 진행하고 있으므로 map[nextX][nextY]가 map[startX][startY]보다 클 경우에만 DFS를 진행한다.&lt;/p&gt;
-
-&lt;p&gt;조금 다른점이 있다면 통상 아는 DFS였다면 DFS(nextX, nextY)만 부르고 끝났겠지만, 이 문제는 DP를 접목시켜야 하므로 DP[startX][startY]의 값에 DFS(nextX, nextY)를 더한 값을 설정한다.&lt;/p&gt;
-
-&lt;p&gt;이때 연쇄적으로 재귀함수를 돌다 더 갈수 없으면 DP[startX][startY]를 리턴하고, 리턴되는 값을 계속 더해주는 것이다.&lt;/p&gt;
-
-&lt;p&gt;같은 방법으로 4방향 모두 탐색하며 DFS를 완성한다.&lt;/p&gt;
-
-&lt;p&gt;풀이방법을 외워둬야 할 것 같은 문제다.&lt;/p&gt;
-
-&lt;p&gt;BFS와 DFS의 차이점, DFS와 DP의 연계를 모두 배울 수 있는 문제였다. 까먹을때쯤 꼭 다시풀어볼 문제.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bfs로-풀다-틀린-코드&quot;&gt;BFS로 풀다 틀린 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 13/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;queue&amp;gt;
-
-using namespace std;
-
-int N, M;
-
-int dx[4] = {0, 0, 1, -1};
-int dy[4] = {1, -1, 0, 0};
-
-int map[501][501];
-
-int BFS(int startX, int startY){
-    int result = 0;
-    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
-
-    Queue.push(make_pair(startX, startY));
-
-//    vector&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; visits;
-
-    while(!Queue.empty()){
-        int currentX = Queue.front().first;
-        int currentY = Queue.front().second;
-        Queue.pop();
-
-//        visits.push_back(make_pair(currentX, currentY));
-
-        if(currentX == N &amp;amp;&amp;amp; currentY == M){
-//            for(int i=0; i&amp;lt;visits.size(); i++){
-//                cout &amp;lt;&amp;lt; map[visits[i].first][visits[i].second] &amp;lt;&amp;lt; ' ';
-//            }
-//            cout &amp;lt;&amp;lt; '\n';
-//            visits.clear();
-            result++;
-        }
-
-        for(int i=0; i&amp;lt;4; i++){
-            int nextX = currentX + dx[i];
-            int nextY = currentY + dy[i];
-
-            if(nextX &amp;gt; 0 &amp;amp;&amp;amp; nextX &amp;lt;= N &amp;amp;&amp;amp; nextY &amp;gt; 0 &amp;amp;&amp;amp; nextY &amp;lt;= N){
-                if(map[currentX][currentY] &amp;gt; map[nextX][nextY]){
-                    Queue.push(make_pair(nextX, nextY));
-                }
-            }
-        }
-    }
-
-    return result;
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; M &amp;gt;&amp;gt; N;
-
-    for(int i=1; i&amp;lt;=M; i++) {
-        for (int j = 1; j &amp;lt;= N; j++) {
-            cin &amp;gt;&amp;gt; map[i][j];
-        }
-    }
-
-    cout &amp;lt;&amp;lt; BFS(1, 1) &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 13/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;memory.h&amp;gt;
-
-using namespace std;
-
-int N, M;
-
-int map[501][501];
-int DP[501][501];
-
-int dx[4] = {0, 0, 1, -1};
-int dy[4] = {1, -1, 0, 0};
-
-int DFS(int startX, int startY){
-    if(DP[startX][startY] != -1){
-        return DP[startX][startY];
-    }
-    if(startX &amp;lt; 0 || startX &amp;gt;= N || startY &amp;lt; 0 || startY &amp;gt;= M){
-        return 0;
-    }
-    if(startX == 0 &amp;amp;&amp;amp; startY == 0){
-        return 1;
-    }
-
-    DP[startX][startY] = 0;
-
-    for(int i=0; i&amp;lt;4; i++){
-        int nextX = startX + dx[i];
-        int nextY = startY + dy[i];
-
-        if(map[nextX][nextY] &amp;gt; map[startX][startY]){
-            DP[startX][startY] += DFS(nextX, nextY);
-        }
-    }
-
-    return DP[startX][startY];
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
-
-    for(int i=0; i&amp;lt;N; i++){
-        for(int j=0; j&amp;lt;M; j++){
-            cin &amp;gt;&amp;gt; map[i][j];
-        }
-    }
-    memset(DP, -1, sizeof(DP));
-
-    cout &amp;lt;&amp;lt; DFS(N-1, M-1) &amp;lt;&amp;lt; '\n';
-
-    for(int i=0; i&amp;lt;N; i++){
-        for(int j=0; j&amp;lt;M; j++){
-            cout &amp;lt;&amp;lt; DP[i][j] &amp;lt;&amp;lt; ' ';
-        }
-        cout &amp;lt;&amp;lt; '\n';
-    }
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><category term="DFS" /><category term="BFS" /><summary type="html">백준 1520번 Link: 1520번: 내리막 길</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><category term="BFS" /><summary type="html">백준 16234번 Link: 16234번: 인구 이동</summary></entry></feed>
