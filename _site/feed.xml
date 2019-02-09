@@ -1,4 +1,284 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-07T23:42:04+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">2251</title><link href="keithlee94.github.io/algorithm/2251/" rel="alternate" type="text/html" title="2251" /><published>2019-02-07T00:00:00+09:00</published><updated>2019-02-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2251</id><content type="html" xml:base="keithlee94.github.io/algorithm/2251/">&lt;h1 id=&quot;백준-2251번&quot;&gt;백준 2251번&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-10T01:53:27+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">12100</title><link href="keithlee94.github.io/algorithm/12100/" rel="alternate" type="text/html" title="12100" /><published>2019-02-09T00:00:00+09:00</published><updated>2019-02-09T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/12100</id><content type="html" xml:base="keithlee94.github.io/algorithm/12100/">&lt;h1 id=&quot;백준-12100번&quot;&gt;백준 12100번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/12100&quot;&gt;12100번: 2048 (Easy)&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;일단 내 힘만으로 풀었다는 것부터 적고간다ㅋㅋㅋㅋ&lt;/p&gt;
+
+&lt;p&gt;DFS를 통해 모든 경우를 고려해봐야 하는 문제였다.&lt;/p&gt;
+
+&lt;p&gt;우선 DFS를 구현하기 전에 map을 어떤 식으로 밀고 같은 수를 합치면 되는지를 먼저 고민해봤다.&lt;/p&gt;
+
+&lt;p&gt;여러가지 방법을 생각해보던 중 벡터를 활용해서 옮겨야 하는 수들을 전부 집어넣고 옮긴 다음 옮겨진 수들을 합치는 방법을 생각해 봤다.&lt;/p&gt;
+
+&lt;p&gt;그런데 이 방법에는 큰 문제가 있는데, 옮기고 합친 다음 다시 옮겨야 한다는 점이었다.&lt;/p&gt;
+
+&lt;p&gt;이를 보완하기 위해 벡터에 옮겨야 하는 수들을 전부 넣고 map을 0으로 바꾼 다음, 그 수들을 비교해서 두 숫자가 같은 숫자이면 합치고 뒤의 숫자를 0으로 바꾼다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 벡터의 내용을 바꿔준 다음, 별도로 큐를 정의하여 벡터를 한번 순회하며 0이 아닌 수를 만나면 큐에 넣는다.&lt;/p&gt;
+
+&lt;p&gt;마지막으로 옮기는 방향에 맞춰 큐의 내용대로 map을 바꿔주는 방법으로 구현하였다.&lt;/p&gt;
+
+&lt;p&gt;메모리상으로는 비효율적이겠지만, 중요한건 시간이니 넘어가자…&lt;/p&gt;
+
+&lt;p&gt;이렇게 옮기는 함수를 구현한 다음, DFS를 구현하였다.&lt;/p&gt;
+
+&lt;p&gt;이 과정에서 많이 고민했는데, 처음에는 DFS의 인자로 DFS 횟수와 map을 주는 방법으로 구현하였다.&lt;/p&gt;
+
+&lt;p&gt;이런식으로 하니 분명 모든 경우의 수를 따지긴 하지만 제출해보니 틀렸는데, 바로 map이 제대로 바뀌지 않는 것이 문제였다.&lt;/p&gt;
+
+&lt;p&gt;처음에는 DFS가 제대로 돌지 않는게 아닌가 싶어서 string으로 모든 경우를 다 출력해봤다. 확인 결과 모든 경우 따지는건 맞더라.&lt;/p&gt;
+
+&lt;p&gt;여기다 map도 같이 찍어보니 map이 제대로 안바뀌는 문제가 있다는 것을 찾아냈다.&lt;/p&gt;
+
+&lt;p&gt;이걸 어떻게 해야 해결할 수 있나 한참 고민하던 중, string으로 찍어본 결과를 이용해보자는 생각을 하게 되었다.&lt;/p&gt;
+
+&lt;p&gt;string에 찍힌 대로 DFS의 종료 조건에서 map을 바꾸는 방법을 생각해 냈고, 이대로 구현해보니 시간초과가 났다.&lt;/p&gt;
+
+&lt;p&gt;DFS 돌때마다 20*20짜리 배열을 계속 돈다고 생각해보면 시간초과 나는게 당연했다.&lt;/p&gt;
+
+&lt;p&gt;이 문제를 해결하기 위해 포인터를 사용했는데, 우선 20*20짜리 배열을 map과 같은 내용을 갖도록 초기화해준 다음 2차원 배열 포인터로 이 배열을 가리키도록 한다.&lt;/p&gt;
+
+&lt;p&gt;이 2차원 배열 포인터를 map 바꿔주는 함수의 인자로 전달하여 map을 5번 바꿔준 다음, 앞에서 만든 20*20짜리 배열의 내용을 갱신해준다. 또 갱신 과정에서 최대값도 같이 갱신해준다.&lt;/p&gt;
+
+&lt;p&gt;이런식으로 구현하여 제출하니 드디어 맞았다고 나왔다.&lt;/p&gt;
+
+&lt;p&gt;DFS로 모든 경우를 다 따져보기만 하면 풀리는 문제였다. 다만 그 경우를 따지기 위한 전처리가 상당히 까다로웠던 문제.&lt;/p&gt;
+
+&lt;p&gt;이제 DFS로 푸는 방법을 좀 이해한 것 같다.&lt;/p&gt;
+
+&lt;p&gt;문제 풀면서 막히는 부분에 대해 어느 부분에서 막히는지 직접 찾아내고 해결했다는 점에서 매우 뿌듯하다.&lt;/p&gt;
+
+&lt;p&gt;앞으로도 이렇게 내 힘만으로 풀어내는 문제들이 많이 있길!!&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 08/02/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;queue&amp;gt;
+
+using namespace std;
+
+int N;
+int result = 0;
+int map[20][20] = {0, };
+
+string progress = &quot;MMMMM&quot;;
+
+int (*push(char direction, int (*tempMap)[20]))[20]{ // 이동시킨 후 바뀐 map 리턴.
+    // 상
+    if(direction == 'U'){
+        for(int i=0; i&amp;lt;N; i++){
+            vector&amp;lt;int&amp;gt; toMove; // 위로 이동시킬 숫자들
+            queue&amp;lt;int&amp;gt; merge; // 이동 후 같은 숫자일때 합치고 저장
+
+            for(int j=0; j&amp;lt;N; j++){
+                if(tempMap[j][i] != 0){ // 위로 이동시킬 숫자가 있으면
+                    toMove.push_back(tempMap[j][i]); // 벡터에 넣고
+                    tempMap[j][i] = 0; // 숫자 자리를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&amp;lt;toMove.size(); j++){
+                if(j+1 &amp;lt; toMove.size() &amp;amp;&amp;amp; toMove[j] == toMove[j+1]){ // 벡터 내에서 같은 숫자가 연속될 경우
+                    toMove[j] *= 2; // 합친다
+                    toMove[j+1] = 0; // 뒷 숫자를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&amp;lt;toMove.size(); j++){ // 벡터를 돌면서
+                if(toMove[j] != 0){ // 원소가 0이 아니면
+                    merge.push(toMove[j]); // 큐에 넣는다.
+                }
+            }
+
+            int index = 0;
+
+            while(!merge.empty()){ // 큐를 돌면서
+                tempMap[index][i] = merge.front(); // 바뀐 숫자를 맵에 반영한다.
+                merge.pop();
+                index++;
+            }
+        }
+    }
+
+    // 하
+    if(direction == 'D'){
+        for(int i=0; i&amp;lt;N; i++){
+            vector&amp;lt;int&amp;gt; toMove; // 아래로 이동시킬 숫자들
+            queue&amp;lt;int&amp;gt; merge; // 이동 후 같은 숫자일때 합치고 저장
+
+            for(int j=N-1; j&amp;gt;=0; j--){ // 아래쪽부터 돌거임
+                if(tempMap[j][i] != 0){ // 아래로 이동시킬 숫자가 있으면
+                    toMove.push_back(tempMap[j][i]); // 벡터에 넣고
+                    tempMap[j][i] = 0; // 숫자 자리를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&amp;lt;toMove.size(); j++){
+                if(j+1 &amp;lt; toMove.size() &amp;amp;&amp;amp; toMove[j] == toMove[j+1]){ // 벡터 내에서 같은 숫자가 연속될 경우
+                    toMove[j] *= 2; // 합친다
+                    toMove[j+1] = 0; // 뒷 숫자를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&amp;lt;toMove.size(); j++){ // 벡터를 돌면서
+                if(toMove[j] != 0){ // 원소가 0이 아니면
+                    merge.push(toMove[j]); // 큐에 넣는다.
+                }
+            }
+
+            int index = 0;
+
+            while(!merge.empty()){ // 큐를 돌면서
+                tempMap[N-1-index][i] = merge.front(); // 바뀐 숫자를 맵에 반영한다.
+                merge.pop();
+                index++;
+            }
+        }
+    }
+
+    // 좌
+    if(direction == 'L'){
+        for(int i=0; i&amp;lt;N; i++){
+            vector&amp;lt;int&amp;gt; toMove; // 왼쪽으로 이동시킬 숫자들
+            queue&amp;lt;int&amp;gt; merge; // 이동 후 같은 숫자일때 합치고 저장
+
+            for(int j=0; j&amp;lt;N; j++){
+                if(tempMap[i][j] != 0){ // 왼쪽으로 이동시킬 숫자가 있으면
+                    toMove.push_back(tempMap[i][j]); // 벡터에 넣고
+                    tempMap[i][j] = 0; // 숫자 자리를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&amp;lt;toMove.size(); j++){
+                if(j+1 &amp;lt; toMove.size() &amp;amp;&amp;amp; toMove[j] == toMove[j+1]){ // 벡터 내에서 같은 숫자가 연속될 경우
+                    toMove[j] *= 2; // 합친다
+                    toMove[j+1] = 0; // 뒷 숫자를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&amp;lt;toMove.size(); j++){ // 벡터를 돌면서
+                if(toMove[j] != 0){ // 원소가 0이 아니면
+                    merge.push(toMove[j]); // 큐에 넣는다.
+                }
+            }
+
+            int index = 0;
+
+            while(!merge.empty()){ // 큐를 돌면서
+                tempMap[i][index] = merge.front(); // 바뀐 숫자를 맵에 반영한다.
+                merge.pop();
+                index++;
+            }
+        }
+    }
+
+    // 우
+    if(direction == 'R'){
+        for(int i=0; i&amp;lt;N; i++){
+            vector&amp;lt;int&amp;gt; toMove; // 오른쪽으로 이동시킬 숫자들
+            queue&amp;lt;int&amp;gt; merge; // 이동 후 같은 숫자일때 합치고 저장
+
+            for(int j=N-1; j&amp;gt;=0; j--){ // 오른쪽부터 돌거임
+                if(tempMap[i][j] != 0){ // 오른쪽으로 이동시킬 숫자가 있으면
+                    toMove.push_back(tempMap[i][j]); // 벡터에 넣고
+                    tempMap[i][j] = 0; // 숫자 자리를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&amp;lt;toMove.size(); j++){
+                if(j+1 &amp;lt; toMove.size() &amp;amp;&amp;amp; toMove[j] == toMove[j+1]){ // 벡터 내에서 같은 숫자가 연속될 경우
+                    toMove[j] *= 2; // 합친다
+                    toMove[j+1] = 0; // 뒷 숫자를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&amp;lt;toMove.size(); j++){ // 벡터를 돌면서
+                if(toMove[j] != 0){ // 원소가 0이 아니면
+                    merge.push(toMove[j]); // 큐에 넣는다.
+                }
+            }
+
+            int index = 0;
+
+            while(!merge.empty()){ // 큐를 돌면서
+                tempMap[i][N-1-index] = merge.front(); // 바뀐 숫자를 맵에 반영한다.
+                merge.pop();
+                index++;
+            }
+        }
+    }
+
+    return tempMap;
+}
+
+void DFS(int count){
+    if(count == 5){
+        int newMap[20][20] = {0, };
+        int (*temp)[20] = newMap;
+
+        for(int i=0; i&amp;lt;N; i++){
+            for(int j=0; j&amp;lt;N; j++){
+                newMap[i][j] = map[i][j];
+            }
+        }
+
+        for(int i=0; i&amp;lt;progress.length(); i++){
+            temp = push(progress[i], temp);
+        }
+
+        for(int i=0; i&amp;lt;N; i++){
+            for(int j=0; j&amp;lt;N; j++){
+                newMap[i][j] = temp[i][j];
+                if(newMap[i][j] &amp;gt; result){
+                    result = newMap[i][j];
+                }
+            }
+        }
+
+        return;
+    }
+
+    for(int i=1; i&amp;lt;=4; i++){
+        if(i == 1){
+            progress[count] = 'U';
+        }
+        else if(i == 2){
+            progress[count] = 'D';
+        }
+        else if(i == 3){
+            progress[count] = 'L';
+        }
+        else if(i == 4){
+            progress[count] = 'R';
+        }
+        DFS(count+1);
+    }
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N;
+
+    for(int i=0; i&amp;lt;N; i++){
+        for(int j=0; j&amp;lt;N; j++){
+            cin &amp;gt;&amp;gt; map[i][j];
+        }
+    }
+
+    DFS(0);
+
+    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="DFS" /><summary type="html">백준 12100번 Link: 12100번: 2048 (Easy)</summary></entry><entry><title type="html">2251</title><link href="keithlee94.github.io/algorithm/2251/" rel="alternate" type="text/html" title="2251" /><published>2019-02-07T00:00:00+09:00</published><updated>2019-02-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2251</id><content type="html" xml:base="keithlee94.github.io/algorithm/2251/">&lt;h1 id=&quot;백준-2251번&quot;&gt;백준 2251번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2251&quot;&gt;2251번: 물통&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1457,429 +1737,4 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><category term="BFS" /><summary type="html">백준 11724번 Link: 11724번: 연결 요소의 개수</summary></entry><entry><title type="html">6th week summary</title><link href="keithlee94.github.io/java/6th-Week-Summary/" rel="alternate" type="text/html" title="6th week summary" /><published>2019-01-19T00:00:00+09:00</published><updated>2019-01-19T00:00:00+09:00</updated><id>keithlee94.github.io/java/6th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/6th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;자료구조&quot;&gt;자료구조&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;선형
-    &lt;ul&gt;
-      &lt;li&gt;이전, 이후 데이터가 1:1 관계이다.&lt;/li&gt;
-      &lt;li&gt;특정 데이터의 다음에 올 데이터가 무엇인지 확실히 알 수 있다.(예: 배열, 연결리스트)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;비선형
-    &lt;ul&gt;
-      &lt;li&gt;이전, 이후 데이터가 1:다 or 다:다 관계이다.&lt;/li&gt;
-      &lt;li&gt;특정 데이터의 다음에 올 데이터가 무엇인지 확실하게 알 수 없다.&lt;/li&gt;
-      &lt;li&gt;전체를 빠짐없이 순회하며 한번씩만 방문하는 것이 관건(예: 그래프)
-        &lt;ul&gt;
-          &lt;li&gt;그래프
-            &lt;ul&gt;
-              &lt;li&gt;트리: 사이클이 없어야 한다.&lt;/li&gt;
-              &lt;li&gt;트리를 제외한 나머지: 사이클이 있을 수 있다.&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;검색&quot;&gt;검색&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;순차 검색
-    &lt;ul&gt;
-      &lt;li&gt;O(n) -&amp;gt; Best: O(1), Worst: O(n), Average: O(n/2) = O(n)&lt;/li&gt;
-      &lt;li&gt;정렬 여부와 상관없이 사용 가능.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;이진 검색
-    &lt;ul&gt;
-      &lt;li&gt;O(log n)&lt;/li&gt;
-      &lt;li&gt;Divide &amp;amp; Conquer&lt;/li&gt;
-      &lt;li&gt;자료가 정렬된 상태에서만 사용 가능.&lt;/li&gt;
-      &lt;li&gt;데이터 양이 많을수록 유리함.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정렬되지-않은-데이터-검색&quot;&gt;정렬되지 않은 데이터 검색&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;이진 검색
-    &lt;ol&gt;
-      &lt;li&gt;정렬&lt;/li&gt;
-      &lt;li&gt;이진검색
-        &lt;ul&gt;
-          &lt;li&gt;O(n^2) + O(log n) = O(n^2) 소요.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;순차검색: O(n)&lt;/li&gt;
-  &lt;li&gt;결론: 정렬 알고리즘에서 이미 순차검색보다 성능이 떨어지므로 정렬되지 않은 데이터에 대해서는 순차검색을 사용하는 것이 유리하다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;java-메모리-영역&quot;&gt;Java 메모리 영역&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Call Stack: 자동으로 초기화되지 않음.&lt;/li&gt;
-  &lt;li&gt;Heap: 자동으로 초기화됨.&lt;/li&gt;
-  &lt;li&gt;Method Area: 자동으로 초기화됨.&lt;/li&gt;
-  &lt;li&gt;Constant Pool: Method Area에 포함됨. 상수를 재활용하기 위해 존재함.(여러개의 상수가 있어도 해싱하여 저장되므로 검색시간이 느려지는 일이 없다.)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;string-선언별-차이점&quot;&gt;String 선언별 차이점&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;String str1 = “abc”; =&amp;gt; Constant Pool에 생성된다.&lt;/li&gt;
-  &lt;li&gt;String str2 = new String(“abc”); =&amp;gt; Heap에 생성된다.&lt;/li&gt;
-  &lt;li&gt;String str3 = “abc”; =&amp;gt; str1과 같은 주소가 할당된다.&lt;/li&gt;
-  &lt;li&gt;str1, str3처럼 기본형으로 만들 경우 Constant Pool에 저장되고, 둘의 값이 같을 경우 같은 주소가 할당된다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;stringtokenizer&quot;&gt;StringTokenizer&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;문자열을 쪼갤때 사용한다.&lt;/li&gt;
-  &lt;li&gt;정규식을 인자로 허용하지 않으므로 String.split()보다 속도가 빠르다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;stringbuilder-stringbuffer&quot;&gt;StringBuilder, StringBuffer&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;문자열 저장시 사용.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;objectequals&quot;&gt;Object.equals()&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;어떤 자식 클래스에서 사용할지 모르므로 == 연산자로 구현되어 있다.&lt;/li&gt;
-  &lt;li&gt;내용 비교하려면: 자식 클래스에서 오버라이딩하여 사용해야 함.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;dp와-divide--conquer&quot;&gt;DP와 Divide &amp;amp; Conquer&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Divide &amp;amp; Conquer: 작은 문제를 해결하여 큰 문제를 해결하는 기법.&lt;/li&gt;
-  &lt;li&gt;DP: Divide &amp;amp; Conquer + Memoization. 작은 문제를 해결하고 이를 따로 저장해둠으로써 똑같은 작은 문제를 다시 풀게 되어 발생하는 시간 낭비를 줄일 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;java-스터디-내용-정리&quot;&gt;Java 스터디 내용 정리&lt;/h1&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;자주-오버라이딩하는-함수들&quot;&gt;자주 오버라이딩하는 함수들&lt;/h1&gt;
-&lt;h2 id=&quot;1-tostring&quot;&gt;1. toString()&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 오버라이딩 했을 경우: System.out.println(객체); 실행시 객체의 클래스에서 재정의된 toString()이 실행됨.
-- 오버라이딩 안했을 경우: System.out.println(객체); 실행시 주소값만 출력된다 - Object 클래스의 toString()은 객체의 주소값만 돌려주므로.
-- 출력함수의 인자로 객체를 넣을 시 자동으로 toString()이 호출된다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;2-hashcode&quot;&gt;2. hashCode()&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 같은 객체인지 확인할 때 사용.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;3-equals&quot;&gt;3. equals()&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 두 객체의 내용물이 같은지 확인할 때 사용.
-- Object.equals(): 단순 객체 주소 비교.
-- String.equals(): Object.equals()를 오버라이딩하여 문자 하나씩 비교하여 일치하는지 확인.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;string-객체의-특징&quot;&gt;String 객체의 특징&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;String 클래스의 메소드들은 원본 데이터를 바꾸지 않는다.&lt;/li&gt;
-  &lt;li&gt;String은 final 상수이므로 내용을 바꿀때마다 새로운 데이터가 heap에 쌓인다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;사용-제한자&quot;&gt;사용 제한자&lt;/h1&gt;
-&lt;h2 id=&quot;1-final&quot;&gt;1. final&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- class, method, variable에 붙일 수 있다.
-- class앞에 붙으면: 상속 불가. 그 클래스 안의 모든 method, field는 내용을 변경할 수 없다.
-- method앞에 붙으면: 오버라이딩 불가, 오버로딩은 가능.
-- field앞에 붙으면: 값 수정 불가.(변수가 상수로 변한다.)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;2-static&quot;&gt;2. static&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- member변수, member메소드, block에 붙일 수 있다.
-- static이 붙은 모든 것들은 main 메소드 실행 전에 Class Area에 한개씩만 생성된다.
-    - 실행 전에 만들어진다.
-    - 컴파일이 완료된 시점에 생성되므로 따로 객체를 만들 필요가 없다.
-- static이 없는 모든 것들은 main 메소드 실행 후 Heap에 생성된다.
-    - 실행 후에 만들어진다.
-- static variable = class variable
-- non-static variable = instance variable
-- 다른 클래스에서도 사용 가능: class이름.변수이름 or class이름.메소드이름 으로 사용 가능.
-- static block: main 메소드보다 우선순위가 높다.
-    - main 메소드보다 먼저 실행된다.
-    - static block간 우선순위는 코드 내 순서와 같다.
-- static 메소드 내에서는 this, super 키워드를 사용할 수 없다.
-    - 이유: this, super 키워드는 객체가 있을때만 사용 가능하다.
-    - static 메소드는 객체가 생성되기 전에 실행되므로 this, super 키워드를 사용할 수 없다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;3-abstract&quot;&gt;3. abstract&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- abstract: 추상적인, 구체적이지 않은, 완성되지 않은.
-- abstract 클래스: 클래스 내에 abstract 메소드가 존재한다.
-- abstract 메소드: 바디가 없는 미완성 메소드. abstract 클래스 내에만 정의 가능.(C의 prototype과 같다.)
-- concrete 메소드: 바디가 있는 완성된 메소드. abstract 클래스 내에도 정의 가능.
-- abstract 메소드가 있으면 객체 생성 불가능.
-    - 미완성 메소드가 있다 = 미완성 클래스이다.
-    - 자식 클래스에서 상속받아 완성시켜야 객체 생성이 가능하다.(자식 클래스가 오버라이딩해야 한다.)
-- 장점: 상속관계로 묶여있으므로 여러 종류의 객체들을 부모 타입으로 묶어 하나의 자료구조에 넣고 handling할 수 있다.
-- 용도
-    - 타입을 물려주는 용도로 빈 껍데기만 미리 만들어놓는다.
-    - 객체 생성을 막는 용도로도 사용 가능하다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;interface&quot;&gt;interface&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;추상 클래스와 유사하다.&lt;/li&gt;
-  &lt;li&gt;시작 키워드가 class가 아닌 interface이다.(용도는 추상 클래스와 같이 타입을 물려주는 용도이다.)&lt;/li&gt;
-  &lt;li&gt;상수와 추상 메소드들로만 구성되어 있다: concrete 메소드를 포함할 수 없다.&lt;/li&gt;
-  &lt;li&gt;내부 메소드에 별도로 abstact를 붙일 필요가 없다: interface 자체가 미완성이므로 포함하는 모든 메소드들에 자동으로 public abstract 키워드가 붙는다.&lt;/li&gt;
-  &lt;li&gt;내부 field에는 자동으로 static final 키워드가 붙는다: 값을 변경할 수 없다.&lt;/li&gt;
-  &lt;li&gt;자식 클래스에서 상속시 extends가 아닌 implements 키워드를 사용해야 한다.&lt;/li&gt;
-  &lt;li&gt;다중 상속 지원: implements 키워드를 통해 여러 클래스를 상속 가능하다.&lt;/li&gt;
-  &lt;li&gt;extends와 달리 implements 클래스1, 클래스2, … 형태로 사용 가능.&lt;/li&gt;
-  &lt;li&gt;예:
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  class ICircle extends Boat implements IShape, Seoul
-  =&amp;gt; iCircle의 타입이 될 수 있는 것: Boat, IShape, Seoul.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;의존성 감소: 고치는 부분을 줄일 수 있다 - 유지보수를 편하게 해준다.&lt;/li&gt;
-  &lt;li&gt;interface와 interface 간에도 상속관계 성립 가능.&lt;/li&gt;
-  &lt;li&gt;interface 예시
-&lt;img src=&quot;https://user-images.githubusercontent.com/23356503/51424291-ffe79e00-1c0e-11e9-9061-3b57a81ae7ef.png&quot; alt=&quot;interface example&quot; /&gt;
-  위 그림처럼 관계를 만든 다음
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  void pay(Thing x){
-      ...
-  }
-  메소드를
-  void pay(Valuable x){
-      ...
-  }
-  으로 변경한다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;instanceof&quot;&gt;instanceof&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;상속관계가 없을 경우 사용 불가능한 연산자.&lt;/li&gt;
-  &lt;li&gt;작은 타입 -&amp;gt; 큰 타입 순서로 사용해야 한다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;has-a-관계&quot;&gt;has-a 관계&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;서로 의존성을 갖게 되는 관계(Coupling) - 지양해야 함.&lt;/li&gt;
-  &lt;li&gt;한 클래스가 다른 클래스를 인자로 가지고 있는 관계.&lt;/li&gt;
-  &lt;li&gt;수정사항 발생시 두개의 클래스를 전부 수정해야 한다.&lt;/li&gt;
-  &lt;li&gt;보완: interface를 사용하여 타입의 자유도를 높여 의존성을 낮출 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;collections&quot;&gt;Collections&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;여러개의 데이터를 저장.&lt;/li&gt;
-  &lt;li&gt;저장 방식에 따라 List, Set, Map으로 나뉜다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;center&gt;구분&lt;/center&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;center&gt;List&lt;/center&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;center&gt;Set&lt;/center&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;center&gt;Map&lt;/center&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;중복&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;허용&lt;/center&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;허용 X&lt;/center&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;허용 X&lt;/center&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;순서&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;있음&lt;/center&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;없음&lt;/center&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;center&gt;없음&lt;/center&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;1-list-기존-배열과-유사&quot;&gt;1. List: 기존 배열과 유사.&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- ArrayList
-- Vector
-    - 아무 인자 없이 생성시 10칸짜리 Vector가 생성되고, 용량이 부족하면 기존의 크기를 2배로 늘린 후 재배치.
-    - Vector.capacity(): Vector 전체의 크기 리턴.
-    - Vector.size(): Vector 내 component 갯수 리턴.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;2-set-집합과-같은-개념&quot;&gt;2. Set: 집합과 같은 개념.&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- HashSet
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;3-map-key-value-쌍으로-데이터-저장-key값-중복-불가&quot;&gt;3. Map: (Key, Value) 쌍으로 데이터 저장, Key값 중복 불가.&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- HashMap
-- HashTable
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Iterator: 순서 없는 자료구조를 탐색하기 위해 사용함.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;generic-programming&quot;&gt;Generic Programming&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;HashMap&amp;lt;K, V&amp;gt; 와 같이 &amp;lt;…&amp;gt;의 형태를 이룬다.&lt;/li&gt;
-  &lt;li&gt;&amp;lt;&amp;gt; 안에는 객체만 올 수 있다: 기본형을 사용하고싶을 경우 wrapper class로 바꿔 넣어야 한다.
-    &lt;ul&gt;
-      &lt;li&gt;예: int형 ArrayList - ArrayList&lt;Integer&gt;&lt;/Integer&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Generic을 사용할 경우 클래스 변동사항이 있으면 적용되는 시점이 미뤄진다: 객체 생성시 유연성이 생긴다.
-    &lt;ul&gt;
-      &lt;li&gt;통상 클래스들은 한번 컴파일하면 다시 컴파일하지 않는 이상 변경사항이 반영되지 않는다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;클래스는 완성되었으나 타입이 정해지지 않은 형태이다.
-    &lt;ul&gt;
-      &lt;li&gt;설계 단계에서는 타입 미정.&lt;/li&gt;
-      &lt;li&gt;객체 생성시 타입 확정.&lt;/li&gt;
-      &lt;li&gt;결론: compile time에서는 타입이 결정되지 않은 상태, runtime에서 타입이 결정.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;예시
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  public class MyClass&amp;lt;X&amp;gt;{
-      private X data;
-
-      public X getData(){
-          return data;
-      }
-
-      public void setData(X data){
-          this.data = data;
-      }
-
-      public static void main(String[] args){
-          MyClass&amp;lt;String&amp;gt; m1 = new MyClass&amp;lt;&amp;gt;();
-          MyClass&amp;lt;Integer&amp;gt; m2 = new MyClass&amp;lt;&amp;gt;();
-          MyClass&amp;lt;Circle&amp;gt; m3 = new MyClass&amp;lt;&amp;gt;();
-      }
-  }
-
-  =&amp;gt; m1, m2, m3의 타입은 모두 MyClass로 같다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;singleton-pattern&quot;&gt;Singleton Pattern&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;디자인 패턴: 설계 패턴. 클래스를 설계하는 패턴을 의미.&lt;/li&gt;
-  &lt;li&gt;어플리케이션 전체에서 객체를 한개만 생성하여 사용하는 패턴: 하나의 객체를 전체가 공유한다.&lt;/li&gt;
-  &lt;li&gt;클래스명에 static이 붙는다: 오직 하나의 객체만 생성한다.&lt;/li&gt;
-  &lt;li&gt;조건
-    &lt;ol&gt;
-      &lt;li&gt;field: private static이며 클래스 자신의 타입으로 선언되어야 한다.&lt;/li&gt;
-      &lt;li&gt;생성자: private으로 설정.&lt;/li&gt;
-      &lt;li&gt;객체를 생성하여 리턴하는 static 메소드가 반드시 있어야 한다.(통상 getInstance()라는 메소드 정의)&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;외부에서 객체 생성에 영향을 주지 않도록 한다
-    &lt;ul&gt;
-      &lt;li&gt;생성자는 Default 생성자만 두는 경우가 대부분이다.&lt;/li&gt;
-      &lt;li&gt;생성자, 생성 메소드 오버로딩하지 않음.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;예시
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  public class Speaker{
-      private static Speaker speaker;
-      private int volume;
-
-      private Speaker(){
-          volume = 5;
-      }
-
-      public static Speaker getInstance(){
-          if(speaker == null){
-              speaker = new Speaker();
-          }
-
-          return speaker;
-      }
-
-      public int getVolume(){
-          return volume;
-      }
-
-      public void setVolume(int volume){
-          this.volume = volume;
-      }
-  }
-
-  public class SingletonTest{
-
-      public static void main(String[] args){
-          Speaker s1 = Speaker.getInstance();
-          Speaker s2 = Speaker.getInstance();
-          Speaker s3 = Speaker.getInstance();
-
-          System.out.println(s1 == s2);
-          System.out.prinltn(s2 == s3);
-
-          s1.setVolume(10);
-          System.out.println(s1.getVolume());
-          System.out.println(s2.getVolume());
-          System.out.println(s3.getVolume());
-      }
-  }
-
-  실행 결과: s1, s2, s3의 주소값은 전부 같다.
-  =&amp;gt; 전부 똑같은 하나의 객체만을 가리키고 있으므로, 한 객체에서 volume을 변경하면 모든 객체의 volume이 똑같이 바뀐다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;comparable-comparator&quot;&gt;Comparable, Comparator&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;객체의 정렬과 관련한 인터페이스.&lt;/li&gt;
-  &lt;li&gt;Comparable: 클래스 내부에 객체의 정렬 기준을 만들어놓고자 할때 사용하는 인터페이스.(반드시 한개만 존재한다.)&lt;/li&gt;
-  &lt;li&gt;Comparator: 클래스 외부에 특정 객체의 정렬 기준을 명시하는 인터페이스.(클래스 내부의 Comparable 이외의 정렬 기준이 필요할 경우 별도의 클래스를 만들어 정의한다. - 정렬 기준은 한 메소드 내에 한개만 정의 가능.)&lt;/li&gt;
-  &lt;li&gt;sort()로 정렬 가능한 객체: Comparator나 Comparable 인터페이스를 implements 하고 있어야 한다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;class-종류&quot;&gt;Class 종류&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;VO
-    &lt;ul&gt;
-      &lt;li&gt;Value Object&lt;/li&gt;
-      &lt;li&gt;값을 저장할 수 있는 객체.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;DAO
-    &lt;ul&gt;
-      &lt;li&gt;Data Access Object&lt;/li&gt;
-      &lt;li&gt;이미 만들어진 VO를 프로세싱하는 목적.&lt;/li&gt;
-      &lt;li&gt;CRUD: Create, Read, Update, Delete 기능 수행.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;CO
-    &lt;ul&gt;
-      &lt;li&gt;Client Object&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><category term="BFS" /><summary type="html">백준 11724번 Link: 11724번: 연결 요소의 개수</summary></entry></feed>

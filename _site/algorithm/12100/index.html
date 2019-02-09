@@ -1,0 +1,818 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>12100 - KeithLog</title>
+<meta name="description" content="백준 12100번Link: 12100번: 2048 (Easy)">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KeithLog">
+<meta property="og:title" content="12100">
+<meta property="og:url" content="keithlee94.github.io/algorithm/12100/">
+
+
+  <meta property="og:description" content="백준 12100번Link: 12100번: 2048 (Easy)">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-02-09T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/12100/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jaehyun Keith Lee",
+      "url": "keithlee94.github.io",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="KeithLog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">KeithLog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Jaehyun Keith Lee</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Supernormal / Quiet Weirdo
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="wogus4187@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+          
+        
+          
+            <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:wogus4187@naver.com">
+            <meta itemprop="email" content="wogus4187@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="12100">
+    <meta itemprop="description" content="백준 12100번Link: 12100번: 2048 (Easy)">
+    <meta itemprop="datePublished" content="February 09, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">12100
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="백준-12100번">백준 12100번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/12100">12100번: 2048 (Easy)</a></p>
+
+<hr />
+
+<h1 id="문제-설명">문제 설명</h1>
+<p>일단 내 힘만으로 풀었다는 것부터 적고간다ㅋㅋㅋㅋ</p>
+
+<p>DFS를 통해 모든 경우를 고려해봐야 하는 문제였다.</p>
+
+<p>우선 DFS를 구현하기 전에 map을 어떤 식으로 밀고 같은 수를 합치면 되는지를 먼저 고민해봤다.</p>
+
+<p>여러가지 방법을 생각해보던 중 벡터를 활용해서 옮겨야 하는 수들을 전부 집어넣고 옮긴 다음 옮겨진 수들을 합치는 방법을 생각해 봤다.</p>
+
+<p>그런데 이 방법에는 큰 문제가 있는데, 옮기고 합친 다음 다시 옮겨야 한다는 점이었다.</p>
+
+<p>이를 보완하기 위해 벡터에 옮겨야 하는 수들을 전부 넣고 map을 0으로 바꾼 다음, 그 수들을 비교해서 두 숫자가 같은 숫자이면 합치고 뒤의 숫자를 0으로 바꾼다.</p>
+
+<p>이렇게 벡터의 내용을 바꿔준 다음, 별도로 큐를 정의하여 벡터를 한번 순회하며 0이 아닌 수를 만나면 큐에 넣는다.</p>
+
+<p>마지막으로 옮기는 방향에 맞춰 큐의 내용대로 map을 바꿔주는 방법으로 구현하였다.</p>
+
+<p>메모리상으로는 비효율적이겠지만, 중요한건 시간이니 넘어가자…</p>
+
+<p>이렇게 옮기는 함수를 구현한 다음, DFS를 구현하였다.</p>
+
+<p>이 과정에서 많이 고민했는데, 처음에는 DFS의 인자로 DFS 횟수와 map을 주는 방법으로 구현하였다.</p>
+
+<p>이런식으로 하니 분명 모든 경우의 수를 따지긴 하지만 제출해보니 틀렸는데, 바로 map이 제대로 바뀌지 않는 것이 문제였다.</p>
+
+<p>처음에는 DFS가 제대로 돌지 않는게 아닌가 싶어서 string으로 모든 경우를 다 출력해봤다. 확인 결과 모든 경우 따지는건 맞더라.</p>
+
+<p>여기다 map도 같이 찍어보니 map이 제대로 안바뀌는 문제가 있다는 것을 찾아냈다.</p>
+
+<p>이걸 어떻게 해야 해결할 수 있나 한참 고민하던 중, string으로 찍어본 결과를 이용해보자는 생각을 하게 되었다.</p>
+
+<p>string에 찍힌 대로 DFS의 종료 조건에서 map을 바꾸는 방법을 생각해 냈고, 이대로 구현해보니 시간초과가 났다.</p>
+
+<p>DFS 돌때마다 20*20짜리 배열을 계속 돈다고 생각해보면 시간초과 나는게 당연했다.</p>
+
+<p>이 문제를 해결하기 위해 포인터를 사용했는데, 우선 20*20짜리 배열을 map과 같은 내용을 갖도록 초기화해준 다음 2차원 배열 포인터로 이 배열을 가리키도록 한다.</p>
+
+<p>이 2차원 배열 포인터를 map 바꿔주는 함수의 인자로 전달하여 map을 5번 바꿔준 다음, 앞에서 만든 20*20짜리 배열의 내용을 갱신해준다. 또 갱신 과정에서 최대값도 같이 갱신해준다.</p>
+
+<p>이런식으로 구현하여 제출하니 드디어 맞았다고 나왔다.</p>
+
+<p>DFS로 모든 경우를 다 따져보기만 하면 풀리는 문제였다. 다만 그 경우를 따지기 위한 전처리가 상당히 까다로웠던 문제.</p>
+
+<p>이제 DFS로 푸는 방법을 좀 이해한 것 같다.</p>
+
+<p>문제 풀면서 막히는 부분에 대해 어느 부분에서 막히는지 직접 찾아내고 해결했다는 점에서 매우 뿌듯하다.</p>
+
+<p>앞으로도 이렇게 내 힘만으로 풀어내는 문제들이 많이 있길!!</p>
+<hr />
+
+<h1 id="정답-코드">정답 코드</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+// Created by Keith_Lee on 08/02/2019.
+//
+
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+int N;
+int result = 0;
+int map[20][20] = {0, };
+
+string progress = "MMMMM";
+
+int (*push(char direction, int (*tempMap)[20]))[20]{ // 이동시킨 후 바뀐 map 리턴.
+    // 상
+    if(direction == 'U'){
+        for(int i=0; i&lt;N; i++){
+            vector&lt;int&gt; toMove; // 위로 이동시킬 숫자들
+            queue&lt;int&gt; merge; // 이동 후 같은 숫자일때 합치고 저장
+
+            for(int j=0; j&lt;N; j++){
+                if(tempMap[j][i] != 0){ // 위로 이동시킬 숫자가 있으면
+                    toMove.push_back(tempMap[j][i]); // 벡터에 넣고
+                    tempMap[j][i] = 0; // 숫자 자리를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&lt;toMove.size(); j++){
+                if(j+1 &lt; toMove.size() &amp;&amp; toMove[j] == toMove[j+1]){ // 벡터 내에서 같은 숫자가 연속될 경우
+                    toMove[j] *= 2; // 합친다
+                    toMove[j+1] = 0; // 뒷 숫자를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&lt;toMove.size(); j++){ // 벡터를 돌면서
+                if(toMove[j] != 0){ // 원소가 0이 아니면
+                    merge.push(toMove[j]); // 큐에 넣는다.
+                }
+            }
+
+            int index = 0;
+
+            while(!merge.empty()){ // 큐를 돌면서
+                tempMap[index][i] = merge.front(); // 바뀐 숫자를 맵에 반영한다.
+                merge.pop();
+                index++;
+            }
+        }
+    }
+
+    // 하
+    if(direction == 'D'){
+        for(int i=0; i&lt;N; i++){
+            vector&lt;int&gt; toMove; // 아래로 이동시킬 숫자들
+            queue&lt;int&gt; merge; // 이동 후 같은 숫자일때 합치고 저장
+
+            for(int j=N-1; j&gt;=0; j--){ // 아래쪽부터 돌거임
+                if(tempMap[j][i] != 0){ // 아래로 이동시킬 숫자가 있으면
+                    toMove.push_back(tempMap[j][i]); // 벡터에 넣고
+                    tempMap[j][i] = 0; // 숫자 자리를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&lt;toMove.size(); j++){
+                if(j+1 &lt; toMove.size() &amp;&amp; toMove[j] == toMove[j+1]){ // 벡터 내에서 같은 숫자가 연속될 경우
+                    toMove[j] *= 2; // 합친다
+                    toMove[j+1] = 0; // 뒷 숫자를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&lt;toMove.size(); j++){ // 벡터를 돌면서
+                if(toMove[j] != 0){ // 원소가 0이 아니면
+                    merge.push(toMove[j]); // 큐에 넣는다.
+                }
+            }
+
+            int index = 0;
+
+            while(!merge.empty()){ // 큐를 돌면서
+                tempMap[N-1-index][i] = merge.front(); // 바뀐 숫자를 맵에 반영한다.
+                merge.pop();
+                index++;
+            }
+        }
+    }
+
+    // 좌
+    if(direction == 'L'){
+        for(int i=0; i&lt;N; i++){
+            vector&lt;int&gt; toMove; // 왼쪽으로 이동시킬 숫자들
+            queue&lt;int&gt; merge; // 이동 후 같은 숫자일때 합치고 저장
+
+            for(int j=0; j&lt;N; j++){
+                if(tempMap[i][j] != 0){ // 왼쪽으로 이동시킬 숫자가 있으면
+                    toMove.push_back(tempMap[i][j]); // 벡터에 넣고
+                    tempMap[i][j] = 0; // 숫자 자리를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&lt;toMove.size(); j++){
+                if(j+1 &lt; toMove.size() &amp;&amp; toMove[j] == toMove[j+1]){ // 벡터 내에서 같은 숫자가 연속될 경우
+                    toMove[j] *= 2; // 합친다
+                    toMove[j+1] = 0; // 뒷 숫자를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&lt;toMove.size(); j++){ // 벡터를 돌면서
+                if(toMove[j] != 0){ // 원소가 0이 아니면
+                    merge.push(toMove[j]); // 큐에 넣는다.
+                }
+            }
+
+            int index = 0;
+
+            while(!merge.empty()){ // 큐를 돌면서
+                tempMap[i][index] = merge.front(); // 바뀐 숫자를 맵에 반영한다.
+                merge.pop();
+                index++;
+            }
+        }
+    }
+
+    // 우
+    if(direction == 'R'){
+        for(int i=0; i&lt;N; i++){
+            vector&lt;int&gt; toMove; // 오른쪽으로 이동시킬 숫자들
+            queue&lt;int&gt; merge; // 이동 후 같은 숫자일때 합치고 저장
+
+            for(int j=N-1; j&gt;=0; j--){ // 오른쪽부터 돌거임
+                if(tempMap[i][j] != 0){ // 오른쪽으로 이동시킬 숫자가 있으면
+                    toMove.push_back(tempMap[i][j]); // 벡터에 넣고
+                    tempMap[i][j] = 0; // 숫자 자리를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&lt;toMove.size(); j++){
+                if(j+1 &lt; toMove.size() &amp;&amp; toMove[j] == toMove[j+1]){ // 벡터 내에서 같은 숫자가 연속될 경우
+                    toMove[j] *= 2; // 합친다
+                    toMove[j+1] = 0; // 뒷 숫자를 0으로 만든다.
+                }
+            }
+
+            for(int j=0; j&lt;toMove.size(); j++){ // 벡터를 돌면서
+                if(toMove[j] != 0){ // 원소가 0이 아니면
+                    merge.push(toMove[j]); // 큐에 넣는다.
+                }
+            }
+
+            int index = 0;
+
+            while(!merge.empty()){ // 큐를 돌면서
+                tempMap[i][N-1-index] = merge.front(); // 바뀐 숫자를 맵에 반영한다.
+                merge.pop();
+                index++;
+            }
+        }
+    }
+
+    return tempMap;
+}
+
+void DFS(int count){
+    if(count == 5){
+        int newMap[20][20] = {0, };
+        int (*temp)[20] = newMap;
+
+        for(int i=0; i&lt;N; i++){
+            for(int j=0; j&lt;N; j++){
+                newMap[i][j] = map[i][j];
+            }
+        }
+
+        for(int i=0; i&lt;progress.length(); i++){
+            temp = push(progress[i], temp);
+        }
+
+        for(int i=0; i&lt;N; i++){
+            for(int j=0; j&lt;N; j++){
+                newMap[i][j] = temp[i][j];
+                if(newMap[i][j] &gt; result){
+                    result = newMap[i][j];
+                }
+            }
+        }
+
+        return;
+    }
+
+    for(int i=1; i&lt;=4; i++){
+        if(i == 1){
+            progress[count] = 'U';
+        }
+        else if(i == 2){
+            progress[count] = 'D';
+        }
+        else if(i == 3){
+            progress[count] = 'L';
+        }
+        else if(i == 4){
+            progress[count] = 'R';
+        }
+        DFS(count+1);
+    }
+}
+
+int main(){
+    cin &gt;&gt; N;
+
+    for(int i=0; i&lt;N; i++){
+        for(int j=0; j&lt;N; j++){
+            cin &gt;&gt; map[i][j];
+        }
+    }
+
+    DFS(0);
+
+    cout &lt;&lt; result &lt;&lt; '\n';
+
+    return 0;
+}
+</code></pre></div></div>
+<hr />
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#brute-force" class="page__taxonomy-item" rel="tag">Brute Force</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#dfs" class="page__taxonomy-item" rel="tag">DFS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-09T00:00:00+09:00">February 09, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=12100%20keithlee94.github.io%2Falgorithm%2F12100%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F12100%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F12100%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F12100%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/2251/" class="pagination--pager" title="2251
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2251/" rel="permalink">2251
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2251번
+Link: 2251번: 물통
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/1062/" rel="permalink">1062
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 1062번
+Link: 1062번: 가르침
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/java/7th-Week-Summary/" rel="permalink">7th week summary
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">알고리즘 스터디 내용 정리
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2644/" rel="permalink">2644
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2644번
+Link: 2644번: 촌수계산
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Jaehyun Keith Lee. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>
