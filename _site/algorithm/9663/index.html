@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>10844 - KeithLog</title>
-<meta name="description" content="백준 10844번Link: 10844번: 쉬운 계단 수">
+<!-- begin _includes/seo.html --><title>9663 - KeithLog</title>
+<meta name="description" content="백준 9663번Link: 9663번: N-Queen">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="10844">
-<meta property="og:url" content="keithlee94.github.io/algorithm/10844/">
+<meta property="og:title" content="9663">
+<meta property="og:url" content="keithlee94.github.io/algorithm/9663/">
 
 
-  <meta property="og:description" content="백준 10844번Link: 10844번: 쉬운 계단 수">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-09T00:00:00+09:00">
+  <meta property="og:description" content="백준 9663번Link: 9663번: N-Queen">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-02-10T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/10844/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/9663/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="10844">
-    <meta itemprop="description" content="백준 10844번Link: 10844번: 쉬운 계단 수">
-    <meta itemprop="datePublished" content="January 09, 2019">
+    <meta itemprop="headline" content="9663">
+    <meta itemprop="description" content="백준 9663번Link: 9663번: N-Queen">
+    <meta itemprop="datePublished" content="February 10, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">10844
+          <h1 id="page-title" class="page__title" itemprop="headline">9663
 </h1>
           
         </header>
@@ -286,76 +286,85 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-10844번">백준 10844번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/10844">10844번: 쉬운 계단 수</a></p>
+        <h1 id="백준-9663번">백준 9663번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/9663">9663번: N-Queen</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>어제는 피곤함에 빈둥거리다 아무것도 못올렸다.</p>
+<p>많이들 알고있는 그 n-queen problem 문제다.</p>
 
-<p>이 문제는 어제부터 고민하다 방법을 찾았고, 그 방법을 어떻게 구현할지 많은 시행착오를 거친 끝에 결국 풀었다.</p>
+<p>백트래킹 알고리즘의 교과서같은 문제로, 그냥 DFS 다돌리면 시간 부족해서 안풀릴 문제다.</p>
 
-<p>사실 맨 마지막에 내 생각이 확실한데 답이 자꾸 틀려서 다른사람 답을 찾아보긴 했지만, 그 답이 내가 생각한 그대로여서 여태껏 답 찾아본 문제들중 가장 치열하게 고민한 문제인 것 같다는 생각을 했다.</p>
+<p>짜다가 위키에 있는 소스코드를 봤는데, 내것보단 이게 훨씬 나아보여서 이걸 보고 이해하는 방향으로 했다.</p>
 
-<p>그만큼 이번에는 답찾아서 풀었음에도 쪽팔리다는 생각이 들지 않았고.</p>
+<p>내가 생각했던 것과의 가장 큰 차이점은 체스판을 1차원 배열로만 표현했다는 점.</p>
 
-<p>각설하고, 푸는 방법에 대해 설명해보자면 이 문제에서 각 자릿수가 몇자리수이냐는 아무 상관이 없다.</p>
+<p>1차원 배열로만 표현한 덕분에 2차원 배열을 순회하는 데 필요한 2중 for문을 단순 1중 for문으로 끝낼 수 있다는 시간적 이점이 있다.</p>
 
-<p>가장 중요한 것은 1의자리 숫자가 무엇인지.</p>
+<p>대각선으로 다른 퀸이 있는지 검사하는 방법을 제일 이해하기 힘들었는데, 우선 지금까지 놓여진 퀸들에 대해 for문을 통해 검사한다.</p>
 
-<p>N이 1일때, 2일때, 3일때의 경우들을 직접 구해보니 1의자리 숫자에 따라 다음 수가 영향을 받는다는 것을 알 수 있었다.</p>
+<p>이 for문의 iter 값은 곧 i번째 행 j번째 열에 퀸이 있는지를 표현하는 것이더라.</p>
 
-<p>자꾸 보다보니 N일때의 답 = (N-1일때의 답 * 2) - (N-1일때의 계단수 중 첫자리 숫자가 1인 것의 갯수) 라는 규칙을 찾은것같은데, 맞는지는 모르겠다.</p>
+<p>abs(count - j) == abs(i - map[j])는 count번째 행 i열의 대각 2방향(위쪽, 아래쪽 모두)에 퀸이 있는지 없는지 검사하는 내용이다.</p>
 
-<p>어떻게 구현할지 한참 고민하다 저 규칙대로 풀어보기 위해 우선 큐에 넣고 갱신해가면서 모든 경우를 다 돌려봤다.</p>
+<p>이 if문에 걸리지 않았다면 퀸을 놓을 수 있는 것이므로 결과값을 1 증가시킨다.</p>
 
-<p>한 5분은 지나야 전체 답을 구할 수 있더라.</p>
+<p>만약 걸렸다면 즉시 for문을 나가고 바깥쪽 for문을 통해 다음 놓을 수 있는 자리를 찾는다.</p>
 
-<p>이런 과정을 거치면서 이 문제를 어떻게하면 이전 N에서 얻은 답을 사용할수 있을지에 대해 중점적으로 고민해보았고, 결국 1의자리 숫자만이 영향을 미친다는 점을 찾기에 이르렀다.</p>
+<p>이런식으로 반복하며 답을 찾는 문제다.</p>
 
-<p>이 문제를 풀며 가장 고무적이었다고 생각했던 부분은 DP의 특성을 어떻게든 적용하기 위해 노력했다는 점.</p>
+<p>어제만해도 DFS문제에 대해 자신감이 좀 생겼는데 이 문제는 또 다른것 같다.</p>
 
-<p>앞에서 구한 답을 어떻게 써먹을수 있는지 그 어느때보다 치열하게 고민한 것 같다.</p>
-
-<p>이 문제를 풀어낸 것이 앞으로 DP문제를 푸는데 있어 전환점이 되길!!</p>
-
+<p>체스판을 1차원 배열로 표현하고 대각선방향 검사하는 코드만 봐도 아직 많이 모자라다는 걸 알 수 있었다.</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 08/01/2019.
+// Created by Keith_Lee on 10/02/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;strings.h&gt;
+#include &lt;stdlib.h&gt;
 
 using namespace std;
 
-int main(){
-    int N;
+int N;
+int map[14];
+int result = 0;
 
-    cin &gt;&gt; N;
-
-    unsigned long long DP[101][11];
-    bzero(DP, sizeof(DP));
-
-    for(int i=1; i&lt;10; i++){
-        DP[1][i] = 1;
+void DFS(int count){
+    if(count == N){
+        result++;
+        return;
     }
 
-    for(int i=2; i&lt;=N; i++) {
-        DP[i][0] = DP[i-1][1];
-        for(int j=1; j&lt;10; j++){
-            DP[i][j] = (DP[i-1][j-1] + DP[i-1][j+1]) % 1000000000;
+    for(int i=0; i&lt;N; i++){
+        bool available = true;
+
+        for(int j=0; j&lt;count; j++){ // 지금까지 놓아진 퀸들을 검사한다.
+            if(map[j] == i || abs(count - j) == abs(i - map[j])){
+                // map[j] == i: 새로운 퀸을 놓으려는 줄에 이미 다른 퀸이 있다.
+                // abs(count - j) == abs(i - map[j]): 새로운 퀸을 놓으려는 위치의 대각선 방향에 이미 다른 퀸이 있다.
+                available = false;
+                break;
+            }
+        }
+
+        if(available){
+            map[count] = i;
+            // count열 i행에 퀸을 배치한다.
+            DFS(count+1);
         }
     }
+}
 
-    unsigned long long sum = 0;
-    for(int i=0; i&lt;10; i++){
-        sum += DP[N][i];
-    }
-    cout &lt;&lt; (sum % 1000000000) &lt;&lt; '\n';
+int main(){
+    cin &gt;&gt; N;
+
+    DFS(0);
+
+    cout &lt;&lt; result &lt;&lt; '\n';
 
     return 0;
 }
@@ -382,7 +391,7 @@ int main(){
     
       
       
-      <a href="/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
+      <a href="/tags/#back-tracking" class="page__taxonomy-item" rel="tag">Back Tracking</a>
     
     </span>
   </p>
@@ -410,7 +419,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-09T00:00:00+09:00">January 09, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-10T00:00:00+09:00">February 10, 2019</time></p>
         
       </footer>
 
@@ -419,25 +428,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=10844%20keithlee94.github.io%2Falgorithm%2F10844%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=9663%20keithlee94.github.io%2Falgorithm%2F9663%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F10844%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F9663%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F10844%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F9663%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F10844%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F9663%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/SWEA_5215/" class="pagination--pager" title="Swea_5215
+      <a href="/algorithm/12100/" class="pagination--pager" title="12100
 ">Previous</a>
     
     
-      <a href="/algorithm/2293/" class="pagination--pager" title="2293
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -451,27 +459,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/9663/" rel="permalink">9663
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 9663번
-Link: 9663번: N-Queen
-
-</p>
-  </article>
-</div>
         
           
 
@@ -531,6 +518,27 @@ Link: 2251번: 물통
     
     <p class="archive__item-excerpt" itemprop="description">백준 1062번
 Link: 1062번: 가르침
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/java/7th-Week-Summary/" rel="permalink">7th week summary
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">알고리즘 스터디 내용 정리
+
 
 </p>
   </article>
