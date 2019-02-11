@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Swea_5215 - KeithLog</title>
-<meta name="description" content="SWEA 5215번Link: 5215번: 햄버거 다이어트">
+<!-- begin _includes/seo.html --><title>2309 - KeithLog</title>
+<meta name="description" content="백준 2309번Link: 2309번: 일곱 난쟁이">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="Swea_5215">
-<meta property="og:url" content="keithlee94.github.io/algorithm/SWEA_5215/">
+<meta property="og:title" content="2309">
+<meta property="og:url" content="keithlee94.github.io/algorithm/2309/">
 
 
-  <meta property="og:description" content="SWEA 5215번Link: 5215번: 햄버거 다이어트">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-07T00:00:00+09:00">
+  <meta property="og:description" content="백준 2309번Link: 2309번: 일곱 난쟁이">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-02-11T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/SWEA_5215/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/2309/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Swea_5215">
-    <meta itemprop="description" content="SWEA 5215번Link: 5215번: 햄버거 다이어트">
-    <meta itemprop="datePublished" content="January 07, 2019">
+    <meta itemprop="headline" content="2309">
+    <meta itemprop="description" content="백준 2309번Link: 2309번: 일곱 난쟁이">
+    <meta itemprop="datePublished" content="February 11, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Swea_5215
+          <h1 id="page-title" class="page__title" itemprop="headline">2309
 </h1>
           
         </header>
@@ -286,86 +286,89 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="swea-5215번">SWEA 5215번</h1>
-<p>Link: <a href="https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AWgebGzaXfEDFAW0&amp;contestProbId=AWT-lPB6dHUDFAVT&amp;probBoxId=AWgebGzqXfIDFAW0+&amp;type=PROBLEM&amp;problemBoxTitle=Club+Problem+box+01&amp;problemBoxCnt=++3+">5215번: 햄버거 다이어트</a></p>
+        <h1 id="백준-2309번">백준 2309번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/2309">2309번: 일곱 난쟁이</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>완전탐색으로 최적의 조합을 구하는 문제.</p>
+<p>평범하게 모든 경우를 따져가며 조건 맞으면 출력해주는 DFS 문제였다.</p>
 
-<p>문제 보자마자 ‘이건 DFS쓰면 풀리겠구나’ 하는 생각은 들었다.</p>
+<p>9개 중 7개를 뽑아 합이 100이 될때 리턴해주면 되는 문제다.</p>
 
-<p>이렇게 생각하고 풀었는데, DFS 구현에서 정말 많이 헤맸다.</p>
+<p>요즘 DFS를 활용한 완전탐색 문제를 많이 접하는 것 같다.</p>
 
-<p>DFS랑 BFS는 그래도 구현방법을 다 외우고 있었다고 생각했었는데 벌써 다 까먹은 모양이다.</p>
+<p>이건 그중에서도 기초적인 문제인듯 하다.</p>
 
-<p>예전에 코딩테스트 볼때도 확실하게 몰랐던거니 당연할수도.</p>
+<p>분명 방학 시작 전까지는 이런 쉬운 문제도 쩔쩔매며 어떻게 풀지 고민했을 것 같은데, 어느새 아 이거 DFS로 조합 구해서 풀면 되는 문제네 하고 떠오를 수준이 되었다는 점이 마냥 신기하다.</p>
 
-<p>어떻게든 고쳐서 해보다 안되서 답 찾아서 풀었다.</p>
-
-<p>핵심은 DFS를 쓰긴 하는데 각각의 재료를 포함했을때와 포함하지 않았을때를 반드시 같이 돌려야 한다는것.</p>
-
-<p>제약조건에 따라 포함하거나 포함안하거나 따지면서 DFS 두번 돌리면 바로 풀린다.</p>
-
-<p>아직도 정말 갈길이 멀다고 생각했다.</p>
-
-<p>DFS, BFS는 자신있다고 생각했는데… 심지어 DFS로 풀어야된다는걸 알면서도 틀려서 더 자괴감 오진다.</p>
-
-<h1 id="될때까지-하자">될때까지 하자.</h1>
-
+<p>이런식으로 DP도 정복하는 것이 목표이다.</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 07/01/2019.
+// Created by Keith_Lee on 11/02/2019.
 //
 
 #include &lt;iostream&gt;
+#include &lt;algorithm&gt;
 #include &lt;vector&gt;
 
 using namespace std;
 
-int T;
-int N, L;
-int maximum = 0;
+int littles[9] = {0, };
+bool visit[9] = {false, };
+vector&lt;int&gt; intermediate;
 
-vector&lt;pair&lt;int, int&gt;&gt; base;
+void DFS(int index, int count){
+    if(index == 9){
+        if(count == 7){
+            int sum = 0;
 
-void DFS(int start, int calory, int score){
-    if(start == N){
-        maximum = maximum &gt; score ? maximum : score;
+            for(int i=0; i&lt;9; i++){
+                if(visit[i]){
+                    sum += littles[i];
+                }
+            }
+
+            if(sum == 100){
+                for(int i=0; i&lt;9; i++){
+                    if(visit[i]){
+                        intermediate.push_back(littles[i]);
+                    }
+                }
+            }
+        }
+
         return;
     }
-    if(calory + base[start].second &lt;= L){
-        DFS(start+1, calory+base[start].second, score+base[start].first); // start번째 재료 추가
-    }
-    DFS(start+1, calory, score); // start번째 재료 거름
+
+    visit[index] = true;
+    DFS(index+1, count+1);
+    visit[index] = false;
+    DFS(index+1, count);
 }
 
 int main(){
-    cin &gt;&gt; T;
-
-    for(int test=1; test&lt;=T; test++){
-        cin &gt;&gt; N &gt;&gt; L;
-
-        for(int i=0; i&lt;N; i++){
-            int calory;
-            int score;
-
-            cin &gt;&gt; score &gt;&gt; calory;
-
-            base.push_back(make_pair(score, calory));
-        }
-
-        DFS(0, 0, 0);
-
-        cout &lt;&lt; '#' &lt;&lt; test &lt;&lt; ' ' &lt;&lt; maximum &lt;&lt; '\n';
-        while(!base.empty()){
-            base.pop_back();
-        }
-        maximum = 0;
+    for(int i=0; i&lt;9; i++){
+        cin &gt;&gt; littles[i];
     }
+
+    DFS(0, 0);
+
+    vector&lt;int&gt; result;
+
+    for(int i=0; i&lt;7; i++){
+        result.push_back(intermediate[i]);
+    }
+
+    sort(result.begin(), result.end());
+
+    for(int i=0; i&lt;result.size(); i++){
+        cout &lt;&lt; result[i] &lt;&lt; '\n';
+    }
+
+    return 0;
 }
 </code></pre></div></div>
 <hr />
@@ -387,6 +390,10 @@ int main(){
   <p class="page__taxonomy">
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#brute-force" class="page__taxonomy-item" rel="tag">Brute Force</a><span class="sep">, </span>
     
       
       
@@ -418,7 +425,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-07T00:00:00+09:00">January 07, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-11T00:00:00+09:00">February 11, 2019</time></p>
         
       </footer>
 
@@ -427,25 +434,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Swea_5215%20keithlee94.github.io%2Falgorithm%2FSWEA_5215%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=2309%20keithlee94.github.io%2Falgorithm%2F2309%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2FSWEA_5215%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2309%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2FSWEA_5215%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2309%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2FSWEA_5215%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2309%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/SWEA_3307/" class="pagination--pager" title="Swea_3307
+      <a href="/algorithm/9663/" class="pagination--pager" title="9663
 ">Previous</a>
     
     
-      <a href="/algorithm/10844/" class="pagination--pager" title="10844
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -459,27 +465,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/2309/" rel="permalink">2309
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 2309번
-Link: 2309번: 일곱 난쟁이
-
-</p>
-  </article>
-</div>
         
           
 
@@ -539,6 +524,27 @@ Link: 12100번: 2048 (Easy)
     
     <p class="archive__item-excerpt" itemprop="description">백준 2251번
 Link: 2251번: 물통
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/1062/" rel="permalink">1062
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 1062번
+Link: 1062번: 가르침
 
 </p>
   </article>

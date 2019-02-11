@@ -9,19 +9,16 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1003 - KeithLog</title>
-<meta name="description" content="백준 1003번Link: 1003번: 피보나치 함수">
+<!-- begin _includes/seo.html --><title>KeithLog - Page 7</title>
+<meta name="description" content="SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그">
 
 
 
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="1003">
-<meta property="og:url" content="keithlee94.github.io/algorithm/1003/">
-
-
-  <meta property="og:description" content="백준 1003번Link: 1003번: 피보나치 함수">
+<meta property="og:title" content="KeithLog">
+<meta property="og:url" content="keithlee94.github.io/page7/">
 
 
 
@@ -29,7 +26,6 @@
 
 
 
-  <meta property="article:published_time" content="2019-01-01T00:00:00+09:00">
 
 
 
@@ -40,8 +36,10 @@
   
 
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/1003/">
+<link rel="canonical" href="keithlee94.github.io/page7/">
 
+
+  <link rel="prev" href="keithlee94.github.io/page6/">
 
 
 
@@ -104,7 +102,7 @@
 
   </head>
 
-  <body class="layout--single">
+  <body class="layout--home">
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -269,265 +267,96 @@
   </div>
 
 
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="1003">
-    <meta itemprop="description" content="백준 1003번Link: 1003번: 피보나치 함수">
-    <meta itemprop="datePublished" content="January 01, 2019">
+  <div class="archive">
     
-
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">1003
-</h1>
-          
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        
-        <h1 id="백준-1003번">백준 1003번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/1003">1003번: 피보나치 함수</a></p>
-
-<hr />
-
-<h1 id="문제-설명">문제 설명</h1>
-<p>피보나치 함수 실행시 0과 1이 몇번이나 출력되는지 구하는 문제.</p>
-
-<p>예전에 풀어본 적 있던 문제였는데 DP를 다시 공부하는 김에 새로 풀어보았다.</p>
-
-<p>다른점이 있다면 예전에는 답을 찾아보고 풀었던것 같은데 이번에는 내 힘만으로 풀었다는 점.</p>
-
-<p>DP를 사용해야 한다는 느낌은 왔는데 어떻게 DP 배열을 채울지가 관건이었다.</p>
-
-<p>시간제한이 0.25초였지만 입력의 크기가 최대 40까지인 것을 보고, 처음부터 DP 배열을 전부 채워놓고 입력에 따라 배열의 값만 리턴해줘도 되겠다는 생각이 들었다.</p>
-
-<p>이렇게 생각하고 풀어봤더니 금방 풀렸다.</p>
-
-<p>이번주는 DP를 집중적으로 풀어볼 예정.</p>
-<hr />
-
-<h1 id="내가-짠-코드">내가 짠 코드</h1>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 01/01/2019.
-//
-#include &lt;iostream&gt;
-
-using namespace std;
-
-int T;
-int DP[41][2];
-
-void fibonacci(int n){
-    if(n == 0){
-        DP[n][0]++;
-    }
-    else if(n == 1){
-        DP[n][1]++;
-    }
-    else{
-        DP[n][0] = DP[n-1][0] + DP[n-2][0];
-        DP[n][1] = DP[n-1][1] + DP[n-2][1];
-    }
-}
-
-int main(){
-    for(int i=0; i&lt;41; i++){
-        fibonacci(i);
-    }
-
-    cin &gt;&gt; T;
-
-    int N;
-
-    for(int i=0; i&lt;T; i++){
-        cin &gt;&gt; N;
-        cout &lt;&lt; DP[N][0] &lt;&lt; ' ' &lt;&lt; DP[N][1] &lt;&lt; '\n';
-    }
-
-    return 0;
-}
-</code></pre></div></div>
-<hr />
-
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
-    
-    </span>
-  </p>
-
-
-        
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-01T00:00:00+09:00">January 01, 2019</time></p>
-        
-      </footer>
-
-      <section class="page__share">
-  
-    <h4 class="page__share-title">Share on</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=1003%20keithlee94.github.io%2Falgorithm%2F1003%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1003%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1003%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1003%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/algorithm/2108/" class="pagination--pager" title="2108
-">Previous</a>
+      <h1 id="page-title" class="page__title"></h1>
     
     
-      <a href="/algorithm/1149/" class="pagination--pager" title="1149
-">Next</a>
-    
-  </nav>
 
-    </div>
+<h3 class="archive__subtitle">Recent posts</h3>
 
-    
-  </article>
 
   
-  
-    <div class="page__related">
-      <h4 class="page__related-title">You may also enjoy</h4>
-      <div class="grid__wrapper">
-        
-          
 
 
 
-<div class="grid__item">
+<div class="list__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/2309/" rel="permalink">2309
+        <a href="/cse/2nd-Week-Summary/" rel="permalink">2nd week summary
 </a>
       
     </h2>
     
-    <p class="archive__item-excerpt" itemprop="description">백준 2309번
-Link: 2309번: 일곱 난쟁이
+    <p class="archive__item-excerpt" itemprop="description">2주차 정리
 
 </p>
   </article>
 </div>
-        
-          
 
 
 
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/9663/" rel="permalink">9663
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 9663번
-Link: 9663번: N-Queen
-
-</p>
-  </article>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/12100/" rel="permalink">12100
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 12100번
-Link: 12100번: 2048 (Easy)
-
-</p>
-  </article>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/2251/" rel="permalink">2251
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 2251번
-Link: 2251번: 물통
-
-</p>
-  </article>
-</div>
-        
-      </div>
-    </div>
+<nav class="pagination">
   
-  
+  <ul>
+    
+    
+      
+        <li><a href="/page6/">Previous</a></li>
+      
+    
+
+    
+    
+      <li><a href="/">1</a></li>
+    
+
+    
+    
+      
+      
+      <li><a href="#" class="disabled">&hellip;</a></li>
+    
+
+    
+    
+    
+
+    
+      
+        
+        
+        
+        <li><a href="/page5/">5</a></li>
+      
+    
+      
+        
+        
+        
+        <li><a href="/page6/">6</a></li>
+      
+    
+
+    
+    
+
+    
+      <li><a href="#" class="disabled current">7</a></li>
+    
+
+    
+    
+      <li><a href="#" class="disabled"><span aria-hidden="true">Next</span></a></li>
+    
+  </ul>
+</nav>
+
+
+
+  </div>
 </div>
     </div>
 
