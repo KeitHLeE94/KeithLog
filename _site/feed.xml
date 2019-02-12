@@ -1,4 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-11T22:32:31+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">2309</title><link href="keithlee94.github.io/algorithm/2309/" rel="alternate" type="text/html" title="2309" /><published>2019-02-11T00:00:00+09:00</published><updated>2019-02-11T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2309</id><content type="html" xml:base="keithlee94.github.io/algorithm/2309/">&lt;h1 id=&quot;백준-2309번&quot;&gt;백준 2309번&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-12T23:59:18+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">14500</title><link href="keithlee94.github.io/algorithm/14500/" rel="alternate" type="text/html" title="14500" /><published>2019-02-12T00:00:00+09:00</published><updated>2019-02-12T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/14500</id><content type="html" xml:base="keithlee94.github.io/algorithm/14500/">&lt;h1 id=&quot;백준-14500번&quot;&gt;백준 14500번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/14500&quot;&gt;14500번: 테트로미노&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;최대 500*500의 지도 위에 블럭을 놓을 수 있는 모든 경우를 고려하여 블럭이 놓인 부분에 위치한 숫자 합의 최대값을 찾는 문제.&lt;/p&gt;
+
+&lt;p&gt;우선 블럭을 회전시키거나 대칭시켜보며 나올 수 있는 모든 경우를 생각해보았다.&lt;/p&gt;
+
+&lt;p&gt;다 해보니 꽤 많았는데, 19가지였다.&lt;/p&gt;
+
+&lt;p&gt;500*500짜리 지도에서 최악의 경우 500 * 500 * 19 = 4750000가지 경우를 전부 고려해봐야 하는데 이게 시간초과 안나고 가능할까? 라는 생각이 먼저 들었다.&lt;/p&gt;
+
+&lt;p&gt;처음에는 19가지 도형이 전부 들어갈 수 있는 최소한의 넓이인 4*4짜리 map을 따로 만들어 이걸로 맞춰볼 생각을 해봤는데, 이 안에서 나올 수 있는 19가지 도형의 위치 경우의 수를 구해보니 113가지가 되더라.&lt;/p&gt;
+
+&lt;p&gt;이건 아니다 싶어 결국 switch문 안에 19가지 경우를 전부 명시해서 넣고 3중 for문으로 돌렸다.&lt;/p&gt;
+
+&lt;p&gt;조건문이 19가지나 되다 보니 중간에 헷갈려서 조건 잘못쓴 경우도 있었고 계산식 잘못 넣은 경우도 있었다.&lt;/p&gt;
+
+&lt;p&gt;어찌어찌해서 다 잡아내고 돌려봤는데, 시간초과날줄 알았는데 잘 돌아가서 정답으로 나오더라.&lt;/p&gt;
+
+&lt;p&gt;DFS나 BFS처럼 알려진 방법 말고 이런 무식한 방법으로 풀리는 문제도 있구나 하는 생각이 들었다.&lt;/p&gt;
+
+&lt;p&gt;아마 시뮬레이션 문제를 풀게 된다면 이런 문제가 아닐까라는 생각도 들었고.&lt;/p&gt;
+
+&lt;p&gt;여튼 그리 깊게 생각하지 않아도 풀 수 있는 문제였다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 12/02/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
+
+int N, M;
+int map[500][500] = {0, };
+int result = 0;
+
+int max(int a, int b){
+    return a &amp;lt; b ? b : a;
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
+
+    for(int i=0; i&amp;lt;N; i++){
+        for(int j=0; j&amp;lt;M; j++){
+            cin &amp;gt;&amp;gt; map[i][j];
+        }
+    }
+
+    for(int i=0; i&amp;lt;N; i++){
+        for(int j=0; j&amp;lt;M; j++){
+            for(int shape=0; shape&amp;lt;19; shape++) {
+                int sum = 0;
+
+                switch (shape) {
+                    case 0:
+                        if(j+3 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i][j+3];
+                        }
+                        break;
+                    case 1:
+                        if(i+3 &amp;lt; N){
+                            sum += map[i][j] + map[i+1][j] + map[i+2][j] + map[i+3][j];
+                        }
+                        break;
+                    case 2:
+                        if(i+1 &amp;lt; N &amp;amp;&amp;amp; j+1 &amp;lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i][j+1] + map[i+1][j+1];
+                        }
+                        break;
+                    case 3:
+                        if(i+2 &amp;lt; N &amp;amp;&amp;amp; j+1 &amp;lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i+2][j] + map[i+2][j+1];
+                        }
+                        break;
+                    case 4:
+                        if(i+2 &amp;lt; N &amp;amp;&amp;amp; j-1 &amp;gt;= 0){
+                            sum += map[i][j] + map[i+1][j] + map[i+2][j] + map[i+2][j-1];
+                        }
+                        break;
+                    case 5:
+                        if(i+1 &amp;lt; N &amp;amp;&amp;amp; j+2 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i+1][j];
+                        }
+                        break;
+                    case 6:
+                        if(i+1 &amp;lt; N &amp;amp;&amp;amp; j+2 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i+1][j+2];
+                        }
+                        break;
+                    case 7:
+                        if(i+2 &amp;lt; N &amp;amp;&amp;amp; j+1 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i+1][j+1] + map[i+2][j+1];
+                        }
+                        break;
+                    case 8:
+                        if(i+2 &amp;lt; N &amp;amp;&amp;amp; j+1 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i+1][j] + map[i+2][j];
+                        }
+                        break;
+                    case 9:
+                        if(i-1 &amp;gt;= 0 &amp;amp;&amp;amp; j+2 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i-1][j+2];
+                        }
+                        break;
+                    case 10:
+                        if(i+1 &amp;lt; N &amp;amp;&amp;amp; j+2 &amp;lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i+1][j+1] + map[i+1][j+2];
+                        }
+                        break;
+                    case 11:
+                        if(i+2 &amp;lt; N &amp;amp;&amp;amp; j+1 &amp;lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i+1][j+1] + map[i+2][j+1];
+                        }
+                        break;
+                    case 12:
+                        if(i-1 &amp;gt;= 0 &amp;amp;&amp;amp; j+2 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i-1][j+1] + map[i-1][j+2];
+                        }
+                        break;
+                    case 13:
+                        if(i+2 &amp;lt; N &amp;amp;&amp;amp; j-1 &amp;gt;= 0){
+                            sum += map[i][j] + map[i+1][j] + map[i+1][j-1] + map[i+2][j-1];
+                        }
+                        break;
+                    case 14:
+                        if(i+1 &amp;lt; N &amp;amp;&amp;amp; j+2 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i+1][j+1] + map[i+1][j+2];
+                        }
+                        break;
+                    case 15:
+                        if(i+1 &amp;lt; N &amp;amp;&amp;amp; j+2 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i+1][j+1];
+                        }
+                        break;
+                    case 16:
+                        if(i+2 &amp;lt; N &amp;amp;&amp;amp; i-1 &amp;gt;= 0 &amp;amp;&amp;amp; j+1 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i+1][j+1] + map[i-1][j+1];
+                        }
+                        break;
+                    case 17:
+                        if(i-1 &amp;gt;= 0 &amp;amp;&amp;amp; j+2 &amp;lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i-1][j+1] + map[i][j+2];
+                        }
+                        break;
+                    case 18:
+                        if(i+2 &amp;lt; N &amp;amp;&amp;amp; j+1 &amp;lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i+2][j] + map[i+1][j+1];
+                        }
+                        break;
+                }
+
+                result = max(sum, result);
+            }
+        }
+    }
+
+    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><summary type="html">백준 14500번 Link: 14500번: 테트로미노</summary></entry><entry><title type="html">2309</title><link href="keithlee94.github.io/algorithm/2309/" rel="alternate" type="text/html" title="2309" /><published>2019-02-11T00:00:00+09:00</published><updated>2019-02-11T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2309</id><content type="html" xml:base="keithlee94.github.io/algorithm/2309/">&lt;h1 id=&quot;백준-2309번&quot;&gt;백준 2309번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2309&quot;&gt;2309번: 일곱 난쟁이&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1615,108 +1783,4 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 7569번 Link: 7569번: 토마토</summary></entry><entry><title type="html">2583</title><link href="keithlee94.github.io/algorithm/2583/" rel="alternate" type="text/html" title="2583" /><published>2019-01-22T00:00:00+09:00</published><updated>2019-01-22T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2583</id><content type="html" xml:base="keithlee94.github.io/algorithm/2583/">&lt;h1 id=&quot;백준-2583번&quot;&gt;백준 2583번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2583&quot;&gt;2583번: 영역 구하기&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;기초적인 BFS 문제다.&lt;/p&gt;
-
-&lt;p&gt;2차원 배열에 모눈종이를 표시하고, 표시되지 않은 부분들에 대해 BFS를 진행하며 각 영역의 크기와 총 영역 갯수를 구하는 문제.&lt;/p&gt;
-
-&lt;p&gt;문제 보기에 좌표가 조금 다르게 표현되어 있어 이를 2차원 배열로 옮기는 과정에서 생각을 좀 했었다.&lt;/p&gt;
-
-&lt;p&gt;좌표만 잘 옮기면 무난히 풀 수 있는 문제.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 22/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;queue&amp;gt;
-#include &amp;lt;vector&amp;gt;
-#include &amp;lt;string.h&amp;gt;
-#include &amp;lt;algorithm&amp;gt;
-
-using namespace std;
-
-int M, N, K;
-int result = 0;
-
-int map[100][100];
-bool visit[100][100];
-
-int dx[4] = {0, 0, 1, -1};
-int dy[4] = {1, -1, 0, 0};
-
-vector&amp;lt;int&amp;gt; areas;
-
-void BFS(int startX, int startY){
-    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
-    Queue.push(make_pair(startX, startY));
-
-    int area = 1;
-
-    while(!Queue.empty()){
-        int currentX = Queue.front().first;
-        int currentY = Queue.front().second;
-        Queue.pop();
-
-        for(int i=0; i&amp;lt;4; i++){
-            int nextX = currentX + dx[i];
-            int nextY = currentY + dy[i];
-
-            if(nextX &amp;gt;= 0 &amp;amp;&amp;amp; nextX &amp;lt; M &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt; N){
-                if(!visit[nextX][nextY] &amp;amp;&amp;amp; map[nextX][nextY] == 0){
-                    visit[nextX][nextY] = true;
-                    Queue.push(make_pair(nextX, nextY));
-                    area++;
-                }
-            }
-        }
-    }
-
-    result++;
-    areas.push_back(area);
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; M &amp;gt;&amp;gt; N &amp;gt;&amp;gt; K;
-
-    bzero(map, sizeof(map));
-
-    for(int i=0; i&amp;lt;K; i++){
-        int startX, startY, endX, endY;
-
-        cin &amp;gt;&amp;gt; startX &amp;gt;&amp;gt; startY &amp;gt;&amp;gt; endX &amp;gt;&amp;gt; endY;
-
-        for(int j=startY; j&amp;lt;endY; j++){
-            for(int k=startX; k&amp;lt;endX; k++){
-                map[j][k] = 1;
-            }
-        }
-    }
-
-    for(int i=0; i&amp;lt;M; i++){
-        for(int j=0; j&amp;lt;N; j++){
-            if(!visit[i][j] &amp;amp;&amp;amp; map[i][j] == 0){
-                visit[i][j] = true;
-                BFS(i, j);
-            }
-        }
-    }
-
-    sort(areas.begin(), areas.end());
-    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
-    for(int i=0; i&amp;lt;areas.size(); i++){
-        cout &amp;lt;&amp;lt; areas[i] &amp;lt;&amp;lt; ' ';
-    }
-    cout &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2583번 Link: 2583번: 영역 구하기</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 7569번 Link: 7569번: 토마토</summary></entry></feed>

@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1062 - KeithLog</title>
-<meta name="description" content="백준 1062번Link: 1062번: 가르침">
+<!-- begin _includes/seo.html --><title>14500 - KeithLog</title>
+<meta name="description" content="백준 14500번Link: 14500번: 테트로미노">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="1062">
-<meta property="og:url" content="keithlee94.github.io/algorithm/1062/">
+<meta property="og:title" content="14500">
+<meta property="og:url" content="keithlee94.github.io/algorithm/14500/">
 
 
-  <meta property="og:description" content="백준 1062번Link: 1062번: 가르침">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-30T00:00:00+09:00">
+  <meta property="og:description" content="백준 14500번Link: 14500번: 테트로미노">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-02-12T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/1062/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/14500/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="1062">
-    <meta itemprop="description" content="백준 1062번Link: 1062번: 가르침">
-    <meta itemprop="datePublished" content="January 30, 2019">
+    <meta itemprop="headline" content="14500">
+    <meta itemprop="description" content="백준 14500번Link: 14500번: 테트로미노">
+    <meta itemprop="datePublished" content="February 12, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">1062
+          <h1 id="page-title" class="page__title" itemprop="headline">14500
 </h1>
           
         </header>
@@ -286,227 +286,167 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-1062번">백준 1062번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/1062">1062번: 가르침</a></p>
+        <h1 id="백준-14500번">백준 14500번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/14500">14500번: 테트로미노</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>29일부터 풀기 시작해서 30일에서 31일 넘어가는 새벽에야 겨우 해결했던 문제.</p>
+<p>최대 500*500의 지도 위에 블럭을 놓을 수 있는 모든 경우를 고려하여 블럭이 놓인 부분에 위치한 숫자 합의 최대값을 찾는 문제.</p>
 
-<p>내 답이 맞는것 같아 계속 고민하다 결국 답을 보고 해결했다.</p>
+<p>우선 블럭을 회전시키거나 대칭시켜보며 나올 수 있는 모든 경우를 생각해보았다.</p>
 
-<p>답을 찾아보고서야 예전에 DFS를 통해 조합을 구하는 방법을 써서 문제를 풀때 어떤식으로 코드를 짰는지 떠오르더라.</p>
+<p>다 해보니 꽤 많았는데, 19가지였다.</p>
 
-<p>정신승리를 좀 하자면, 시간초과가 났긴 했지만 어쨌든 답을 구할 수 있는 방법들을 최대한 생각해보고 여러 방법들을 비교해봤다는 점.</p>
+<p>500*500짜리 지도에서 최악의 경우 500 * 500 * 19 = 4750000가지 경우를 전부 고려해봐야 하는데 이게 시간초과 안나고 가능할까? 라는 생각이 먼저 들었다.</p>
 
-<p>이러는 과정에서 시간초과를 수십번 본 것 같은데, 어떤 부분에서 시간초과가 일어나는지는 짚어냈다.</p>
+<p>처음에는 19가지 도형이 전부 들어갈 수 있는 최소한의 넓이인 4*4짜리 map을 따로 만들어 이걸로 맞춰볼 생각을 해봤는데, 이 안에서 나올 수 있는 19가지 도형의 위치 경우의 수를 구해보니 113가지가 되더라.</p>
 
-<p>문제는 그 부분을 고치니 답이 틀렸다는 것.</p>
+<p>이건 아니다 싶어 결국 switch문 안에 19가지 경우를 전부 명시해서 넣고 3중 for문으로 돌렸다.</p>
 
-<p>이렇게 여러번 고민해봐도 도저히 안풀려서 답을 찾아보게 되었다.</p>
+<p>조건문이 19가지나 되다 보니 중간에 헷갈려서 조건 잘못쓴 경우도 있었고 계산식 잘못 넣은 경우도 있었다.</p>
 
-<p>답을 보고 나니 뭔가 매우 허무한 느낌이 들었다. 그동안 뭘 짜고 있었나 싶기도 하고.</p>
+<p>어찌어찌해서 다 잡아내고 돌려봤는데, 시간초과날줄 알았는데 잘 돌아가서 정답으로 나오더라.</p>
 
-<p>답을 찾아내기 위해 삽질했던 시간들이 있었기 때문에 정답을 보고서도 이 부분은 나도 구현했는데 왜 틀렸을까 하는 생각이 들게 하였고 이 부분은 이래서 이렇게 짰구나 하는 생각도 들 수 있었던것 같다.</p>
+<p>DFS나 BFS처럼 알려진 방법 말고 이런 무식한 방법으로 풀리는 문제도 있구나 하는 생각이 들었다.</p>
 
-<p>요며칠 단순한 BFS문제를 풀면서 이런식으로 DFS를 통해 조합을 구하고 백트래킹해야 풀리는 문제 푸는 연습을 해야겠다고 생각했는데, 이 문제가 전형적인 그런 문제였다.</p>
+<p>아마 시뮬레이션 문제를 풀게 된다면 이런 문제가 아닐까라는 생각도 들었고.</p>
 
-<p>시간 지나고 푸는 방법 까먹을때쯤 한번 더 풀어봐야겠다.</p>
-<hr />
-
-<h1 id="삽질했던-코드">삽질했던 코드</h1>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-
-using namespace std;
-
-int result = 0;
-int N, K;
-int candidates[26] = {0, };
-int words[50][26] = {0, };
-
-int max(int a, int b){
-    return a &gt; b ? a : b;
-}
-
-void searchTeach(int count, int index, int toTeach[26], int limit){
-    int tempResult = 0;
-
-    int temp[26];
-    for(int i=0; i&lt;26; i++){
-        temp[i] = toTeach[i];
-    }
-
-    if(candidates[index] == 1){
-        temp[index] = 1;
-    }
-
-    if(count == limit){
-        for(int i=0; i&lt;N; i++){
-            bool invalid = false;
-
-            for(int j=0; j&lt;26; j++){
-                if(toTeach[j] - words[i][j] &lt; 0){
-                    invalid = true;
-                    break;
-                }
-            }
-
-            if(!invalid){
-                tempResult++;
-            }
-        }
-
-        result = max(result, tempResult);
-        return;
-    }
-
-    int next = 0;
-    for(int i=index+1; i&lt;26; i++){
-        if(candidates[i] == 1){
-            next = i;
-            break;
-        }
-    }
-
-    searchTeach(count+1, next, temp, limit);
-    searchTeach(count+1, next, toTeach, limit);
-}
-
-void toTeach(){
-    for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;26; j++){
-            if(candidates[j] != 1){
-                candidates[j] = words[i][j];
-            }
-        }
-    }
-}
-
-int main(){
-    string word;
-
-    cin &gt;&gt; N &gt;&gt; K;
-
-    for(int i=0; i&lt;N; i++){
-        cin &gt;&gt; word;
-
-        if(K &gt;= 5){
-            string temp = word.substr(4, word.length()-8);
-            for(int j=0; j&lt;temp.length(); j++){
-                int current = temp[j] - 'a';
-                if(current != 0 &amp;&amp; current != 2 &amp;&amp; current != 8 &amp;&amp; current != 13 &amp;&amp; current != 19){
-                    words[i][current] = 1;
-                }
-            }
-        }
-    }
-
-    if(K &lt; 5){
-        result = 0;
-    }
-    else{
-        toTeach();
-
-        int input[26] = {0, };
-
-        for(int i=0; i&lt;26; i++){
-            if(candidates[i] == 1){
-                searchTeach(0, i, input, K-5);
-                candidates[i]--;
-            }
-        }
-
-        if(K == 5){
-            searchTeach(0, 0, input, K-5);
-        }
-    }
-
-    cout &lt;&lt; result &lt;&lt; '\n';
-
-    return 0;
-}
-</code></pre></div></div>
+<p>여튼 그리 깊게 생각하지 않아도 풀 수 있는 문제였다.</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 30/01/2019.
+// Created by Keith_Lee on 12/02/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;vector&gt;
 
 using namespace std;
 
+int N, M;
+int map[500][500] = {0, };
 int result = 0;
-int N, K;
-
-string words[50];
-bool visit[26];
 
 int max(int a, int b){
-    return a &gt; b ? a : b;
-}
-
-void searchTeach(int index, int count){
-    if(count == K-5){
-        int tempResult = 0;
-
-        for(int i=0; i&lt;N; i++){
-            bool invalid = false;
-
-            for(int j=0; j&lt;words[i].length(); j++){
-                if(!visit[words[i][j] - 'a']){
-                    invalid = true;
-                    break;
-                }
-
-            }
-
-            if(!invalid){
-                tempResult++;
-            }
-        }
-
-        result = max(result, tempResult);
-        return;
-    }
-
-    for(int i=index; i&lt;26; i++){
-        if(!visit[i]){
-            visit[i] = true;
-            searchTeach(i, count+1);
-            visit[i] = false;
-        }
-    }
-
+    return a &lt; b ? b : a;
 }
 
 int main(){
-    cin &gt;&gt; N &gt;&gt; K;
+    cin &gt;&gt; N &gt;&gt; M;
 
     for(int i=0; i&lt;N; i++){
-        cin &gt;&gt; words[i];
-
-        words[i] = words[i].substr(4, words[i].length()-8);
+        for(int j=0; j&lt;M; j++){
+            cin &gt;&gt; map[i][j];
+        }
     }
 
-    if(K &lt; 5){
-        result = 0;
-    }
-    else if(K == 26){
-        result = N;
-    }
-    else{
-        visit['a' - 'a'] = true;
-        visit['n' - 'a'] = true;
-        visit['t' - 'a'] = true;
-        visit['c' - 'a'] = true;
-        visit['i' - 'a'] = true;
+    for(int i=0; i&lt;N; i++){
+        for(int j=0; j&lt;M; j++){
+            for(int shape=0; shape&lt;19; shape++) {
+                int sum = 0;
 
-        searchTeach(0, 0);
+                switch (shape) {
+                    case 0:
+                        if(j+3 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i][j+3];
+                        }
+                        break;
+                    case 1:
+                        if(i+3 &lt; N){
+                            sum += map[i][j] + map[i+1][j] + map[i+2][j] + map[i+3][j];
+                        }
+                        break;
+                    case 2:
+                        if(i+1 &lt; N &amp;&amp; j+1 &lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i][j+1] + map[i+1][j+1];
+                        }
+                        break;
+                    case 3:
+                        if(i+2 &lt; N &amp;&amp; j+1 &lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i+2][j] + map[i+2][j+1];
+                        }
+                        break;
+                    case 4:
+                        if(i+2 &lt; N &amp;&amp; j-1 &gt;= 0){
+                            sum += map[i][j] + map[i+1][j] + map[i+2][j] + map[i+2][j-1];
+                        }
+                        break;
+                    case 5:
+                        if(i+1 &lt; N &amp;&amp; j+2 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i+1][j];
+                        }
+                        break;
+                    case 6:
+                        if(i+1 &lt; N &amp;&amp; j+2 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i+1][j+2];
+                        }
+                        break;
+                    case 7:
+                        if(i+2 &lt; N &amp;&amp; j+1 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i+1][j+1] + map[i+2][j+1];
+                        }
+                        break;
+                    case 8:
+                        if(i+2 &lt; N &amp;&amp; j+1 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i+1][j] + map[i+2][j];
+                        }
+                        break;
+                    case 9:
+                        if(i-1 &gt;= 0 &amp;&amp; j+2 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i-1][j+2];
+                        }
+                        break;
+                    case 10:
+                        if(i+1 &lt; N &amp;&amp; j+2 &lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i+1][j+1] + map[i+1][j+2];
+                        }
+                        break;
+                    case 11:
+                        if(i+2 &lt; N &amp;&amp; j+1 &lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i+1][j+1] + map[i+2][j+1];
+                        }
+                        break;
+                    case 12:
+                        if(i-1 &gt;= 0 &amp;&amp; j+2 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i-1][j+1] + map[i-1][j+2];
+                        }
+                        break;
+                    case 13:
+                        if(i+2 &lt; N &amp;&amp; j-1 &gt;= 0){
+                            sum += map[i][j] + map[i+1][j] + map[i+1][j-1] + map[i+2][j-1];
+                        }
+                        break;
+                    case 14:
+                        if(i+1 &lt; N &amp;&amp; j+2 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i+1][j+1] + map[i+1][j+2];
+                        }
+                        break;
+                    case 15:
+                        if(i+1 &lt; N &amp;&amp; j+2 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i][j+2] + map[i+1][j+1];
+                        }
+                        break;
+                    case 16:
+                        if(i+2 &lt; N &amp;&amp; i-1 &gt;= 0 &amp;&amp; j+1 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i+1][j+1] + map[i-1][j+1];
+                        }
+                        break;
+                    case 17:
+                        if(i-1 &gt;= 0 &amp;&amp; j+2 &lt; M){
+                            sum += map[i][j] + map[i][j+1] + map[i-1][j+1] + map[i][j+2];
+                        }
+                        break;
+                    case 18:
+                        if(i+2 &lt; N &amp;&amp; j+1 &lt; M){
+                            sum += map[i][j] + map[i+1][j] + map[i+2][j] + map[i+1][j+1];
+                        }
+                        break;
+                }
+
+                result = max(sum, result);
+            }
+        }
     }
 
     cout &lt;&lt; result &lt;&lt; '\n';
@@ -533,10 +473,6 @@ int main(){
   <p class="page__taxonomy">
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
-    
-      
-      
-      <a href="/tags/#backtracking" class="page__taxonomy-item" rel="tag">Backtracking</a><span class="sep">, </span>
     
       
       
@@ -568,7 +504,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-30T00:00:00+09:00">January 30, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-12T00:00:00+09:00">February 12, 2019</time></p>
         
       </footer>
 
@@ -577,25 +513,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=1062%20keithlee94.github.io%2Falgorithm%2F1062%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=14500%20keithlee94.github.io%2Falgorithm%2F14500%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1062%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F14500%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1062%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F14500%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1062%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F14500%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/java/7th-Week-Summary/" class="pagination--pager" title="7th week summary
+      <a href="/algorithm/2309/" class="pagination--pager" title="2309
 ">Previous</a>
     
     
-      <a href="/algorithm/2251/" class="pagination--pager" title="2251
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -609,27 +544,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/14500/" rel="permalink">14500
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 14500번
-Link: 14500번: 테트로미노
-
-</p>
-  </article>
-</div>
         
           
 
@@ -689,6 +603,27 @@ Link: 9663번: N-Queen
     
     <p class="archive__item-excerpt" itemprop="description">백준 12100번
 Link: 12100번: 2048 (Easy)
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2251/" rel="permalink">2251
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2251번
+Link: 2251번: 물통
 
 </p>
   </article>
