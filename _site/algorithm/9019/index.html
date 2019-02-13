@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2nd week summary - KeithLog</title>
-<meta name="description" content="2주차 정리">
+<!-- begin _includes/seo.html --><title>9019 - KeithLog</title>
+<meta name="description" content="백준 9019번Link: 9019번: DSLR">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2nd week summary">
-<meta property="og:url" content="keithlee94.github.io/cse/2nd-Week-Summary/">
+<meta property="og:title" content="9019">
+<meta property="og:url" content="keithlee94.github.io/algorithm/9019/">
 
 
-  <meta property="og:description" content="2주차 정리">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2018-12-28T00:00:00+09:00">
+  <meta property="og:description" content="백준 9019번Link: 9019번: DSLR">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-02-13T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/cse/2nd-Week-Summary/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/9019/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2nd week summary">
-    <meta itemprop="description" content="2주차 정리">
-    <meta itemprop="datePublished" content="December 28, 2018">
+    <meta itemprop="headline" content="9019">
+    <meta itemprop="description" content="백준 9019번Link: 9019번: DSLR">
+    <meta itemprop="datePublished" content="February 13, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2nd week summary
+          <h1 id="page-title" class="page__title" itemprop="headline">9019
 </h1>
           
         </header>
@@ -286,134 +286,134 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="2주차-정리">2주차 정리</h1>
+        <h1 id="백준-9019번">백준 9019번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/9019">9019번: DSLR</a></p>
 
-<ul>
-  <li>라이브러리, 프레임워크 차이
-    <ul>
-      <li>라이브러리: 기능 하나에 대해서만 제공(제한적인 용도)</li>
-      <li>프레임워크: 틀이 잡혀져 있다.(다양한 용도, 범용적) =&gt; 커스터마이징이 어러움.</li>
-    </ul>
-  </li>
-</ul>
 <hr />
 
-<ul>
-  <li>AWS EC2
-    <ul>
-      <li>인스턴스 == 임대받은 컴퓨터 1대.</li>
-    </ul>
-  </li>
-</ul>
+<h1 id="문제-설명">문제 설명</h1>
+<p>예전에 풀어보다가 실패해서 그대로 접어뒀던 문제.</p>
+
+<p>알고리즘 스터디에서 BFS문제집을 만들었는데 만드는 김에 한번 다시 풀어볼 생각으로 넣었다.</p>
+
+<p>그리고 오늘 다시 풀어서 드디어 맞혔다.</p>
+
+<p>우선 그전에 짰던 코드는 정말 터무니없는 코드였던 것 같다.</p>
+
+<p>아예 새로운 마음으로 짰는데, 처음에 돌려봤을땐 메모리 초과가 났다.</p>
+
+<p>메모리 초과가 날만한 여지들을 전부 없애보려고 큐를 전역변수로 만들어도 보고 큐를 싹 비워도 봤는데 메모리 초과가 잡히지 않더라.</p>
+
+<p>질문게시판을 좀 찾아보던 중 나랑 비슷한 처지인 사람이 글을 올린걸 봤는데, 중복방문을 안하면 메모리 초과 문제를 해결할 수 있을 것이라는 답변을 보았다.</p>
+
+<p>그런데 그대로 실천해보니 이번엔 답이 틀렸다.</p>
+
+<p>무슨 문제일까 해서 모든 경우를 다 찍어봤는데, C++의 모듈러 연산과 내가 아는 모듈러 연산은 다르다는 점이 문제였다.</p>
+
+<p>-1을 10000으로 모듈러 연산을 한다고 생각해보자.</p>
+
+<p>모듈러 연산의 피연산자가 음수이므로 답은 9999가 되어야 한다.</p>
+
+<p>그런데 코드로 옮겨 보니, 9999가 아니라 -1이 그대로 나오더라.</p>
+
+<p>사실 문제 조건에도 -1이 나올 경우 9999로 만들라는 조건이 있었는데, 음수에 대한 모듈러 연산 한번이면 다 해결될줄 알았다.</p>
+
+<p>이 부분까지 잡아내고 돌려보니 바로 맞았다.</p>
+
+<p>내가 아는 상식과 컴퓨터의 연산 방식이 다르다는 점을 알게 된 문제였다.</p>
+
+<p>또, 난 보통 BFS문제를 풀때 방문 여부를 체크해주는 것을 자주 까먹는편인데 시간도 시간이지만 메모리상으로도 문제가 발생할 수 있다는 점을 알게 되었다.</p>
+
+<p>앞으로 BFS문제를 풀때는 방문 여부 체크하는 부분을 빼먹지 말아야겠다.</p>
 <hr />
 
-<ul>
-  <li>힙 영역
-    <ul>
-      <li>동적할당시 할당되는 메모리 영역.</li>
-      <li>자바, 파이썬은 Garbage collector가 있으므로 굳이 free 안해줘도 안쓰는 공간은 할당 해제됨.(But, file은 일일이 close해줘야함)</li>
-    </ul>
-  </li>
-</ul>
-<hr />
+<h1 id="정답-코드">정답 코드</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+// Created by Keith_Lee on 13/02/2019.
+//
 
-<ul>
-  <li>파이썬 자료구조
-    <ul>
-      <li>tuple
-        <ul>
-          <li>가공된 데이터의 내용이 바뀌지 않도록 방어하기 위해 사용.</li>
-          <li>상수와 비슷한 역할을 한다.</li>
-        </ul>
-      </li>
-      <li>dic
-        <ul>
-          <li>내부적으로는 트리 형태를 띈다.</li>
-          <li>검색시간: O(1)이지만 실제로는 트리 형태를 띄므 로 O(1)에 가까운 O(logn)이다.</li>
-        </ul>
-      </li>
-      <li>map()
-        <ul>
-          <li>데이터 구조의 각 원소들에 동일한 함수를 적용하여 새로운 데이터를 만드는 파이썬의 기본 함수.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-<hr />
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;strings.h&gt;
 
-<ul>
-  <li>JSON
-    <ul>
-      <li>JavaScript Object Notation.</li>
-      <li>서버와 통신하는 기본 데이터 양식으로 많이 사용된다.</li>
-      <li>JSONLint: JSON 형식에 맞는지 유효성을 검사해주는 사이트.</li>
-      <li>json.loads(): JSON을 읽어 dic으로 변환.</li>
-      <li>json.dumps(): dic을 읽어 JSON으로 변환.</li>
-    </ul>
-  </li>
-</ul>
-<hr />
+using namespace std;
 
-<ul>
-  <li>API
-    <ul>
-      <li>여러 서비스들 간에 범용으로 쓰이는 인터페이스.</li>
-      <li>REST API: 웹서버를 이용하여 API 제공. JSON을 데이터 양식으로 활용한다.</li>
-    </ul>
-  </li>
-</ul>
-<hr />
+int T;
+int A, B;
+string result;
 
-<ul>
-  <li>DialogFlow: 사용자의 입력 의도를 파악하여 의도에 맞게 Flask를 동작시키는 역할.</li>
-</ul>
-<hr />
+bool visit[10000] = {false, };
+char delta[4] = {'D', 'S', 'L', 'R'};
 
-<ul>
-  <li>Slack 챗봇 Flow
-    <ol>
-      <li>사용자가 문장 입력</li>
-      <li>Slack이 사용자가 입력한 문장 Flask에 전달</li>
-      <li>Flask가 DialogFlow로 전달받은 문장 전달</li>
-      <li>DialogFlow가 정의된 Intent들을 바탕으로 전달된 문장의 문맥 파악</li>
-      <li>DialogFlow의 분석 결과를 Flask로 전달</li>
-      <li>Flask에 정의된 함수 중 전달된 Intent에 맞는 함수 실행</li>
-      <li>Flask가 Slack으로 함수 실행으로 만들어진 response 전달</li>
-      <li>Slack에서 사용자로 response 전달</li>
-    </ol>
-  </li>
-</ul>
-<hr />
+queue&lt;pair&lt;int, string&gt;&gt; Queue;
 
-<ul>
-  <li>Git
-    <ul>
-      <li>Fetch: 저장된 것을 가져온다.</li>
-      <li>Branch: 가지치기.(Master = 최종 결과물, 배포판)</li>
-      <li>Merge: Branch 병합.</li>
-      <li>장점: 분산 작업 가능, 오프라인 개발 가능 - 중앙 서버에 접속하지 않고 각자의 환경에서 작업할 수 있으므로.</li>
-      <li>명령어
-        <ul>
-          <li>git log: git에 수행한 행동들을 보여준다.</li>
-          <li>git reset –hard “hash값”: “hash”값의 시점으로 git을 되돌린다.(이 시점 이후에 수행된 모든 commit은 다 취소됨)</li>
-          <li>git push -f: 강제로 push.</li>
-          <li>git commit –amend: commit 메시지 수정 가능.</li>
-        </ul>
-      </li>
-      <li>topic branch: 기능 추가, 버그 수정 등 단위작업을 위한 branch.</li>
-      <li>Merge 과정
-        <ol>
-          <li>다른 branch에서 commit</li>
-          <li>Master에서 git merge 실행</li>
-          <li>conflict 없으면 commit, conflict 있으면 어떤 부분을 반영할지 결정 후 commit</li>
-          <li>git에 push</li>
-        </ol>
-      </li>
-      <li>pull: fetch와 merge를 한번에 진행한다.</li>
-    </ul>
-  </li>
-</ul>
+void BFS(){
+    Queue.push(make_pair(A, ""));
+    visit[A] = true;
+
+    while(!Queue.empty()){
+        int current = Queue.front().first;
+        string currentAnswer = Queue.front().second;
+        Queue.pop();
+
+        if(current == B){
+            result = currentAnswer;
+            break;
+        }
+
+        for(int i=0; i&lt;4; i++){
+            int next = 0;
+            string temp = "";
+            if(delta[i] == 'D'){
+                next = (current * 2) % 10000;
+            }
+            else if(delta[i] == 'S'){
+                if(current - 1 &gt;= 0){
+                    next = (current - 1) % 10000;
+                }
+                else{
+                    next = 9999;
+                }
+            }
+            else if(delta[i] == 'L'){
+                next += (current % 1000) * 10;
+                next += current / 1000;
+            }
+            else if(delta[i] == 'R'){
+                next += current / 10;
+                next += (current % 10) * 1000;
+            }
+
+            if(!visit[next]){
+                visit[next] = true;
+                temp += delta[i];
+                Queue.push(make_pair(next, currentAnswer + temp));
+            }
+        }
+    }
+}
+
+int main(){
+    cin &gt;&gt; T;
+
+    for(int test=0; test&lt;T; test++){
+        result = "";
+        bzero(visit, sizeof(visit));
+
+        cin &gt;&gt; A &gt;&gt; B;
+
+        BFS();
+
+        while(!Queue.empty()){
+            Queue.pop();
+        }
+
+        cout &lt;&lt; result &lt;&lt; '\n';
+    }
+
+    return 0;
+}
+</code></pre></div></div>
 <hr />
 
 
@@ -436,7 +436,11 @@
     
       
       
-      <a href="/tags/#basic" class="page__taxonomy-item" rel="tag">Basic</a>
+      <a href="/tags/#bfs" class="page__taxonomy-item" rel="tag">BFS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#brute-force" class="page__taxonomy-item" rel="tag">Brute Force</a>
     
     </span>
   </p>
@@ -457,14 +461,14 @@
     
       
       
-      <a href="/categories/#cse" class="page__taxonomy-item" rel="tag">CSE</a>
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
     
     </span>
   </p>
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-12-28T00:00:00+09:00">December 28, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-13T00:00:00+09:00">February 13, 2019</time></p>
         
       </footer>
 
@@ -473,24 +477,24 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2nd+week+summary%20keithlee94.github.io%2Fcse%2F2nd-Week-Summary%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=9019%20keithlee94.github.io%2Falgorithm%2F9019%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Fcse%2F2nd-Week-Summary%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F9019%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Fcse%2F2nd-Week-Summary%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F9019%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Fcse%2F2nd-Week-Summary%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F9019%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
+      <a href="/algorithm/14500/" class="pagination--pager" title="14500
+">Previous</a>
     
     
-      <a href="/cse/3rd-Week-Summary/" class="pagination--pager" title="3rd week summary
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -504,27 +508,6 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/9019/" rel="permalink">9019
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 9019번
-Link: 9019번: DSLR
-
-</p>
-  </article>
-</div>
         
           
 
@@ -584,6 +567,27 @@ Link: 2309번: 일곱 난쟁이
     
     <p class="archive__item-excerpt" itemprop="description">백준 9663번
 Link: 9663번: N-Queen
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/12100/" rel="permalink">12100
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 12100번
+Link: 12100번: 2048 (Easy)
 
 </p>
   </article>

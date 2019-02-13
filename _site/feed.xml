@@ -1,4 +1,132 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-12T23:59:18+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">14500</title><link href="keithlee94.github.io/algorithm/14500/" rel="alternate" type="text/html" title="14500" /><published>2019-02-12T00:00:00+09:00</published><updated>2019-02-12T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/14500</id><content type="html" xml:base="keithlee94.github.io/algorithm/14500/">&lt;h1 id=&quot;백준-14500번&quot;&gt;백준 14500번&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-13T22:41:10+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">9019</title><link href="keithlee94.github.io/algorithm/9019/" rel="alternate" type="text/html" title="9019" /><published>2019-02-13T00:00:00+09:00</published><updated>2019-02-13T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/9019</id><content type="html" xml:base="keithlee94.github.io/algorithm/9019/">&lt;h1 id=&quot;백준-9019번&quot;&gt;백준 9019번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/9019&quot;&gt;9019번: DSLR&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;예전에 풀어보다가 실패해서 그대로 접어뒀던 문제.&lt;/p&gt;
+
+&lt;p&gt;알고리즘 스터디에서 BFS문제집을 만들었는데 만드는 김에 한번 다시 풀어볼 생각으로 넣었다.&lt;/p&gt;
+
+&lt;p&gt;그리고 오늘 다시 풀어서 드디어 맞혔다.&lt;/p&gt;
+
+&lt;p&gt;우선 그전에 짰던 코드는 정말 터무니없는 코드였던 것 같다.&lt;/p&gt;
+
+&lt;p&gt;아예 새로운 마음으로 짰는데, 처음에 돌려봤을땐 메모리 초과가 났다.&lt;/p&gt;
+
+&lt;p&gt;메모리 초과가 날만한 여지들을 전부 없애보려고 큐를 전역변수로 만들어도 보고 큐를 싹 비워도 봤는데 메모리 초과가 잡히지 않더라.&lt;/p&gt;
+
+&lt;p&gt;질문게시판을 좀 찾아보던 중 나랑 비슷한 처지인 사람이 글을 올린걸 봤는데, 중복방문을 안하면 메모리 초과 문제를 해결할 수 있을 것이라는 답변을 보았다.&lt;/p&gt;
+
+&lt;p&gt;그런데 그대로 실천해보니 이번엔 답이 틀렸다.&lt;/p&gt;
+
+&lt;p&gt;무슨 문제일까 해서 모든 경우를 다 찍어봤는데, C++의 모듈러 연산과 내가 아는 모듈러 연산은 다르다는 점이 문제였다.&lt;/p&gt;
+
+&lt;p&gt;-1을 10000으로 모듈러 연산을 한다고 생각해보자.&lt;/p&gt;
+
+&lt;p&gt;모듈러 연산의 피연산자가 음수이므로 답은 9999가 되어야 한다.&lt;/p&gt;
+
+&lt;p&gt;그런데 코드로 옮겨 보니, 9999가 아니라 -1이 그대로 나오더라.&lt;/p&gt;
+
+&lt;p&gt;사실 문제 조건에도 -1이 나올 경우 9999로 만들라는 조건이 있었는데, 음수에 대한 모듈러 연산 한번이면 다 해결될줄 알았다.&lt;/p&gt;
+
+&lt;p&gt;이 부분까지 잡아내고 돌려보니 바로 맞았다.&lt;/p&gt;
+
+&lt;p&gt;내가 아는 상식과 컴퓨터의 연산 방식이 다르다는 점을 알게 된 문제였다.&lt;/p&gt;
+
+&lt;p&gt;또, 난 보통 BFS문제를 풀때 방문 여부를 체크해주는 것을 자주 까먹는편인데 시간도 시간이지만 메모리상으로도 문제가 발생할 수 있다는 점을 알게 되었다.&lt;/p&gt;
+
+&lt;p&gt;앞으로 BFS문제를 풀때는 방문 여부 체크하는 부분을 빼먹지 말아야겠다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 13/02/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;queue&amp;gt;
+#include &amp;lt;strings.h&amp;gt;
+
+using namespace std;
+
+int T;
+int A, B;
+string result;
+
+bool visit[10000] = {false, };
+char delta[4] = {'D', 'S', 'L', 'R'};
+
+queue&amp;lt;pair&amp;lt;int, string&amp;gt;&amp;gt; Queue;
+
+void BFS(){
+    Queue.push(make_pair(A, &quot;&quot;));
+    visit[A] = true;
+
+    while(!Queue.empty()){
+        int current = Queue.front().first;
+        string currentAnswer = Queue.front().second;
+        Queue.pop();
+
+        if(current == B){
+            result = currentAnswer;
+            break;
+        }
+
+        for(int i=0; i&amp;lt;4; i++){
+            int next = 0;
+            string temp = &quot;&quot;;
+            if(delta[i] == 'D'){
+                next = (current * 2) % 10000;
+            }
+            else if(delta[i] == 'S'){
+                if(current - 1 &amp;gt;= 0){
+                    next = (current - 1) % 10000;
+                }
+                else{
+                    next = 9999;
+                }
+            }
+            else if(delta[i] == 'L'){
+                next += (current % 1000) * 10;
+                next += current / 1000;
+            }
+            else if(delta[i] == 'R'){
+                next += current / 10;
+                next += (current % 10) * 1000;
+            }
+
+            if(!visit[next]){
+                visit[next] = true;
+                temp += delta[i];
+                Queue.push(make_pair(next, currentAnswer + temp));
+            }
+        }
+    }
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; T;
+
+    for(int test=0; test&amp;lt;T; test++){
+        result = &quot;&quot;;
+        bzero(visit, sizeof(visit));
+
+        cin &amp;gt;&amp;gt; A &amp;gt;&amp;gt; B;
+
+        BFS();
+
+        while(!Queue.empty()){
+            Queue.pop();
+        }
+
+        cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+    }
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="BFS" /><summary type="html">백준 9019번 Link: 9019번: DSLR</summary></entry><entry><title type="html">14500</title><link href="keithlee94.github.io/algorithm/14500/" rel="alternate" type="text/html" title="14500" /><published>2019-02-12T00:00:00+09:00</published><updated>2019-02-12T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/14500</id><content type="html" xml:base="keithlee94.github.io/algorithm/14500/">&lt;h1 id=&quot;백준-14500번&quot;&gt;백준 14500번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/14500&quot;&gt;14500번: 테트로미노&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1635,152 +1763,4 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 10026번 Link: 10026번: 적록색약</summary></entry><entry><title type="html">7569</title><link href="keithlee94.github.io/algorithm/7569/" rel="alternate" type="text/html" title="7569" /><published>2019-01-24T00:00:00+09:00</published><updated>2019-01-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/7569</id><content type="html" xml:base="keithlee94.github.io/algorithm/7569/">&lt;h1 id=&quot;백준-7569번&quot;&gt;백준 7569번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/7576&quot;&gt;7569번: 토마토&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;이번에도 BFS문제다.&lt;/p&gt;
-
-&lt;p&gt;저번에 컨디션 아주 별로였던날 한번 보고 어떻게풀지 감이 안와서 포기하고 삼성 기출문제 풀었었는데, 오늘은 마음잡고 제대로 들여다봤다.&lt;/p&gt;
-
-&lt;p&gt;백준에는 똑같은 이름의 조금 간단한 문제가 하나 있는데, 이 문제는 그 문제에서 3차원 공간에 대해 생각해보는 요소가 추가된 문제다.&lt;/p&gt;
-
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/7576&quot;&gt;7576번: 토마토&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;풀이 방법은 이 문제를 푸는 방법과 크게 다를게 없다.&lt;/p&gt;
-
-&lt;p&gt;그저께 풀었던 문제도 그랬는데, 이 문제나 저 문제도 BFS를 통해 트리를 탐색한다고 생각해볼때 몇개의 레벨을 탐색했는지 세면 되는 문제다.&lt;/p&gt;
-
-&lt;p&gt;우선 input값이 1인 것들을 visit했다고 표시한 다음 큐에 넣는다.&lt;/p&gt;
-
-&lt;p&gt;그리고 BFS를 진행하는데, 우선 트리의 레벨을 세기 위해 큐의 모든 요소들을 벡터에 따로 빼놓고 벡터의 요소들에 대한 BFS를 진행한다.&lt;/p&gt;
-
-&lt;p&gt;주의해야 할 점은 3차원적 요소도 고려해야 하는 만큼, 기존 4방향에 더해 위 상자, 아래 상자도 고려하며 구현해야 한다.&lt;/p&gt;
-
-&lt;p&gt;이외에는 기존 BFS와 다를 게 없다.&lt;/p&gt;
-
-&lt;p&gt;while문을 한번 끝낼때마다 결과값을 1씩 더해주는 식으로 완전탐색을 진행하면 답이 나온다.&lt;/p&gt;
-
-&lt;p&gt;나같은 경우에는 결과값의 초기값을 0으로 설정해뒀기 때문에 최종 결과 출력 전에 구한 결과값에서 1을 뺀 값이 맞는 값이다.&lt;/p&gt;
-
-&lt;p&gt;BFS가 끝난 후, map에 0이 남아있는지 세보고 결과값을 설정해준 다음 출력해주니 바로 풀렸다.&lt;/p&gt;
-
-&lt;p&gt;3차원 배열을 써야 풀릴것 같긴 했는데 시간초과나 메모리초과로 실패하지 않을까 고민하면서 구현했다.&lt;/p&gt;
-
-&lt;p&gt;실제로 돌려보니 메모리는 꽤 많이 사용하면서도 시간초과 없이 풀리는걸 보니 아주 무식하게 3차원 배열을 전부 탐색하며 푸는 문제가 맞았던 것 같다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 24/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;queue&amp;gt;
-#include &amp;lt;vector&amp;gt;
-
-using namespace std;
-
-int map[100][100][100] = {0, };
-bool visit[100][100][100] = {false, };
-
-int dx[4] = {0, 0, 1, -1};
-int dy[4] = {1, -1, 0, 0};
-int dz[2] = {-1, 1};
-
-// 가로, 세로, 높이
-int M, N, H;
-int result = 0;
-
-queue&amp;lt;pair&amp;lt;int, pair&amp;lt;int, int&amp;gt;&amp;gt;&amp;gt; Queue;
-
-void BFS(){
-    while(!Queue.empty()){
-        vector&amp;lt;pair&amp;lt;int, pair&amp;lt;int, int&amp;gt;&amp;gt;&amp;gt; starts;
-
-        while(!Queue.empty()){
-            starts.push_back(make_pair(Queue.front().first, make_pair(Queue.front().second.first, Queue.front().second.second)));
-            Queue.pop();
-        }
-
-        for(int v=0; v&amp;lt;starts.size(); v++){
-            int startZ = starts[v].first;
-            int startX = starts[v].second.first;
-            int startY = starts[v].second.second;
-
-            for(int i=0; i&amp;lt;4; i++){
-                int nextX = startX + dx[i];
-                int nextY = startY + dy[i];
-
-                if(nextX &amp;gt;= 0 &amp;amp;&amp;amp; nextX &amp;lt; N &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt; M){
-                    if(!visit[startZ][nextX][nextY] &amp;amp;&amp;amp; map[startZ][nextX][nextY] == 0){
-                        visit[startZ][nextX][nextY] = true;
-                        map[startZ][nextX][nextY] = 1;
-                        Queue.push(make_pair(startZ, make_pair(nextX, nextY)));
-                    }
-                }
-            }
-
-            for(int i=0; i&amp;lt;2; i++){
-                int nextZ = startZ + dz[i];
-
-                if(nextZ &amp;gt;= 0 &amp;amp;&amp;amp; nextZ &amp;lt; H){
-                    if(!visit[nextZ][startX][startY] &amp;amp;&amp;amp; map[nextZ][startX][startY] == 0){
-                        visit[nextZ][startX][startY] = true;
-                        map[nextZ][startX][startY] = 1;
-                        Queue.push(make_pair(nextZ, make_pair(startX, startY)));
-                    }
-                }
-            }
-        }
-
-        result++;
-
-    }
-
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; M &amp;gt;&amp;gt; N &amp;gt;&amp;gt; H;
-
-    // (층, (가로, 세로)) 쌍으로 저장한다.
-    vector&amp;lt;pair&amp;lt;int, pair&amp;lt;int, int&amp;gt;&amp;gt;&amp;gt; coordinates;
-
-    for(int i=0; i&amp;lt;H; i++){
-        for(int j=0; j&amp;lt;N; j++){
-            for(int k=0; k&amp;lt;M; k++){
-                cin &amp;gt;&amp;gt; map[i][j][k];
-                if(map[i][j][k] == 1){
-                    visit[i][j][k] = true;
-                    Queue.push(make_pair(i, make_pair(j, k)));
-                }
-            }
-        }
-    }
-
-    BFS();
-
-    for(int i=0; i&amp;lt;H; i++){
-        for(int j=0; j&amp;lt;N; j++){
-            for(int k=0; k&amp;lt;M; k++){
-                if(map[i][j][k] == 0){
-                    result = -1;
-                    break;
-                }
-            }
-        }
-    }
-
-    if(result != -1){
-        cout &amp;lt;&amp;lt; result-1 &amp;lt;&amp;lt; '\n';
-    }
-    else{
-        cout &amp;lt;&amp;lt; -1 &amp;lt;&amp;lt; '\n';
-    }
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 7569번 Link: 7569번: 토마토</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 10026번 Link: 10026번: 적록색약</summary></entry></feed>
