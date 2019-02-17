@@ -1,4 +1,138 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-13T22:41:10+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">9019</title><link href="keithlee94.github.io/algorithm/9019/" rel="alternate" type="text/html" title="9019" /><published>2019-02-13T00:00:00+09:00</published><updated>2019-02-13T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/9019</id><content type="html" xml:base="keithlee94.github.io/algorithm/9019/">&lt;h1 id=&quot;백준-9019번&quot;&gt;백준 9019번&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-17T15:03:52+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">16235</title><link href="keithlee94.github.io/algorithm/16235/" rel="alternate" type="text/html" title="16235" /><published>2019-02-17T00:00:00+09:00</published><updated>2019-02-17T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/16235</id><content type="html" xml:base="keithlee94.github.io/algorithm/16235/">&lt;h1 id=&quot;백준-16235번&quot;&gt;백준 16235번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/16235&quot;&gt;16235번: 나무 재테크&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;작년 삼성 기출문제.&lt;/p&gt;
+
+&lt;p&gt;IM쪽 기출문제였는데, 여기 시험보고 온 친구들이 전부 못풀어서 멘탈 터져서 온게 기억이 난다.&lt;/p&gt;
+
+&lt;p&gt;풀기 시작한게 목요일이었는데, 목요일에는 별 생각없는 노가다로 풀어봤는데 테스트케이스 3개정도 맞히고 나머지 못맞혀서 왜그럴지 고민해봤다.&lt;/p&gt;
+
+&lt;p&gt;그렇게 고민해보다 금요일에는 큐를 써서 한 레벨에 대해 전부 뽑아내고 1년을 진행하는 방식으로 해봤다.&lt;/p&gt;
+
+&lt;p&gt;그래도 안풀려서 다시 고민했는데, 토요일엔 놀다가 일요일 와서야 풀었다.&lt;/p&gt;
+
+&lt;p&gt;매우 단순한 방법으로 해결했는데, 내가 짠 코드대로면 봄에 죽은 나무가 벡터에서는 살아있기 때문에 죽은 나무의 나이를 -1로 바꾸고, 가을에 번식하는 조건에 나이가 0보다 클때로 한정함으로써 풀 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;시뮬레이션 문제인것 같은데, 내가 시험볼때 풀어봤던 큐브 문제에 비해서는 훨씬 깔끔하게 답을 구할 수 있었던 문제인것 같다.&lt;/p&gt;
+
+&lt;p&gt;뭐 그때의 나였다면 이런 문제 던져줘도 못풀었을것 같긴 하다만…&lt;/p&gt;
+
+&lt;p&gt;어쨌든 곧 시험볼때까지 실력을 꾸준히 키워야겠다는 생각이 든다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 14/02/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;queue&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+
+using namespace std;
+
+struct Tree{
+    int x, y, age;
+};
+
+int N, M, K;
+
+int map[11][11] = {0, };
+int winterAdd[11][11] = {0, };
+int dx[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
+int dy[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+queue&amp;lt;Tree&amp;gt; Queue;
+
+int compare(const Tree &amp;amp;t1, const Tree &amp;amp;t2){
+    if(t1.age &amp;lt; t2.age){
+        return true;
+    }
+    return false;
+}
+
+int BFS(){
+    for(int i=0; i&amp;lt;K; i++){
+        vector&amp;lt;Tree&amp;gt; lives;
+        vector&amp;lt;Tree&amp;gt; deads;
+
+        while(!Queue.empty()){
+            lives.push_back(Queue.front());
+            Queue.pop();
+        }
+
+        sort(lives.begin(), lives.end(), compare);
+
+        for(int j=0; j&amp;lt;lives.size(); j++) {
+            if (map[lives[j].x][lives[j].y] &amp;gt;= lives[j].age) { // 봄
+                map[lives[j].x][lives[j].y] -= lives[j].age;
+                Queue.push({lives[j].x, lives[j].y, lives[j].age + 1});
+                lives[j].age++;
+            }
+            else {
+                deads.push_back({lives[j].x, lives[j].y, lives[j].age});
+                lives[j].age = -1;
+            }
+
+            if(lives[j].age &amp;gt; 0 &amp;amp;&amp;amp; lives[j].age % 5 == 0){ // 가을
+                for(int k=0; k&amp;lt;8; k++){
+                    int nextX = lives[j].x + dx[k];
+                    int nextY = lives[j].y + dy[k];
+
+                    if(nextX &amp;gt; 0 &amp;amp;&amp;amp; nextX &amp;lt;= N &amp;amp;&amp;amp; nextY &amp;gt; 0 &amp;amp;&amp;amp; nextY &amp;lt;= N){
+                        Queue.push({nextX, nextY, 1});
+                    }
+                }
+            }
+        }
+
+        for(int k=0; k&amp;lt;deads.size(); k++){ // 여름
+            map[deads[k].x][deads[k].y] += deads[k].age / 2;
+        }
+
+        for(int k=1; k&amp;lt;=N; k++){ // 겨울
+            for(int l=1; l&amp;lt;=N; l++){
+                map[k][l] += winterAdd[k][l];
+            }
+        }
+    }
+
+    return Queue.size();
+}
+
+int main(){
+    for(int i=0; i&amp;lt;=10; i++){
+        for(int j=0; j&amp;lt;=10; j++){
+            map[i][j] = 5;
+        }
+    }
+
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M &amp;gt;&amp;gt; K;
+
+    for(int i=1; i&amp;lt;=N; i++){
+        for(int j=1; j&amp;lt;=N; j++){
+            cin &amp;gt;&amp;gt; winterAdd[i][j];
+        }
+    }
+
+    int x, y, z;
+
+    for(int i=0; i&amp;lt;M; i++){
+        cin &amp;gt;&amp;gt; x &amp;gt;&amp;gt; y &amp;gt;&amp;gt; z;
+
+        Queue.push({x, y, z});
+    }
+
+    cout &amp;lt;&amp;lt; BFS() &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Simulation" /><category term="Brute Force" /><summary type="html">백준 16235번 Link: 16235번: 나무 재테크</summary></entry><entry><title type="html">9019</title><link href="keithlee94.github.io/algorithm/9019/" rel="alternate" type="text/html" title="9019" /><published>2019-02-13T00:00:00+09:00</published><updated>2019-02-13T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/9019</id><content type="html" xml:base="keithlee94.github.io/algorithm/9019/">&lt;h1 id=&quot;백준-9019번&quot;&gt;백준 9019번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/9019&quot;&gt;9019번: DSLR&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1617,150 +1751,4 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2644번 Link: 2644번: 촌수계산</summary></entry><entry><title type="html">10026</title><link href="keithlee94.github.io/algorithm/10026/" rel="alternate" type="text/html" title="10026" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/10026</id><content type="html" xml:base="keithlee94.github.io/algorithm/10026/">&lt;h1 id=&quot;백준-10026번&quot;&gt;백준 10026번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/10026&quot;&gt;10026번: 적록색약&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;이번에도 BFS 문제.&lt;/p&gt;
-
-&lt;p&gt;각각의 색깔명에 대해 전체 map이 몇개의 영역으로 나눠지는지 구하는 문제였다.&lt;/p&gt;
-
-&lt;p&gt;한가지 특이했던 점은 적록색맹이라는 상황을 줌으로써 R값과 G값을 같은 값으로 보고 풀어야 하는 부분이 존재했다는 점.&lt;/p&gt;
-
-&lt;p&gt;적록색맹이 아닌 사람과 적록색맹인 사람의 경우를 따로 나눠 구해야 한다.&lt;/p&gt;
-
-&lt;p&gt;처음에는 map을 아예 새로 만들까 했었는데, 조건문에서 R과 G에 대한 조건을 or로 묶으니 굳이 안그래도 해결됐다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 28/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;queue&amp;gt;
-#include &amp;lt;string.h&amp;gt;
-
-using namespace std;
-
-int N;
-char map[101][101];
-bool visit[101][101];
-
-int dx[4] = {0, 0, 1, -1};
-int dy[4] = {1, -1, 0, 0};
-
-int normalResult = 0;
-int redGreenResult = 0;
-
-void BFS_normal(int startX, int startY){
-    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
-
-    Queue.push(make_pair(startX, startY));
-    visit[startX][startY] = true;
-
-    while(!Queue.empty()){
-        int currentX = Queue.front().first;
-        int currentY = Queue.front().second;
-        Queue.pop();
-
-        for(int i=0; i&amp;lt;4; i++){
-            int nextX = currentX + dx[i];
-            int nextY = currentY + dy[i];
-
-            if(nextX &amp;gt;= 1 &amp;amp;&amp;amp; nextX &amp;lt;= N &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt;= N){
-                if(map[startX][startY] == 'R'){
-                    if(map[nextX][nextY] == 'R' &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-                else if(map[startX][startY] == 'G'){
-                    if(map[nextX][nextY] == 'G' &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-                else if(map[startX][startY] == 'B'){
-                    if(map[nextX][nextY] == 'B' &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-            }
-        }
-    }
-
-    normalResult++;
-}
-
-void BFS_redGreen(int startX, int startY){
-    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
-
-    Queue.push(make_pair(startX, startY));
-    visit[startX][startY] = true;
-
-    while(!Queue.empty()){
-        int currentX = Queue.front().first;
-        int currentY = Queue.front().second;
-        Queue.pop();
-
-        for(int i=0; i&amp;lt;4; i++){
-            int nextX = currentX + dx[i];
-            int nextY = currentY + dy[i];
-
-            if(nextX &amp;gt;= 1 &amp;amp;&amp;amp; nextX &amp;lt;= N &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt;= N){
-                if(map[startX][startY] == 'R' || map[startX][startY] == 'G'){
-                    if((map[nextX][nextY] == 'R' || map[nextX][nextY] == 'G') &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-                else if(map[startX][startY] == 'B'){
-                    if(map[nextX][nextY] == 'B' &amp;amp;&amp;amp; !visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-            }
-        }
-    }
-
-    redGreenResult++;
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; N;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            cin &amp;gt;&amp;gt; map[i][j];
-        }
-    }
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            if(!visit[i][j]){
-                BFS_normal(i, j);
-            }
-        }
-    }
-
-    bzero(visit, sizeof(visit));
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            if(!visit[i][j]){
-                BFS_redGreen(i, j);
-            }
-        }
-    }
-
-    cout &amp;lt;&amp;lt; normalResult &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; redGreenResult &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 10026번 Link: 10026번: 적록색약</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2644번 Link: 2644번: 촌수계산</summary></entry></feed>
