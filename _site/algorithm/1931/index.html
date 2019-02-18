@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>16234 - KeithLog</title>
-<meta name="description" content="백준 16234번Link: 16234번: 인구 이동">
+<!-- begin _includes/seo.html --><title>1931 - KeithLog</title>
+<meta name="description" content="백준 1931번Link: 1931번: 회의실배정">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="16234">
-<meta property="og:url" content="keithlee94.github.io/algorithm/16234/">
+<meta property="og:title" content="1931">
+<meta property="og:url" content="keithlee94.github.io/algorithm/1931/">
 
 
-  <meta property="og:description" content="백준 16234번Link: 16234번: 인구 이동">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-17T00:00:00+09:00">
+  <meta property="og:description" content="백준 1931번Link: 1931번: 회의실배정">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-02-18T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/16234/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/1931/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="16234">
-    <meta itemprop="description" content="백준 16234번Link: 16234번: 인구 이동">
-    <meta itemprop="datePublished" content="January 17, 2019">
+    <meta itemprop="headline" content="1931">
+    <meta itemprop="description" content="백준 1931번Link: 1931번: 회의실배정">
+    <meta itemprop="datePublished" content="February 18, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">16234
+          <h1 id="page-title" class="page__title" itemprop="headline">1931
 </h1>
           
         </header>
@@ -286,186 +286,95 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-16234번">백준 16234번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/16234">16234번: 인구 이동</a></p>
+        <h1 id="백준-1931번">백준 1931번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/1931">1931번: 회의실배정</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>작년 하반기 삼성 SW 역량테스트 문제다.</p>
+<p>Greedy 알고리즘의 대표격인 문제다.</p>
 
-<p>시험장에서 문제 보고 뭔가싶어서 바로 넘기고 다른문제 올인하다 결국 둘다 못풀어서 광탈했던 악몽이 다시 떠오른다.</p>
+<p>예전에 한번 풀어봤던것 같긴 한데 그때도 틀렸다.</p>
 
-<p>아무 문제나 붙잡고 풀다가 다 안풀려서 어차피 한번은 풀어야될 문제라 결국 붙잡고 풀었다.</p>
+<p>마음 다잡고 다시한번 풀어봤는데, 답이 맞는것 같으면서도 계속 틀렸다고 나오더라.</p>
 
-<p>예전부터 지인들이 니가 문제보고 쫄아서그렇지 별거 아닌문제다 라는 말을 했었는데 막상 풀어보니 틀린말은 아닌거같다.</p>
+<p>어떤 부분에서 문제가 있나 해서 질문게시판 돌아다니면서 반례들을 찾아봤는데, 크게 2가지 문제가 있었다.</p>
 
-<p>하지만 내가 저날 시험장에서 이문제를 제대로 읽고 이해했다고 해도 시간안에 푸는건 무리였을것 같다.</p>
+<p>첫번째는 끝나는 시간이 같은 경우 시작하는 시간이 빠른 회의가 먼저 오도록 정렬되어야 한다는 점.</p>
 
-<p>BFS를 여러번 해야되는 문제다.</p>
+<p>두번째는 배정 가능한 회의에 포함시킬때 그 회의를 포함하였음을 표시하여 중복으로 포함시켜선 안된다는 점.</p>
 
-<p>map에서 수정할 부분이 어디인지 찾아내는 부분에서 BFS를 해야 하고, 수정할 부분을 찾은 다음 map을 수정하기 위한 BFS를 해야하는 문제.</p>
+<p>첫번째 문제는 정렬 함수를 좀 바꿔서 해결했다.</p>
 
-<p>거기다 이 과정을 더이상 수정할 부분이 없을때까지 반복해야 한다.</p>
+<p>두번째 문제는 방문 여부를 어떻게 표시할지 고민하다 1부터 2147483647까지의 bool형태의 배열을 만들까 해봤다.</p>
 
-<p>BFS문제라는 느낌은 확실히 들었다.</p>
+<p>용량이 용량이라 그런지 컴파일 자체가 안되더라.</p>
 
-<p>처음에 문제 접했을땐 map에서 수정할 부분을 찾는 과정에 대해 BFS를 써야겠다는 생각이 안들었다.</p>
+<p>어떻게할지 고민하다가 구조체에 방문 여부도 포함하도록 바꿔서 제출해보니 바로 맞았다.</p>
 
-<p>그래서 3중 for문을 사용해서 수정할 부분을 찾아 마킹했다.</p>
+<p>Greedy나 BFS나 DFS나 방문여부 표시해주는게 참 중요한 것 같다.</p>
 
-<p>그 이후 map을 수정하는 부분에 대해서는 BFS로 구현하여 풀어보았다.</p>
-
-<p>풀어본 다음 테스트케이스들을 넣어보니, 단순히 3중 for문으로는 풀수 없는 문제라는 것을 깨달았다.</p>
-
-<p>마지막까지 가장 애먹였던 부분이 이부분인데, map에서 수정할 부분을 단순히 1로 마킹할 경우 영역간 경계가 있으나 이 경계를 무시하고 BFS를 진행하는 문제가 생긴다.</p>
-
-<p>BFS로 바꿔서 해보고도 마지막에 이부분을 놓쳐 한번 더 삽질하다 결국 풀었다.</p>
-
-<p>막상 풀고나니 별거 아닌건 맞는데, 시험장의 압박감과 이 시험볼 당시 알고리즘 공부도 어설프게 하고 간 나는 절대 못풀었을 것 같다는 생각이 들었다.</p>
-
-<p>얻어가는 점은 몇번씩 실패하고도 남의 도움 안받고 내 힘만으로 풀어냈다는 점, BFS문제를 혼자 힘만으로 제대로 풀어냈다는 점이다.</p>
-
-<p>이런 점을 밑거름삼아 앞으로 있을 역량테스트에서도 포기하지 않고 끝까지 풀어내는 것이 목표이다.</p>
-
-<p><strong><em>다시는 악몽 안꾸련다. 앞으로도 화이팅!!!</em></strong></p>
+<p>몇년전부터 못풀던 문제였는데 오늘에서라도 풀어서 기분은 좋다.</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 15/01/2019.
+// Created by Keith_Lee on 18/02/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;memory.h&gt;
-#include &lt;queue&gt;
+#include &lt;algorithm&gt;
 #include &lt;vector&gt;
 
 using namespace std;
 
-int N, L, R;
-int dx[] = {0, 0, 1, -1};
-int dy[] = {1, -1, 0, 0};
+struct meeting{
+    int start, end;
+    bool visit;
+};
 
-int map[50][50] = {0, };
-int toChange[50][50] = {0, };
-int visit[50][50] = {0, };
+int N;
 
-vector&lt;pair&lt;int, int&gt;&gt; changes(){
-    vector&lt;pair&lt;int, int&gt;&gt; result;
-
-    for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;N; j++){
-            if(toChange[i][j] != 0){
-                result.push_back(make_pair(i, j));
-            }
+bool compare(meeting a, meeting b){
+    if(a.end &lt; b.end){
+        return true;
+    }
+    else if(a.end == b.end){
+        if(a.start &lt; b.start){
+            return true;
         }
     }
-
-    return result;
-}
-
-void toChange_init(){
-    int areaCount = 1;
-
-    for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;N; j++){
-            queue&lt;pair&lt;int, int&gt;&gt; Queue;
-            Queue.push(make_pair(i, j));
-
-            while(!Queue.empty()){
-                int currentX = Queue.front().first;
-                int currentY = Queue.front().second;
-                Queue.pop();
-
-                for(int k=0; k&lt;4; k++){
-                    int nextX = currentX + dx[k];
-                    int nextY = currentY + dy[k];
-
-                    if(nextX &gt;= 0 &amp;&amp; nextX &lt; N &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
-                        int gap = abs(map[currentX][currentY] - map[nextX][nextY]);
-                        if(gap &gt;= L &amp;&amp; gap &lt;= R &amp;&amp; toChange[nextX][nextY] == 0){
-                            toChange[nextX][nextY] = areaCount;
-                            Queue.push(make_pair(nextX, nextY));
-                        }
-                    }
-                }
-            }
-
-            areaCount++;
-        }
-    }
-}
-
-void BFS(int currentX, int currentY){
-    vector&lt;pair&lt;int, int&gt;&gt; visited;
-
-    queue&lt;pair&lt;int, int&gt;&gt; Queue;
-    Queue.push(make_pair(currentX, currentY));
-
-    int changeCount = 0;
-    int changeSum = 0;
-    visit[currentX][currentY] = 1;
-
-    while(!Queue.empty()){
-        int startX = Queue.front().first;
-        int startY = Queue.front().second;
-        Queue.pop();
-
-        changeCount++;
-        changeSum += map[startX][startY];
-        visited.push_back(make_pair(startX, startY));
-
-        for(int i=0; i&lt;4; i++){
-            int nextX = startX + dx[i];
-            int nextY = startY + dy[i];
-
-            if(nextX &gt;= 0 &amp;&amp; nextX &lt; N &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
-                if(visit[nextX][nextY] == 0 &amp;&amp; toChange[nextX][nextY] == toChange[startX][startY]){
-                    Queue.push(make_pair(nextX, nextY));
-                    visit[nextX][nextY] = 1;
-                }
-            }
-        }
-    }
-
-    for(int i=0; i&lt;visited.size(); i++){
-        map[visited[i].first][visited[i].second] = changeSum / changeCount;
-    }
+    return false;
 }
 
 int main(){
-    cin &gt;&gt; N &gt;&gt; L &gt;&gt; R;
+    cin &gt;&gt; N;
+
+    vector&lt;meeting&gt; meetings;
+
+    int start, end;
 
     for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;N; j++){
-            cin &gt;&gt; map[i][j];
+        cin &gt;&gt; start &gt;&gt; end;
+
+        meetings.push_back({start, end, false});
+    }
+
+    sort(meetings.begin(), meetings.end(), compare);
+
+    vector&lt;meeting&gt; available;
+    available.push_back(meetings[0]);
+    meetings[0].visit = true;
+
+    for(int i=0; i&lt;meetings.size(); i++){
+        int currentEnd = available[available.size()-1].end;
+
+        if(meetings[i].start &gt;= currentEnd &amp;&amp; !meetings[i].visit){
+            available.push_back(meetings[i]);
         }
     }
 
-    int count = 0;
-
-    while(true) {
-        memset(toChange, 0, sizeof(toChange));
-        memset(visit, 0, sizeof(visit));
-
-        toChange_init();
-
-        vector&lt;pair&lt;int, int&gt;&gt; ones = changes();
-        if (ones.size() == 0) {
-            break;
-        }
-
-        for (int i = 0; i &lt; ones.size(); i++) {
-            if (visit[ones[i].first][ones[i].second] == 0) {
-                BFS(ones[i].first, ones[i].second);
-            }
-        }
-
-        count++;
-    }
-
-    cout &lt;&lt; count &lt;&lt; '\n';
+    cout &lt;&lt; available.size() &lt;&lt; '\n';
 
     return 0;
 }
@@ -492,11 +401,7 @@ int main(){
     
       
       
-      <a href="/tags/#bfs" class="page__taxonomy-item" rel="tag">BFS</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#dfs" class="page__taxonomy-item" rel="tag">DFS</a>
+      <a href="/tags/#greedy" class="page__taxonomy-item" rel="tag">Greedy</a>
     
     </span>
   </p>
@@ -524,7 +429,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-17T00:00:00+09:00">January 17, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-18T00:00:00+09:00">February 18, 2019</time></p>
         
       </footer>
 
@@ -533,25 +438,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=16234%20keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=1931%20keithlee94.github.io%2Falgorithm%2F1931%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1931%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1931%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1931%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/1520/" class="pagination--pager" title="1520
+      <a href="/algorithm/16235/" class="pagination--pager" title="16235
 ">Previous</a>
     
     
-      <a href="/java/6th-Week-Summary/" class="pagination--pager" title="6th week summary
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -565,27 +469,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/1931/" rel="permalink">1931
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 1931번
-Link: 1931번: 회의실배정
-
-</p>
-  </article>
-</div>
         
           
 
@@ -645,6 +528,27 @@ Link: 9019번: DSLR
     
     <p class="archive__item-excerpt" itemprop="description">백준 14500번
 Link: 14500번: 테트로미노
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2309/" rel="permalink">2309
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2309번
+Link: 2309번: 일곱 난쟁이
 
 </p>
   </article>

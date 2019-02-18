@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-02-18T22:23:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">16235</title><link href="http://localhost:4000/algorithm/16235/" rel="alternate" type="text/html" title="16235" /><published>2019-02-17T00:00:00+09:00</published><updated>2019-02-17T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/16235</id><content type="html" xml:base="http://localhost:4000/algorithm/16235/">&lt;h1 id=&quot;백준-16235번&quot;&gt;백준 16235번&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-18T22:27:00+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">1931</title><link href="keithlee94.github.io/algorithm/1931/" rel="alternate" type="text/html" title="1931" /><published>2019-02-18T00:00:00+09:00</published><updated>2019-02-18T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1931</id><content type="html" xml:base="keithlee94.github.io/algorithm/1931/">&lt;h1 id=&quot;백준-1931번&quot;&gt;백준 1931번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1931&quot;&gt;1931번: 회의실배정&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;Greedy 알고리즘의 대표격인 문제다.&lt;/p&gt;
+
+&lt;p&gt;예전에 한번 풀어봤던것 같긴 한데 그때도 틀렸다.&lt;/p&gt;
+
+&lt;p&gt;마음 다잡고 다시한번 풀어봤는데, 답이 맞는것 같으면서도 계속 틀렸다고 나오더라.&lt;/p&gt;
+
+&lt;p&gt;어떤 부분에서 문제가 있나 해서 질문게시판 돌아다니면서 반례들을 찾아봤는데, 크게 2가지 문제가 있었다.&lt;/p&gt;
+
+&lt;p&gt;첫번째는 끝나는 시간이 같은 경우 시작하는 시간이 빠른 회의가 먼저 오도록 정렬되어야 한다는 점.&lt;/p&gt;
+
+&lt;p&gt;두번째는 배정 가능한 회의에 포함시킬때 그 회의를 포함하였음을 표시하여 중복으로 포함시켜선 안된다는 점.&lt;/p&gt;
+
+&lt;p&gt;첫번째 문제는 정렬 함수를 좀 바꿔서 해결했다.&lt;/p&gt;
+
+&lt;p&gt;두번째 문제는 방문 여부를 어떻게 표시할지 고민하다 1부터 2147483647까지의 bool형태의 배열을 만들까 해봤다.&lt;/p&gt;
+
+&lt;p&gt;용량이 용량이라 그런지 컴파일 자체가 안되더라.&lt;/p&gt;
+
+&lt;p&gt;어떻게할지 고민하다가 구조체에 방문 여부도 포함하도록 바꿔서 제출해보니 바로 맞았다.&lt;/p&gt;
+
+&lt;p&gt;Greedy나 BFS나 DFS나 방문여부 표시해주는게 참 중요한 것 같다.&lt;/p&gt;
+
+&lt;p&gt;몇년전부터 못풀던 문제였는데 오늘에서라도 풀어서 기분은 좋다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 18/02/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+struct meeting{
+    int start, end;
+    bool visit;
+};
+
+int N;
+
+bool compare(meeting a, meeting b){
+    if(a.end &amp;lt; b.end){
+        return true;
+    }
+    else if(a.end == b.end){
+        if(a.start &amp;lt; b.start){
+            return true;
+        }
+    }
+    return false;
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N;
+
+    vector&amp;lt;meeting&amp;gt; meetings;
+
+    int start, end;
+
+    for(int i=0; i&amp;lt;N; i++){
+        cin &amp;gt;&amp;gt; start &amp;gt;&amp;gt; end;
+
+        meetings.push_back({start, end, false});
+    }
+
+    sort(meetings.begin(), meetings.end(), compare);
+
+    vector&amp;lt;meeting&amp;gt; available;
+    available.push_back(meetings[0]);
+    meetings[0].visit = true;
+
+    for(int i=0; i&amp;lt;meetings.size(); i++){
+        int currentEnd = available[available.size()-1].end;
+
+        if(meetings[i].start &amp;gt;= currentEnd &amp;amp;&amp;amp; !meetings[i].visit){
+            available.push_back(meetings[i]);
+        }
+    }
+
+    cout &amp;lt;&amp;lt; available.size() &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Greedy" /><summary type="html">백준 1931번 Link: 1931번: 회의실배정</summary></entry><entry><title type="html">16235</title><link href="keithlee94.github.io/algorithm/16235/" rel="alternate" type="text/html" title="16235" /><published>2019-02-17T00:00:00+09:00</published><updated>2019-02-17T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/16235</id><content type="html" xml:base="keithlee94.github.io/algorithm/16235/">&lt;h1 id=&quot;백준-16235번&quot;&gt;백준 16235번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/16235&quot;&gt;16235번: 나무 재테크&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -132,7 +225,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Simulation" /><category term="Brute Force" /><summary type="html">백준 16235번 Link: 16235번: 나무 재테크</summary></entry><entry><title type="html">9019</title><link href="http://localhost:4000/algorithm/9019/" rel="alternate" type="text/html" title="9019" /><published>2019-02-13T00:00:00+09:00</published><updated>2019-02-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/9019</id><content type="html" xml:base="http://localhost:4000/algorithm/9019/">&lt;h1 id=&quot;백준-9019번&quot;&gt;백준 9019번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Simulation" /><category term="Brute Force" /><summary type="html">백준 16235번 Link: 16235번: 나무 재테크</summary></entry><entry><title type="html">9019</title><link href="keithlee94.github.io/algorithm/9019/" rel="alternate" type="text/html" title="9019" /><published>2019-02-13T00:00:00+09:00</published><updated>2019-02-13T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/9019</id><content type="html" xml:base="keithlee94.github.io/algorithm/9019/">&lt;h1 id=&quot;백준-9019번&quot;&gt;백준 9019번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/9019&quot;&gt;9019번: DSLR&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -260,7 +353,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="BFS" /><summary type="html">백준 9019번 Link: 9019번: DSLR</summary></entry><entry><title type="html">14500</title><link href="http://localhost:4000/algorithm/14500/" rel="alternate" type="text/html" title="14500" /><published>2019-02-12T00:00:00+09:00</published><updated>2019-02-12T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/14500</id><content type="html" xml:base="http://localhost:4000/algorithm/14500/">&lt;h1 id=&quot;백준-14500번&quot;&gt;백준 14500번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="BFS" /><summary type="html">백준 9019번 Link: 9019번: DSLR</summary></entry><entry><title type="html">14500</title><link href="keithlee94.github.io/algorithm/14500/" rel="alternate" type="text/html" title="14500" /><published>2019-02-12T00:00:00+09:00</published><updated>2019-02-12T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/14500</id><content type="html" xml:base="keithlee94.github.io/algorithm/14500/">&lt;h1 id=&quot;백준-14500번&quot;&gt;백준 14500번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/14500&quot;&gt;14500번: 테트로미노&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -428,7 +521,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><summary type="html">백준 14500번 Link: 14500번: 테트로미노</summary></entry><entry><title type="html">2309</title><link href="http://localhost:4000/algorithm/2309/" rel="alternate" type="text/html" title="2309" /><published>2019-02-11T00:00:00+09:00</published><updated>2019-02-11T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2309</id><content type="html" xml:base="http://localhost:4000/algorithm/2309/">&lt;h1 id=&quot;백준-2309번&quot;&gt;백준 2309번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><summary type="html">백준 14500번 Link: 14500번: 테트로미노</summary></entry><entry><title type="html">2309</title><link href="keithlee94.github.io/algorithm/2309/" rel="alternate" type="text/html" title="2309" /><published>2019-02-11T00:00:00+09:00</published><updated>2019-02-11T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2309</id><content type="html" xml:base="keithlee94.github.io/algorithm/2309/">&lt;h1 id=&quot;백준-2309번&quot;&gt;백준 2309번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2309&quot;&gt;2309번: 일곱 난쟁이&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -513,7 +606,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="DFS" /><summary type="html">백준 2309번 Link: 2309번: 일곱 난쟁이</summary></entry><entry><title type="html">9663</title><link href="http://localhost:4000/algorithm/9663/" rel="alternate" type="text/html" title="9663" /><published>2019-02-10T00:00:00+09:00</published><updated>2019-02-10T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/9663</id><content type="html" xml:base="http://localhost:4000/algorithm/9663/">&lt;h1 id=&quot;백준-9663번&quot;&gt;백준 9663번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="DFS" /><summary type="html">백준 2309번 Link: 2309번: 일곱 난쟁이</summary></entry><entry><title type="html">9663</title><link href="keithlee94.github.io/algorithm/9663/" rel="alternate" type="text/html" title="9663" /><published>2019-02-10T00:00:00+09:00</published><updated>2019-02-10T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/9663</id><content type="html" xml:base="keithlee94.github.io/algorithm/9663/">&lt;h1 id=&quot;백준-9663번&quot;&gt;백준 9663번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/9663&quot;&gt;9663번: N-Queen&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -596,7 +689,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Back Tracking" /><summary type="html">백준 9663번 Link: 9663번: N-Queen</summary></entry><entry><title type="html">12100</title><link href="http://localhost:4000/algorithm/12100/" rel="alternate" type="text/html" title="12100" /><published>2019-02-09T00:00:00+09:00</published><updated>2019-02-09T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/12100</id><content type="html" xml:base="http://localhost:4000/algorithm/12100/">&lt;h1 id=&quot;백준-12100번&quot;&gt;백준 12100번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Back Tracking" /><summary type="html">백준 9663번 Link: 9663번: N-Queen</summary></entry><entry><title type="html">12100</title><link href="keithlee94.github.io/algorithm/12100/" rel="alternate" type="text/html" title="12100" /><published>2019-02-09T00:00:00+09:00</published><updated>2019-02-09T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/12100</id><content type="html" xml:base="keithlee94.github.io/algorithm/12100/">&lt;h1 id=&quot;백준-12100번&quot;&gt;백준 12100번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/12100&quot;&gt;12100번: 2048 (Easy)&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -876,7 +969,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="DFS" /><summary type="html">백준 12100번 Link: 12100번: 2048 (Easy)</summary></entry><entry><title type="html">2251</title><link href="http://localhost:4000/algorithm/2251/" rel="alternate" type="text/html" title="2251" /><published>2019-02-07T00:00:00+09:00</published><updated>2019-02-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2251</id><content type="html" xml:base="http://localhost:4000/algorithm/2251/">&lt;h1 id=&quot;백준-2251번&quot;&gt;백준 2251번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="DFS" /><summary type="html">백준 12100번 Link: 12100번: 2048 (Easy)</summary></entry><entry><title type="html">2251</title><link href="keithlee94.github.io/algorithm/2251/" rel="alternate" type="text/html" title="2251" /><published>2019-02-07T00:00:00+09:00</published><updated>2019-02-07T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2251</id><content type="html" xml:base="keithlee94.github.io/algorithm/2251/">&lt;h1 id=&quot;백준-2251번&quot;&gt;백준 2251번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2251&quot;&gt;2251번: 물통&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1065,7 +1158,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2251번 Link: 2251번: 물통</summary></entry><entry><title type="html">1062</title><link href="http://localhost:4000/algorithm/1062/" rel="alternate" type="text/html" title="1062" /><published>2019-01-30T00:00:00+09:00</published><updated>2019-01-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/1062</id><content type="html" xml:base="http://localhost:4000/algorithm/1062/">&lt;h1 id=&quot;백준-1062번&quot;&gt;백준 1062번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2251번 Link: 2251번: 물통</summary></entry><entry><title type="html">1062</title><link href="keithlee94.github.io/algorithm/1062/" rel="alternate" type="text/html" title="1062" /><published>2019-01-30T00:00:00+09:00</published><updated>2019-01-30T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1062</id><content type="html" xml:base="keithlee94.github.io/algorithm/1062/">&lt;h1 id=&quot;백준-1062번&quot;&gt;백준 1062번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1062&quot;&gt;1062번: 가르침&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1293,7 +1386,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="Backtracking" /><summary type="html">백준 1062번 Link: 1062번: 가르침</summary></entry><entry><title type="html">7th week summary</title><link href="http://localhost:4000/java/7th-Week-Summary/" rel="alternate" type="text/html" title="7th week summary" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>http://localhost:4000/java/7th%20Week%20Summary</id><content type="html" xml:base="http://localhost:4000/java/7th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="Backtracking" /><summary type="html">백준 1062번 Link: 1062번: 가르침</summary></entry><entry><title type="html">7th week summary</title><link href="keithlee94.github.io/java/7th-Week-Summary/" rel="alternate" type="text/html" title="7th week summary" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>keithlee94.github.io/java/7th%20Week%20Summary</id><content type="html" xml:base="keithlee94.github.io/java/7th-Week-Summary/">&lt;h1 id=&quot;알고리즘-스터디-내용-정리&quot;&gt;알고리즘 스터디 내용 정리&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;백트래킹-bfs의-차이&quot;&gt;백트래킹, BFS의 차이&lt;/h1&gt;
@@ -1644,111 +1737,4 @@ int main(){
   &lt;li&gt;스트림으로 메시지 전송&lt;/li&gt;
   &lt;li&gt;Socket 닫기(close() 호출)&lt;/li&gt;
   &lt;li&gt;스트림 닫기&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry><entry><title type="html">2644</title><link href="http://localhost:4000/algorithm/2644/" rel="alternate" type="text/html" title="2644" /><published>2019-01-28T00:00:00+09:00</published><updated>2019-01-28T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2644</id><content type="html" xml:base="http://localhost:4000/algorithm/2644/">&lt;h1 id=&quot;백준-2644번&quot;&gt;백준 2644번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2644&quot;&gt;2644번: 촌수계산&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;역시나 BFS문제.&lt;/p&gt;
-
-&lt;p&gt;저번에 풀었던 토마토 문제처럼, 이 문제도 트리 내에서 출발지와 목적지를 설정하여 목적지까지 도달하는데 거치는 트리 레벨을 세면 되는 문제였다.&lt;/p&gt;
-
-&lt;p&gt;주의해야할 점은 방향이 없는 그래프 문제였다는 점.&lt;/p&gt;
-
-&lt;p&gt;이외에는 다소 평이했던 문제였다…&lt;/p&gt;
-
-&lt;p&gt;라고 하기에는 막판에 뻘짓을 좀 했다.&lt;/p&gt;
-
-&lt;p&gt;도달할 수 없는 경우 -1로 처리하는 부분에서 살짝 헤맸던 것 빼고는 할만한 문제였다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 28/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;queue&amp;gt;
-#include &amp;lt;vector&amp;gt;
-
-using namespace std;
-
-int map[101][101] = {0, };
-bool visit[101][101] = {false, };
-
-int n;
-
-int BFS(int start, int end){
-    int result = 0;
-
-    queue&amp;lt;int&amp;gt; Queue;
-    Queue.push(start);
-
-    while(!Queue.empty()){
-        vector&amp;lt;int&amp;gt; available;
-
-        while(!Queue.empty()) {
-            available.push_back(Queue.front());
-            Queue.pop();
-        }
-
-        for(int i=0; i&amp;lt;available.size(); i++) {
-            int current = available[i];
-
-            for (int j = 1; j &amp;lt;= n; j++) {
-                if (map[current][j] == 1 &amp;amp;&amp;amp; !visit[current][j]) {
-                    visit[current][j] = true;
-                    visit[j][current] = true;
-                    Queue.push(j);
-                }
-            }
-        }
-
-        result++;
-
-        for(int i=1; i&amp;lt;=n; i++){
-            if(visit[end][i] &amp;amp;&amp;amp; visit[i][end]){
-                return result;
-            }
-        }
-
-    }
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; n;
-
-    int start, end;
-    cin &amp;gt;&amp;gt; start &amp;gt;&amp;gt; end;
-
-    int m;
-    cin &amp;gt;&amp;gt; m;
-
-    for(int i=0; i&amp;lt;m; i++){
-        int x, y;
-        cin &amp;gt;&amp;gt; x &amp;gt;&amp;gt; y;
-
-        map[x][y] = 1;
-        map[y][x] = 1;
-    }
-
-    int result = BFS(start, end);
-
-    bool find = false;
-    for(int i=1; i&amp;lt;=n; i++){
-        if(visit[end][i] &amp;amp;&amp;amp; visit[i][end]){
-            find = true;
-        }
-    }
-
-    if(!find){
-        result = -1;
-    }
-
-    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2644번 Link: 2644번: 촌수계산</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Java" /><summary type="html">알고리즘 스터디 내용 정리</summary></entry></feed>
