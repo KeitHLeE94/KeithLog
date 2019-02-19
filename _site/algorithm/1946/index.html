@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>9019 - KeithLog</title>
-<meta name="description" content="백준 9019번Link: 9019번: DSLR">
+<!-- begin _includes/seo.html --><title>1946 - KeithLog</title>
+<meta name="description" content="백준 1946번Link: 1946번: 신입 사원">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="9019">
-<meta property="og:url" content="keithlee94.github.io/algorithm/9019/">
+<meta property="og:title" content="1946">
+<meta property="og:url" content="keithlee94.github.io/algorithm/1946/">
 
 
-  <meta property="og:description" content="백준 9019번Link: 9019번: DSLR">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-02-13T00:00:00+09:00">
+  <meta property="og:description" content="백준 1946번Link: 1946번: 신입 사원">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-02-19T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/9019/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/1946/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="9019">
-    <meta itemprop="description" content="백준 9019번Link: 9019번: DSLR">
-    <meta itemprop="datePublished" content="February 13, 2019">
+    <meta itemprop="headline" content="1946">
+    <meta itemprop="description" content="백준 1946번Link: 1946번: 신입 사원">
+    <meta itemprop="datePublished" content="February 19, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">9019
+          <h1 id="page-title" class="page__title" itemprop="headline">1946
 </h1>
           
         </header>
@@ -286,129 +286,91 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-9019번">백준 9019번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/9019">9019번: DSLR</a></p>
+        <h1 id="백준-1946번">백준 1946번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/1946">1946번: 신입 사원</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>예전에 풀어보다가 실패해서 그대로 접어뒀던 문제.</p>
+<p>오늘도 Greedy문제.</p>
 
-<p>알고리즘 스터디에서 BFS문제집을 만들었는데 만드는 김에 한번 다시 풀어볼 생각으로 넣었다.</p>
+<p>문제 이해하는데 시간이 좀 오래걸렸다.</p>
 
-<p>그리고 오늘 다시 풀어서 드디어 맞혔다.</p>
+<p>이해하고 나서 풀어보려는데 처음에는 두 등수의 평균을 구한 다음 평균이 높은 절반끼리 비교하는 방식으로 구현했는데, 일단 시간초과가 났다.</p>
 
-<p>우선 그전에 짰던 코드는 정말 터무니없는 코드였던 것 같다.</p>
+<p>방문 여부를 표시하고 조건에 안맞으면 반복문 중간에서 나가는 방식으로 보완했는데, 이렇게 푸니까 이젠 답이 틀리더라.</p>
 
-<p>아예 새로운 마음으로 짰는데, 처음에 돌려봤을땐 메모리 초과가 났다.</p>
+<p>그 다음엔 각각의 등수가 1인 경우들은 반드시 포함시키고, 이 둘에 대해 비교하며 카운트를 늘려가는 방식으로 풀어봤는데, 역시 틀렸다.</p>
 
-<p>메모리 초과가 날만한 여지들을 전부 없애보려고 큐를 전역변수로 만들어도 보고 큐를 싹 비워도 봤는데 메모리 초과가 잡히지 않더라.</p>
+<p>한참 고민하며 반례 찾으러 질문게시판에 들어가봤는데, 반례 찾다가 다른사람의 아이디어를 보고 힌트를 얻어 풀 수 있었다.</p>
 
-<p>질문게시판을 좀 찾아보던 중 나랑 비슷한 처지인 사람이 글을 올린걸 봤는데, 중복방문을 안하면 메모리 초과 문제를 해결할 수 있을 것이라는 답변을 보았다.</p>
+<p>핵심은 한가지 등수로 오름차순 정렬을 하는 것.</p>
 
-<p>그런데 그대로 실천해보니 이번엔 답이 틀렸다.</p>
+<p>이렇게 하면 두가지 등수 중 한가지 등수만 비교하면 풀린다.</p>
 
-<p>무슨 문제일까 해서 모든 경우를 다 찍어봤는데, C++의 모듈러 연산과 내가 아는 모듈러 연산은 다르다는 점이 문제였다.</p>
+<p>나머지 한 등수에 대해 정답에 포함시킨 바로 앞 등수보다 크면 포함시키지 않고, 반대의 경우 작은 등수로 바꿔주고 카운트를 하나 늘린 후 이를 반복하는 방식으로 풀 수 있었다.</p>
 
-<p>-1을 10000으로 모듈러 연산을 한다고 생각해보자.</p>
+<p>아이디어를 짜내보려고 노력한 것까지는 좋았던 것 같으나 핵심을 찾는데에는 도달하지 못했다.</p>
 
-<p>모듈러 연산의 피연산자가 음수이므로 답은 9999가 되어야 한다.</p>
-
-<p>그런데 코드로 옮겨 보니, 9999가 아니라 -1이 그대로 나오더라.</p>
-
-<p>사실 문제 조건에도 -1이 나올 경우 9999로 만들라는 조건이 있었는데, 음수에 대한 모듈러 연산 한번이면 다 해결될줄 알았다.</p>
-
-<p>이 부분까지 잡아내고 돌려보니 바로 맞았다.</p>
-
-<p>내가 아는 상식과 컴퓨터의 연산 방식이 다르다는 점을 알게 된 문제였다.</p>
-
-<p>또, 난 보통 BFS문제를 풀때 방문 여부를 체크해주는 것을 자주 까먹는편인데 시간도 시간이지만 메모리상으로도 문제가 발생할 수 있다는 점을 알게 되었다.</p>
-
-<p>앞으로 BFS문제를 풀때는 방문 여부 체크하는 부분을 빼먹지 말아야겠다.</p>
+<p>심지어 한가지 등수로 오름차순 정렬하는것까지는 했는데 그 다음을 생각해내지 못했다는 점이 아쉬웠다.</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 13/02/2019.
+// Created by Keith_Lee on 19/02/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;queue&gt;
-#include &lt;strings.h&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
 
 using namespace std;
 
-int T;
-int A, B;
-string result;
+struct candidates{
+    int doc, interview;
+};
 
-bool visit[10000] = {false, };
-char delta[4] = {'D', 'S', 'L', 'R'};
-
-queue&lt;pair&lt;int, string&gt;&gt; Queue;
-
-void BFS(){
-    Queue.push(make_pair(A, ""));
-    visit[A] = true;
-
-    while(!Queue.empty()){
-        int current = Queue.front().first;
-        string currentAnswer = Queue.front().second;
-        Queue.pop();
-
-        if(current == B){
-            result = currentAnswer;
-            break;
-        }
-
-        for(int i=0; i&lt;4; i++){
-            int next = 0;
-            string temp = "";
-            if(delta[i] == 'D'){
-                next = (current * 2) % 10000;
-            }
-            else if(delta[i] == 'S'){
-                if(current - 1 &gt;= 0){
-                    next = (current - 1) % 10000;
-                }
-                else{
-                    next = 9999;
-                }
-            }
-            else if(delta[i] == 'L'){
-                next += (current % 1000) * 10;
-                next += current / 1000;
-            }
-            else if(delta[i] == 'R'){
-                next += current / 10;
-                next += (current % 10) * 1000;
-            }
-
-            if(!visit[next]){
-                visit[next] = true;
-                temp += delta[i];
-                Queue.push(make_pair(next, currentAnswer + temp));
-            }
-        }
+bool compare(candidates &amp;a, candidates &amp;b){
+    if(a.doc &gt; b.doc){
+        return false;
     }
+    return true;
 }
 
 int main(){
+    int T;
+
     cin &gt;&gt; T;
 
     for(int test=0; test&lt;T; test++){
-        result = "";
-        bzero(visit, sizeof(visit));
+        int N;
 
-        cin &gt;&gt; A &gt;&gt; B;
+        cin &gt;&gt; N;
 
-        BFS();
+        vector&lt;candidates&gt; applicants;
 
-        while(!Queue.empty()){
-            Queue.pop();
+        for(int i=0; i&lt;N; i++){
+            int doc, interview;
+
+            cin &gt;&gt; doc &gt;&gt; interview;
+
+            applicants.push_back({doc, interview});
         }
 
-        cout &lt;&lt; result &lt;&lt; '\n';
+        sort(applicants.begin(), applicants.end(), compare);
+
+        int count = 1;
+
+        int standard = applicants[0].interview;
+
+        for(int i=1; i&lt;applicants.size(); i++){
+            if(standard &gt; applicants[i].interview){
+                standard = applicants[i].interview;
+                count++;
+            }
+        }
+
+        cout &lt;&lt; count &lt;&lt; '\n';
     }
 
     return 0;
@@ -436,11 +398,7 @@ int main(){
     
       
       
-      <a href="/tags/#bfs" class="page__taxonomy-item" rel="tag">BFS</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#brute-force" class="page__taxonomy-item" rel="tag">Brute Force</a>
+      <a href="/tags/#greedy" class="page__taxonomy-item" rel="tag">Greedy</a>
     
     </span>
   </p>
@@ -468,7 +426,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-13T00:00:00+09:00">February 13, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-19T00:00:00+09:00">February 19, 2019</time></p>
         
       </footer>
 
@@ -477,25 +435,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=9019%20keithlee94.github.io%2Falgorithm%2F9019%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=1946%20keithlee94.github.io%2Falgorithm%2F1946%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F9019%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1946%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F9019%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1946%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F9019%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1946%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/14500/" class="pagination--pager" title="14500
+      <a href="/algorithm/1931/" class="pagination--pager" title="1931
 ">Previous</a>
     
     
-      <a href="/algorithm/16235/" class="pagination--pager" title="16235
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -509,27 +466,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/1946/" rel="permalink">1946
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 1946번
-Link: 1946번: 신입 사원
-
-</p>
-  </article>
-</div>
         
           
 
@@ -568,6 +504,27 @@ Link: 1931번: 회의실배정
     
     <p class="archive__item-excerpt" itemprop="description">백준 16235번
 Link: 16235번: 나무 재테크
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/9019/" rel="permalink">9019
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 9019번
+Link: 9019번: DSLR
 
 </p>
   </article>
