@@ -1,4 +1,210 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-19T23:55:12+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">1946</title><link href="keithlee94.github.io/algorithm/1946/" rel="alternate" type="text/html" title="1946" /><published>2019-02-19T00:00:00+09:00</published><updated>2019-02-19T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1946</id><content type="html" xml:base="keithlee94.github.io/algorithm/1946/">&lt;h1 id=&quot;백준-1946번&quot;&gt;백준 1946번&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-02-24T20:48:53+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">2250</title><link href="keithlee94.github.io/algorithm/2250/" rel="alternate" type="text/html" title="2250" /><published>2019-02-22T00:00:00+09:00</published><updated>2019-02-22T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2250</id><content type="html" xml:base="keithlee94.github.io/algorithm/2250/">&lt;h1 id=&quot;백준-2250번&quot;&gt;백준 2250번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2250&quot;&gt;2250번: 트리의 높이와 너비&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;이번엔 DFS 문제다.&lt;/p&gt;
+
+&lt;p&gt;문제 보고나서 트리 그리는 규칙 이해하는데만 한참 걸린것 같다.&lt;/p&gt;
+
+&lt;p&gt;아무튼 이해하고 나서 트리를 직접 그려가면서 규칙을 찾아봤는데,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;우선 루트부터 찾은 다음 시작&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;루트 기준으로 왼쪽 방향으로 DFS시 만나는 가장 마지막 노드가 트리의 가장 왼쪽 노드&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;루트 기준으로 오른쪽 방향으로 DFS시 만나는 가장 마지막 노드가 트리의 가장 오른쪽 노드&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;루트 왼쪽 자식에서 오른쪽으로 DFS시 만나는 가장 마지막 노드가 루트 바로 왼쪽 노드&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;루트 오른쪽 자식에서 왼쪽으로 DFS시 만나는 가장 마지막 노드가 루트 바로 오른쪽 노드&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이렇게 5가지 규칙을 찾았다.&lt;/p&gt;
+
+&lt;p&gt;이 규칙대로 트리를 만들고 문제를 풀어보려 했는데, 생각처럼 되지 않았다.&lt;/p&gt;
+
+&lt;p&gt;이 5가지 말고 내가 놓치고 있는 부분이 무엇인지 계속 생각해봤는데, 한가지 큰 부분을 놓치고 있었다.&lt;/p&gt;
+
+&lt;p&gt;이 트리를 그리는 규칙이 트리를 inorder 방식으로 탐색하는 순서와 같다는 점.&lt;/p&gt;
+
+&lt;p&gt;이 규칙 찾는데 하루는 더 걸린것 같다.&lt;/p&gt;
+
+&lt;p&gt;찾고 나니 푸는데 걸리는 시간은 순식간이었다.&lt;/p&gt;
+
+&lt;p&gt;트리의 각 노드들의 레벨만 구하면 되니까.&lt;/p&gt;
+
+&lt;p&gt;이 문제 알고리즘 분류가 DFS, 트리였는데 BFS를 넣어야 되지 않나 하는 생각도 들었다.&lt;/p&gt;
+
+&lt;p&gt;레벨 찾는데 사용한 알고리즘이 BFS였기 때문.&lt;/p&gt;
+
+&lt;p&gt;풀고 나니 나에게 실망스러웠는데, 그새 inorder, preorder, postorder 방식으로 트리 탐색하는 알고리즘을 까먹었다는 점 때문이다.&lt;/p&gt;
+
+&lt;p&gt;평소에 잘 알고 있었다면 트리 그리는 규칙 보자마자 아 이거 루트 찾아서 inorder로 탐색하면 끝나는 문제구나 했을텐데…&lt;/p&gt;
+
+&lt;p&gt;아무튼 늦게라도 떠올랐다는것 자체는 신기할 따름이다.&lt;/p&gt;
+
+&lt;p&gt;아직 갈길이 멀다는 생각밖에 안든다…&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 21/02/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;queue&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+
+using namespace std;
+
+struct Node{
+    int num = -1;
+    int left = 0;
+    int right = 0;
+    int parent = -1;
+    int level = -1;
+    int location = 0;
+};
+
+int N;
+int lastLevel = 0; // 트리 최대 레벨
+int place = 1;
+
+Node nodeTree[10001]; // 입력따라 트리 저장할 공간
+bool visit[10001] = {false, };
+
+void inOrder(int start){
+    if(!visit[nodeTree[start].left]){
+        inOrder(nodeTree[start].left);
+    }
+
+    nodeTree[start].location = place++;
+    visit[start] = true;
+
+    if(!visit[nodeTree[start].right]){
+        inOrder(nodeTree[start].right);
+    }
+}
+
+void BFS(Node start){ // 각 노드들의 레벨을 찾는다.
+    int level = 1;
+    queue&amp;lt;Node&amp;gt; Queue;
+    vector&amp;lt;Node&amp;gt; nodes;
+
+    Queue.push(start);
+
+    while(!Queue.empty()){
+        nodes.clear();
+
+        while(!Queue.empty()){
+            Node temp = Queue.front();
+            Queue.pop();
+            nodes.push_back(temp);
+        }
+
+        for(int i=0; i&amp;lt;nodes.size(); i++){
+            Node current = nodes[i];
+            nodeTree[current.num].level = level;
+
+            if(current.left != -1){
+                Queue.push(nodeTree[current.left]);
+            }
+            if(current.right != -1){
+                Queue.push(nodeTree[current.right]);
+            }
+        }
+
+        level++;
+    }
+}
+
+int main(){
+    visit[0] = true;
+    cin &amp;gt;&amp;gt; N;
+
+    int nodeNum;
+    int leftChild;
+    int rightChild;
+
+    for(int i=1; i&amp;lt;=N; i++){
+        cin &amp;gt;&amp;gt; nodeNum &amp;gt;&amp;gt; leftChild &amp;gt;&amp;gt; rightChild;
+
+        nodeTree[nodeNum].num = nodeNum;
+        if(leftChild == -1){
+            nodeTree[nodeNum].left = 0;
+        }
+        else{
+            nodeTree[nodeNum].left = leftChild;
+            nodeTree[leftChild].parent = nodeNum;
+        }
+
+        if(rightChild == -1){
+            nodeTree[nodeNum].right = 0;
+        }
+        else{
+            nodeTree[nodeNum].right = rightChild;
+            nodeTree[rightChild].parent = nodeNum;
+        }
+    }
+
+    int root = 0;
+
+    for(int i=1; i&amp;lt;=N; i++){
+        if(nodeTree[i].parent == -1){
+            root = nodeTree[i].num;
+            break;
+        }
+    }
+
+    BFS(nodeTree[root]); // 각 노드의 레벨을 지정한다.
+
+    inOrder(root);
+
+    for(int i=1; i&amp;lt;=N; i++){
+        if(lastLevel &amp;lt; nodeTree[i].level){
+            lastLevel = nodeTree[i].level;
+        }
+    }
+
+    int maxWidth = 0;
+    int maxLevel = 0;
+
+    vector&amp;lt;int&amp;gt; levels;
+    for(int i=1; i&amp;lt;=lastLevel; i++){
+        levels.clear();
+
+        for(int j=1; j&amp;lt;=N; j++){
+            if(nodeTree[j].level == i){
+                levels.push_back(nodeTree[j].location);
+            }
+        }
+
+        sort(levels.begin(), levels.end());
+
+        int width = levels[levels.size()-1] - levels[0] + 1;
+
+        if(maxWidth &amp;lt; width){
+            maxLevel = i;
+            maxWidth = width;
+        }
+    }
+
+    cout &amp;lt;&amp;lt; maxLevel &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; maxWidth &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><category term="Tree" /><category term="BFS" /><summary type="html">백준 2250번 Link: 2250번: 트리의 높이와 너비</summary></entry><entry><title type="html">1946</title><link href="keithlee94.github.io/algorithm/1946/" rel="alternate" type="text/html" title="1946" /><published>2019-02-19T00:00:00+09:00</published><updated>2019-02-19T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1946</id><content type="html" xml:base="keithlee94.github.io/algorithm/1946/">&lt;h1 id=&quot;백준-1946번&quot;&gt;백준 1946번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1946&quot;&gt;1946번: 신입 사원&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1248,232 +1454,4 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2251번 Link: 2251번: 물통</summary></entry><entry><title type="html">1062</title><link href="keithlee94.github.io/algorithm/1062/" rel="alternate" type="text/html" title="1062" /><published>2019-01-30T00:00:00+09:00</published><updated>2019-01-30T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1062</id><content type="html" xml:base="keithlee94.github.io/algorithm/1062/">&lt;h1 id=&quot;백준-1062번&quot;&gt;백준 1062번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1062&quot;&gt;1062번: 가르침&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;29일부터 풀기 시작해서 30일에서 31일 넘어가는 새벽에야 겨우 해결했던 문제.&lt;/p&gt;
-
-&lt;p&gt;내 답이 맞는것 같아 계속 고민하다 결국 답을 보고 해결했다.&lt;/p&gt;
-
-&lt;p&gt;답을 찾아보고서야 예전에 DFS를 통해 조합을 구하는 방법을 써서 문제를 풀때 어떤식으로 코드를 짰는지 떠오르더라.&lt;/p&gt;
-
-&lt;p&gt;정신승리를 좀 하자면, 시간초과가 났긴 했지만 어쨌든 답을 구할 수 있는 방법들을 최대한 생각해보고 여러 방법들을 비교해봤다는 점.&lt;/p&gt;
-
-&lt;p&gt;이러는 과정에서 시간초과를 수십번 본 것 같은데, 어떤 부분에서 시간초과가 일어나는지는 짚어냈다.&lt;/p&gt;
-
-&lt;p&gt;문제는 그 부분을 고치니 답이 틀렸다는 것.&lt;/p&gt;
-
-&lt;p&gt;이렇게 여러번 고민해봐도 도저히 안풀려서 답을 찾아보게 되었다.&lt;/p&gt;
-
-&lt;p&gt;답을 보고 나니 뭔가 매우 허무한 느낌이 들었다. 그동안 뭘 짜고 있었나 싶기도 하고.&lt;/p&gt;
-
-&lt;p&gt;답을 찾아내기 위해 삽질했던 시간들이 있었기 때문에 정답을 보고서도 이 부분은 나도 구현했는데 왜 틀렸을까 하는 생각이 들게 하였고 이 부분은 이래서 이렇게 짰구나 하는 생각도 들 수 있었던것 같다.&lt;/p&gt;
-
-&lt;p&gt;요며칠 단순한 BFS문제를 풀면서 이런식으로 DFS를 통해 조합을 구하고 백트래킹해야 풀리는 문제 푸는 연습을 해야겠다고 생각했는데, 이 문제가 전형적인 그런 문제였다.&lt;/p&gt;
-
-&lt;p&gt;시간 지나고 푸는 방법 까먹을때쯤 한번 더 풀어봐야겠다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;삽질했던-코드&quot;&gt;삽질했던 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;vector&amp;gt;
-
-using namespace std;
-
-int result = 0;
-int N, K;
-int candidates[26] = {0, };
-int words[50][26] = {0, };
-
-int max(int a, int b){
-    return a &amp;gt; b ? a : b;
-}
-
-void searchTeach(int count, int index, int toTeach[26], int limit){
-    int tempResult = 0;
-
-    int temp[26];
-    for(int i=0; i&amp;lt;26; i++){
-        temp[i] = toTeach[i];
-    }
-
-    if(candidates[index] == 1){
-        temp[index] = 1;
-    }
-
-    if(count == limit){
-        for(int i=0; i&amp;lt;N; i++){
-            bool invalid = false;
-
-            for(int j=0; j&amp;lt;26; j++){
-                if(toTeach[j] - words[i][j] &amp;lt; 0){
-                    invalid = true;
-                    break;
-                }
-            }
-
-            if(!invalid){
-                tempResult++;
-            }
-        }
-
-        result = max(result, tempResult);
-        return;
-    }
-
-    int next = 0;
-    for(int i=index+1; i&amp;lt;26; i++){
-        if(candidates[i] == 1){
-            next = i;
-            break;
-        }
-    }
-
-    searchTeach(count+1, next, temp, limit);
-    searchTeach(count+1, next, toTeach, limit);
-}
-
-void toTeach(){
-    for(int i=0; i&amp;lt;N; i++){
-        for(int j=0; j&amp;lt;26; j++){
-            if(candidates[j] != 1){
-                candidates[j] = words[i][j];
-            }
-        }
-    }
-}
-
-int main(){
-    string word;
-
-    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; K;
-
-    for(int i=0; i&amp;lt;N; i++){
-        cin &amp;gt;&amp;gt; word;
-
-        if(K &amp;gt;= 5){
-            string temp = word.substr(4, word.length()-8);
-            for(int j=0; j&amp;lt;temp.length(); j++){
-                int current = temp[j] - 'a';
-                if(current != 0 &amp;amp;&amp;amp; current != 2 &amp;amp;&amp;amp; current != 8 &amp;amp;&amp;amp; current != 13 &amp;amp;&amp;amp; current != 19){
-                    words[i][current] = 1;
-                }
-            }
-        }
-    }
-
-    if(K &amp;lt; 5){
-        result = 0;
-    }
-    else{
-        toTeach();
-
-        int input[26] = {0, };
-
-        for(int i=0; i&amp;lt;26; i++){
-            if(candidates[i] == 1){
-                searchTeach(0, i, input, K-5);
-                candidates[i]--;
-            }
-        }
-
-        if(K == 5){
-            searchTeach(0, 0, input, K-5);
-        }
-    }
-
-    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 30/01/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;vector&amp;gt;
-
-using namespace std;
-
-int result = 0;
-int N, K;
-
-string words[50];
-bool visit[26];
-
-int max(int a, int b){
-    return a &amp;gt; b ? a : b;
-}
-
-void searchTeach(int index, int count){
-    if(count == K-5){
-        int tempResult = 0;
-
-        for(int i=0; i&amp;lt;N; i++){
-            bool invalid = false;
-
-            for(int j=0; j&amp;lt;words[i].length(); j++){
-                if(!visit[words[i][j] - 'a']){
-                    invalid = true;
-                    break;
-                }
-
-            }
-
-            if(!invalid){
-                tempResult++;
-            }
-        }
-
-        result = max(result, tempResult);
-        return;
-    }
-
-    for(int i=index; i&amp;lt;26; i++){
-        if(!visit[i]){
-            visit[i] = true;
-            searchTeach(i, count+1);
-            visit[i] = false;
-        }
-    }
-
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; K;
-
-    for(int i=0; i&amp;lt;N; i++){
-        cin &amp;gt;&amp;gt; words[i];
-
-        words[i] = words[i].substr(4, words[i].length()-8);
-    }
-
-    if(K &amp;lt; 5){
-        result = 0;
-    }
-    else if(K == 26){
-        result = N;
-    }
-    else{
-        visit['a' - 'a'] = true;
-        visit['n' - 'a'] = true;
-        visit['t' - 'a'] = true;
-        visit['c' - 'a'] = true;
-        visit['i' - 'a'] = true;
-
-        searchTeach(0, 0);
-    }
-
-    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Brute Force" /><category term="Backtracking" /><summary type="html">백준 1062번 Link: 1062번: 가르침</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2251번 Link: 2251번: 물통</summary></entry></feed>

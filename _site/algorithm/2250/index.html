@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>16234 - KeithLog</title>
-<meta name="description" content="백준 16234번Link: 16234번: 인구 이동">
+<!-- begin _includes/seo.html --><title>2250 - KeithLog</title>
+<meta name="description" content="백준 2250번Link: 2250번: 트리의 높이와 너비">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="16234">
-<meta property="og:url" content="keithlee94.github.io/algorithm/16234/">
+<meta property="og:title" content="2250">
+<meta property="og:url" content="keithlee94.github.io/algorithm/2250/">
 
 
-  <meta property="og:description" content="백준 16234번Link: 16234번: 인구 이동">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-17T00:00:00+09:00">
+  <meta property="og:description" content="백준 2250번Link: 2250번: 트리의 높이와 너비">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-02-22T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/16234/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/2250/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="16234">
-    <meta itemprop="description" content="백준 16234번Link: 16234번: 인구 이동">
-    <meta itemprop="datePublished" content="January 17, 2019">
+    <meta itemprop="headline" content="2250">
+    <meta itemprop="description" content="백준 2250번Link: 2250번: 트리의 높이와 너비">
+    <meta itemprop="datePublished" content="February 22, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">16234
+          <h1 id="page-title" class="page__title" itemprop="headline">2250
 </h1>
           
         </header>
@@ -286,186 +286,208 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-16234번">백준 16234번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/16234">16234번: 인구 이동</a></p>
+        <h1 id="백준-2250번">백준 2250번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/2250">2250번: 트리의 높이와 너비</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>작년 하반기 삼성 SW 역량테스트 문제다.</p>
+<p>이번엔 DFS 문제다.</p>
 
-<p>시험장에서 문제 보고 뭔가싶어서 바로 넘기고 다른문제 올인하다 결국 둘다 못풀어서 광탈했던 악몽이 다시 떠오른다.</p>
+<p>문제 보고나서 트리 그리는 규칙 이해하는데만 한참 걸린것 같다.</p>
 
-<p>아무 문제나 붙잡고 풀다가 다 안풀려서 어차피 한번은 풀어야될 문제라 결국 붙잡고 풀었다.</p>
+<p>아무튼 이해하고 나서 트리를 직접 그려가면서 규칙을 찾아봤는데,</p>
 
-<p>예전부터 지인들이 니가 문제보고 쫄아서그렇지 별거 아닌문제다 라는 말을 했었는데 막상 풀어보니 틀린말은 아닌거같다.</p>
+<ol>
+  <li>
+    <p>우선 루트부터 찾은 다음 시작</p>
+  </li>
+  <li>
+    <p>루트 기준으로 왼쪽 방향으로 DFS시 만나는 가장 마지막 노드가 트리의 가장 왼쪽 노드</p>
+  </li>
+  <li>
+    <p>루트 기준으로 오른쪽 방향으로 DFS시 만나는 가장 마지막 노드가 트리의 가장 오른쪽 노드</p>
+  </li>
+  <li>
+    <p>루트 왼쪽 자식에서 오른쪽으로 DFS시 만나는 가장 마지막 노드가 루트 바로 왼쪽 노드</p>
+  </li>
+  <li>
+    <p>루트 오른쪽 자식에서 왼쪽으로 DFS시 만나는 가장 마지막 노드가 루트 바로 오른쪽 노드</p>
+  </li>
+</ol>
 
-<p>하지만 내가 저날 시험장에서 이문제를 제대로 읽고 이해했다고 해도 시간안에 푸는건 무리였을것 같다.</p>
+<p>이렇게 5가지 규칙을 찾았다.</p>
 
-<p>BFS를 여러번 해야되는 문제다.</p>
+<p>이 규칙대로 트리를 만들고 문제를 풀어보려 했는데, 생각처럼 되지 않았다.</p>
 
-<p>map에서 수정할 부분이 어디인지 찾아내는 부분에서 BFS를 해야 하고, 수정할 부분을 찾은 다음 map을 수정하기 위한 BFS를 해야하는 문제.</p>
+<p>이 5가지 말고 내가 놓치고 있는 부분이 무엇인지 계속 생각해봤는데, 한가지 큰 부분을 놓치고 있었다.</p>
 
-<p>거기다 이 과정을 더이상 수정할 부분이 없을때까지 반복해야 한다.</p>
+<p>이 트리를 그리는 규칙이 트리를 inorder 방식으로 탐색하는 순서와 같다는 점.</p>
 
-<p>BFS문제라는 느낌은 확실히 들었다.</p>
+<p>이 규칙 찾는데 하루는 더 걸린것 같다.</p>
 
-<p>처음에 문제 접했을땐 map에서 수정할 부분을 찾는 과정에 대해 BFS를 써야겠다는 생각이 안들었다.</p>
+<p>찾고 나니 푸는데 걸리는 시간은 순식간이었다.</p>
 
-<p>그래서 3중 for문을 사용해서 수정할 부분을 찾아 마킹했다.</p>
+<p>트리의 각 노드들의 레벨만 구하면 되니까.</p>
 
-<p>그 이후 map을 수정하는 부분에 대해서는 BFS로 구현하여 풀어보았다.</p>
+<p>이 문제 알고리즘 분류가 DFS, 트리였는데 BFS를 넣어야 되지 않나 하는 생각도 들었다.</p>
 
-<p>풀어본 다음 테스트케이스들을 넣어보니, 단순히 3중 for문으로는 풀수 없는 문제라는 것을 깨달았다.</p>
+<p>레벨 찾는데 사용한 알고리즘이 BFS였기 때문.</p>
 
-<p>마지막까지 가장 애먹였던 부분이 이부분인데, map에서 수정할 부분을 단순히 1로 마킹할 경우 영역간 경계가 있으나 이 경계를 무시하고 BFS를 진행하는 문제가 생긴다.</p>
+<p>풀고 나니 나에게 실망스러웠는데, 그새 inorder, preorder, postorder 방식으로 트리 탐색하는 알고리즘을 까먹었다는 점 때문이다.</p>
 
-<p>BFS로 바꿔서 해보고도 마지막에 이부분을 놓쳐 한번 더 삽질하다 결국 풀었다.</p>
+<p>평소에 잘 알고 있었다면 트리 그리는 규칙 보자마자 아 이거 루트 찾아서 inorder로 탐색하면 끝나는 문제구나 했을텐데…</p>
 
-<p>막상 풀고나니 별거 아닌건 맞는데, 시험장의 압박감과 이 시험볼 당시 알고리즘 공부도 어설프게 하고 간 나는 절대 못풀었을 것 같다는 생각이 들었다.</p>
+<p>아무튼 늦게라도 떠올랐다는것 자체는 신기할 따름이다.</p>
 
-<p>얻어가는 점은 몇번씩 실패하고도 남의 도움 안받고 내 힘만으로 풀어냈다는 점, BFS문제를 혼자 힘만으로 제대로 풀어냈다는 점이다.</p>
-
-<p>이런 점을 밑거름삼아 앞으로 있을 역량테스트에서도 포기하지 않고 끝까지 풀어내는 것이 목표이다.</p>
-
-<p><strong><em>다시는 악몽 안꾸련다. 앞으로도 화이팅!!!</em></strong></p>
+<p>아직 갈길이 멀다는 생각밖에 안든다…</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 15/01/2019.
+// Created by Keith_Lee on 21/02/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;memory.h&gt;
-#include &lt;queue&gt;
 #include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
 
 using namespace std;
 
-int N, L, R;
-int dx[] = {0, 0, 1, -1};
-int dy[] = {1, -1, 0, 0};
+struct Node{
+    int num = -1;
+    int left = 0;
+    int right = 0;
+    int parent = -1;
+    int level = -1;
+    int location = 0;
+};
 
-int map[50][50] = {0, };
-int toChange[50][50] = {0, };
-int visit[50][50] = {0, };
+int N;
+int lastLevel = 0; // 트리 최대 레벨
+int place = 1;
 
-vector&lt;pair&lt;int, int&gt;&gt; changes(){
-    vector&lt;pair&lt;int, int&gt;&gt; result;
+Node nodeTree[10001]; // 입력따라 트리 저장할 공간
+bool visit[10001] = {false, };
 
-    for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;N; j++){
-            if(toChange[i][j] != 0){
-                result.push_back(make_pair(i, j));
-            }
-        }
+void inOrder(int start){
+    if(!visit[nodeTree[start].left]){
+        inOrder(nodeTree[start].left);
     }
 
-    return result;
-}
+    nodeTree[start].location = place++;
+    visit[start] = true;
 
-void toChange_init(){
-    int areaCount = 1;
-
-    for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;N; j++){
-            queue&lt;pair&lt;int, int&gt;&gt; Queue;
-            Queue.push(make_pair(i, j));
-
-            while(!Queue.empty()){
-                int currentX = Queue.front().first;
-                int currentY = Queue.front().second;
-                Queue.pop();
-
-                for(int k=0; k&lt;4; k++){
-                    int nextX = currentX + dx[k];
-                    int nextY = currentY + dy[k];
-
-                    if(nextX &gt;= 0 &amp;&amp; nextX &lt; N &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
-                        int gap = abs(map[currentX][currentY] - map[nextX][nextY]);
-                        if(gap &gt;= L &amp;&amp; gap &lt;= R &amp;&amp; toChange[nextX][nextY] == 0){
-                            toChange[nextX][nextY] = areaCount;
-                            Queue.push(make_pair(nextX, nextY));
-                        }
-                    }
-                }
-            }
-
-            areaCount++;
-        }
+    if(!visit[nodeTree[start].right]){
+        inOrder(nodeTree[start].right);
     }
 }
 
-void BFS(int currentX, int currentY){
-    vector&lt;pair&lt;int, int&gt;&gt; visited;
+void BFS(Node start){ // 각 노드들의 레벨을 찾는다.
+    int level = 1;
+    queue&lt;Node&gt; Queue;
+    vector&lt;Node&gt; nodes;
 
-    queue&lt;pair&lt;int, int&gt;&gt; Queue;
-    Queue.push(make_pair(currentX, currentY));
-
-    int changeCount = 0;
-    int changeSum = 0;
-    visit[currentX][currentY] = 1;
+    Queue.push(start);
 
     while(!Queue.empty()){
-        int startX = Queue.front().first;
-        int startY = Queue.front().second;
-        Queue.pop();
+        nodes.clear();
 
-        changeCount++;
-        changeSum += map[startX][startY];
-        visited.push_back(make_pair(startX, startY));
+        while(!Queue.empty()){
+            Node temp = Queue.front();
+            Queue.pop();
+            nodes.push_back(temp);
+        }
 
-        for(int i=0; i&lt;4; i++){
-            int nextX = startX + dx[i];
-            int nextY = startY + dy[i];
+        for(int i=0; i&lt;nodes.size(); i++){
+            Node current = nodes[i];
+            nodeTree[current.num].level = level;
 
-            if(nextX &gt;= 0 &amp;&amp; nextX &lt; N &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
-                if(visit[nextX][nextY] == 0 &amp;&amp; toChange[nextX][nextY] == toChange[startX][startY]){
-                    Queue.push(make_pair(nextX, nextY));
-                    visit[nextX][nextY] = 1;
-                }
+            if(current.left != -1){
+                Queue.push(nodeTree[current.left]);
+            }
+            if(current.right != -1){
+                Queue.push(nodeTree[current.right]);
             }
         }
-    }
 
-    for(int i=0; i&lt;visited.size(); i++){
-        map[visited[i].first][visited[i].second] = changeSum / changeCount;
+        level++;
     }
 }
 
 int main(){
-    cin &gt;&gt; N &gt;&gt; L &gt;&gt; R;
+    visit[0] = true;
+    cin &gt;&gt; N;
 
-    for(int i=0; i&lt;N; i++){
-        for(int j=0; j&lt;N; j++){
-            cin &gt;&gt; map[i][j];
+    int nodeNum;
+    int leftChild;
+    int rightChild;
+
+    for(int i=1; i&lt;=N; i++){
+        cin &gt;&gt; nodeNum &gt;&gt; leftChild &gt;&gt; rightChild;
+
+        nodeTree[nodeNum].num = nodeNum;
+        if(leftChild == -1){
+            nodeTree[nodeNum].left = 0;
+        }
+        else{
+            nodeTree[nodeNum].left = leftChild;
+            nodeTree[leftChild].parent = nodeNum;
+        }
+
+        if(rightChild == -1){
+            nodeTree[nodeNum].right = 0;
+        }
+        else{
+            nodeTree[nodeNum].right = rightChild;
+            nodeTree[rightChild].parent = nodeNum;
         }
     }
 
-    int count = 0;
+    int root = 0;
 
-    while(true) {
-        memset(toChange, 0, sizeof(toChange));
-        memset(visit, 0, sizeof(visit));
-
-        toChange_init();
-
-        vector&lt;pair&lt;int, int&gt;&gt; ones = changes();
-        if (ones.size() == 0) {
+    for(int i=1; i&lt;=N; i++){
+        if(nodeTree[i].parent == -1){
+            root = nodeTree[i].num;
             break;
         }
+    }
 
-        for (int i = 0; i &lt; ones.size(); i++) {
-            if (visit[ones[i].first][ones[i].second] == 0) {
-                BFS(ones[i].first, ones[i].second);
+    BFS(nodeTree[root]); // 각 노드의 레벨을 지정한다.
+
+    inOrder(root);
+
+    for(int i=1; i&lt;=N; i++){
+        if(lastLevel &lt; nodeTree[i].level){
+            lastLevel = nodeTree[i].level;
+        }
+    }
+
+    int maxWidth = 0;
+    int maxLevel = 0;
+
+    vector&lt;int&gt; levels;
+    for(int i=1; i&lt;=lastLevel; i++){
+        levels.clear();
+
+        for(int j=1; j&lt;=N; j++){
+            if(nodeTree[j].level == i){
+                levels.push_back(nodeTree[j].location);
             }
         }
 
-        count++;
+        sort(levels.begin(), levels.end());
+
+        int width = levels[levels.size()-1] - levels[0] + 1;
+
+        if(maxWidth &lt; width){
+            maxLevel = i;
+            maxWidth = width;
+        }
     }
 
-    cout &lt;&lt; count &lt;&lt; '\n';
+    cout &lt;&lt; maxLevel &lt;&lt; ' ' &lt;&lt; maxWidth &lt;&lt; '\n';
 
     return 0;
 }
@@ -496,7 +518,11 @@ int main(){
     
       
       
-      <a href="/tags/#dfs" class="page__taxonomy-item" rel="tag">DFS</a>
+      <a href="/tags/#dfs" class="page__taxonomy-item" rel="tag">DFS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#tree" class="page__taxonomy-item" rel="tag">Tree</a>
     
     </span>
   </p>
@@ -524,7 +550,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-17T00:00:00+09:00">January 17, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-22T00:00:00+09:00">February 22, 2019</time></p>
         
       </footer>
 
@@ -533,25 +559,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=16234%20keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=2250%20keithlee94.github.io%2Falgorithm%2F2250%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2250%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2250%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F16234%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2250%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/1520/" class="pagination--pager" title="1520
+      <a href="/algorithm/1946/" class="pagination--pager" title="1946
 ">Previous</a>
     
     
-      <a href="/java/6th-Week-Summary/" class="pagination--pager" title="6th week summary
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -565,27 +590,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/2250/" rel="permalink">2250
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 2250번
-Link: 2250번: 트리의 높이와 너비
-
-</p>
-  </article>
-</div>
         
           
 
@@ -645,6 +649,27 @@ Link: 1931번: 회의실배정
     
     <p class="archive__item-excerpt" itemprop="description">백준 16235번
 Link: 16235번: 나무 재테크
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/9019/" rel="permalink">9019
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 9019번
+Link: 9019번: DSLR
 
 </p>
   </article>
