@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2583 - KeithLog</title>
-<meta name="description" content="백준 2583번Link: 2583번: 영역 구하기">
+<!-- begin _includes/seo.html --><title>1309 - KeithLog</title>
+<meta name="description" content="백준 1309번Link: 1309번: 동물원">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2583">
-<meta property="og:url" content="keithlee94.github.io/algorithm/2583/">
+<meta property="og:title" content="1309">
+<meta property="og:url" content="keithlee94.github.io/algorithm/1309/">
 
 
-  <meta property="og:description" content="백준 2583번Link: 2583번: 영역 구하기">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-22T00:00:00+09:00">
+  <meta property="og:description" content="백준 1309번Link: 1309번: 동물원">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-02-25T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/2583/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/1309/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2583">
-    <meta itemprop="description" content="백준 2583번Link: 2583번: 영역 구하기">
-    <meta itemprop="datePublished" content="January 22, 2019">
+    <meta itemprop="headline" content="1309">
+    <meta itemprop="description" content="백준 1309번Link: 1309번: 동물원">
+    <meta itemprop="datePublished" content="February 25, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2583
+          <h1 id="page-title" class="page__title" itemprop="headline">1309
 </h1>
           
         </header>
@@ -286,108 +286,56 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-2583번">백준 2583번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/2583">2583번: 영역 구하기</a></p>
+        <h1 id="백준-1309번">백준 1309번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/1309">1309번: 동물원</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>기초적인 BFS 문제다.</p>
+<p>오늘은 DP를 배워서 이제 한동안 DP문제에 매달릴 예정이다.</p>
 
-<p>2차원 배열에 모눈종이를 표시하고, 표시되지 않은 부분들에 대해 BFS를 진행하며 각 영역의 크기와 총 영역 갯수를 구하는 문제.</p>
+<p>그 중에서도 아주 간단한 문제를 하나 풀었다.</p>
 
-<p>문제 보기에 좌표가 조금 다르게 표현되어 있어 이를 2차원 배열로 옮기는 과정에서 생각을 좀 했었다.</p>
+<p>정말 기본적인 문제라고 할 수 있는데, 몇개 케이스 따져보며 규칙 찾으면 바로 풀리는 문제다.</p>
 
-<p>좌표만 잘 옮기면 무난히 풀 수 있는 문제.</p>
+<p>역시 DP문제답게 규칙만 찾으면 구현은 간단히 끝난다.</p>
+
+<p>이번 기회에 DP에 대해 확실히 정복하고 갈 작정이다.</p>
+
+<p>여전히 갈길이 멀지만, 화이팅.</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 22/01/2019.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>///
+// Created by Keith_Lee on 25/02/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;queue&gt;
-#include &lt;vector&gt;
-#include &lt;string.h&gt;
-#include &lt;algorithm&gt;
+#include &lt;strings.h&gt;
 
 using namespace std;
 
-int M, N, K;
-int result = 0;
+int N;
 
-int map[100][100];
-bool visit[100][100];
+long long zoo(int n){
+    long long DP[n+1];
+    bzero(DP, sizeof(DP));
 
-int dx[4] = {0, 0, 1, -1};
-int dy[4] = {1, -1, 0, 0};
+    DP[0] = 0;
+    DP[1] = 3;
+    DP[2] = 7;
 
-vector&lt;int&gt; areas;
-
-void BFS(int startX, int startY){
-    queue&lt;pair&lt;int, int&gt;&gt; Queue;
-    Queue.push(make_pair(startX, startY));
-
-    int area = 1;
-
-    while(!Queue.empty()){
-        int currentX = Queue.front().first;
-        int currentY = Queue.front().second;
-        Queue.pop();
-
-        for(int i=0; i&lt;4; i++){
-            int nextX = currentX + dx[i];
-            int nextY = currentY + dy[i];
-
-            if(nextX &gt;= 0 &amp;&amp; nextX &lt; M &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; N){
-                if(!visit[nextX][nextY] &amp;&amp; map[nextX][nextY] == 0){
-                    visit[nextX][nextY] = true;
-                    Queue.push(make_pair(nextX, nextY));
-                    area++;
-                }
-            }
-        }
+    for(int i=3; i&lt;=n; i++){
+        DP[i] = (2 * DP[i-1] + DP[i-2]) % 9901;
     }
 
-    result++;
-    areas.push_back(area);
+    return DP[n];
 }
 
 int main(){
-    cin &gt;&gt; M &gt;&gt; N &gt;&gt; K;
+    cin &gt;&gt; N;
 
-    bzero(map, sizeof(map));
-
-    for(int i=0; i&lt;K; i++){
-        int startX, startY, endX, endY;
-
-        cin &gt;&gt; startX &gt;&gt; startY &gt;&gt; endX &gt;&gt; endY;
-
-        for(int j=startY; j&lt;endY; j++){
-            for(int k=startX; k&lt;endX; k++){
-                map[j][k] = 1;
-            }
-        }
-    }
-
-    for(int i=0; i&lt;M; i++){
-        for(int j=0; j&lt;N; j++){
-            if(!visit[i][j] &amp;&amp; map[i][j] == 0){
-                visit[i][j] = true;
-                BFS(i, j);
-            }
-        }
-    }
-
-    sort(areas.begin(), areas.end());
-    cout &lt;&lt; result &lt;&lt; '\n';
-    for(int i=0; i&lt;areas.size(); i++){
-        cout &lt;&lt; areas[i] &lt;&lt; ' ';
-    }
-    cout &lt;&lt; '\n';
-
-    return 0;
+    cout &lt;&lt; zoo(N) &lt;&lt; '\n';
 }
 </code></pre></div></div>
 <hr />
@@ -412,7 +360,7 @@ int main(){
     
       
       
-      <a href="/tags/#bfs" class="page__taxonomy-item" rel="tag">BFS</a>
+      <a href="/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
     
     </span>
   </p>
@@ -440,7 +388,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-22T00:00:00+09:00">January 22, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-25T00:00:00+09:00">February 25, 2019</time></p>
         
       </footer>
 
@@ -449,25 +397,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2583%20keithlee94.github.io%2Falgorithm%2F2583%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=1309%20keithlee94.github.io%2Falgorithm%2F1309%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2583%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1309%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2583%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1309%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2583%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1309%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/11724/" class="pagination--pager" title="11724
+      <a href="/algorithm/2250/" class="pagination--pager" title="2250
 ">Previous</a>
     
     
-      <a href="/algorithm/7562/" class="pagination--pager" title="7562
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -481,27 +428,6 @@ int main(){
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/1309/" rel="permalink">1309
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 1309번
-Link: 1309번: 동물원
-
-</p>
-  </article>
-</div>
         
           
 
@@ -561,6 +487,27 @@ Link: 1946번: 신입 사원
     
     <p class="archive__item-excerpt" itemprop="description">백준 1931번
 Link: 1931번: 회의실배정
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/16235/" rel="permalink">16235
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 16235번
+Link: 16235번: 나무 재테크
 
 </p>
   </article>
