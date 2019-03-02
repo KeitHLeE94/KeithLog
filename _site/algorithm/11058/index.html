@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2nd week summary - KeithLog</title>
-<meta name="description" content="2주차 정리">
+<!-- begin _includes/seo.html --><title>11058 - KeithLog</title>
+<meta name="description" content="백준 11058번Link: 11058번: 크리보드">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2nd week summary">
-<meta property="og:url" content="keithlee94.github.io/cse/2nd-Week-Summary/">
+<meta property="og:title" content="11058">
+<meta property="og:url" content="keithlee94.github.io/algorithm/11058/">
 
 
-  <meta property="og:description" content="2주차 정리">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2018-12-28T00:00:00+09:00">
+  <meta property="og:description" content="백준 11058번Link: 11058번: 크리보드">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-02-28T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/cse/2nd-Week-Summary/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/11058/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2nd week summary">
-    <meta itemprop="description" content="2주차 정리">
-    <meta itemprop="datePublished" content="December 28, 2018">
+    <meta itemprop="headline" content="11058">
+    <meta itemprop="description" content="백준 11058번Link: 11058번: 크리보드">
+    <meta itemprop="datePublished" content="February 28, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2nd week summary
+          <h1 id="page-title" class="page__title" itemprop="headline">11058
 </h1>
           
         </header>
@@ -286,134 +286,103 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="2주차-정리">2주차 정리</h1>
+        <h1 id="백준-11058번">백준 11058번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/11058">11058번: 크리보드</a></p>
 
-<ul>
-  <li>라이브러리, 프레임워크 차이
-    <ul>
-      <li>라이브러리: 기능 하나에 대해서만 제공(제한적인 용도)</li>
-      <li>프레임워크: 틀이 잡혀져 있다.(다양한 용도, 범용적) =&gt; 커스터마이징이 어러움.</li>
-    </ul>
-  </li>
-</ul>
 <hr />
 
-<ul>
-  <li>AWS EC2
-    <ul>
-      <li>인스턴스 == 임대받은 컴퓨터 1대.</li>
-    </ul>
-  </li>
-</ul>
+<h1 id="문제-설명">문제 설명</h1>
+<p>이번에도 DP 문제.</p>
+
+<p>예전에 풀었어야 했는데 그땐 DP에 대해 너무 자신이 없어서 쫄아서 패스했던 기억이 난다.</p>
+
+<p>이번에 DP를 제대로 공부하는 김에 풀어봤는데, 생각보다 금방 점화식을 찾아냈다.</p>
+
+<p>물론 여러번 시도해보긴 했지만, 생각했던 점화식이 맞았다.</p>
+
+<p>점화식에 대해 설명하자면 다음과 같다.</p>
+
+<p>현재의 DP 인덱스가 i라고 가정하자.</p>
+
+<p>우선 A만 누르는 경우는 직전 DP값에다 1을 더한 값이다.</p>
+
+<p>이는 곧 DP[i] = DP[i-1] + 1과 같다.</p>
+
+<p>이 다음부터가 꽤 복잡한데, 경우는 다음과 같다.</p>
+
+<p>1) 현재 기준 3번 전 DP에서 Ctrl + A를 눌러 그때 입력된 A들을 모두 선택하고, 2번 전 DP에서 Ctrl + C를 눌러 선택된 것을 복사한 다음 1번 전 DP에서 Ctrl + V를 눌러 복사된 내용을 붙여넣는 경우</p>
+
+<p>이는 곧 DP[i-3]에다가 DP[i-3]을 한번 더 쓰는 것과 같다.</p>
+
+<p>따라서 DP[i] = 2 * DP[i-3] 이다.</p>
+
+<p>2) 현재 기준 4번 전 DP에서 Ctrl + A를 눌러 그때 입력된 A들을 모두 선택하고, 3번 전 DP에서 Ctrl + C를 눌러 선택된 것을 복사한 다음 2번 전, 1번 전 DP에서 Ctrl + V를 눌러 복사된 내용을 붙여넣는 경우</p>
+
+<p>이는 곧 DP[i-4]를 3번 쓰는 것과 같으므로, DP[i] = 3 * DP[i-4] 이다.</p>
+
+<p>이 과정을 DP[0] * (i-1)까지 반복한다.</p>
+
+<p>이 모든 경우의 수들의 최대값이 현재 DP값이 된다.</p>
+
+<p>정답을 얻기 위해 예전 정답을 쌓아 나간다는 생각을 어거지로라도 하다 보니 점화식이 조금은 보이는 것 같다.</p>
+
+<p>이런식으로 DP를 정복할 수 있을것 같다는 자신감을 좀 갖게 해준 문제였다.</p>
 <hr />
 
-<ul>
-  <li>힙 영역
-    <ul>
-      <li>동적할당시 할당되는 메모리 영역.</li>
-      <li>자바, 파이썬은 Garbage collector가 있으므로 굳이 free 안해줘도 안쓰는 공간은 할당 해제됨.(But, file은 일일이 close해줘야함)</li>
-    </ul>
-  </li>
-</ul>
-<hr />
+<h1 id="정답-코드">정답 코드</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+// Created by Keith_Lee on 26/02/2019.
+//
 
-<ul>
-  <li>파이썬 자료구조
-    <ul>
-      <li>tuple
-        <ul>
-          <li>가공된 데이터의 내용이 바뀌지 않도록 방어하기 위해 사용.</li>
-          <li>상수와 비슷한 역할을 한다.</li>
-        </ul>
-      </li>
-      <li>dic
-        <ul>
-          <li>내부적으로는 트리 형태를 띈다.</li>
-          <li>검색시간: O(1)이지만 실제로는 트리 형태를 띄므 로 O(1)에 가까운 O(logn)이다.</li>
-        </ul>
-      </li>
-      <li>map()
-        <ul>
-          <li>데이터 구조의 각 원소들에 동일한 함수를 적용하여 새로운 데이터를 만드는 파이썬의 기본 함수.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-<hr />
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;strings.h&gt;
 
-<ul>
-  <li>JSON
-    <ul>
-      <li>JavaScript Object Notation.</li>
-      <li>서버와 통신하는 기본 데이터 양식으로 많이 사용된다.</li>
-      <li>JSONLint: JSON 형식에 맞는지 유효성을 검사해주는 사이트.</li>
-      <li>json.loads(): JSON을 읽어 dic으로 변환.</li>
-      <li>json.dumps(): dic을 읽어 JSON으로 변환.</li>
-    </ul>
-  </li>
-</ul>
-<hr />
+using namespace std;
 
-<ul>
-  <li>API
-    <ul>
-      <li>여러 서비스들 간에 범용으로 쓰이는 인터페이스.</li>
-      <li>REST API: 웹서버를 이용하여 API 제공. JSON을 데이터 양식으로 활용한다.</li>
-    </ul>
-  </li>
-</ul>
-<hr />
+int N;
+long long DP[101];
 
-<ul>
-  <li>DialogFlow: 사용자의 입력 의도를 파악하여 의도에 맞게 Flask를 동작시키는 역할.</li>
-</ul>
-<hr />
+long long max(vector&lt;long long&gt; v){
+    long long result = -1;
 
-<ul>
-  <li>Slack 챗봇 Flow
-    <ol>
-      <li>사용자가 문장 입력</li>
-      <li>Slack이 사용자가 입력한 문장 Flask에 전달</li>
-      <li>Flask가 DialogFlow로 전달받은 문장 전달</li>
-      <li>DialogFlow가 정의된 Intent들을 바탕으로 전달된 문장의 문맥 파악</li>
-      <li>DialogFlow의 분석 결과를 Flask로 전달</li>
-      <li>Flask에 정의된 함수 중 전달된 Intent에 맞는 함수 실행</li>
-      <li>Flask가 Slack으로 함수 실행으로 만들어진 response 전달</li>
-      <li>Slack에서 사용자로 response 전달</li>
-    </ol>
-  </li>
-</ul>
-<hr />
+    for(int i=0; i&lt;v.size(); i++){
+        if(v[i] &gt; result){
+            result = v[i];
+        }
+    }
 
-<ul>
-  <li>Git
-    <ul>
-      <li>Fetch: 저장된 것을 가져온다.</li>
-      <li>Branch: 가지치기.(Master = 최종 결과물, 배포판)</li>
-      <li>Merge: Branch 병합.</li>
-      <li>장점: 분산 작업 가능, 오프라인 개발 가능 - 중앙 서버에 접속하지 않고 각자의 환경에서 작업할 수 있으므로.</li>
-      <li>명령어
-        <ul>
-          <li>git log: git에 수행한 행동들을 보여준다.</li>
-          <li>git reset –hard “hash값”: “hash”값의 시점으로 git을 되돌린다.(이 시점 이후에 수행된 모든 commit은 다 취소됨)</li>
-          <li>git push -f: 강제로 push.</li>
-          <li>git commit –amend: commit 메시지 수정 가능.</li>
-        </ul>
-      </li>
-      <li>topic branch: 기능 추가, 버그 수정 등 단위작업을 위한 branch.</li>
-      <li>Merge 과정
-        <ol>
-          <li>다른 branch에서 commit</li>
-          <li>Master에서 git merge 실행</li>
-          <li>conflict 없으면 commit, conflict 있으면 어떤 부분을 반영할지 결정 후 commit</li>
-          <li>git에 push</li>
-        </ol>
-      </li>
-      <li>pull: fetch와 merge를 한번에 진행한다.</li>
-    </ul>
-  </li>
-</ul>
+    return result;
+}
+
+int main(){
+    cin &gt;&gt; N;
+
+    bzero(DP, sizeof(DP));
+
+    DP[0] = 0;
+    DP[1] = 1;
+    DP[2] = 2;
+    DP[3] = 3;
+    DP[4] = 4;
+    DP[5] = 5;
+    DP[6] = 6;
+
+    for(int i=7; i&lt;=N; i++){
+        vector&lt;long long&gt; temp;
+
+        for(int j=3; j&lt;=i; j++){
+            temp.push_back(DP[i-j]*(j-1));
+        }
+
+        DP[i] = max(temp);
+    }
+
+    cout &lt;&lt; DP[N] &lt;&lt; '\n';
+
+    return 0;
+}
+</code></pre></div></div>
 <hr />
 
 
@@ -436,7 +405,7 @@
     
       
       
-      <a href="/tags/#basic" class="page__taxonomy-item" rel="tag">Basic</a>
+      <a href="/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
     
     </span>
   </p>
@@ -457,14 +426,14 @@
     
       
       
-      <a href="/categories/#cse" class="page__taxonomy-item" rel="tag">CSE</a>
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
     
     </span>
   </p>
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-12-28T00:00:00+09:00">December 28, 2018</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-28T00:00:00+09:00">February 28, 2019</time></p>
         
       </footer>
 
@@ -473,24 +442,24 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2nd+week+summary%20keithlee94.github.io%2Fcse%2F2nd-Week-Summary%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=11058%20keithlee94.github.io%2Falgorithm%2F11058%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Fcse%2F2nd-Week-Summary%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F11058%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Fcse%2F2nd-Week-Summary%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F11058%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Fcse%2F2nd-Week-Summary%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F11058%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
+      <a href="/algorithm/1890/" class="pagination--pager" title="1890
+">Previous</a>
     
     
-      <a href="/cse/3rd-Week-Summary/" class="pagination--pager" title="3rd week summary
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -504,27 +473,6 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/algorithm/11058/" rel="permalink">11058
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 11058번
-Link: 11058번: 크리보드
-
-</p>
-  </article>
-</div>
         
           
 
@@ -584,6 +532,27 @@ Link: 11060번: 점프 점프
     
     <p class="archive__item-excerpt" itemprop="description">백준 1309번
 Link: 1309번: 동물원
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2250/" rel="permalink">2250
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2250번
+Link: 2250번: 트리의 높이와 너비
 
 </p>
   </article>
