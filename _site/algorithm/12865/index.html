@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>7562 - KeithLog</title>
-<meta name="description" content="백준 7562번Link: 7562번: 나이트의 이동">
+<!-- begin _includes/seo.html --><title>12865 - KeithLog</title>
+<meta name="description" content="백준 12865번Link: 12865번: 평범한 배낭">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="7562">
-<meta property="og:url" content="keithlee94.github.io/algorithm/7562/">
+<meta property="og:title" content="12865">
+<meta property="og:url" content="keithlee94.github.io/algorithm/12865/">
 
 
-  <meta property="og:description" content="백준 7562번Link: 7562번: 나이트의 이동">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-22T00:00:00+09:00">
+  <meta property="og:description" content="백준 12865번Link: 12865번: 평범한 배낭">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-03-24T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/7562/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/12865/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="7562">
-    <meta itemprop="description" content="백준 7562번Link: 7562번: 나이트의 이동">
-    <meta itemprop="datePublished" content="January 22, 2019">
+    <meta itemprop="headline" content="12865">
+    <meta itemprop="description" content="백준 12865번Link: 12865번: 평범한 배낭">
+    <meta itemprop="datePublished" content="March 24, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">7562
+          <h1 id="page-title" class="page__title" itemprop="headline">12865
 </h1>
           
         </header>
@@ -286,112 +286,69 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-7562번">백준 7562번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/7562">7562번: 나이트의 이동</a></p>
+        <h1 id="백준-12865번">백준 12865번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/12865">12865번: 평범한 배낭</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>이번에도 BFS문제다.</p>
+<p>Knapsack 문제가 조금 변형된 형태의 문제다.</p>
 
-<p>기본적인 BFS문제와 다른 점은 나이트의 이동 반경을 전부 표시하려면 8가지의 경우의 수가 나온다는 점인데 이 8가지를 전부 고려해보고 이동시켜야 한다.</p>
+<p>사실 변형된 문제인지는 잘 모르겠다. 예전에 Knapsack 풀때 썼던 아이디어랑은 좀 다른것 같아서 변형됐다고 생각은 하고 있는중.</p>
 
-<p>8가지 경우를 각 경우에 대해 다 찾아봐야 해서 시간초과 날줄 알았는데 정직하게 BFS 돌려도 시간내에 풀리는 문제였다.</p>
+<p>평범한 Knapsack 문제 푸는대로 풀면 물건을 여러번 써가면서 가방을 채우는게 돼서 틀린다.</p>
 
-<p>답을 구하려면 BFS를 진행하며 거친 트리의 레벨을 구하면 되는데, 이 과정에서 어떻게 구현할지 고민을 많이 했던 것 같다.</p>
+<p>물건을 한번만 쓰면서 가방을 채우는 방법에 대해 생각해봐야 하는 문제.</p>
 
-<p>보통 아는 BFS대로 하면 말도안되는 큰수가 나오더라.</p>
+<p>2차원 배열을 쓰는 DP로 풀어보려 했는데 헷갈리기도 하고 막상 풀어봤는데 틀려서 결국 답을 봤다.</p>
 
-<p>어떻게할지 고민해보다 예전에 풀었던 BFS 문제 중 큐에 있는 모든 원소를 pop해서 저장한 다음, 그 모든 원소에 대해 각각 BFS를 진행하는 문제를 풀어본 기억이 났다.</p>
+<p>DP배열의 각 인덱스는 가방의 무게를 의미한다고 생각하고 시작했다.</p>
 
-<p>그대로 적용해서 풀어보니 바로 풀렸다.</p>
+<p>각 물건들에 대해 인덱스값이 더 크거나 같을 경우 DP[j]와 DP[j - items[j]의 무게] + items[j]의 가치를 비교해서 둘중 더 큰값으로 DP 배열을 채웠다.</p>
 
-<p>그 문제 풀때는 풀이방법을 모르겠어서 답을 봤던것 같은데, 이번에는 내가 직접 방법을 떠올려 구현하고 풀었다는 점은 발전 요소.</p>
+<p>답 보고 풀고 나니 이걸 왜 생각못했나 하는 생각이 많이 들었다.</p>
 
-<p>앞으로도 트리 레벨 구하는 유형은 이런식으로 풀면 될것 같다.</p>
+<p>별로 어려워보이는 알고리즘도 아니었고 내가 생각했던 알고리즘이랑 크게 다르지 않았는데 난 못풀었다는 생각에 자괴감이 들더라.</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 22/01/2019.
+// Created by Keith_Lee on 24/03/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;queue&gt;
-#include &lt;vector&gt;
-#include &lt;string.h&gt;
 
 using namespace std;
 
-int I;
-int result = 0;
+struct item{
+    int W, V;
+};
 
-int map[300][300];
-bool visit[300][300];
+int N, K;
 
-int dx[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
-int dy[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
-
-void BFS(int startX, int startY, int endX, int endY){
-    queue&lt;pair&lt;int, int&gt;&gt; Queue;
-    Queue.push(make_pair(startX, startY));
-    visit[startX][startY] = true;
-
-    while(!Queue.empty()){
-        vector&lt;pair&lt;int, int&gt;&gt; currents;
-
-        while(!Queue.empty()){
-            int currentX = Queue.front().first;
-            int currentY = Queue.front().second;
-            Queue.pop();
-            currents.push_back(make_pair(currentX, currentY));
-        }
-
-        for(int q=0; q&lt;currents.size(); q++){
-            int currentX = currents[q].first;
-            int currentY = currents[q].second;
-
-            if(currentX == endX &amp;&amp; currentY == endY){
-                return;
-            }
-
-            for(int i=0; i&lt;8; i++){
-                int nextX = currentX + dx[i];
-                int nextY = currentY + dy[i];
-
-                if(nextX &gt;= 0 &amp;&amp; nextX &lt; I &amp;&amp; nextY &gt;= 0 &amp;&amp; nextY &lt; I) {
-                    if(!visit[nextX][nextY]){
-                        visit[nextX][nextY] = true;
-                        Queue.push(make_pair(nextX, nextY));
-                    }
-                }
-            }
-        }
-
-        result++;
-
-    }
-}
+int DP[100001] = {0, };
 
 int main(){
-    int tc;
-    cin &gt;&gt; tc;
+    cin &gt;&gt; N &gt;&gt; K;
 
-    for(int test=0; test&lt;tc; test++){
-        bzero(visit, sizeof(visit));
-        result = 0;
-        cin &gt;&gt; I;
+    item items[101];
 
-        int startX, startY;
-        cin &gt;&gt; startX &gt;&gt; startY;
+    for(int i=0; i&lt;N; i++){
+        int weight, value;
+        cin &gt;&gt; weight &gt;&gt; value;
 
-        int endX, endY;
-        cin &gt;&gt; endX &gt;&gt; endY;
-
-        BFS(startX, startY, endX, endY);
-
-        cout &lt;&lt; result &lt;&lt; '\n';
+        items[i] = {weight, value};
     }
+
+    for(int i=0; i&lt;N; i++){
+        for(int j=K; j&gt;=0; j--){
+            if(items[i].W &lt;= j){
+                DP[j] = max(DP[j], DP[j-items[i].W] + items[i].V);
+            }
+        }
+    }
+
+    cout &lt;&lt; DP[K] &lt;&lt; '\n';
 
     return 0;
 }
@@ -418,7 +375,7 @@ int main(){
     
       
       
-      <a href="/tags/#bfs" class="page__taxonomy-item" rel="tag">BFS</a>
+      <a href="/tags/#dp" class="page__taxonomy-item" rel="tag">DP</a>
     
     </span>
   </p>
@@ -446,7 +403,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-22T00:00:00+09:00">January 22, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-03-24T00:00:00+09:00">March 24, 2019</time></p>
         
       </footer>
 
@@ -455,24 +412,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=7562%20keithlee94.github.io%2Falgorithm%2F7562%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=12865%20keithlee94.github.io%2Falgorithm%2F12865%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F7562%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F12865%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F7562%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F12865%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F7562%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F12865%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/2583/" class="pagination--pager" title="2583
+      <a href="/algorithm/17070/" class="pagination--pager" title="17070
 ">Previous</a>
     
     
-      <a href="/algorithm/7569/" class="pagination--pager" title="7569
+      <a href="/algorithm/5557/" class="pagination--pager" title="5557
 ">Next</a>
     
   </nav>
@@ -518,27 +475,6 @@ Link: 5557번: 1학년
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/12865/" rel="permalink">12865
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 12865번
-Link: 12865번: 평범한 배낭
-
-</p>
-  </article>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
         <a href="/algorithm/17070/" rel="permalink">17070
 </a>
       
@@ -567,6 +503,27 @@ Link: 17070번: 파이프 옮기기 1
     
     <p class="archive__item-excerpt" itemprop="description">백준 16988번
 Link: 16988번: Baaaaaaaaaduk2 (Easy)
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2352/" rel="permalink">2352
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2352번
+Link: 2352번: 반도체 설계
 
 </p>
   </article>
