@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-03-24T18:33:52+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">5557</title><link href="keithlee94.github.io/algorithm/5557/" rel="alternate" type="text/html" title="5557" /><published>2019-03-24T00:00:00+09:00</published><updated>2019-03-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/5557</id><content type="html" xml:base="keithlee94.github.io/algorithm/5557/">&lt;h1 id=&quot;백준-5557번&quot;&gt;백준 5557번&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-03-24T19:15:51+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">5557</title><link href="keithlee94.github.io/algorithm/5557/" rel="alternate" type="text/html" title="5557" /><published>2019-03-24T00:00:00+09:00</published><updated>2019-03-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/5557</id><content type="html" xml:base="keithlee94.github.io/algorithm/5557/">&lt;h1 id=&quot;백준-5557번&quot;&gt;백준 5557번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/5557&quot;&gt;5557번: 1학년&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -137,7 +137,73 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 12865번 Link: 12865번: 평범한 배낭</summary></entry><entry><title type="html">17070</title><link href="keithlee94.github.io/algorithm/17070/" rel="alternate" type="text/html" title="17070" /><published>2019-03-12T00:00:00+09:00</published><updated>2019-03-12T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/17070</id><content type="html" xml:base="keithlee94.github.io/algorithm/17070/">&lt;h1 id=&quot;백준-17070번&quot;&gt;백준 17070번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 12865번 Link: 12865번: 평범한 배낭</summary></entry><entry><title type="html">1495</title><link href="keithlee94.github.io/algorithm/1495/" rel="alternate" type="text/html" title="1495" /><published>2019-03-24T00:00:00+09:00</published><updated>2019-03-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1495</id><content type="html" xml:base="keithlee94.github.io/algorithm/1495/">&lt;h1 id=&quot;백준-1495번&quot;&gt;백준 1495번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1495&quot;&gt;1495번: 기타리스트&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;무난하게 풀어냈던 DP 문제.&lt;/p&gt;
+
+&lt;p&gt;앞에서 풀어봤던 1학년 문제에서 썼던 알고리즘으로 풀면 쉽게 풀리는 문제였다.&lt;/p&gt;
+
+&lt;p&gt;오히려 이 문제가 좀 더 쉬웠던게, 이 문제에서 중요한 것은 횟수가 아닌 방문 가능 여부만 True/False로 확인하면 되기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;1학년 문제 풀듯이 DP배열을 채우고 DP 배열에서 값이 true인 것의 최대 인덱스를 출력해주면 풀린다.&lt;/p&gt;
+
+&lt;p&gt;1학년 문제가 하나의 DP문제 풀이 템플릿이 되는 느낌이다.&lt;/p&gt;
+
+&lt;p&gt;잘 기억해둬야지&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 24/03/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
+
+bool DP[101][1001];
+
+int N, S, M;
+
+int main(){
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; S &amp;gt;&amp;gt; M;
+
+    DP[0][S] = true;
+
+    for(int i=1; i&amp;lt;=N; i++){
+        int gap;
+        cin &amp;gt;&amp;gt; gap;
+
+        for(int j=0; j&amp;lt;=M; j++){
+            if(DP[i-1][j]){
+                if(j - gap &amp;gt;= 0){
+                    DP[i][j-gap] = true;
+                }
+
+                if(j + gap &amp;lt;= M){
+                    DP[i][j+gap] = true;
+                }
+            }
+        }
+    }
+
+    int result = -1;
+    for(int i=0; i&amp;lt;=M; i++){
+        if(DP[N][i]){
+            result = i;
+        }
+    }
+
+    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1495번 Link: 1495번: 기타리스트</summary></entry><entry><title type="html">17070</title><link href="keithlee94.github.io/algorithm/17070/" rel="alternate" type="text/html" title="17070" /><published>2019-03-12T00:00:00+09:00</published><updated>2019-03-12T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/17070</id><content type="html" xml:base="keithlee94.github.io/algorithm/17070/">&lt;h1 id=&quot;백준-17070번&quot;&gt;백준 17070번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/17070&quot;&gt;17070번: 파이프 옮기기 1&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -650,79 +716,7 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 11058번 Link: 11058번: 크리보드</summary></entry><entry><title type="html">1890</title><link href="keithlee94.github.io/algorithm/1890/" rel="alternate" type="text/html" title="1890" /><published>2019-02-26T00:00:00+09:00</published><updated>2019-02-26T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1890</id><content type="html" xml:base="keithlee94.github.io/algorithm/1890/">&lt;h1 id=&quot;백준-1890번&quot;&gt;백준 1890번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1890&quot;&gt;1890번: 점프&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;오늘도 DP문제.&lt;/p&gt;
-
-&lt;p&gt;옆에서 친구가 풀던거 같이 한번 풀어봤는데, 조금 고전했다.&lt;/p&gt;
-
-&lt;p&gt;처음에는 BFS로 풀어보려고 했는데 문제 자체가 BFS로 풀기에는 조건이 적당하지 않아서 무한루프로 끝났다.&lt;/p&gt;
-
-&lt;p&gt;다른 방법으로 풀 수 있는지 찾아보던 중 어떻게든 규칙을 찾아서 DP로 풀어야겠다는 생각을 했고, 고민끝에 규칙을 찾아 샘플 케이스를 돌려보니 맞았다.&lt;/p&gt;
-
-&lt;p&gt;구현하는데 인덱스가 헷갈려서 살짝 애먹긴 했지만 무난히 맞았다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 26/02/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-
-using namespace std;
-
-int N;
-
-int map[101][101] = {-1, };
-long long DP[101][101] = {0, };
-
-int main(){
-    cin &amp;gt;&amp;gt; N;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            cin &amp;gt;&amp;gt; map[i][j];
-        }
-    }
-
-    DP[1][1] = 1;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            if(i == j &amp;amp;&amp;amp; i == 0){
-                continue;
-            }
-
-            for(int k=0; k&amp;lt;j; k++){
-                if(k + map[i][k] == j){
-                    DP[i][j] += DP[i][k];
-                }
-            }
-
-            for(int k=0; k&amp;lt;i; k++){
-                if(k + map[k][j] == i){
-                    DP[i][j] += DP[k][j];
-                }
-            }
-        }
-    }
-
-//    for(int i=1; i&amp;lt;=N; i++){
-//        for(int j=1; j&amp;lt;=N; j++){
-//            cout &amp;lt;&amp;lt; DP[i][j] &amp;lt;&amp;lt; ' ';
-//        }
-//        cout &amp;lt;&amp;lt; '\n';
-//    }
-
-    cout &amp;lt;&amp;lt; DP[N][N] &amp;lt;&amp;lt; '\n';
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1890번 Link: 1890번: 점프</summary></entry><entry><title type="html">11060</title><link href="keithlee94.github.io/algorithm/11060/" rel="alternate" type="text/html" title="11060" /><published>2019-02-26T00:00:00+09:00</published><updated>2019-02-26T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/11060</id><content type="html" xml:base="keithlee94.github.io/algorithm/11060/">&lt;h1 id=&quot;백준-11060번&quot;&gt;백준 11060번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 11058번 Link: 11058번: 크리보드</summary></entry><entry><title type="html">11060</title><link href="keithlee94.github.io/algorithm/11060/" rel="alternate" type="text/html" title="11060" /><published>2019-02-26T00:00:00+09:00</published><updated>2019-02-26T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/11060</id><content type="html" xml:base="keithlee94.github.io/algorithm/11060/">&lt;h1 id=&quot;백준-11060번&quot;&gt;백준 11060번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/11060&quot;&gt;11060번: 점프 점프&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -799,7 +793,79 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 11060번 Link: 11060번: 점프 점프</summary></entry><entry><title type="html">1309</title><link href="keithlee94.github.io/algorithm/1309/" rel="alternate" type="text/html" title="1309" /><published>2019-02-25T00:00:00+09:00</published><updated>2019-02-25T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1309</id><content type="html" xml:base="keithlee94.github.io/algorithm/1309/">&lt;h1 id=&quot;백준-1309번&quot;&gt;백준 1309번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 11060번 Link: 11060번: 점프 점프</summary></entry><entry><title type="html">1890</title><link href="keithlee94.github.io/algorithm/1890/" rel="alternate" type="text/html" title="1890" /><published>2019-02-26T00:00:00+09:00</published><updated>2019-02-26T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1890</id><content type="html" xml:base="keithlee94.github.io/algorithm/1890/">&lt;h1 id=&quot;백준-1890번&quot;&gt;백준 1890번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1890&quot;&gt;1890번: 점프&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;오늘도 DP문제.&lt;/p&gt;
+
+&lt;p&gt;옆에서 친구가 풀던거 같이 한번 풀어봤는데, 조금 고전했다.&lt;/p&gt;
+
+&lt;p&gt;처음에는 BFS로 풀어보려고 했는데 문제 자체가 BFS로 풀기에는 조건이 적당하지 않아서 무한루프로 끝났다.&lt;/p&gt;
+
+&lt;p&gt;다른 방법으로 풀 수 있는지 찾아보던 중 어떻게든 규칙을 찾아서 DP로 풀어야겠다는 생각을 했고, 고민끝에 규칙을 찾아 샘플 케이스를 돌려보니 맞았다.&lt;/p&gt;
+
+&lt;p&gt;구현하는데 인덱스가 헷갈려서 살짝 애먹긴 했지만 무난히 맞았다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 26/02/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
+
+int N;
+
+int map[101][101] = {-1, };
+long long DP[101][101] = {0, };
+
+int main(){
+    cin &amp;gt;&amp;gt; N;
+
+    for(int i=1; i&amp;lt;=N; i++){
+        for(int j=1; j&amp;lt;=N; j++){
+            cin &amp;gt;&amp;gt; map[i][j];
+        }
+    }
+
+    DP[1][1] = 1;
+
+    for(int i=1; i&amp;lt;=N; i++){
+        for(int j=1; j&amp;lt;=N; j++){
+            if(i == j &amp;amp;&amp;amp; i == 0){
+                continue;
+            }
+
+            for(int k=0; k&amp;lt;j; k++){
+                if(k + map[i][k] == j){
+                    DP[i][j] += DP[i][k];
+                }
+            }
+
+            for(int k=0; k&amp;lt;i; k++){
+                if(k + map[k][j] == i){
+                    DP[i][j] += DP[k][j];
+                }
+            }
+        }
+    }
+
+//    for(int i=1; i&amp;lt;=N; i++){
+//        for(int j=1; j&amp;lt;=N; j++){
+//            cout &amp;lt;&amp;lt; DP[i][j] &amp;lt;&amp;lt; ' ';
+//        }
+//        cout &amp;lt;&amp;lt; '\n';
+//    }
+
+    cout &amp;lt;&amp;lt; DP[N][N] &amp;lt;&amp;lt; '\n';
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1890번 Link: 1890번: 점프</summary></entry><entry><title type="html">1309</title><link href="keithlee94.github.io/algorithm/1309/" rel="alternate" type="text/html" title="1309" /><published>2019-02-25T00:00:00+09:00</published><updated>2019-02-25T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1309</id><content type="html" xml:base="keithlee94.github.io/algorithm/1309/">&lt;h1 id=&quot;백준-1309번&quot;&gt;백준 1309번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1309&quot;&gt;1309번: 동물원&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -851,210 +917,4 @@ int main(){
     cout &amp;lt;&amp;lt; zoo(N) &amp;lt;&amp;lt; '\n';
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1309번 Link: 1309번: 동물원</summary></entry><entry><title type="html">2250</title><link href="keithlee94.github.io/algorithm/2250/" rel="alternate" type="text/html" title="2250" /><published>2019-02-22T00:00:00+09:00</published><updated>2019-02-22T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2250</id><content type="html" xml:base="keithlee94.github.io/algorithm/2250/">&lt;h1 id=&quot;백준-2250번&quot;&gt;백준 2250번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2250&quot;&gt;2250번: 트리의 높이와 너비&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;이번엔 DFS 문제다.&lt;/p&gt;
-
-&lt;p&gt;문제 보고나서 트리 그리는 규칙 이해하는데만 한참 걸린것 같다.&lt;/p&gt;
-
-&lt;p&gt;아무튼 이해하고 나서 트리를 직접 그려가면서 규칙을 찾아봤는데,&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;우선 루트부터 찾은 다음 시작&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;루트 기준으로 왼쪽 방향으로 DFS시 만나는 가장 마지막 노드가 트리의 가장 왼쪽 노드&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;루트 기준으로 오른쪽 방향으로 DFS시 만나는 가장 마지막 노드가 트리의 가장 오른쪽 노드&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;루트 왼쪽 자식에서 오른쪽으로 DFS시 만나는 가장 마지막 노드가 루트 바로 왼쪽 노드&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;루트 오른쪽 자식에서 왼쪽으로 DFS시 만나는 가장 마지막 노드가 루트 바로 오른쪽 노드&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이렇게 5가지 규칙을 찾았다.&lt;/p&gt;
-
-&lt;p&gt;이 규칙대로 트리를 만들고 문제를 풀어보려 했는데, 생각처럼 되지 않았다.&lt;/p&gt;
-
-&lt;p&gt;이 5가지 말고 내가 놓치고 있는 부분이 무엇인지 계속 생각해봤는데, 한가지 큰 부분을 놓치고 있었다.&lt;/p&gt;
-
-&lt;p&gt;이 트리를 그리는 규칙이 트리를 inorder 방식으로 탐색하는 순서와 같다는 점.&lt;/p&gt;
-
-&lt;p&gt;이 규칙 찾는데 하루는 더 걸린것 같다.&lt;/p&gt;
-
-&lt;p&gt;찾고 나니 푸는데 걸리는 시간은 순식간이었다.&lt;/p&gt;
-
-&lt;p&gt;트리의 각 노드들의 레벨만 구하면 되니까.&lt;/p&gt;
-
-&lt;p&gt;이 문제 알고리즘 분류가 DFS, 트리였는데 BFS를 넣어야 되지 않나 하는 생각도 들었다.&lt;/p&gt;
-
-&lt;p&gt;레벨 찾는데 사용한 알고리즘이 BFS였기 때문.&lt;/p&gt;
-
-&lt;p&gt;풀고 나니 나에게 실망스러웠는데, 그새 inorder, preorder, postorder 방식으로 트리 탐색하는 알고리즘을 까먹었다는 점 때문이다.&lt;/p&gt;
-
-&lt;p&gt;평소에 잘 알고 있었다면 트리 그리는 규칙 보자마자 아 이거 루트 찾아서 inorder로 탐색하면 끝나는 문제구나 했을텐데…&lt;/p&gt;
-
-&lt;p&gt;아무튼 늦게라도 떠올랐다는것 자체는 신기할 따름이다.&lt;/p&gt;
-
-&lt;p&gt;아직 갈길이 멀다는 생각밖에 안든다…&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 21/02/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;vector&amp;gt;
-#include &amp;lt;queue&amp;gt;
-#include &amp;lt;algorithm&amp;gt;
-
-using namespace std;
-
-struct Node{
-    int num = -1;
-    int left = 0;
-    int right = 0;
-    int parent = -1;
-    int level = -1;
-    int location = 0;
-};
-
-int N;
-int lastLevel = 0; // 트리 최대 레벨
-int place = 1;
-
-Node nodeTree[10001]; // 입력따라 트리 저장할 공간
-bool visit[10001] = {false, };
-
-void inOrder(int start){
-    if(!visit[nodeTree[start].left]){
-        inOrder(nodeTree[start].left);
-    }
-
-    nodeTree[start].location = place++;
-    visit[start] = true;
-
-    if(!visit[nodeTree[start].right]){
-        inOrder(nodeTree[start].right);
-    }
-}
-
-void BFS(Node start){ // 각 노드들의 레벨을 찾는다.
-    int level = 1;
-    queue&amp;lt;Node&amp;gt; Queue;
-    vector&amp;lt;Node&amp;gt; nodes;
-
-    Queue.push(start);
-
-    while(!Queue.empty()){
-        nodes.clear();
-
-        while(!Queue.empty()){
-            Node temp = Queue.front();
-            Queue.pop();
-            nodes.push_back(temp);
-        }
-
-        for(int i=0; i&amp;lt;nodes.size(); i++){
-            Node current = nodes[i];
-            nodeTree[current.num].level = level;
-
-            if(current.left != -1){
-                Queue.push(nodeTree[current.left]);
-            }
-            if(current.right != -1){
-                Queue.push(nodeTree[current.right]);
-            }
-        }
-
-        level++;
-    }
-}
-
-int main(){
-    visit[0] = true;
-    cin &amp;gt;&amp;gt; N;
-
-    int nodeNum;
-    int leftChild;
-    int rightChild;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        cin &amp;gt;&amp;gt; nodeNum &amp;gt;&amp;gt; leftChild &amp;gt;&amp;gt; rightChild;
-
-        nodeTree[nodeNum].num = nodeNum;
-        if(leftChild == -1){
-            nodeTree[nodeNum].left = 0;
-        }
-        else{
-            nodeTree[nodeNum].left = leftChild;
-            nodeTree[leftChild].parent = nodeNum;
-        }
-
-        if(rightChild == -1){
-            nodeTree[nodeNum].right = 0;
-        }
-        else{
-            nodeTree[nodeNum].right = rightChild;
-            nodeTree[rightChild].parent = nodeNum;
-        }
-    }
-
-    int root = 0;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        if(nodeTree[i].parent == -1){
-            root = nodeTree[i].num;
-            break;
-        }
-    }
-
-    BFS(nodeTree[root]); // 각 노드의 레벨을 지정한다.
-
-    inOrder(root);
-
-    for(int i=1; i&amp;lt;=N; i++){
-        if(lastLevel &amp;lt; nodeTree[i].level){
-            lastLevel = nodeTree[i].level;
-        }
-    }
-
-    int maxWidth = 0;
-    int maxLevel = 0;
-
-    vector&amp;lt;int&amp;gt; levels;
-    for(int i=1; i&amp;lt;=lastLevel; i++){
-        levels.clear();
-
-        for(int j=1; j&amp;lt;=N; j++){
-            if(nodeTree[j].level == i){
-                levels.push_back(nodeTree[j].location);
-            }
-        }
-
-        sort(levels.begin(), levels.end());
-
-        int width = levels[levels.size()-1] - levels[0] + 1;
-
-        if(maxWidth &amp;lt; width){
-            maxLevel = i;
-            maxWidth = width;
-        }
-    }
-
-    cout &amp;lt;&amp;lt; maxLevel &amp;lt;&amp;lt; ' ' &amp;lt;&amp;lt; maxWidth &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DFS" /><category term="Tree" /><category term="BFS" /><summary type="html">백준 2250번 Link: 2250번: 트리의 높이와 너비</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1309번 Link: 1309번: 동물원</summary></entry></feed>

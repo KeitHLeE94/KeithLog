@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2156 - KeithLog</title>
-<meta name="description" content="백준 2156번Link: 2156번: 포도주 시식">
+<!-- begin _includes/seo.html --><title>1495 - KeithLog</title>
+<meta name="description" content="백준 1495번Link: 1495번: 기타리스트">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KeithLog">
-<meta property="og:title" content="2156">
-<meta property="og:url" content="keithlee94.github.io/algorithm/2156/">
+<meta property="og:title" content="1495">
+<meta property="og:url" content="keithlee94.github.io/algorithm/1495/">
 
 
-  <meta property="og:description" content="백준 2156번Link: 2156번: 포도주 시식">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-01-11T00:00:00+09:00">
+  <meta property="og:description" content="백준 1495번Link: 1495번: 기타리스트">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-03-24T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="keithlee94.github.io/algorithm/2156/">
+
+<link rel="canonical" href="keithlee94.github.io/algorithm/1495/">
 
 
 
@@ -270,15 +270,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2156">
-    <meta itemprop="description" content="백준 2156번Link: 2156번: 포도주 시식">
-    <meta itemprop="datePublished" content="January 11, 2019">
+    <meta itemprop="headline" content="1495">
+    <meta itemprop="description" content="백준 1495번Link: 1495번: 기타리스트">
+    <meta itemprop="datePublished" content="March 24, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2156
+          <h1 id="page-title" class="page__title" itemprop="headline">1495
 </h1>
           
         </header>
@@ -286,79 +286,68 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="백준-2156번">백준 2156번</h1>
-<p>Link: <a href="https://www.acmicpc.net/problem/2156">2156번: 포도주 시식</a></p>
+        <h1 id="백준-1495번">백준 1495번</h1>
+<p>Link: <a href="https://www.acmicpc.net/problem/1495">1495번: 기타리스트</a></p>
 
 <hr />
 
 <h1 id="문제-설명">문제 설명</h1>
-<p>문제를 보자마자 예전에 풀었던 계단 오르기와 비슷한 문제라는 생각이 들었다.</p>
+<p>무난하게 풀어냈던 DP 문제.</p>
 
-<p>Link: <a href="https://keithlee94.github.io/KeithLog/algorithm/2579/">2579번: 계단 오르기</a></p>
+<p>앞에서 풀어봤던 1학년 문제에서 썼던 알고리즘으로 풀면 쉽게 풀리는 문제였다.</p>
 
-<p>차이점이 있다면 계단 오르기의 경우 마지막 계단을 반드시 밟아야 했지만, 이 문제는 3잔을 연속으로 마실 수 없다는 제약을 제외하면 어떠한 제약사항이 없다는 점이다.</p>
+<p>오히려 이 문제가 좀 더 쉬웠던게, 이 문제에서 중요한 것은 횟수가 아닌 방문 가능 여부만 True/False로 확인하면 되기 때문이다.</p>
 
-<p>점화식으로 풀어야 한다는 점은 동일하다.</p>
+<p>1학년 문제 풀듯이 DP배열을 채우고 DP 배열에서 값이 true인 것의 최대 인덱스를 출력해주면 풀린다.</p>
 
-<p>예전에 계단 오르기를 풀때 점화식 세우는 과정을 제대로 이해하지 못한 것 같다.</p>
+<p>1학년 문제가 하나의 DP문제 풀이 템플릿이 되는 느낌이다.</p>
 
-<p>이번 문제에서도 점화식 세우는데 많은 어려움을 겪었고, 결국 에전에 풀었던 계단 오르기 문제를 다시 보면서 점화식을 어떻게 세워야 하는지 생각했다.</p>
-
-<p>또, 마지막 계단을 반드시 밟아야 한다는 제약사항을 빼고 구현하는 방법에 대해서도 많이 고민했던것 같다.</p>
-
-<p>결론적으로는 답을 찾아서 풀었다.</p>
-
-<p>점화식 세우는 연습은 얼마나 해야 점화식을 세울 줄 알게 되려나??</p>
+<p>잘 기억해둬야지</p>
 <hr />
 
 <h1 id="정답-코드">정답 코드</h1>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
-// Created by Keith_Lee on 11/01/2019.
+// Created by Keith_Lee on 24/03/2019.
 //
 
 #include &lt;iostream&gt;
-#include &lt;vector&gt;
 
 using namespace std;
 
-int N;
+bool DP[101][1001];
 
-int maximum(vector&lt;int&gt; numbers){
-    int result = 0;
+int N, S, M;
 
-    for(int i=0; i&lt;numbers.size(); i++){
-        if(numbers[i] &gt; result){
-            result = numbers[i];
+int main(){
+    cin &gt;&gt; N &gt;&gt; S &gt;&gt; M;
+
+    DP[0][S] = true;
+
+    for(int i=1; i&lt;=N; i++){
+        int gap;
+        cin &gt;&gt; gap;
+
+        for(int j=0; j&lt;=M; j++){
+            if(DP[i-1][j]){
+                if(j - gap &gt;= 0){
+                    DP[i][j-gap] = true;
+                }
+
+                if(j + gap &lt;= M){
+                    DP[i][j+gap] = true;
+                }
+            }
         }
     }
 
-    numbers.clear();
-    return result;
-}
-
-int main(){
-    cin &gt;&gt; N;
-
-    int DP[10001];
-    int score[10001];
-
-    for(int i=1; i&lt;=N; i++){
-        cin &gt;&gt; score[i];
+    int result = -1;
+    for(int i=0; i&lt;=M; i++){
+        if(DP[N][i]){
+            result = i;
+        }
     }
 
-    vector&lt;int&gt; to_compare;
-
-    DP[1] = score[1];
-    DP[2] = max(score[1] + score[2], score[2]);
-
-    for(int i=3; i&lt;=N; i++){
-        to_compare.push_back(DP[i-1]);
-        to_compare.push_back(DP[i-2] + score[i]);
-        to_compare.push_back(DP[i-3] + score[i] + score[i-1]);
-        DP[i] = maximum(to_compare);
-    }
-
-    cout &lt;&lt; DP[N] &lt;&lt; '\n';
+    cout &lt;&lt; result &lt;&lt; '\n';
 
     return 0;
 }
@@ -413,7 +402,7 @@ int main(){
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-01-11T00:00:00+09:00">January 11, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-03-24T00:00:00+09:00">March 24, 2019</time></p>
         
       </footer>
 
@@ -422,24 +411,24 @@ int main(){
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2156%20keithlee94.github.io%2Falgorithm%2F2156%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=1495%20keithlee94.github.io%2Falgorithm%2F1495%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F2156%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Falgorithm%2F1495%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F2156%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Falgorithm%2F1495%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F2156%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Falgorithm%2F1495%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/2293/" class="pagination--pager" title="2293
+      <a href="/algorithm/12865/" class="pagination--pager" title="12865
 ">Previous</a>
     
     
-      <a href="/java/5th-Week-Summary/" class="pagination--pager" title="5th week summary
+      <a href="/algorithm/5557/" class="pagination--pager" title="5557
 ">Next</a>
     
   </nav>
@@ -485,27 +474,6 @@ Link: 5557번: 1학년
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/1495/" rel="permalink">1495
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">백준 1495번
-Link: 1495번: 기타리스트
-
-</p>
-  </article>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
         <a href="/algorithm/12865/" rel="permalink">12865
 </a>
       
@@ -534,6 +502,27 @@ Link: 12865번: 평범한 배낭
     
     <p class="archive__item-excerpt" itemprop="description">백준 17070번
 Link: 17070번: 파이프 옮기기 1
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/16988/" rel="permalink">16988
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 16988번
+Link: 16988번: Baaaaaaaaaduk2 (Easy)
 
 </p>
   </article>
