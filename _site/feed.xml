@@ -1,76 +1,792 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-03-24T19:15:51+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">5557</title><link href="keithlee94.github.io/algorithm/5557/" rel="alternate" type="text/html" title="5557" /><published>2019-03-24T00:00:00+09:00</published><updated>2019-03-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/5557</id><content type="html" xml:base="keithlee94.github.io/algorithm/5557/">&lt;h1 id=&quot;백준-5557번&quot;&gt;백준 5557번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/5557&quot;&gt;5557번: 1학년&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="keithlee94.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="keithlee94.github.io/" rel="alternate" type="text/html" /><updated>2019-04-04T21:40:53+09:00</updated><id>keithlee94.github.io/feed.xml</id><title type="html">KeithLog</title><subtitle>SSAFY 교육내용, 알고리즘 문제풀이 정리하여 업로드할 블로그</subtitle><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><entry><title type="html">2206</title><link href="keithlee94.github.io/algorithm/2206/" rel="alternate" type="text/html" title="2206" /><published>2019-04-04T00:00:00+09:00</published><updated>2019-04-04T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2206</id><content type="html" xml:base="keithlee94.github.io/algorithm/2206/">&lt;h1 id=&quot;백준-2206번&quot;&gt;백준 2206번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2206&quot;&gt;2206번: 벽 부수고 이동하기&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;간만에 문제풀이.&lt;/p&gt;
+&lt;p&gt;예전에 한번 풀어봤던 벽부수고 이동하는 문제.&lt;/p&gt;
 
-&lt;p&gt;예전에 풀다가 못풀었던 DP 문제다.&lt;/p&gt;
+&lt;p&gt;간만에 다시한번 풀어봤는데, 그때 답보고 풀어서 그런지 다시봐도 새롭더라.&lt;/p&gt;
 
-&lt;p&gt;아이디어는 그리 대단치는 않은데, 이거 못떠올려서 주변에 물어봐가면서 풀었다.&lt;/p&gt;
+&lt;p&gt;여러번 거치다 보니 BFS로 거리 구하는 틀이 거의 정형화됐는데, 예전에는 visit 배열을 만드는 대신 거리를 계산하는 배열을 만들어서 거리를 쟀었다.&lt;/p&gt;
 
-&lt;p&gt;맨 첫번째 숫자에 대해 DP[N]의 값을 1로 지정한 다음, 그 다음에 오는 인풋 숫자들을 하나씩 읽으며 DP배열을 채운다.&lt;/p&gt;
+&lt;p&gt;이 문제도 그렇게 풀었는데, 거리 계산 배열을 3차원으로 만들어 벽을 안부쉈을 경우와 부쉈을 경우로 나눠 거리를 구한다.&lt;/p&gt;
 
-&lt;p&gt;윗줄의 DP[i]의 값이 0이 아닌 경우에 대해 현재 읽은 인풋 숫자를 더하고 뺀 값을 인덱스로 하는 DP 값을 윗줄의 값만큼 더해준다.&lt;/p&gt;
+&lt;p&gt;큐에도 출발점과 벽 부술수 있는 횟수를 넣고 출발하는데, 만약 목적지에 도착했다면 거리 배열[x][y][남은 부술수있는 횟수] 값을 리턴해준다.&lt;/p&gt;
 
-&lt;p&gt;모든 인풋값에 대해 수행한 다음, 마지막으로 들어오는 값의 DP배열 값을 출력해주면 정답이다.&lt;/p&gt;
+&lt;p&gt;이외에는 BFS와 크게 다르지 않은데, 벽을 안부수고 0을 찾아 이동한 거리를 구해주고, 부술 수 있는 횟수가 남았으면 벽을 부수고 이동한 거리를 구한 다음 부술 수 있는 횟수를 1 빼준다.&lt;/p&gt;
 
-&lt;p&gt;DP문제가 다 그렇듯이 아이디어만 제대로 떠올리면 쉽게 풀리는 문제.&lt;/p&gt;
+&lt;p&gt;이런식으로 목적지까지 찾아가서 남은 부술수 있는 횟수에 대한 거리를 구하면 끝.&lt;/p&gt;
 
-&lt;p&gt;1차원 배열로 푸는 DP문제는 그래도 좀 풀만한것 같은데, 이런 2차원 배열로 푸는 DP는 아직 어려운것 같다.&lt;/p&gt;
+&lt;p&gt;이번에서야 예전 답을 좀 이해할 수 있을 것 같다.&lt;/p&gt;
 
-&lt;p&gt;앞으로 시험 대비해서 이런 DP도 제대로 풀 수 있을때까지 연습해야겠다.&lt;/p&gt;
-
-&lt;p&gt;이제 다시 매일 문제풀이후에 올릴 예정.&lt;/p&gt;
+&lt;p&gt;다음에도 한번 더 풀어봐야지.&lt;/p&gt;
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 22/03/2019.
+// Created by Keith_Lee on 03/04/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;queue&amp;gt;
+
+using namespace std;
+
+struct Point{
+    int x, y;
+    int breakCount;
+};
+
+int map[1000][1000] = {0, };
+int dx[4] = {0, 0, 1, -1};
+int dy[4] = {1, -1, 0, 0};
+int dist[1000][1000][2] = {0, };
+
+int N, M;
+
+int BFS(){
+    queue&amp;lt;Point&amp;gt; Queue;
+    Queue.push({0, 0, 1});
+    dist[0][0][1] = 1;
+
+    while(!Queue.empty()){
+        int currentX = Queue.front().x;
+        int currentY = Queue.front().y;
+        int breakCount = Queue.front().breakCount;
+        Queue.pop();
+
+        if(currentX == N-1 &amp;amp;&amp;amp; currentY == M-1){
+            return dist[N-1][M-1][breakCount];
+        }
+
+        for(int i=0; i&amp;lt;4; i++){
+            int nextX = currentX + dx[i];
+            int nextY = currentY + dy[i];
+
+            if(nextX &amp;gt;= 0 &amp;amp;&amp;amp; nextX &amp;lt; N &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt; M){
+                if(map[nextX][nextY] == 0 &amp;amp;&amp;amp; dist[nextX][nextY][breakCount] == 0){
+                    dist[nextX][nextY][breakCount] = dist[currentX][currentY][breakCount] + 1;
+                    Queue.push({nextX, nextY, breakCount});
+                }
+                else if(map[nextX][nextY] == 1 &amp;amp;&amp;amp; breakCount &amp;gt; 0){
+                    dist[nextX][nextY][breakCount-1] = dist[currentX][currentY][breakCount] + 1;
+                    Queue.push({nextX, nextY, breakCount-1});
+                }
+            }
+        }
+    }
+
+    return -1;
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
+
+    for(int i=0; i&amp;lt;N; i++){
+        string row;
+        cin &amp;gt;&amp;gt; row;
+
+        for(int j=0; j&amp;lt;M; j++){
+            map[i][j] = row[j] - '0';
+        }
+    }
+
+    cout &amp;lt;&amp;lt; BFS() &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 2206번 Link: 2206번: 벽 부수고 이동하기</summary></entry><entry><title type="html">2098</title><link href="keithlee94.github.io/algorithm/2098/" rel="alternate" type="text/html" title="2098" /><published>2019-04-04T00:00:00+09:00</published><updated>2019-04-04T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2098</id><content type="html" xml:base="keithlee94.github.io/algorithm/2098/">&lt;h1 id=&quot;백준-2098번&quot;&gt;백준 2098번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2098&quot;&gt;2098번: 외판원 순회&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;그 유명한 Traveling Salesperson 문제다.&lt;/p&gt;
+
+&lt;p&gt;NP-hard 문제지만, 여기서는 인풋이 좀 작아서 시간안에 풀리도록 만들었다.&lt;/p&gt;
+
+&lt;p&gt;푸는 방법은 사실 단순한데, DFS + Memoization으로 풀면 된다.&lt;/p&gt;
+
+&lt;p&gt;그런데 여기서 중요한 점이 하나 있는데, 출발점을 제외한 모든 도시들은 단 한번만 방문할 수 있다는 점이다.&lt;/p&gt;
+
+&lt;p&gt;이 방문 여부를 표시하기 위해 비트마스킹을 사용한다는 점이 큰 차이점이다.&lt;/p&gt;
+
+&lt;p&gt;처음에는 비트마스킹을 안쓰고 단순 DP로만 풀어보려고 했는데, 어떻게 푸는지는 알겠는데 도저히 구현이 안되더라.&lt;/p&gt;
+
+&lt;p&gt;겨우겨우 구현해서 제출해보니 역시나 틀린 답이었다.&lt;/p&gt;
+
+&lt;p&gt;한참 더 고민하다 답을 찾아봤고, 단순 DP로 풀리는 문제가 아니라는 점을 깨달았다.&lt;/p&gt;
+
+&lt;p&gt;푸는 방법은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;우선 DFS 함수의 인자를 인덱스와 방문 여부로 받도록 한다.&lt;/p&gt;
+
+&lt;p&gt;여기에 0과 1을 넘겨, 첫 도시에서 시작한다는 점을 명시하여 DFS 함수를 실행한다.&lt;/p&gt;
+
+&lt;p&gt;DFS 함수의 종료 조건은 모든 도시를 방문했다는 경우로, visit이 1을 N만큼 왼쪽으로 shift한 값 - 1과 같은 값이 되면 종료한다.&lt;/p&gt;
+
+&lt;p&gt;이때 그냥 종료하면 안되고, 마지막 방문 도시에서 처음 도시로 가는 길이 없다면 불가능한 경우이므로 무한대값을 리턴한다.&lt;/p&gt;
+
+&lt;p&gt;길이 있다면 그 길을 택했을때의 cost 값을 리턴한다.&lt;/p&gt;
+
+&lt;p&gt;종료조건이 아닐 경우, 현재 인덱스 값과 visit을 통해 DP 배열의 값을 받아온다.&lt;/p&gt;
+
+&lt;p&gt;이때 중요한 점은 DP 배열의 값을 받아오는 것이 아닌 &lt;b&gt;주소값을 받아와야 한다&lt;/b&gt;는 것. 이렇게 하면 DP 배열을 일일이 갱신하지 않고 주소값을 받아온 변수를 변경하면 알아서 DP배열의 값도 바뀐다.&lt;/p&gt;
+
+&lt;p&gt;포인터 연산의 편리함을 다시한번 느끼게 된 계기.&lt;/p&gt;
+
+&lt;p&gt;이렇게 받아온 값이 초기값인 -1이 아니라면 이 값을 그대로 리턴해준다.&lt;/p&gt;
+
+&lt;p&gt;만약 초기값에서 갱신되지 않았다면, 우선 매우 큰 값으로 설정해 준다.&lt;/p&gt;
+
+&lt;p&gt;그 다음, 현재 위치에서 연결되었으며 앞에서 방문하지 않은 도시들에 대해 재귀함수로 탐색하며 최소값을 갱신해 준다. 이때 방문 여부를 1을 도시 번호만큼 왼쪽으로 shift하여 표시한다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 재귀함수를 돌며 갱신된 값이 곧 답이다.&lt;/p&gt;
+
+&lt;p&gt;재귀함수를 돌며 탐색하는 부분이 가장 이해하기 어려웠는데, 순열을 재귀로 만드는 과정과 같다고 생각하면 이해가 빠르다.&lt;/p&gt;
+
+&lt;p&gt;모든 경우를 다 따져가며 최소값을 구하고, 탐색 결과값을 저장하고 이를 불러옴으로써 시간을 단축시킬 수 있는 문제.&lt;/p&gt;
+
+&lt;p&gt;앞으로도 문제풀때 중요한 개념들이 여럿 등장했던 중요한 문제다.&lt;/p&gt;
+
+&lt;p&gt;비트마스킹, 포인터 연산이 아주 중요한 개념임을 깨닫게 된 문제.&lt;/p&gt;
+
+&lt;p&gt;꼭 다시한번 풀어봐야될 문제인 것 같다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 04/04/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+
+using namespace std;
+
+int map[16][16] = {0, };
+int DP[16][1 &amp;lt;&amp;lt; 16] = {0, };
+
+int N;
+
+int cost(int index, int visit){
+    if(visit == (1 &amp;lt;&amp;lt; N) - 1){
+        if(map[index][0] == 0){
+            return 987654321;
+        }
+
+        return map[index][0];
+    }
+
+    int&amp;amp; result = DP[index][visit];
+
+    if(result != -1){
+        return result;
+    }
+
+    result = 999999999;
+
+    for(int i=0; i&amp;lt;N; i++){
+        if(visit &amp;amp; (1 &amp;lt;&amp;lt; i) || map[index][i] == 0){
+            continue;
+        }
+
+        result = min(result, cost(i, (visit | (1 &amp;lt;&amp;lt; i))) + map[index][i]);
+    }
+
+    return result;
+}
+
+int main(){
+    cin &amp;gt;&amp;gt; N;
+
+    for(int i=0; i&amp;lt;N; i++){
+        for(int j=0; j&amp;lt;N; j++){
+            cin &amp;gt;&amp;gt; map[i][j];
+        }
+    }
+
+    memset(DP, -1, sizeof(DP));
+
+    cout &amp;lt;&amp;lt; cost(0, 1) &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><category term="Bit Masking" /><summary type="html">백준 2098번 Link: 2098번: 외판원 순회</summary></entry><entry><title type="html">10610</title><link href="keithlee94.github.io/algorithm/10610/" rel="alternate" type="text/html" title="10610" /><published>2019-04-02T00:00:00+09:00</published><updated>2019-04-02T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/10610</id><content type="html" xml:base="keithlee94.github.io/algorithm/10610/">&lt;h1 id=&quot;백준-10610번&quot;&gt;백준 10610번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/10610&quot;&gt;10610번: 30&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;예전에 실패했던 문제여서 다시한번 풀어본 문제.&lt;/p&gt;
+
+&lt;p&gt;너무 허무할정도로 쉽게 답이 나와버려서 이걸 도대체 왜 못풀었을까 하는 생각이 들게 하는 문제였다.&lt;/p&gt;
+
+&lt;p&gt;우선 인풋을 string 형태로 받고, 각 자리수를 모두 더해 3의 배수가 되는지 확인한다. 이때 0의 갯수를 세주는 작업도 같이 한다.&lt;/p&gt;
+
+&lt;p&gt;작업 중 0이 아닌 숫자를 만날 경우 벡터에 넣는다.&lt;/p&gt;
+
+&lt;p&gt;반복문을 한번 돌고 나서, 벡터를 정렬한다. 내림차순으로 정렬되므로 끝에서부터 쭉 결과값을 담을 string에 넣는다.&lt;/p&gt;
+
+&lt;p&gt;만약 인풋으로 들어온 숫자가 3의 배수가 아니거나 0을 포함하지 않았다면 -1을 출력하고, 그렇지 않을 경우 만든 string을 출력하면 풀린다.&lt;/p&gt;
+
+&lt;p&gt;에전이랑 생각하는게 많이 달라졌나보다. 이런문제도 못풀었나 하는 생각이 들 정도면.&lt;/p&gt;
+
+&lt;p&gt;그동안 많이 발전했다는 기분에 뿌듯하네ㅋㅋㅋㅋ&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 02/04/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace std;
+
+int main(){
+    string num;
+    cin &amp;gt;&amp;gt; num;
+
+    int zeroCount = 0;
+    long long digitSum = 0;
+    vector&amp;lt;int&amp;gt; numbers;
+
+    for(int i=num.length()-1; i&amp;gt;=0; i--){
+        if(num[i] - '0' == 0){
+            zeroCount++;
+        }
+        else{
+            numbers.push_back(num[i] - '0');
+            digitSum += num[i] - '0';
+        }
+    }
+
+    sort(numbers.begin(), numbers.end());
+
+    string result;
+    if(zeroCount &amp;gt; 0 &amp;amp;&amp;amp; digitSum % 3 == 0){
+        for(int i=numbers.size()-1; i&amp;gt;=0; i--){
+            result.push_back(numbers[i] + '0');
+        }
+        for(int i=0; i&amp;lt;zeroCount; i++){
+            result.push_back('0');
+        }
+
+        cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+    }
+    else{
+        cout &amp;lt;&amp;lt; -1 &amp;lt;&amp;lt; '\n';
+    }
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Greedy" /><summary type="html">백준 10610번 Link: 10610번: 30</summary></entry><entry><title type="html">1018</title><link href="keithlee94.github.io/algorithm/1018/" rel="alternate" type="text/html" title="1018" /><published>2019-04-01T00:00:00+09:00</published><updated>2019-04-01T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1018</id><content type="html" xml:base="keithlee94.github.io/algorithm/1018/">&lt;h1 id=&quot;백준-1018번&quot;&gt;백준 1018번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1018&quot;&gt;1018번: 체스판 다시 칠하기&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;오랫만에 풀어보는 시뮬레이션 문제였다.&lt;/p&gt;
+
+&lt;p&gt;사실 별건 없어서, 엄청 큰 체스판에 대해 옆으로, 아래로 한칸씩 옮겨가면서 왼쪽 위 코너가 흰색인 체스판과 검은색인 체스판에 대해 맞춰보며 다시 칠하는 횟수가 최소인 경우의 최소값을 찾으면 되는 문제다.&lt;/p&gt;
+
+&lt;p&gt;그냥 단순히 반복문 돌리면서 비교하면 답 나옴.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 01/04/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+
+using namespace std;
+
+char board1[8][8] = {
+        {'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B'},
+        {'B', 'W', 'B', 'W', 'B', 'W', 'B', 'W'},
+        {'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B'},
+        {'B', 'W', 'B', 'W', 'B', 'W', 'B', 'W'},
+        {'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B'},
+        {'B', 'W', 'B', 'W', 'B', 'W', 'B', 'W'},
+        {'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B'},
+        {'B', 'W', 'B', 'W', 'B', 'W', 'B', 'W'}
+};
+
+char board2[8][8] = {
+        {'B', 'W', 'B', 'W', 'B', 'W', 'B', 'W'},
+        {'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B'},
+        {'B', 'W', 'B', 'W', 'B', 'W', 'B', 'W'},
+        {'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B'},
+        {'B', 'W', 'B', 'W', 'B', 'W', 'B', 'W'},
+        {'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B'},
+        {'B', 'W', 'B', 'W', 'B', 'W', 'B', 'W'},
+        {'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B'}
+};
+
+char map[50][50];
+
+int main(){
+    int N, M;
+
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
+
+    for(int i=0; i&amp;lt;N; i++){
+        string row;
+        cin &amp;gt;&amp;gt; row;
+
+        for(int j=0; j&amp;lt;M; j++){
+            map[i][j] = row[j];
+        }
+    }
+
+    char checkMap[8][8];
+    vector&amp;lt;int&amp;gt; candidates;
+
+    for(int i=0; i&amp;lt;N; i++){
+        for(int j=0; j&amp;lt;M; j++){
+            if(i + 7 &amp;lt; N &amp;amp;&amp;amp; j + 7 &amp;lt; M){
+                for(int k=0; k&amp;lt;8; k++){
+                    for(int l=0; l&amp;lt;8; l++){
+                        checkMap[k][l] = map[k+i][l+j];
+                    }
+                }
+
+                int result1 = 0, result2 = 0;
+                for(int k=0; k&amp;lt;8; k++){
+                    for(int l=0; l&amp;lt;8; l++){
+                        if(checkMap[k][l] != board1[k][l]){
+                            result1++;
+                        }
+                        if(checkMap[k][l] != board2[k][l]){
+                            result2++;
+                        }
+                    }
+                }
+
+                candidates.push_back(result1);
+                candidates.push_back(result2);
+            }
+        }
+    }
+
+    sort(candidates.begin(), candidates.end());
+
+    cout &amp;lt;&amp;lt; candidates[0] &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="Simulation" /><category term="Brute Force" /><summary type="html">백준 1018번 Link: 1018번: 체스판 다시 칠하기</summary></entry><entry><title type="html">9461</title><link href="keithlee94.github.io/algorithm/9461/" rel="alternate" type="text/html" title="9461" /><published>2019-03-30T00:00:00+09:00</published><updated>2019-03-30T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/9461</id><content type="html" xml:base="keithlee94.github.io/algorithm/9461/">&lt;h1 id=&quot;백준-9461번&quot;&gt;백준 9461번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/9461&quot;&gt;9461번: 파도반 수열&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;문제 이름보고 뭔가 있어보여서 살짝 쫄고 들어갔던 문제였다.&lt;/p&gt;
+
+&lt;p&gt;그런데 제대로 생각해보니 정말 별거 없는 문제였다.&lt;/p&gt;
+
+&lt;p&gt;현재 숫자 기준으로 2개 앞 수와 3개 앞 수를 더하면 현재 숫자 위치의 파도반 수를 구할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;점화식이 아주 단순히 나왔던 평이한 문제.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 30/03/2019.
 //
 
 #include &amp;lt;iostream&amp;gt;
 
 using namespace std;
 
-long long DP[101][21] = {0, };
+int T;
+long long DP[101] = {0, };
+
+int main(){
+    DP[0] = 0;
+    DP[1] = 1;
+    DP[2] = 1;
+    DP[3] = 1;
+
+    for(int i=4; i&amp;lt;=100; i++){
+        DP[i] = DP[i-2] + DP[i-3];
+    }
+
+    cin &amp;gt;&amp;gt; T;
+
+    for(int test=0; test&amp;lt;T; test++){
+        int N;
+
+        cin &amp;gt;&amp;gt; N;
+
+        cout &amp;lt;&amp;lt; DP[N] &amp;lt;&amp;lt; '\n';
+    }
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 9461번 Link: 9461번: 파도반 수열</summary></entry><entry><title type="html">11726</title><link href="keithlee94.github.io/algorithm/11726/" rel="alternate" type="text/html" title="11726" /><published>2019-03-30T00:00:00+09:00</published><updated>2019-03-30T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/11726</id><content type="html" xml:base="keithlee94.github.io/algorithm/11726/">&lt;h1 id=&quot;백준-11726번&quot;&gt;백준 11726번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/11726&quot;&gt;11726번: 2×n 타일링&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;풀이가 짧은 시간안에 명쾌하게 나온 DP 문제다.&lt;/p&gt;
+
+&lt;p&gt;가로 2, 세로 1짜리 타일을 회전시키거나 회전시키지 않는 식으로 붙여가면 되는 문제.&lt;/p&gt;
+
+&lt;p&gt;처음에는 아무 생각없이 시도했다가 틀렸는데, 다음 타일을 반드시 현재 타일셋의 맨 오른쪽에다가 붙인다는 생각으로 푸니 바로 풀렸다.&lt;/p&gt;
+
+&lt;p&gt;이점만 조심하면 무난했던 DP 문제였다.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 30/03/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
 
 int main(){
     int N;
 
+    long long DP[1001][2] = {0, };
+
+    DP[1][0] = 1;
+    DP[1][1] = 0;
+    DP[2][0] = 1;
+    DP[2][1] = 1;
+
     cin &amp;gt;&amp;gt; N;
 
-    int start;
-    cin &amp;gt;&amp;gt; start;
+    for(int i=3; i&amp;lt;=N; i++){
+        DP[i][0] = (DP[i-1][0] + DP[i-1][1]) % 10007;
+        DP[i][1] = DP[i-1][0] % 10007;
+    }
 
-    DP[0][start] = 1;
+    cout &amp;lt;&amp;lt; (DP[N][0] + DP[N][1]) % 10007 &amp;lt;&amp;lt; '\n';
 
-    for(int i=1; i&amp;lt;N-1; i++){
-        int nextNum;
-        cin &amp;gt;&amp;gt; nextNum;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 11726번 Link: 11726번: 2×n 타일링</summary></entry><entry><title type="html">9465</title><link href="keithlee94.github.io/algorithm/9465/" rel="alternate" type="text/html" title="9465" /><published>2019-03-30T00:00:00+09:00</published><updated>2019-03-30T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/9465</id><content type="html" xml:base="keithlee94.github.io/algorithm/9465/">&lt;h1 id=&quot;백준-9465번&quot;&gt;백준 9465번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/9465&quot;&gt;9465번: 스티커&lt;/a&gt;&lt;/p&gt;
 
-        for(int j=0; j&amp;lt;=20; j++){
-            if(DP[i-1][j] &amp;gt; 0){
-                if(j - nextNum &amp;gt;= 0){
-                    DP[i][j-nextNum] += DP[i-1][j];
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;무난한 DP 문제였다.&lt;/p&gt;
+
+&lt;p&gt;예전에 풀어봤던 RGB 거리 문제처럼 바로 앞에서 선택한 인덱스를 제외한 나머지 인덱스의 DP값들에 스티커 점수를 더해가며 DP 배열을 채우면 되는 문제다.&lt;/p&gt;
+
+&lt;p&gt;확실히 이젠 DP에 대해서 감이 좀 생긴 느낌이 든다.&lt;/p&gt;
+
+&lt;p&gt;보다보니 비슷한 문제였다는게 보이네 슬슬ㅎㅎㅎ&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 30/03/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;strings.h&amp;gt;
+
+using namespace std;
+
+int T;
+int stickers[2][100001] = {0, };
+int DP[100001][3] = {0, };
+
+int main(){
+    cin &amp;gt;&amp;gt; T;
+
+    for(int test=0; test&amp;lt;T; test++){
+        int N;
+
+        cin &amp;gt;&amp;gt; N;
+
+        bzero(stickers, sizeof(stickers));
+        bzero(DP, sizeof(DP));
+
+        for(int i=0; i&amp;lt;2; i++){
+            for(int j=1; j&amp;lt;=N; j++){
+                cin &amp;gt;&amp;gt; stickers[i][j];
+            }
+        }
+
+        for(int i=1; i&amp;lt;=N; i++){
+            DP[i][0] = max(max(DP[i-1][0], DP[i-1][1]), DP[i-1][2]);
+            DP[i][1] = max(DP[i-1][0], DP[i-1][2]) + stickers[0][i];
+            DP[i][2] = max(DP[i-1][0], DP[i-1][1]) + stickers[1][i];
+        }
+
+        cout &amp;lt;&amp;lt; max(max(DP[N][0], DP[N][1]), DP[N][2]) &amp;lt;&amp;lt; '\n';
+    }
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 9465번 Link: 9465번: 스티커</summary></entry><entry><title type="html">16985</title><link href="keithlee94.github.io/algorithm/16985/" rel="alternate" type="text/html" title="16985" /><published>2019-03-26T00:00:00+09:00</published><updated>2019-03-26T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/16985</id><content type="html" xml:base="keithlee94.github.io/algorithm/16985/">&lt;h1 id=&quot;백준-16985번&quot;&gt;백준 16985번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/16985&quot;&gt;16985번: Maaaaaaaaaze&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;아아아아아아아아주 지저분한 형태의 BFS 문제다.&lt;/p&gt;
+
+&lt;p&gt;예전 삼성 코딩테스트 볼때부터 큐브문제는 정말 싫었는데, 이문제는 큐브 돌리기에 BFS까지 추가된 형태.&lt;/p&gt;
+
+&lt;p&gt;생각보다 푸는방법은 간단했다.&lt;/p&gt;
+
+&lt;p&gt;우선 입력을 받고 나서, 큐브의 각 층을 회전시킬 수 있는 모든 경우에 대해 회전시킨다.&lt;/p&gt;
+
+&lt;p&gt;그 다음, 회전된 각 층을 순열을 통해 재배열한다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 재배열까지 완료한 지도를 BFS를 통해 탐색하고 최단거리를 찾으면 되는 문제다.&lt;/p&gt;
+
+&lt;p&gt;풀어보고 나니 모든 경우 다 따지고 BFS 돌린다는 단순한 풀이인데, 구현이 좀 많이 복잡한편이다.&lt;/p&gt;
+
+&lt;p&gt;회전하는 모든 경우 따질때 5중 for문을 쓰는데, 이걸 써도 통과가 될까 했는데 되더라.&lt;/p&gt;
+
+&lt;p&gt;아주 단순무식하게 모든 경우를 빠짐없이 따져보면 결과가 잘 나오고, 시간초과에 대해서도 딱히 걱정할필요가 없는 문제였다.&lt;/p&gt;
+
+&lt;p&gt;코드가 좀 기니 읽는데 주의할것…&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 25/03/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;queue&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+
+using namespace std;
+
+struct Point{
+    int z, x, y;
+};
+
+int map[5][5][5] = {0, };
+int setMap[5][5][5] = {0, };
+
+int dx[] = {0, 0, 0, 0, 1, -1};
+int dy[] = {0, 0, 1, -1, 0, 0};
+int dz[] = {1, -1, 0, 0, 0, 0};
+
+int result = 99999999;
+
+void rotate(int partIndex, int degree){ // 몇층을 몇도로 돌릴것인가
+    if(degree == 0){
+        return;
+    }
+
+    int temp[5][5] = {0, };
+    memcpy(temp, setMap[partIndex], sizeof(int) * 25);
+
+    if(degree == 1){ // 오른쪽으로 90도
+        for(int i=0; i&amp;lt;5; i++){
+            for(int j=0; j&amp;lt;5; j++){
+                setMap[partIndex][i][j] = temp[4-j][i];
+            }
+        }
+    }
+    else if(degree == 2){ // 오른쪽으로 180도
+        for(int i=0; i&amp;lt;5; i++){
+            for(int j=0; j&amp;lt;5; j++){
+                setMap[partIndex][i][j] = temp[4-i][4-j];
+            }
+        }
+    }
+    else if(degree == 3){ // 오른쪽으로 270도
+        for(int i=0; i&amp;lt;5; i++){
+            for(int j=0; j&amp;lt;5; j++){
+                setMap[partIndex][i][j] = temp[j][4-i];
+            }
+        }
+    }
+}
+
+int BFS(){
+    queue&amp;lt;Point&amp;gt; Queue;
+    bool visit[5][5][5] = {false, };
+
+    Queue.push({0, 0, 0});
+    visit[0][0][0] = true;
+    int distance = 0;
+
+    while(!Queue.empty()){
+        vector&amp;lt;Point&amp;gt; points;
+
+        while(!Queue.empty()){
+            points.push_back(Queue.front());
+            Queue.pop();
+        }
+
+        for(int v=0; v&amp;lt;points.size(); v++){
+            int currentZ = points[v].z;
+            int currentX = points[v].x;
+            int currentY = points[v].y;
+
+            if(currentZ == 4 &amp;amp;&amp;amp; currentX == 4 &amp;amp;&amp;amp; currentY == 4){
+                return distance;
+            }
+
+            for(int i=0; i&amp;lt;6; i++){
+                int nextZ = currentZ + dz[i];
+                int nextX = currentX + dx[i];
+                int nextY = currentY + dy[i];
+
+                if(nextX &amp;gt;= 0 &amp;amp;&amp;amp; nextX &amp;lt; 5 &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt; 5 &amp;amp;&amp;amp; nextZ &amp;gt;= 0 &amp;amp;&amp;amp; nextZ &amp;lt; 5){
+                    if(!visit[nextZ][nextX][nextY] &amp;amp;&amp;amp; setMap[nextZ][nextX][nextY] == 1){
+                        visit[nextZ][nextX][nextY] = true;
+                        Queue.push({nextZ, nextX, nextY});
+                    }
                 }
-                if(j + nextNum &amp;lt;= 20){
-                    DP[i][j+nextNum] += DP[i-1][j];
+            }
+        }
+
+        distance++;
+    }
+
+    return -1;
+}
+
+int main(){
+    for(int i=0; i&amp;lt;5; i++){
+        for(int j=0; j&amp;lt;5; j++){
+            for(int k=0; k&amp;lt;5; k++){
+                cin &amp;gt;&amp;gt; map[i][j][k];
+            }
+        }
+    }
+
+    vector&amp;lt;int&amp;gt; perm = {0, 1, 2, 3, 4};
+
+    do{
+        for(int i=0; i&amp;lt;4; i++){
+            for(int j=0; j&amp;lt;4; j++){
+                for(int k=0; k&amp;lt;4; k++){
+                    for(int l=0; l&amp;lt;4; l++){
+                        for(int m=0; m&amp;lt;4; m++){
+                            for(int n=0; n&amp;lt;5; n++){
+                                memcpy(setMap[n], map[perm[n]], sizeof(int) * 25);
+                            } // 바꾼 맵 초기화: 순열로 순서 배정
+
+                            rotate(0, i);
+                            rotate(1, j);
+                            rotate(2, k);
+                            rotate(3, l);
+                            rotate(4, m);
+                            // 각층 회전
+
+                            if(setMap[0][0][0] == 1 &amp;amp;&amp;amp; setMap[4][4][4] == 1){
+                                int temp = BFS();
+
+                                if(temp &amp;gt; 0 &amp;amp;&amp;amp; result &amp;gt; temp){
+                                    result = temp;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    while(next_permutation(perm.begin(), perm.end()));
+
+    if(result == 99999999){
+        result = -1;
+    }
+    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><summary type="html">백준 16985번 Link: 16985번: Maaaaaaaaaze</summary></entry><entry><title type="html">1495</title><link href="keithlee94.github.io/algorithm/1495/" rel="alternate" type="text/html" title="1495" /><published>2019-03-24T00:00:00+09:00</published><updated>2019-03-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1495</id><content type="html" xml:base="keithlee94.github.io/algorithm/1495/">&lt;h1 id=&quot;백준-1495번&quot;&gt;백준 1495번&lt;/h1&gt;
+&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1495&quot;&gt;1495번: 기타리스트&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
+&lt;p&gt;무난하게 풀어냈던 DP 문제.&lt;/p&gt;
+
+&lt;p&gt;앞에서 풀어봤던 1학년 문제에서 썼던 알고리즘으로 풀면 쉽게 풀리는 문제였다.&lt;/p&gt;
+
+&lt;p&gt;오히려 이 문제가 좀 더 쉬웠던게, 이 문제에서 중요한 것은 횟수가 아닌 방문 가능 여부만 True/False로 확인하면 되기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;1학년 문제 풀듯이 DP배열을 채우고 DP 배열에서 값이 true인 것의 최대 인덱스를 출력해주면 풀린다.&lt;/p&gt;
+
+&lt;p&gt;1학년 문제가 하나의 DP문제 풀이 템플릿이 되는 느낌이다.&lt;/p&gt;
+
+&lt;p&gt;잘 기억해둬야지&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by Keith_Lee on 24/03/2019.
+//
+
+#include &amp;lt;iostream&amp;gt;
+
+using namespace std;
+
+bool DP[101][1001];
+
+int N, S, M;
+
+int main(){
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; S &amp;gt;&amp;gt; M;
+
+    DP[0][S] = true;
+
+    for(int i=1; i&amp;lt;=N; i++){
+        int gap;
+        cin &amp;gt;&amp;gt; gap;
+
+        for(int j=0; j&amp;lt;=M; j++){
+            if(DP[i-1][j]){
+                if(j - gap &amp;gt;= 0){
+                    DP[i][j-gap] = true;
+                }
+
+                if(j + gap &amp;lt;= M){
+                    DP[i][j+gap] = true;
                 }
             }
         }
     }
 
-    int resultNum;
-    cin &amp;gt;&amp;gt; resultNum;
+    int result = -1;
+    for(int i=0; i&amp;lt;=M; i++){
+        if(DP[N][i]){
+            result = i;
+        }
+    }
 
-    cout &amp;lt;&amp;lt; DP[N-2][resultNum] &amp;lt;&amp;lt; '\n';
+    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
 
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 5557번 Link: 5557번: 1학년</summary></entry><entry><title type="html">12865</title><link href="keithlee94.github.io/algorithm/12865/" rel="alternate" type="text/html" title="12865" /><published>2019-03-24T00:00:00+09:00</published><updated>2019-03-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/12865</id><content type="html" xml:base="keithlee94.github.io/algorithm/12865/">&lt;h1 id=&quot;백준-12865번&quot;&gt;백준 12865번&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1495번 Link: 1495번: 기타리스트</summary></entry><entry><title type="html">12865</title><link href="keithlee94.github.io/algorithm/12865/" rel="alternate" type="text/html" title="12865" /><published>2019-03-24T00:00:00+09:00</published><updated>2019-03-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/12865</id><content type="html" xml:base="keithlee94.github.io/algorithm/12865/">&lt;h1 id=&quot;백준-12865번&quot;&gt;백준 12865번&lt;/h1&gt;
 &lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/12865&quot;&gt;12865번: 평범한 배낭&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -137,784 +853,4 @@ int main(){
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 12865번 Link: 12865번: 평범한 배낭</summary></entry><entry><title type="html">1495</title><link href="keithlee94.github.io/algorithm/1495/" rel="alternate" type="text/html" title="1495" /><published>2019-03-24T00:00:00+09:00</published><updated>2019-03-24T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1495</id><content type="html" xml:base="keithlee94.github.io/algorithm/1495/">&lt;h1 id=&quot;백준-1495번&quot;&gt;백준 1495번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1495&quot;&gt;1495번: 기타리스트&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;무난하게 풀어냈던 DP 문제.&lt;/p&gt;
-
-&lt;p&gt;앞에서 풀어봤던 1학년 문제에서 썼던 알고리즘으로 풀면 쉽게 풀리는 문제였다.&lt;/p&gt;
-
-&lt;p&gt;오히려 이 문제가 좀 더 쉬웠던게, 이 문제에서 중요한 것은 횟수가 아닌 방문 가능 여부만 True/False로 확인하면 되기 때문이다.&lt;/p&gt;
-
-&lt;p&gt;1학년 문제 풀듯이 DP배열을 채우고 DP 배열에서 값이 true인 것의 최대 인덱스를 출력해주면 풀린다.&lt;/p&gt;
-
-&lt;p&gt;1학년 문제가 하나의 DP문제 풀이 템플릿이 되는 느낌이다.&lt;/p&gt;
-
-&lt;p&gt;잘 기억해둬야지&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 24/03/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-
-using namespace std;
-
-bool DP[101][1001];
-
-int N, S, M;
-
-int main(){
-    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; S &amp;gt;&amp;gt; M;
-
-    DP[0][S] = true;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        int gap;
-        cin &amp;gt;&amp;gt; gap;
-
-        for(int j=0; j&amp;lt;=M; j++){
-            if(DP[i-1][j]){
-                if(j - gap &amp;gt;= 0){
-                    DP[i][j-gap] = true;
-                }
-
-                if(j + gap &amp;lt;= M){
-                    DP[i][j+gap] = true;
-                }
-            }
-        }
-    }
-
-    int result = -1;
-    for(int i=0; i&amp;lt;=M; i++){
-        if(DP[N][i]){
-            result = i;
-        }
-    }
-
-    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1495번 Link: 1495번: 기타리스트</summary></entry><entry><title type="html">17070</title><link href="keithlee94.github.io/algorithm/17070/" rel="alternate" type="text/html" title="17070" /><published>2019-03-12T00:00:00+09:00</published><updated>2019-03-12T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/17070</id><content type="html" xml:base="keithlee94.github.io/algorithm/17070/">&lt;h1 id=&quot;백준-17070번&quot;&gt;백준 17070번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/17070&quot;&gt;17070번: 파이프 옮기기 1&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;오늘도 BFS 문제다.&lt;/p&gt;
-
-&lt;p&gt;전형적인 BFS와는 다른 방식으로 풀어야 하는 문제였다.&lt;/p&gt;
-
-&lt;p&gt;보통 BFS의 경우 1 * 1짜리 한칸만 고려해줘도 풀리는 문제들이 대다수인데 이 문제같은 경우 파이프의 앞, 뒤를 함께 고려해야 한다는 점이 큰 차이점이었다.&lt;/p&gt;
-
-&lt;p&gt;이외에도 회전하는 조건이 꽤 까다롭다는 점이 차이점이었으며 반복 방문을 막기 위해 BFS에서 보통 사용하는 visit 배열을 쓰지 않아야 풀리는 문제라는 점도 차이점이다.&lt;/p&gt;
-
-&lt;p&gt;그리고 이 문제의 경우 BFS로 풀면 88%에서 시간초과가 난다.&lt;/p&gt;
-
-&lt;p&gt;혹시나 해서 DFS로 바꿔서 풀어보니 바로 풀렸다.&lt;/p&gt;
-
-&lt;p&gt;DFS는 재귀호출이기 때문에 함수 호출에 걸리는 시간도 있으니 BFS보다 더 오래 걸릴것이라고 생각했는데 잘못 생각했던것 같다.&lt;/p&gt;
-
-&lt;p&gt;조건이 꽤 많은데 이 조건들을 하나하나 반영하며 DFS로 풀면 바로 풀리는 문제였다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Baekjoon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BufferedReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;InputStreamReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;util&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StringTokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Main_17070&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frontX&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frontY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[][]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DFS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentFrontX&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentFrontY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentDirection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentFrontX&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentFrontY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;++;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextFrontX&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentFrontX&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextFrontY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;currentFrontY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextDirection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentDirection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextDirection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentDirection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextDirection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontX&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextFrontY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentFrontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentFrontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentFrontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentFrontY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                        &lt;span class=&quot;n&quot;&gt;DFS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextFrontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontX&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextFrontY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentFrontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentFrontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                        &lt;span class=&quot;n&quot;&gt;DFS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextFrontX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextFrontY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;BufferedReader&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;br&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BufferedReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InputStreamReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;br&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;StringTokenizer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StringTokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;br&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;Pipe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;DFS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;nf&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><category term="DFS" /><summary type="html">백준 17070번 Link: 17070번: 파이프 옮기기 1</summary></entry><entry><title type="html">16988</title><link href="keithlee94.github.io/algorithm/16988/" rel="alternate" type="text/html" title="16988" /><published>2019-03-06T00:00:00+09:00</published><updated>2019-03-06T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/16988</id><content type="html" xml:base="keithlee94.github.io/algorithm/16988/">&lt;h1 id=&quot;백준-16988번&quot;&gt;백준 16988번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/16988&quot;&gt;16988번: Baaaaaaaaaduk2 (Easy)&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;아주 오랫만에 BFS 문제.&lt;/p&gt;
-
-&lt;p&gt;삼성 역량테스트 대비한 특강에서 내준 문제였는데, 보자마자 예전에 풀었던 연구소 문제가 생각났다.&lt;/p&gt;
-
-&lt;p&gt;거기까지는 좋았다. 거기까지는.&lt;/p&gt;
-
-&lt;p&gt;여기까지 떠올리고 DFS를 활용하여 2개의 돌을 놓는 위치를 정하는데까지는 성공했는데, 이제 죽일 수 있는 돌이 몇개인지 세는게 가장 큰 문제였다.&lt;/p&gt;
-
-&lt;p&gt;이거 해결해보려고 정말 많은 고민을 해봤고 시도해봤는데 전부 허사였다.&lt;/p&gt;
-
-&lt;p&gt;결국 답을 물어봐가면서 풀긴 했는데, 풀고 나니 내가 생각했던 방법이랑 크게 차이는 없는것 같지만 내가 생각지도 못한 부분들이 여럿 보였다.&lt;/p&gt;
-
-&lt;p&gt;난 map에서 2로 표기된 점들에 대해 BFS를 통해 주변에 0이 없어 더 나갈 곳이 있는지 없는지만 파악하는 방법을 생각했는데, 더 나갈 수 없다는 걸 파악하는건 좋지만 가장 중요한 갯수 세는건 못한다.&lt;/p&gt;
-
-&lt;p&gt;주변에 이 문제를 BFS로 푼 사람이 있어 물어봐가면서 풀었는데, 방법은 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;1) DFS를 통해 2개의 착수점을 찾는다.&lt;/p&gt;
-
-&lt;p&gt;2) 2개의 점을 찾았으면, 전역변수로 설정된 visit 배열을 초기화한다.&lt;/p&gt;
-
-&lt;p&gt;3) map의 각 점들에 대해 값이 2이고 방문하지 않았다면 그 점을 방문했다고 표시하고, 그 점에 대해 BFS를 실행한다.&lt;/p&gt;
-
-&lt;p&gt;4) 현재 찾은 착수점에 돌을 놓은 상태로 map을 갱신한다. (memcpy 함수 사용)&lt;/p&gt;
-
-&lt;p&gt;5) BFS에 들어가면, 우선 현재 탐색하고 있는 점은 방문한 점이므로 count 값을 1 늘린다.&lt;/p&gt;
-
-&lt;p&gt;6) for문을 순회하며 다음 BFS로 탐색할 점을 찾는다. 이때, 다음 지점이 방문하지 않은 지점이며 map의 다음 방문 지점 값이 2일 때에만 진행한다. 또, 현재 죽은 돌의 갯수를 세기 위해 count 값을 1 늘린다.&lt;/p&gt;
-
-&lt;p&gt;7) 만약 다음 지점의 map 값이 0이라면 이는 돌들이 완벽하게 포위된 상태가 아님을 의미한다. 전역변수로 설정된 finish 값을 true로 바꿔준다.&lt;/p&gt;
-
-&lt;p&gt;8) BFS를 완료한 후, finish 값이 true라면 탐색한 돌과 그 주변 돌들은 죽은 것이 아니므로, 0을 리턴한다. 반대의 경우 BFS를 통해 늘려준 count 값을 리턴한다.&lt;/p&gt;
-
-&lt;p&gt;9) map 값이 2이며 방문하지 않은 모든 점들에 대해 탐색을 진행해야 하므로, 현재까지의 BFS 결과를 따로 누적한다. 나머지 점들에 대해서 반복한다.&lt;/p&gt;
-
-&lt;p&gt;10) 모든 방문이 끝났다면 현재까지 누적된 BFS 결과와 이전 최대값을 비교해 최대값을 갱신한다.&lt;/p&gt;
-
-&lt;p&gt;11) 이 과정을 모든 착수 가능한 경우에 대해 반복한다.&lt;/p&gt;
-
-&lt;p&gt;이런 과정을 통해 최대값을 구하는 방법이다.&lt;/p&gt;
-
-&lt;p&gt;BFS를 사용하는것까지는 떠올렸는데 디테일하게 BFS를 통해 합까지 구하는 방법을 생각하지 못한 점이 매우 아쉬웠다.&lt;/p&gt;
-
-&lt;p&gt;또 처음에 돌릴때는 memcpy 대신 이중 for문 돌며 map값을 설정해줬는데 그러니 시간초과나더라.&lt;/p&gt;
-
-&lt;p&gt;혹시나 해서 memcpy로 바꿔봤더니 바로 통과됐다.&lt;/p&gt;
-
-&lt;p&gt;BFS에 대해서는 자신있다고 생각했는데 아직도 부족한점이 너무 많다.&lt;/p&gt;
-
-&lt;p&gt;진짜로 마음잡고 다시 하루에 하나이상 풀어가며 실력 더 키워야겠다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 05/03/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;queue&amp;gt;
-#include &amp;lt;strings.h&amp;gt;
-#include &amp;lt;memory.h&amp;gt;
-
-using namespace std;
-
-int N, M;
-
-int map[20][20];
-int tempMap[20][20];
-bool visit[20][20];
-
-int dx[] = {0, 0, 1, -1};
-int dy[] = {1, -1, 0, 0};
-
-int maxValue = 0;
-bool finish = false;
-
-int BFS(int x, int y){
-    int count = 0;
-
-    queue&amp;lt;pair&amp;lt;int, int&amp;gt;&amp;gt; Queue;
-
-    memcpy(map, tempMap, sizeof(tempMap));
-
-    Queue.push(make_pair(x, y));
-
-    count++;
-
-    while(!Queue.empty()){
-        int currentX = Queue.front().first;
-        int currentY = Queue.front().second;
-        Queue.pop();
-
-        for(int i=0; i&amp;lt;4; i++){
-            int nextX = currentX + dx[i];
-            int nextY = currentY + dy[i];
-
-            if(nextX &amp;gt;= 0 &amp;amp;&amp;amp; nextX &amp;lt; N &amp;amp;&amp;amp; nextY &amp;gt;= 0 &amp;amp;&amp;amp; nextY &amp;lt; M){
-                if(!visit[nextX][nextY] &amp;amp;&amp;amp; map[nextX][nextY] == 2){
-                    visit[nextX][nextY] = true;
-                    count++;
-                    Queue.push(make_pair(nextX, nextY));
-                }
-                else if(map[nextX][nextY] == 0){
-                    finish = true;
-                }
-            }
-        }
-    }
-
-    if(finish){
-        return 0;
-    }
-
-    return count;
-}
-
-void DFS(int count){
-    if(count == 2){
-        int temp = 0;
-        bzero(visit, sizeof(visit));
-
-        for(int i=0; i&amp;lt;N; i++){
-            for(int j=0; j&amp;lt;M; j++){
-                if(!visit[i][j] &amp;amp;&amp;amp; tempMap[i][j] == 2){
-                    finish = false;
-                    visit[i][j] = true;
-                    temp += BFS(i, j);
-                }
-            }
-        }
-
-        maxValue = maxValue &amp;lt; temp ? temp : maxValue;
-
-        return;
-    }
-
-    for(int i=0; i&amp;lt;N; i++){
-        for(int j=0; j&amp;lt;M; j++){
-            if(tempMap[i][j] == 0){
-                tempMap[i][j] = 1;
-                DFS(count+1);
-                tempMap[i][j] = 0;
-            }
-        }
-    }
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
-
-    for(int i=0; i&amp;lt;N; i++){
-        for(int j=0; j&amp;lt;M; j++){
-            cin &amp;gt;&amp;gt; map[i][j];
-
-            tempMap[i][j] = map[i][j];
-        }
-    }
-
-    DFS(0);
-
-    cout &amp;lt;&amp;lt; maxValue &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="BFS" /><category term="DFS" /><summary type="html">백준 16988번 Link: 16988번: Baaaaaaaaaduk2 (Easy)</summary></entry><entry><title type="html">2352</title><link href="keithlee94.github.io/algorithm/2352/" rel="alternate" type="text/html" title="2352" /><published>2019-03-02T00:00:00+09:00</published><updated>2019-03-02T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/2352</id><content type="html" xml:base="keithlee94.github.io/algorithm/2352/">&lt;h1 id=&quot;백준-2352번&quot;&gt;백준 2352번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/2352&quot;&gt;2352번: 반도체 설계&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;역시 DP문제.&lt;/p&gt;
-
-&lt;p&gt;아주 오랫만에 자바로 문제를 풀었다.&lt;/p&gt;
-
-&lt;p&gt;사실 C++로 풀긴 했는데, 누군가의 제보에 의하면 같은 알고리즘으로 풀었을때 C++로는 시간초과가 나고, 자바로는 제시간안에 풀린다는 말이 있어 자바로 바꿔서 풀었다.&lt;/p&gt;
-
-&lt;p&gt;가장 긴 증가수열의 길이를 구하면 풀리는 문제다.&lt;/p&gt;
-
-&lt;p&gt;내가 짠 알고리즘은 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;1) DP 배열을 0으로 초기화한다.&lt;/p&gt;
-
-&lt;p&gt;2) 입력을 받는다.&lt;/p&gt;
-
-&lt;p&gt;3) i번째 인덱스에 입력받은 값이 들어간다고 가정할 때, 0부터 i-1까지의 j에 대해 port[j]가 port[i]보다 작을 때의 모든 DP값들 중 최대값을 찾는다.&lt;/p&gt;
-
-&lt;p&gt;4) DP[i]는 3에서 구한 최대값 + 1 이다.&lt;/p&gt;
-
-&lt;p&gt;5) DP 배열의 최대값이 구하고자 하는 답이다.&lt;/p&gt;
-
-&lt;p&gt;위와 같은 알고리즘대로 풀어봤더니 자바로는 제시간에 풀렸다.&lt;/p&gt;
-
-&lt;p&gt;예전에 배우기로는 여기다 이진검색까지 추가하면 더 빠르게 풀린다는 것을 배웠는데, 아직 제대로 이해하지 못해서 할수 있는 최선으로 이 알고리즘대로 풀었다.&lt;/p&gt;
-
-&lt;p&gt;이진검색도 같이 사용해서 C++로도 풀어낼 수 있도록 공부해보고 다시한번 풀어봐야겠다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;시간-터지는-c-코드&quot;&gt;시간 터지는 C++ 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 02/03/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;strings.h&amp;gt;
-
-using namespace std;
-
-int N;
-int DP[40001];
-int port[40001];
-
-int main(){
-    cin &amp;gt;&amp;gt; N;
-
-    port[0] = 0;
-    DP[0] = 0;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        cin &amp;gt;&amp;gt; port[i];
-
-        int max = 0;
-
-        for(int j=0; j&amp;lt;i; j++){
-            if(port[j] &amp;lt; port[i] &amp;amp;&amp;amp; DP[j] &amp;gt; max){
-                max = DP[j];
-            }
-        }
-
-        DP[i] += max + 1;
-    }
-
-    int result = 0;
-    for(int i=1; i&amp;lt;=N; i++){
-        result = result &amp;lt; DP[i] ? DP[i] : result;
-    }
-
-    for(int i=0; i&amp;lt;=N; i++){
-        cout &amp;lt;&amp;lt; DP[i] &amp;lt;&amp;lt; ' ';
-    }
-    cout &amp;lt;&amp;lt; '\n';
-
-    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;자바로는-돌아가는-정답-코드&quot;&gt;자바로는 돌아가는 정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;//&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Created&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Keith_Lee&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;02&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2019.&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;//&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Baekjoon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BufferedReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;InputStreamReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;util&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StringTokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Main_2352&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;BufferedReader&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;br&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BufferedReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InputStreamReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;br&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;StringTokenizer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StringTokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;br&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;40001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DP&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;40001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;++){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nextToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-
-            &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-            &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;++){&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-            &lt;span class=&quot;n&quot;&gt;DP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;++){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;//&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;++){&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;//&lt;/span&gt;            &lt;span class=&quot;nf&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;//&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;//&lt;/span&gt;        &lt;span class=&quot;nf&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-        &lt;span class=&quot;nf&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><category term="Greedy" /><category term="LIS" /><summary type="html">백준 2352번 Link: 2352번: 반도체 설계</summary></entry><entry><title type="html">11058</title><link href="keithlee94.github.io/algorithm/11058/" rel="alternate" type="text/html" title="11058" /><published>2019-02-28T00:00:00+09:00</published><updated>2019-02-28T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/11058</id><content type="html" xml:base="keithlee94.github.io/algorithm/11058/">&lt;h1 id=&quot;백준-11058번&quot;&gt;백준 11058번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/11058&quot;&gt;11058번: 크리보드&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;이번에도 DP 문제.&lt;/p&gt;
-
-&lt;p&gt;예전에 풀었어야 했는데 그땐 DP에 대해 너무 자신이 없어서 쫄아서 패스했던 기억이 난다.&lt;/p&gt;
-
-&lt;p&gt;이번에 DP를 제대로 공부하는 김에 풀어봤는데, 생각보다 금방 점화식을 찾아냈다.&lt;/p&gt;
-
-&lt;p&gt;물론 여러번 시도해보긴 했지만, 생각했던 점화식이 맞았다.&lt;/p&gt;
-
-&lt;p&gt;점화식에 대해 설명하자면 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;현재의 DP 인덱스가 i라고 가정하자.&lt;/p&gt;
-
-&lt;p&gt;우선 A만 누르는 경우는 직전 DP값에다 1을 더한 값이다.&lt;/p&gt;
-
-&lt;p&gt;이는 곧 DP[i] = DP[i-1] + 1과 같다.&lt;/p&gt;
-
-&lt;p&gt;이 다음부터가 꽤 복잡한데, 경우는 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;1) 현재 기준 3번 전 DP에서 Ctrl + A를 눌러 그때 입력된 A들을 모두 선택하고, 2번 전 DP에서 Ctrl + C를 눌러 선택된 것을 복사한 다음 1번 전 DP에서 Ctrl + V를 눌러 복사된 내용을 붙여넣는 경우&lt;/p&gt;
-
-&lt;p&gt;이는 곧 DP[i-3]에다가 DP[i-3]을 한번 더 쓰는 것과 같다.&lt;/p&gt;
-
-&lt;p&gt;따라서 DP[i] = 2 * DP[i-3] 이다.&lt;/p&gt;
-
-&lt;p&gt;2) 현재 기준 4번 전 DP에서 Ctrl + A를 눌러 그때 입력된 A들을 모두 선택하고, 3번 전 DP에서 Ctrl + C를 눌러 선택된 것을 복사한 다음 2번 전, 1번 전 DP에서 Ctrl + V를 눌러 복사된 내용을 붙여넣는 경우&lt;/p&gt;
-
-&lt;p&gt;이는 곧 DP[i-4]를 3번 쓰는 것과 같으므로, DP[i] = 3 * DP[i-4] 이다.&lt;/p&gt;
-
-&lt;p&gt;이 과정을 DP[0] * (i-1)까지 반복한다.&lt;/p&gt;
-
-&lt;p&gt;이 모든 경우의 수들의 최대값이 현재 DP값이 된다.&lt;/p&gt;
-
-&lt;p&gt;정답을 얻기 위해 예전 정답을 쌓아 나간다는 생각을 어거지로라도 하다 보니 점화식이 조금은 보이는 것 같다.&lt;/p&gt;
-
-&lt;p&gt;이런식으로 DP를 정복할 수 있을것 같다는 자신감을 좀 갖게 해준 문제였다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 26/02/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;vector&amp;gt;
-#include &amp;lt;strings.h&amp;gt;
-
-using namespace std;
-
-int N;
-long long DP[101];
-
-long long max(vector&amp;lt;long long&amp;gt; v){
-    long long result = -1;
-
-    for(int i=0; i&amp;lt;v.size(); i++){
-        if(v[i] &amp;gt; result){
-            result = v[i];
-        }
-    }
-
-    return result;
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; N;
-
-    bzero(DP, sizeof(DP));
-
-    DP[0] = 0;
-    DP[1] = 1;
-    DP[2] = 2;
-    DP[3] = 3;
-    DP[4] = 4;
-    DP[5] = 5;
-    DP[6] = 6;
-
-    for(int i=7; i&amp;lt;=N; i++){
-        vector&amp;lt;long long&amp;gt; temp;
-
-        for(int j=3; j&amp;lt;=i; j++){
-            temp.push_back(DP[i-j]*(j-1));
-        }
-
-        DP[i] = max(temp);
-    }
-
-    cout &amp;lt;&amp;lt; DP[N] &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 11058번 Link: 11058번: 크리보드</summary></entry><entry><title type="html">11060</title><link href="keithlee94.github.io/algorithm/11060/" rel="alternate" type="text/html" title="11060" /><published>2019-02-26T00:00:00+09:00</published><updated>2019-02-26T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/11060</id><content type="html" xml:base="keithlee94.github.io/algorithm/11060/">&lt;h1 id=&quot;백준-11060번&quot;&gt;백준 11060번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/11060&quot;&gt;11060번: 점프 점프&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;역시 DP문제다.&lt;/p&gt;
-
-&lt;p&gt;옆에서 친구가 풀던 문제여서 한번 풀어봤는데, 앞에서 풀었던 문제에서 찾아낸 규칙과 유사한 규칙으로 풀린다는 점을 알아냈다.&lt;/p&gt;
-
-&lt;p&gt;될까 해서 돌려보니 역시 성공.&lt;/p&gt;
-
-&lt;p&gt;이번에도 코드는 정말 짧다.&lt;/p&gt;
-
-&lt;p&gt;하루에 DP를 2문제나 풀어내다니 내 자신이 살짝 놀랍다.&lt;/p&gt;
-
-&lt;p&gt;이런식으로 DP에 대한 두려움을 좀 없앨 수 있으면 좋겠다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 26/02/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;vector&amp;gt;
-#include &amp;lt;strings.h&amp;gt;
-
-using namespace std;
-
-int N;
-
-int map[1001];
-int DP[1001];
-
-int min(vector&amp;lt;int&amp;gt; v){
-    int result = 99999;
-
-    for(int i=0; i&amp;lt;v.size(); i++){
-        if(result &amp;gt; v[i]){
-            result = v[i];
-        }
-    }
-
-    return result;
-}
-
-int main(){
-    bzero(DP, sizeof(DP));
-    bzero(map, sizeof(map));
-    cin &amp;gt;&amp;gt; N;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        cin &amp;gt;&amp;gt; map[i];
-    }
-
-    for(int i=2; i&amp;lt;=N; i++){
-        vector&amp;lt;int&amp;gt; temp;
-
-        for(int j=1; j&amp;lt;i; j++){
-            if(j + map[j] &amp;gt;= i){
-                temp.push_back(DP[j] + 1);
-            }
-        }
-
-        DP[i] = min(temp);
-    }
-
-    if(DP[N] == 99999){
-        DP[N] = -1;
-    }
-
-    cout &amp;lt;&amp;lt; DP[N] &amp;lt;&amp;lt; '\n';
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 11060번 Link: 11060번: 점프 점프</summary></entry><entry><title type="html">1890</title><link href="keithlee94.github.io/algorithm/1890/" rel="alternate" type="text/html" title="1890" /><published>2019-02-26T00:00:00+09:00</published><updated>2019-02-26T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1890</id><content type="html" xml:base="keithlee94.github.io/algorithm/1890/">&lt;h1 id=&quot;백준-1890번&quot;&gt;백준 1890번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1890&quot;&gt;1890번: 점프&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;오늘도 DP문제.&lt;/p&gt;
-
-&lt;p&gt;옆에서 친구가 풀던거 같이 한번 풀어봤는데, 조금 고전했다.&lt;/p&gt;
-
-&lt;p&gt;처음에는 BFS로 풀어보려고 했는데 문제 자체가 BFS로 풀기에는 조건이 적당하지 않아서 무한루프로 끝났다.&lt;/p&gt;
-
-&lt;p&gt;다른 방법으로 풀 수 있는지 찾아보던 중 어떻게든 규칙을 찾아서 DP로 풀어야겠다는 생각을 했고, 고민끝에 규칙을 찾아 샘플 케이스를 돌려보니 맞았다.&lt;/p&gt;
-
-&lt;p&gt;구현하는데 인덱스가 헷갈려서 살짝 애먹긴 했지만 무난히 맞았다.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
-// Created by Keith_Lee on 26/02/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-
-using namespace std;
-
-int N;
-
-int map[101][101] = {-1, };
-long long DP[101][101] = {0, };
-
-int main(){
-    cin &amp;gt;&amp;gt; N;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            cin &amp;gt;&amp;gt; map[i][j];
-        }
-    }
-
-    DP[1][1] = 1;
-
-    for(int i=1; i&amp;lt;=N; i++){
-        for(int j=1; j&amp;lt;=N; j++){
-            if(i == j &amp;amp;&amp;amp; i == 0){
-                continue;
-            }
-
-            for(int k=0; k&amp;lt;j; k++){
-                if(k + map[i][k] == j){
-                    DP[i][j] += DP[i][k];
-                }
-            }
-
-            for(int k=0; k&amp;lt;i; k++){
-                if(k + map[k][j] == i){
-                    DP[i][j] += DP[k][j];
-                }
-            }
-        }
-    }
-
-//    for(int i=1; i&amp;lt;=N; i++){
-//        for(int j=1; j&amp;lt;=N; j++){
-//            cout &amp;lt;&amp;lt; DP[i][j] &amp;lt;&amp;lt; ' ';
-//        }
-//        cout &amp;lt;&amp;lt; '\n';
-//    }
-
-    cout &amp;lt;&amp;lt; DP[N][N] &amp;lt;&amp;lt; '\n';
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1890번 Link: 1890번: 점프</summary></entry><entry><title type="html">1309</title><link href="keithlee94.github.io/algorithm/1309/" rel="alternate" type="text/html" title="1309" /><published>2019-02-25T00:00:00+09:00</published><updated>2019-02-25T00:00:00+09:00</updated><id>keithlee94.github.io/algorithm/1309</id><content type="html" xml:base="keithlee94.github.io/algorithm/1309/">&lt;h1 id=&quot;백준-1309번&quot;&gt;백준 1309번&lt;/h1&gt;
-&lt;p&gt;Link: &lt;a href=&quot;https://www.acmicpc.net/problem/1309&quot;&gt;1309번: 동물원&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h1&gt;
-&lt;p&gt;오늘은 DP를 배워서 이제 한동안 DP문제에 매달릴 예정이다.&lt;/p&gt;
-
-&lt;p&gt;그 중에서도 아주 간단한 문제를 하나 풀었다.&lt;/p&gt;
-
-&lt;p&gt;정말 기본적인 문제라고 할 수 있는데, 몇개 케이스 따져보며 규칙 찾으면 바로 풀리는 문제다.&lt;/p&gt;
-
-&lt;p&gt;역시 DP문제답게 규칙만 찾으면 구현은 간단히 끝난다.&lt;/p&gt;
-
-&lt;p&gt;이번 기회에 DP에 대해 확실히 정복하고 갈 작정이다.&lt;/p&gt;
-
-&lt;p&gt;여전히 갈길이 멀지만, 화이팅.&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정답-코드&quot;&gt;정답 코드&lt;/h1&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;///
-// Created by Keith_Lee on 25/02/2019.
-//
-
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;strings.h&amp;gt;
-
-using namespace std;
-
-int N;
-
-long long zoo(int n){
-    long long DP[n+1];
-    bzero(DP, sizeof(DP));
-
-    DP[0] = 0;
-    DP[1] = 3;
-    DP[2] = 7;
-
-    for(int i=3; i&amp;lt;=n; i++){
-        DP[i] = (2 * DP[i-1] + DP[i-2]) % 9901;
-    }
-
-    return DP[n];
-}
-
-int main(){
-    cin &amp;gt;&amp;gt; N;
-
-    cout &amp;lt;&amp;lt; zoo(N) &amp;lt;&amp;lt; '\n';
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 1309번 Link: 1309번: 동물원</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Jaehyun Keith Lee</name><email>wogus4187@naver.com</email></author><category term="DP" /><summary type="html">백준 12865번 Link: 12865번: 평범한 배낭</summary></entry></feed>
