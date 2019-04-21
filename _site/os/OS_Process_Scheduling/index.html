@@ -1,0 +1,684 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Os_process_scheduling - KeithLog</title>
+<meta name="description" content="CPU Scheduling      발생 경우          프로세스가 running -&gt; waiting으로 전환 - Nonpreemptive      프로세스가 running -&gt; ready로 전환 - Preemptive      프로세스가 waiting -&gt; ready로 전환 - Preemptive      프로세스 종료 - Nonpreemptive        Preemptive          현재 CPU를 할당받은 프로세스가 다른 프로세스에 자원을 내줄 수 있음      문제: race condition - 데이터를 공유하는 경우, 커널모드에서 preemption 발생, OS의 중요 작업중 인터럽트 발생        Nonpreemptive          CPU 자원을 할당받은 프로세스가 직접 자원을 반납하기 전까지 계속 자원 점유      ">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KeithLog">
+<meta property="og:title" content="Os_process_scheduling">
+<meta property="og:url" content="keithlee94.github.io/os/OS_Process_Scheduling/">
+
+
+  <meta property="og:description" content="CPU Scheduling      발생 경우          프로세스가 running -&gt; waiting으로 전환 - Nonpreemptive      프로세스가 running -&gt; ready로 전환 - Preemptive      프로세스가 waiting -&gt; ready로 전환 - Preemptive      프로세스 종료 - Nonpreemptive        Preemptive          현재 CPU를 할당받은 프로세스가 다른 프로세스에 자원을 내줄 수 있음      문제: race condition - 데이터를 공유하는 경우, 커널모드에서 preemption 발생, OS의 중요 작업중 인터럽트 발생        Nonpreemptive          CPU 자원을 할당받은 프로세스가 직접 자원을 반납하기 전까지 계속 자원 점유      ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-04-21T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="keithlee94.github.io/os/OS_Process_Scheduling/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jaehyun Keith Lee",
+      "url": "keithlee94.github.io",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="KeithLog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">KeithLog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Jaehyun Keith Lee</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Supernormal / Quiet Weirdo
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="wogus4187@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+          
+        
+          
+            <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:wogus4187@naver.com">
+            <meta itemprop="email" content="wogus4187@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Os_process_scheduling">
+    <meta itemprop="description" content="CPU Scheduling      발생 경우          프로세스가 running -&gt; waiting으로 전환 - Nonpreemptive      프로세스가 running -&gt; ready로 전환 - Preemptive      프로세스가 waiting -&gt; ready로 전환 - Preemptive      프로세스 종료 - Nonpreemptive        Preemptive          현재 CPU를 할당받은 프로세스가 다른 프로세스에 자원을 내줄 수 있음      문제: race condition - 데이터를 공유하는 경우, 커널모드에서 preemption 발생, OS의 중요 작업중 인터럽트 발생        Nonpreemptive          CPU 자원을 할당받은 프로세스가 직접 자원을 반납하기 전까지 계속 자원 점유      ">
+    <meta itemprop="datePublished" content="April 21, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Os_process_scheduling
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="cpu-scheduling">CPU Scheduling</h1>
+<ul>
+  <li>
+    <p>발생 경우</p>
+
+    <ol>
+      <li>프로세스가 running -&gt; waiting으로 전환 - Nonpreemptive</li>
+      <li>프로세스가 running -&gt; ready로 전환 - Preemptive</li>
+      <li>프로세스가 waiting -&gt; ready로 전환 - Preemptive</li>
+      <li>프로세스 종료 - Nonpreemptive</li>
+    </ol>
+  </li>
+  <li>Preemptive
+    <ul>
+      <li>현재 CPU를 할당받은 프로세스가 다른 프로세스에 자원을 내줄 수 있음</li>
+      <li>문제: race condition - 데이터를 공유하는 경우, 커널모드에서 preemption 발생, OS의 중요 작업중 인터럽트 발생</li>
+    </ul>
+  </li>
+  <li>Nonpreemptive
+    <ul>
+      <li>CPU 자원을 할당받은 프로세스가 직접 자원을 반납하기 전까지 계속 자원 점유</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="scheduling-criteria">Scheduling Criteria</h1>
+<ul>
+  <li>CPU Utilization: CPU를 idle 상태로 두지 않는 것. (Maximize)</li>
+  <li>Throughput: 단위시간 동안 끝낼 수 있는 프로세스 수 (Maximize)</li>
+  <li>Turnaround time: 특정 프로세스 실행까지 걸리는 시간 (Minimize)</li>
+  <li>Waiting time: 프로세스가 ready queue에서 대기한 시간 (Minimize)</li>
+  <li>Response time: 프로세스 실행 요청 생성 후 첫 response가 올때까지 걸린 시간 (Minimize)</li>
+</ul>
+
+<h1 id="fcfs-scheduling">FCFS Scheduling</h1>
+<ul>
+  <li>First Come First Served</li>
+  <li>프로세스 도착 순서대로 CPU 자원 할당.</li>
+  <li>문제점: convoy effect
+    <ul>
+      <li>실행시간이 짧은 프로세스가 긴 프로세스에 막혀 대기시간이 길어질 수 있다</li>
+      <li>예: I/O bound process가 많은 경우</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="sjf-scheduling">SJF Scheduling</h1>
+<ul>
+  <li>Shortest Job Fisrt</li>
+  <li>실행시간(CPU Burst time)이 짧은 프로세스를 먼저 실행한다</li>
+  <li>Optimal: 평균 대기시간이 가장 짧다</li>
+  <li>문제점: 각각의 프로세스들의 실행시간을 알아내기 어렵다</li>
+</ul>
+
+<h1 id="srtf-scheduling">SRTF Scheduling</h1>
+<ul>
+  <li>Shortest Remaining Time First</li>
+  <li>SJF의 Preemptive 버전</li>
+  <li>단위시간마다 각 프로세스들의 작업 완료까지 남은 시간을 계산하여 남은시간이 가장 짧은 프로세스를 실행한다</li>
+</ul>
+
+<h1 id="priority-scheduling">Priority Scheduling</h1>
+<ul>
+  <li>각각의 프로세스에 우선순위 부여</li>
+  <li>SJF = CPU Burst time이 짧을수록 높은 우선순위</li>
+  <li>문제점: Starvation
+    <ul>
+      <li>우선순위가 낮은 프로세스가 높은 프로세스에 밀려 무한히 대기하는 현상</li>
+      <li>해결: Aging - 대기한 시간에 따라 우선순위 상향 조정</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="round-robin">Round Robin</h1>
+<ul>
+  <li>각각의 프로세스에 실행시간(Time Quantum) 부여</li>
+  <li>프로세스 실행중 Time Quantum이 다 지나면 다른 프로세스에 의해 preemption되고 ready queue의 맨 뒤로 옮겨간다</li>
+  <li>Starvation 문제 해결</li>
+  <li>매 quantum마다 timer interrupt 발생</li>
+  <li>성능
+    <ul>
+      <li>q가 크면: FCFS와 유사(비효율적)</li>
+      <li>q가 작으면: response time이 빨라지나 context switching overhead가 커진다</li>
+      <li>SJF에 비해 turnaround time이 길지만 response가 더 뛰어나다</li>
+      <li>q 설정: context switching에 걸리는 시간보다 길게 설정</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="multilevel-queue">Multilevel Queue</h1>
+<ul>
+  <li>Ready Queue를 여러 큐로 나누는 방식</li>
+  <li>foreground: interactive processes (Round Robin)</li>
+  <li>background: batch processes (FCFS)</li>
+  <li>
+    <p>우선순위</p>
+
+    <ol>
+      <li>System processes</li>
+      <li>interactive processes</li>
+      <li>interactive editing processes</li>
+      <li>batch processes</li>
+      <li>student processess</li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="multilevel-feedback-queue">Multilevel Feedback Queue</h1>
+<ul>
+  <li>프로세스가 현재 큐에서 다른 큐로 이동 가능</li>
+  <li>큐별로 다른 quantum 적용 가능</li>
+  <li>한 큐에서 quantum 내에 작업이 끝나지 않았으면 다음 큐로 이동하는 방식</li>
+</ul>
+
+<h1 id="multiple-processor-scheduling">Multiple Processor Scheduling</h1>
+<ul>
+  <li>Asymmetric Multiprocessing: 한 프로세서만 시스템 데이터 구조에 접근하여 데이터 공유의 필요성을 줄인다</li>
+  <li>Symmetric Multiprocessing: 각각의 프로세서가 각자 스케줄링을 실행하고 모든 프로세스들이 하나의 ready queue를 공유하거나 각자 다른 ready queue를 갖는 구조</li>
+  <li>Affinity: 특정 코어를 지정하여 task를 수행하도록 하는 설계</li>
+  <li>NUMA
+    <ul>
+      <li>Non Uniform Memory Access</li>
+      <li>CPU에 묶여있는 메모리에 대해서는 접근 속도가 빠르고, 다른 CPU에 묶여있는 메모리에 대해서는 접근 속도가 느리다</li>
+      <li>Affinity를 고려하여 메모리 배치</li>
+    </ul>
+  </li>
+  <li>Load Balancing
+    <ul>
+      <li>작업을 여러 프로세서에 고르게 분산시킨다</li>
+      <li>Push migration: 주기적으로 프로세서들의 작업량을 확인하여 작업이 많은 프로세서의 작업을 작업이 적은 프로세서로 옮긴다</li>
+      <li>Pull migration: 작업이 적은 프로세서가 작업이 많은 프로세서의 작업을 가져온다</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="multithread-multicore-system">Multithread Multicore System</h1>
+<ul>
+  <li>Memory stall: 프로세서가 요청한 데이터가 메모리로부터 도착하기까지 기다리는 시간</li>
+  <li>Multithread Processor 구조: 2개 이상의 하드웨어 쓰레드가 각각의 코어에 할당되어 하나의 쓰레드에서 memory stall 발생시 다른 쓰레드로 전환하여 작업 처리</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#process-scheduling" class="page__taxonomy-item" rel="tag">Process Scheduling</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#os" class="page__taxonomy-item" rel="tag">OS</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-21T00:00:00+09:00">April 21, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Os_process_scheduling%20keithlee94.github.io%2Fos%2FOS_Process_Scheduling%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Fos%2FOS_Process_Scheduling%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Fos%2FOS_Process_Scheduling%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Fos%2FOS_Process_Scheduling%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/os/OS_Process/" class="pagination--pager" title="Os_process
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Process/" rel="permalink">Os_process
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Process
+
+  Program in execution
+  프로그램이 메모리에 올라오면 프로세스가 된다.
+  구성 요소
+    
+      text section: program code
+      program counter
+      stack: 임시 데이터(로컬 변수 등) ...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Multithread/" rel="permalink">Os_multithread
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Thread
+
+  독립적으로 스케줄링되는 단위
+  프로세스 = 하나 이상의 같은 메모리 공간을 공유하는 쓰레드들로 구성
+  장점
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Introduction/" rel="permalink">Os_introduction
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">OS의 역할
+
+  자원 관리
+2, 프로그램으로부터 컴퓨터가 손상되는것 방지
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2206/" rel="permalink">2206
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2206번
+Link: 2206번: 벽 부수고 이동하기
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Jaehyun Keith Lee. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>

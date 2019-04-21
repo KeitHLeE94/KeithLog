@@ -1,0 +1,629 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Os_multithread - KeithLog</title>
+<meta name="description" content="Thread  독립적으로 스케줄링되는 단위  프로세스 = 하나 이상의 같은 메모리 공간을 공유하는 쓰레드들로 구성  장점">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KeithLog">
+<meta property="og:title" content="Os_multithread">
+<meta property="og:url" content="keithlee94.github.io/os/OS_Multithread/">
+
+
+  <meta property="og:description" content="Thread  독립적으로 스케줄링되는 단위  프로세스 = 하나 이상의 같은 메모리 공간을 공유하는 쓰레드들로 구성  장점">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-04-21T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="keithlee94.github.io/os/OS_Multithread/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jaehyun Keith Lee",
+      "url": "keithlee94.github.io",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="KeithLog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">KeithLog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Jaehyun Keith Lee</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Supernormal / Quiet Weirdo
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="wogus4187@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+          
+        
+          
+            <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:wogus4187@naver.com">
+            <meta itemprop="email" content="wogus4187@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Os_multithread">
+    <meta itemprop="description" content="Thread  독립적으로 스케줄링되는 단위  프로세스 = 하나 이상의 같은 메모리 공간을 공유하는 쓰레드들로 구성  장점">
+    <meta itemprop="datePublished" content="April 21, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Os_multithread
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="thread">Thread</h1>
+<ul>
+  <li>독립적으로 스케줄링되는 단위</li>
+  <li>프로세스 = 하나 이상의 같은 메모리 공간을 공유하는 쓰레드들로 구성</li>
+  <li>
+    <p>장점</p>
+
+    <ol>
+      <li>반응성: 프로세스가 block되어도 영향 없음</li>
+      <li>자원 공유: 프로세스에 비해 자원공유가 간단</li>
+      <li>경제성: context switching overhead가 프로세스에 비해 적다</li>
+      <li>확장성: 멀티프로세서 장점 활용 가능</li>
+    </ol>
+  </li>
+  <li>예: 서버가 클라이언트에 요청을 받으면 새 프로세스를 생성하는 대신 worker thread를 생성하여 요청 처리</li>
+  <li>구성
+    <ul>
+      <li>stack + register</li>
+      <li>같은 프로세스 내 쓰레드들끼리는 code, data, heap 공유</li>
+      <li>쓰레드 생성시 stack + register만 새로 생성됨</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="parallelism과-concurrency">Parallelism과 Concurrency</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Parallelism
+- 동시에 2개 이상의 작업을 수행하는 시스템
+- 멀티코어 구조에서만 가능
+- Data Parallelism: 여러 프로세서에서 동일한 데이터로 동일한 작업 수행
+- Task Parallelism: 여러 프로세서에서 서로 다른 쓰레드로 서로 다른 작업 수행
+
+Concurrency
+- 2개 이상의 작업이 동시에 진행될 수 있는 시스템
+- 싱글코어 구조에서도 가능
+
+차이
+- Concurrency
+    - 서로 다른 작업들을 중첩시켜 진행하는 방식
+    - 여러 작업들이 있을때 한 작업이 끝나기 전 다른 작업 진행 가능
+- Parallelism
+    - 서로 다른 작업들을 동시에 여러개 처리하는 방식
+</code></pre></div></div>
+
+<h1 id="multithreading">Multithreading</h1>
+<ul>
+  <li>User thread: user level thread library가 관리</li>
+  <li>Kernel thread: kernel이 관리</li>
+  <li>
+    <p>종류</p>
+
+    <ol>
+      <li>Many to One
+        <ul>
+          <li>여러 user thread들이 하나의 kernel thread에 결합</li>
+          <li>하나의 thread가 block되면 다른 thread들도 block됨</li>
+          <li>하나의 kernel thread만이 처리 가능하므로 병렬 실행 불가</li>
+        </ul>
+      </li>
+      <li>One to One
+        <ul>
+          <li>하나의 user thread가 하나의 kernel thread에 결합</li>
+          <li>user thread 생성시 연결할 kernel thread도 함께 생성</li>
+          <li>병렬 실행 가능</li>
+          <li>하나의 thread가 block되어도 다른 thread 실행 가능</li>
+          <li>context switching overhead 발생 가능</li>
+          <li>생성 가능한 thread 수 제한</li>
+        </ul>
+      </li>
+      <li>Many to Many
+        <ul>
+          <li>여러 user thread가 여러 kernel thread에 결합</li>
+          <li>kernel thread 생성 수 제한 없음</li>
+        </ul>
+      </li>
+      <li>Two level model
+        <ul>
+          <li>Many to Many + One to One 형태</li>
+          <li>중요도가 높은 user thread는 One to One 형태로 처리하여 선점권을 부여할 수 있다.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#multithread" class="page__taxonomy-item" rel="tag">Multithread</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#os" class="page__taxonomy-item" rel="tag">OS</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-21T00:00:00+09:00">April 21, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Os_multithread%20keithlee94.github.io%2Fos%2FOS_Multithread%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Fos%2FOS_Multithread%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Fos%2FOS_Multithread%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Fos%2FOS_Multithread%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/os/OS_Introduction/" class="pagination--pager" title="Os_introduction
+">Previous</a>
+    
+    
+      <a href="/os/OS_Process/" class="pagination--pager" title="Os_process
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Process_Scheduling/" rel="permalink">Os_process_scheduling
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">CPU Scheduling
+
+  
+    발생 경우
+
+    
+      프로세스가 running -&gt; waiting으로 전환 - Nonpreemptive
+      프로세스가 running -&gt; ready로 전환 - Preemptive
+      프로세스가 waitin...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Process/" rel="permalink">Os_process
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Process
+
+  Program in execution
+  프로그램이 메모리에 올라오면 프로세스가 된다.
+  구성 요소
+    
+      text section: program code
+      program counter
+      stack: 임시 데이터(로컬 변수 등) ...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Introduction/" rel="permalink">Os_introduction
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">OS의 역할
+
+  자원 관리
+2, 프로그램으로부터 컴퓨터가 손상되는것 방지
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2206/" rel="permalink">2206
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2206번
+Link: 2206번: 벽 부수고 이동하기
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Jaehyun Keith Lee. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>

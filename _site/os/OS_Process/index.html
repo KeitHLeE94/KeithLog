@@ -1,0 +1,742 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Os_process - KeithLog</title>
+<meta name="description" content="Process  Program in execution  프로그램이 메모리에 올라오면 프로세스가 된다.  구성 요소          text section: program code      program counter      stack: 임시 데이터(로컬 변수 등) 저장      data section: 전역변수 저장      heap: 실행 도중 동적할당된 메모리 공간      ">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KeithLog">
+<meta property="og:title" content="Os_process">
+<meta property="og:url" content="keithlee94.github.io/os/OS_Process/">
+
+
+  <meta property="og:description" content="Process  Program in execution  프로그램이 메모리에 올라오면 프로세스가 된다.  구성 요소          text section: program code      program counter      stack: 임시 데이터(로컬 변수 등) 저장      data section: 전역변수 저장      heap: 실행 도중 동적할당된 메모리 공간      ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-04-21T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="keithlee94.github.io/os/OS_Process/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jaehyun Keith Lee",
+      "url": "keithlee94.github.io",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="KeithLog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">KeithLog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Jaehyun Keith Lee</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Supernormal / Quiet Weirdo
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="wogus4187@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+          
+        
+          
+            <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:wogus4187@naver.com">
+            <meta itemprop="email" content="wogus4187@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Os_process">
+    <meta itemprop="description" content="Process  Program in execution  프로그램이 메모리에 올라오면 프로세스가 된다.  구성 요소          text section: program code      program counter      stack: 임시 데이터(로컬 변수 등) 저장      data section: 전역변수 저장      heap: 실행 도중 동적할당된 메모리 공간      ">
+    <meta itemprop="datePublished" content="April 21, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Os_process
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="process">Process</h1>
+<ul>
+  <li>Program in execution</li>
+  <li>프로그램이 메모리에 올라오면 프로세스가 된다.</li>
+  <li>구성 요소
+    <ul>
+      <li>text section: program code</li>
+      <li>program counter</li>
+      <li>stack: 임시 데이터(로컬 변수 등) 저장</li>
+      <li>data section: 전역변수 저장</li>
+      <li>heap: 실행 도중 동적할당된 메모리 공간
+<img src="https://user-images.githubusercontent.com/23356503/56469277-80b67000-6472-11e9-89e4-70fe4c0288c4.png" alt="Process Structure" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="process-state">Process State</h1>
+<ol>
+  <li>new: 프로세스가 생성된 상태</li>
+  <li>ready: 프로세서에 할당되길 기다리는 상태</li>
+  <li>waiting: 프로세스가 event 발생을 기다리는 상태</li>
+  <li>running: 작업 수행</li>
+  <li>terminated: 작업 완료후 종료
+    <ul>
+      <li>new -&gt; ready: 메모리에 올라감</li>
+      <li>ready -&gt; running: CPU 자원 할당</li>
+      <li>running -&gt; ready: 인터럽트 발생</li>
+      <li>running -&gt; waiting: I/O 작업, event 발생</li>
+      <li>waiting -&gt; ready: I/O 작업, event 완료</li>
+      <li>running -&gt; terminated: exit 호출</li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="pcb">PCB</h1>
+<ul>
+  <li>Process Control Block</li>
+  <li>프로세스 정보 저장.
+    <ol>
+      <li>Process state</li>
+      <li>Program Counter: 프로세스가 다음에 실행할 명령어 주소를 가리킴</li>
+      <li>Process ID</li>
+      <li>CPU Register</li>
+      <li>CPU scheduling information: priority, scheduling queue pointers</li>
+      <li>Memory management information: memory allocated to process</li>
+      <li>Accounting information: CPU usage, clock time elapsed, time limits</li>
+      <li>I/O status information: I/O device allocated to process, list of open files</li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="thread">Thread</h1>
+<ul>
+  <li>실행의 흐름</li>
+  <li>각 쓰레드당 하나의 PCB를 갖는다.</li>
+</ul>
+
+<h1 id="process-scheduling">Process Scheduling</h1>
+<ul>
+  <li>scheduling queue
+    <ul>
+      <li>job queue: 시스템의 모든 프로세스들의 집합</li>
+      <li>ready queue: 메인메모리에서 실행 대기중인 프로세스들의 집합</li>
+      <li>device queue: I/O 장치를 기다리는 프로세스들의 집합</li>
+    </ul>
+  </li>
+  <li>scheduler: CPU가 다음에 실행할 프로세스 선택
+    <ul>
+      <li>long term: 어떤 프로세스를 ready queue에 넣을지 결정</li>
+      <li>short term: 어떤 프로세스에 CPU 자원을 할당할지 결정</li>
+    </ul>
+  </li>
+  <li>I/O Bound Process: CPU 사용시간이 짧다. I/O에 치중.</li>
+  <li>CPU Bound Process: CPU 사용시간이 길다. 연산에 치중.</li>
+</ul>
+
+<h1 id="context-switch">Context Switch</h1>
+<ul>
+  <li>CPU가 프로세스 전환시 이전 프로세스 상태를 저장하고 새로운 프로세스의 상태 정보를 불러오는 작업.</li>
+  <li>Context: 프로세스 상태 정보. PCB에 저장.</li>
+  <li>Overhead 발생: context switching동안 시스템이 다른 작업을 할 수 없다.</li>
+  <li>
+    <p>순서</p>
+
+    <ol>
+      <li>현재 진행중인 프로세스 정보 PCB에 저장</li>
+      <li>새로 실행할 프로세스의 PCB 정보 불러옴</li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="process-creation">Process Creation</h1>
+<ul>
+  <li>부모프로세스가 자식프로세스 생성</li>
+  <li>pid: 프로세스간 구별을 위해 사용</li>
+  <li>자원 공유: 부모와 자식간 자원 공유 가능</li>
+  <li>실행 옵션
+    <ul>
+      <li>부모가 자식 끝나기까지 기다림</li>
+      <li>부모와 자식이 동시에 실행</li>
+    </ul>
+  </li>
+  <li>fork()
+    <ul>
+      <li>새로운 프로세스를 만드는 시스템 콜</li>
+      <li>부모와 완전히 동일한 자식 프로세스 생성</li>
+      <li>pid_t 타입의 pid 리턴
+        <ul>
+          <li>음수: fork() 실패</li>
+          <li>0: 자식 프로세스</li>
+          <li>자연수: 부모 프로세스</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>exec()
+    <ul>
+      <li>생성된 자식 프로세스의 context 변경을 위한 시스템 콜</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/23356503/56469481-5619e680-6475-11e9-9ca2-2d28e3ee9f39.png" alt="Process Creation" /></p>
+
+<h1 id="process-termination">Process Termination</h1>
+<ul>
+  <li>exit()
+    <ul>
+      <li>프로세스가 실행을 끝내고 OS에 프로세스 삭제를 요청하는 시스템 콜</li>
+      <li>프로세스에 할당된 자원 반환</li>
+    </ul>
+  </li>
+  <li>abort()
+    <ul>
+      <li>부모 프로세스가 자식 프로세스를 종료시키는 시스템 콜</li>
+    </ul>
+  </li>
+  <li>zombie process: 종료된 프로세스를 기다리는 부모 프로세스가 없는 프로세스</li>
+  <li>orphan process: 부모 프로세스가 실행 완료 전 종료된 프로세스</li>
+</ul>
+
+<h1 id="ipc">IPC</h1>
+<ul>
+  <li>InterProcess Communication: 프로세스간 통신을 위해 필요</li>
+  <li>Shared Memory
+  <img src="https://user-images.githubusercontent.com/23356503/56469538-215a5f00-6476-11e9-984c-33f601c6e3f0.png" alt="Shared Memory" />
+    <ul>
+      <li>장점: 메모리에 곧바로 접근하므로 속도가 빠르다</li>
+      <li>단점: 동기화가 어렵다</li>
+    </ul>
+  </li>
+  <li>Message Passing
+  <img src="https://user-images.githubusercontent.com/23356503/56469567-96c62f80-6476-11e9-87af-6f153a671e56.png" alt="Message Passing" />
+    <ul>
+      <li>장점: 동기화가 쉽다</li>
+      <li>단점: 커널에 의존하므로 속도가 느리다</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="message-passing">Message Passing</h1>
+<ul>
+  <li>send, receive 기능 제공</li>
+  <li>
+    <p>과정</p>
+
+    <ol>
+      <li>소통하려는 두 프로세스 간 communication link 개설</li>
+      <li>send, receive를 통해 메시지 교환</li>
+    </ol>
+  </li>
+  <li>Direct Communication
+    <ul>
+      <li>어떤 프로세스에게 메시지를 보내거나 받을지 명시</li>
+      <li>link가 자동으로 생성됨</li>
+      <li>하나의 link는 한쌍의 프로세스만 연결, 한쌍의 프로세스 간에는 하나의 link만 존재</li>
+      <li>bidirectional</li>
+    </ul>
+  </li>
+  <li>Indirect Communication
+    <ul>
+      <li>mailbox(port)를 통해 메시지를 주고받음</li>
+      <li>프로세스간 mailbox를 공유한 경우에만 소통 가능</li>
+      <li>프로세스간 mailbox 공유시에만 link 생성</li>
+      <li>하나의 link에 여러 프로세스 연결 가능, 한쌍의 프로세스 간 여러 link 존재 가능</li>
+      <li>unidirectional, bidirectional</li>
+    </ul>
+  </li>
+  <li>Synchronization
+    <ul>
+      <li>blocking send: 메시지 수신 전까지 sender block</li>
+      <li>nonblocking send: block 없이 sender가 메시지 전송</li>
+      <li>blocking receive: 메시지가 들어오기 전까지 receiver block</li>
+      <li>nonblocking receive: block 없이 receiver가 메시지 수신 = 메시지가 null일 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#process" class="page__taxonomy-item" rel="tag">Process</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#os" class="page__taxonomy-item" rel="tag">OS</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-21T00:00:00+09:00">April 21, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Os_process%20keithlee94.github.io%2Fos%2FOS_Process%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Fos%2FOS_Process%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Fos%2FOS_Process%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Fos%2FOS_Process%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/os/OS_Multithread/" class="pagination--pager" title="Os_multithread
+">Previous</a>
+    
+    
+      <a href="/os/OS_Process_Scheduling/" class="pagination--pager" title="Os_process_scheduling
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Process_Scheduling/" rel="permalink">Os_process_scheduling
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">CPU Scheduling
+
+  
+    발생 경우
+
+    
+      프로세스가 running -&gt; waiting으로 전환 - Nonpreemptive
+      프로세스가 running -&gt; ready로 전환 - Preemptive
+      프로세스가 waitin...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Multithread/" rel="permalink">Os_multithread
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Thread
+
+  독립적으로 스케줄링되는 단위
+  프로세스 = 하나 이상의 같은 메모리 공간을 공유하는 쓰레드들로 구성
+  장점
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Introduction/" rel="permalink">Os_introduction
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">OS의 역할
+
+  자원 관리
+2, 프로그램으로부터 컴퓨터가 손상되는것 방지
+
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/2206/" rel="permalink">2206
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">백준 2206번
+Link: 2206번: 벽 부수고 이동하기
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Jaehyun Keith Lee. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>
