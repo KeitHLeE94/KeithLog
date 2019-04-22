@@ -1,0 +1,848 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Os_process_synchronization - KeithLog</title>
+<meta name="description" content="Process Synchronization  필요성: 여러 프로세스 동시 실행시 공유되는 데이터의 일관성이 깨질 수 있다          race condition: 데이터에 어떤 프로세스가 먼저 접근하는지에 따라 결과가 달라지는 경우      ">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KeithLog">
+<meta property="og:title" content="Os_process_synchronization">
+<meta property="og:url" content="keithlee94.github.io/os/OS_Process_Synchronization/">
+
+
+  <meta property="og:description" content="Process Synchronization  필요성: 여러 프로세스 동시 실행시 공유되는 데이터의 일관성이 깨질 수 있다          race condition: 데이터에 어떤 프로세스가 먼저 접근하는지에 따라 결과가 달라지는 경우      ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-04-22T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="keithlee94.github.io/os/OS_Process_Synchronization/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jaehyun Keith Lee",
+      "url": "keithlee94.github.io",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="KeithLog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">KeithLog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Jaehyun Keith Lee</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Supernormal / Quiet Weirdo
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="wogus4187@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+          
+        
+          
+            <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:wogus4187@naver.com">
+            <meta itemprop="email" content="wogus4187@naver.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Os_process_synchronization">
+    <meta itemprop="description" content="Process Synchronization  필요성: 여러 프로세스 동시 실행시 공유되는 데이터의 일관성이 깨질 수 있다          race condition: 데이터에 어떤 프로세스가 먼저 접근하는지에 따라 결과가 달라지는 경우      ">
+    <meta itemprop="datePublished" content="April 22, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Os_process_synchronization
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="process-synchronization">Process Synchronization</h1>
+<ul>
+  <li>필요성: 여러 프로세스 동시 실행시 공유되는 데이터의 일관성이 깨질 수 있다
+    <ul>
+      <li>race condition: 데이터에 어떤 프로세스가 먼저 접근하는지에 따라 결과가 달라지는 경우</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="critical-section">Critical Section</h1>
+<ul>
+  <li>공유 자원에 접근하는 코드의 일부.</li>
+  <li>모든 프로세스는 각자의 critical section을 갖는다.</li>
+  <li>한 프로세스가 critical section에 진입했을 경우 다른 프로세스들은 진입할 수 없어야 한다.</li>
+  <li>구조
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  do{
+      entry section
+      critical section
+      exit section
+      remainder section
+  } while(true);
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="solution-for-critical-section-problem">Solution for Critical Section Problem</h1>
+<ul>
+  <li>Mutual Exclusion
+    <ul>
+      <li>어떤 프로세스가 critical section 내에 있을 경우 다른 프로세스는 critical section 진입 불가</li>
+    </ul>
+  </li>
+  <li>Progress
+    <ul>
+      <li>critical section 내에 어떠한 프로세스도 없고 critical section에 진입하고자 하는 프로세스가 있을 경우 이 프로세스는 반드시 critical section에 진입할 수 있어야 한다</li>
+    </ul>
+  </li>
+  <li>Bounded Waiting
+    <ul>
+      <li>critical section 진입을 요청한 프로세스는 유한한 시간 내에 critical section에 진입해야 한다</li>
+    </ul>
+  </li>
+  <li>Locking
+    <ul>
+      <li>critical section을 locking으로 보호한다</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="mutex-locks">Mutex Locks</h1>
+<ul>
+  <li>acquire(): locking 설정. critical section 접근 권한을 얻는다</li>
+  <li>release(): locking 해제. critical section에서 나갈때 실행한다</li>
+  <li>acquire, release 연산은 atomic해야 한다: 두 연산이 동시에 일어날 수 없다</li>
+  <li>busy waiting: 다른 프로세스가 lock을 가지고 있으면 lock을 걸고자 하는 프로세스는 그 lock이 해제될때까지 계속 lock의 상태를 확인하며 대기</li>
+</ul>
+
+<h1 id="spin-lock">Spin Lock</h1>
+<ul>
+  <li>busy waiting이 적용된 mutex lock</li>
+  <li>busy waiting의 목적: 다른 프로세스에 CPU 자원을 뺏기지 않기 위해</li>
+  <li>장점: context switching overhead를 줄일 수 있다</li>
+  <li>단점: 프로세스가 lock을 소유하는 시간이 길면 비효율적이다</li>
+  <li>구현
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  acquire(){
+      while(!available){
+          ; // busy waiting
+      }
+      available = false; // lock 획득
+  }
+
+  release(){
+      available = true; // lock 해제
+  }
+
+  do{
+      acquire();
+
+      critical section
+
+      release();
+
+      remainder section
+  } while(true);
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="semaphore">Semaphore</h1>
+<ul>
+  <li>busy waiting이 필요없다</li>
+  <li>Semaphore S: 정수값. critical section 내에 한번에 진입 가능한 프로세스 수</li>
+  <li>P(), V() 연산: wait(), signal() 연산. 각각 lock을 얻고 lock을 해제하는 연산이다</li>
+  <li>구현
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  wait(S){
+      while(S &lt;= 0){ // 현재 critical section에 들어갈 수 있는 자리가 없다
+          ; // busy waiting
+      }
+
+      S--; // critical section 진입
+  }
+
+  signal(S){
+      S++; // lock을 해제하고 critical section에서 나감
+  }
+</code></pre></div>    </div>
+  </li>
+  <li>counting semaphore: critical section 내에 2개 이상의 프로세스가 동시에 진입 가능</li>
+  <li>binary semaphore: critical section 내에 1개의 프로세스만 동시에 진입 가능
+    <ul>
+      <li>mutex lock과 같다</li>
+      <li>wait(), signal()이 한 세마포어 안에서 동시에 일어날 수 없다</li>
+    </ul>
+  </li>
+  <li>semaphore without busy waiting
+    <ul>
+      <li>각각의 세마포어에는 waiting queue가 존재한다</li>
+      <li>block(): critical section에 빈자리가 없을때 critical section 진입을 요청하는 프로세스의 critical section 진입을 막는다</li>
+      <li>wakeup(): critical section에 빈자리가 있으면 대기중인 프로세스에 빈자리가 있음을 알린다</li>
+      <li>구현
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  typedef struct{
+      int value; // 동시에 critical section에 진입 가능한 프로세스 수
+      struct process* list; // critical section에 진입하려고 대기중인 프로세스 리스트
+  } semaphore;
+
+  wait(Semaphore *S){
+      S-&gt;value--;
+
+      if(S-&gt;value &lt; 0){ // 현재 critical section에 빈자리가 없으면
+          add this process to S-&gt;list; // 프로세스를 세마포어 대기열로 보낸다
+          block(); // 프로세스의 critical section을 막는다
+      }
+  }
+
+  signal(Semaphore *S){
+      S-&gt;value++;
+
+      if(S-&gt;value &lt;= 0){ // 현재 critical section에 진입하고자 하는 프로세스가 있으면
+          remove a process P from S-&gt;list; // 세마포어 대기열 맨 앞의 프로세스를 제거한다
+          wakeup(P); // 그 프로세스에게 현재 critical section에 빈자리가 있음을 알린다
+      }
+  }
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="deadlock--starvation">Deadlock &amp; Starvation</h1>
+<ul>
+  <li>Deadlock: 2개 이상의 프로세스가 각각의 자원을 점유한채 서로의 자원을 요청하는 현상 (점유 대기)</li>
+  <li>Starvation: 세마포어에 진입한 프로세스의 실행이 다른 프로세스에 의해 무한히 연기되는 현상 (indefinite blocking)</li>
+  <li>Priority Inversion: 우선순위가 낮은 프로세스가 우선순위가 높은 프로세스에게 필요한 lock을 점유한 상태
+    <ul>
+      <li>원인: Nonpreemptive regions of code, interrupt, synchronization, mutual exclusion</li>
+      <li>priority inheritance protocol로 해결</li>
+      <li>예
+  <img src="https://user-images.githubusercontent.com/23356503/56507038-0f062100-655b-11e9-8acc-422918558763.png" alt="Priority Inversion" />
+        <ul>
+          <li>세마포어 S1을 공유하는 T1, T3에 대해 S1과 상관없는 T2가 개입하여 priority inversion 발생</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="problems-of-synchronization">Problems of Synchronization</h1>
+<ul>
+  <li>Bounded Buffer Problem
+    <ul>
+      <li>원소를 1개만 담을 수 있는 n개의 buffer 존재</li>
+      <li>Semaphore mutex: 초기값 1, full: 초기값 0, empty: 초기값 n</li>
+      <li>Producer
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  do{
+      // Produce an item in next_produced
+      ...
+      wait(empty);
+      wait(mutex);
+      ...
+      // Add next produced to buffer
+      ...
+      signal(mutex);
+      signal(full);
+  } while(true);
+</code></pre></div>        </div>
+        <ul>
+          <li>빈 buffer를 채우고 full signal을 보내 lock 해제</li>
+          <li>buffer가 모두 차있다면 wait</li>
+        </ul>
+      </li>
+      <li>Consumer
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  do{
+      wait(full); // 초기값이 0이다 =&gt; producer가 채워놓기 전까지 계속 대기한다
+      wait(mutex);
+      ...
+      // Remove an item from buffer to next_consumed
+      ...
+      signal(mutex);
+      signal(empty);
+      ...
+      // Consume the item in next_consumed
+      ...
+  } while(true);
+</code></pre></div>        </div>
+        <ul>
+          <li>buffer가 모두 full이면 item을 꺼내옴</li>
+          <li>buffer가 모두 empty면 empty signal을 보내 lock 해제</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Readers-Writers Problem
+    <ul>
+      <li>Readers: 읽기만 가능</li>
+      <li>Writers: 읽기, 쓰기 모두 가능</li>
+      <li>Problem
+        <ul>
+          <li>Reader는 몇명이 동시에 접근해도 상관없다</li>
+          <li>Writer: 동시에 하나의 writer만 접근할 수 있어야 한다</li>
+        </ul>
+      </li>
+      <li>Shared Data
+        <ul>
+          <li>Data Set</li>
+          <li>Semaphore rw_mutex: 초기값 1, mutex: 초기값 1</li>
+          <li>Integer read_count: 초기값 0</li>
+          <li>writer
+            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  do{
+      wait(rw_mutex);
+      ...
+      // writing is performed
+      ...
+      signal(rw_mutex);
+  } while(true);
+</code></pre></div>            </div>
+            <ul>
+              <li>writer는 준비되었으면 즉시 writing을 수행해야 한다</li>
+            </ul>
+          </li>
+          <li>reader
+            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  do{
+      wait(mutex);
+      read_count++;
+
+      if(read_count == 1){
+          wait(rw_mutex);
+      }
+
+      signal(mutex);
+      ...
+      // reading is performed
+      ...
+      wait(mutex);
+      read_count--;
+
+      if(read_count == 0){
+          signal(rw_mutex);
+      }
+      signal(mutex);
+  } while(true);
+</code></pre></div>            </div>
+            <ul>
+              <li>writer가 작업중인 경우 어떠한 reader도 접근할 수 없다</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Dining Philosophers Problem
+    <ul>
+      <li>shared data
+        <ul>
+          <li>bowl of rice(data set)</li>
+          <li>semaphore chopstick[5] initialized to 1</li>
+        </ul>
+      </li>
+      <li>Philosopher i의 구조
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  do{
+      wait(chopstick[i]); // 자기 왼쪽의 젓가락 집음
+      wait(chopstick[(i+1) % 5]); // 바로 오른쪽의 젓가락 집음
+      ...
+      // eat
+      ...
+      signal(chopstick[i]);
+      signal(chopstick[(i+1) % 5]);
+  } while(true);
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#synchronization" class="page__taxonomy-item" rel="tag">Synchronization</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#os" class="page__taxonomy-item" rel="tag">OS</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-22T00:00:00+09:00">April 22, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Os_process_synchronization%20keithlee94.github.io%2Fos%2FOS_Process_Synchronization%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=keithlee94.github.io%2Fos%2FOS_Process_Synchronization%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=keithlee94.github.io%2Fos%2FOS_Process_Synchronization%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=keithlee94.github.io%2Fos%2FOS_Process_Synchronization%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/os/OS_Deadlock/" class="pagination--pager" title="Os_deadlock
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Deadlock/" rel="permalink">Os_deadlock
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Deadlock 발생조건
+
+  Mutual Exclusion
+  Hold and Wait
+  No Preemption
+  Circular Wait
+    
+      위 4가지 조건을 동시에 만족할 경우 deadlock 발생 가능
+      예
+ 
+ 
+    
+    
+      ...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Process_Scheduling/" rel="permalink">Os_process_scheduling
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">CPU Scheduling
+
+  
+    발생 경우
+
+    
+      프로세스가 running -&gt; waiting으로 전환 - Nonpreemptive
+      프로세스가 running -&gt; ready로 전환 - Preemptive
+      프로세스가 waitin...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Process/" rel="permalink">Os_process
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Process
+
+  Program in execution
+  프로그램이 메모리에 올라오면 프로세스가 된다.
+  구성 요소
+    
+      text section: program code
+      program counter
+      stack: 임시 데이터(로컬 변수 등) ...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/os/OS_Multithread/" rel="permalink">Os_multithread
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">Thread
+
+  독립적으로 스케줄링되는 단위
+  프로세스 = 하나 이상의 같은 메모리 공간을 공유하는 쓰레드들로 구성
+  장점
+
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/JaehyunKeithLee" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/KeitHLeE94" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Jaehyun Keith Lee. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>
